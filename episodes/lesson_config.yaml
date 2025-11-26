@@ -1,4 +1,6 @@
+# main config links to directory
+# snippets refer to the config file
 ---
-main_config: files/snippets/HPCC_MagicCastle_slurm/_config_options.yml
-snippets: HPCC_MagicCastle_slurm
+main_config: files/snippets/NCL_Comet_slurm/_config_options.yml
+snippets: NCL_Comet_slurm
 ...
