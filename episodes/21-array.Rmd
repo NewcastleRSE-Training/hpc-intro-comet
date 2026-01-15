@@ -26,13 +26,35 @@ source("load_config.R")
 
 Parallelism is one of the primary tools we have to improve the performance of computational tasks. The simplest form of parallelism is to run the same job multiple times with different inputs. A more advanced form of parallelism is MPI, which is covered in the next episode. It is possible to use both these methods at the same time, using an array job to run multiple instances of software, which itself uses MPI.
 
-Download the word frequency script from https://github.com/NewcastleRSE-Training/hpc-intro/blob/main/episodes/files/word-freq.sh
+cd training directory
+mkdir username
+cd username
+
+
+Download the word frequency script
+wget https://github.com/NewcastleRSE-Training/hpc-intro/blob/main/episodes/files/word-freq.sh
+
+write a small file to test our script
+
+```bash
+`r config$remote$prompt` nano test-data.txt
+`r config$remote$prompt` cat test-data.txt
+```
+
+```bash
+This is a small file - it will be very useful for trying out our script.
+Some words are repeated in this file
+- we can look for repeated words
+and count them (to see which words are repeated most often).
+```
 
 Run at command line with a small test file (/nobackup/proj/comet_training/ArrayJob/test-data.txt)
+
 
 Write a batch script to call the word-freq.sh as single job and run using slurm (job_single_word-freq.sh) 
 or download it from https://github.com/NewcastleRSE-Training/hpc-intro/blob/main/episodes/files/job_single_word-freq.sh
 
+Download the data using https://github.com/NewcastleRSE-Training/hpc-intro/blob/main/episodes/files/make-data.sh
 
 Update the batch sript to run on the first file of 4 text files 
 named data.1 data.2 data.3 data.4 
