@@ -2900,7 +2900,7 @@ login node is loaded on a compute node).</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4634,6 +4634,26 @@ linearly.</li>
 </div>
 </div>
 </div>
+<p>Parallelism is one of the primary tools we have to improve the
+performance of computational tasks. The simplest form of parallelism is
+to run the same job multiple times with different inputs. A more
+advanced form of parallelism is MPI, which is covered in the next
+episode. It is possible to use both these methods at the same time,
+using an array job to run multiple instances of software, which itself
+uses MPI.</p>
+<p>Download the word frequency script from <a href="https://github.com/NewcastleRSE-Training/hpc-intro/blob/main/episodes/files/word-freq.sh" class="external-link uri">https://github.com/NewcastleRSE-Training/hpc-intro/blob/main/episodes/files/word-freq.sh</a></p>
+<p>Run at command line with a small test file
+(/nobackup/proj/comet_training/ArrayJob/test-data.txt)</p>
+<p>Write a batch script to call the word-freq.sh as single job and run
+using slurm (job_single_word-freq.sh) or download it from <a href="https://github.com/NewcastleRSE-Training/hpc-intro/blob/main/episodes/files/job_single_word-freq.sh" class="external-link uri">https://github.com/NewcastleRSE-Training/hpc-intro/blob/main/episodes/files/job_single_word-freq.sh</a></p>
+<p>Update the batch sript to run on the first file of 4 text files named
+data.1 data.2 data.3 data.4 downloaded from the Guteberg project (in
+/nobackup/proj/comet_training/ArrayJob/ - see make-data.sh to download
+again)</p>
+<p>Write a batch script to call the word-freq.sh as an array job with 4
+parallel jobs to process all 4 text files (job_array_word-freq.sh) or
+download it from <a href="https://github.com/NewcastleRSE-Training/hpc-intro/blob/main/episodes/files/job_array_word-freq.sh" class="external-link uri">https://github.com/NewcastleRSE-Training/hpc-intro/blob/main/episodes/files/job_array_word-freq.sh</a></p>
+<p>Check slurm.out files to see how quickly the jobs completed</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -4842,7 +4862,7 @@ close can you get?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The following line tells Slurm that our job should finish within 2
 minutes:</p>
