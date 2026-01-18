@@ -876,24 +876,16 @@ node we are logged on. You can also verify this with
 <div id="creating-remote-graphics" class="callout-inner">
 <h3 class="callout-title">Creating remote graphics</h3>
 <div class="callout-content">
-<p>To see graphical output inside your jobs, you need to use X11
-forwarding. To connect with this feature enabled, use the
-<code>-Y</code> option when you login with the <code>ssh</code> command,
-e.g., <code>ssh -Y user@comet.ncl.ac.uk</code>.</p>
-<p>To demonstrate what happens when you create a graphics window on the
-remote node, use the <code>xeyes</code> command. A relatively adorable
-pair of eyes should pop up (press <code>Ctrl-C</code> to stop). If you
-are using a Mac, you must have installed XQuartz (and restarted your
-computer) for this to work.</p>
-<p>If your cluster has the <a href="https://github.com/hautreux/slurm-spank-x11" class="external-link">slurm-spank-x11</a>
-plugin installed, you can ensure X11 forwarding within interactive jobs
-by using the <code>--x11</code> option for <code>srun</code> with the
-command <code>srun --x11 --pty bash</code>.</p>
+<p>On many HPCsystems, you need to use <a href="https://carpentries-incubator.github.io/hpc-intro/13-scheduler.html#:~:text=CREATING%20REMOTE%20GRAPHICS" class="external-link">X11
+forwarding</a> to see graphical output inside your jobs.</p>
+<p>Because Comet has <a href="https://hpc.researchcomputing.ncl.ac.uk/dokuwiki/doku.php?id=advanced:interactive" class="external-link">Open
+OnDemand</a> installed, you should NOT use X11 forwarding in most cases.
+Instead launch an interactive application or desktop at <a href="https://ood01.comet.hpc.ncl.ac.uk/" class="external-link uri">https://ood01.comet.hpc.ncl.ac.uk/</a></p>
 </div>
 </div>
 </div>
-<p>When you are done with the interactive job, type <code>exit</code> to
-quit your session.</p>
+<p>When you are done with the interactive job, log out to quit your
+session.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
