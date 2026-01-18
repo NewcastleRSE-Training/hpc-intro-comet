@@ -11,7 +11,7 @@ remote:
   host_id: "NCL_Comet"
   login: "comet.ncl.ac.uk"
   host: "cometlogin01"
-  node: "smnode1"
+  node: "compute030"
   location: "comet.ncl.ac.uk"
   homedir: "/mnt/nfs/home"
   user: "user"
