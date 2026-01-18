@@ -434,7 +434,7 @@ went wrong with a previous job. Fortunately, `r config$sched$name` makes it
 easy to start an interactive job with ``r config$sched$interactive``:
 
 ```bash
-`r config$remote$prompt` `r config$sched$interactive` --pty bash
+`r config$remote$prompt` `r config$sched$interactive` `r config$sched$submit$options` --pty bash
 ```
 
 You should be presented with a bash prompt. Note that the prompt will likely
