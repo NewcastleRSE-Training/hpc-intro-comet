@@ -445,24 +445,13 @@ logged on. You can also verify this with `hostname`.
 
 ## Creating remote graphics
 
-To see graphical output inside your jobs, you need to use X11 forwarding. To
-connect with this feature enabled, use the `-Y` option when you login with
-the `ssh` command, e.g., `ssh -Y `r config$remote$user`@`r config$remote$login``.
+On many HPCsystems, you need to use [X11 forwarding](https://carpentries-incubator.github.io/hpc-intro/13-scheduler.html#:~:text=CREATING%20REMOTE%20GRAPHICS) to see graphical output inside your jobs. 
 
-To demonstrate what happens when you create a graphics window on the remote
-node, use the `xeyes` command. A relatively adorable pair of eyes should pop
-up (press `Ctrl-C` to stop). If you are using a Mac, you must have installed
-XQuartz (and restarted your computer) for this to work.
-
-If your cluster has the
-[slurm-spank-x11](https://github.com/hautreux/slurm-spank-x11) plugin
-installed, you can ensure X11 forwarding within interactive jobs by using the
-`--x11` option for ``r config$sched$interactive`` with the command
-``r config$sched$interactive` --x11 --pty bash`.
+Because Comet has [Open OnDemand](https://hpc.researchcomputing.ncl.ac.uk/dokuwiki/doku.php?id=advanced:interactive) installed, you should NOT use X11 forwarding in most cases. Instead launch an interactive application or desktop at https://ood01.comet.hpc.ncl.ac.uk/
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-When you are done with the interactive job, type `exit` to quit your session.
+When you are done with the interactive job, log out to quit your session.
 
 [hisat]: https://daehwankimlab.github.io/hisat2/
 
