@@ -180,7 +180,7 @@ name of a job. Add an option to the script:
 
 ```bash
 `r config$remote$shebang`
-`r config$sched$comment` `r config$sched$flag$name` hello-world
+`r config$sched$comment` `r config$sched$flag$name`hello-world
 
 echo -n "This script is running on "
 hostname
@@ -283,7 +283,7 @@ wall time, and attempt to run a job for two minutes.
 
 ```bash
 `r config$remote$shebang`
-`r config$sched$comment` `r config$sched$flag$name` long_job
+`r config$sched$comment` `r config$sched$flag$name`long_job
 `r config$sched$comment` `r config$sched$flag$time` 00:01 # timeout in HH:MM
 
 echo "This script is running on ... "
