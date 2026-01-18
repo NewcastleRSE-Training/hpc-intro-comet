@@ -433,7 +433,7 @@ went wrong with a previous job. Fortunately, Slurm makes it
 easy to start an interactive job with `srun`:
 
 ```bash
-[user@cometlogin01(comet) ~] srun --pty bash
+[user@cometlogin01(comet) ~] srun --partition=short_free --account=comet_training --pty bash
 ```
 
 You should be presented with a bash prompt. Note that the prompt will likely
