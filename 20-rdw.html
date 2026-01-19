@@ -682,7 +682,7 @@ data from Comet to RDW?</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="ex">[user@login01</span> ~]$ rsync <span class="at">-rltv</span> <span class="at">--inplace</span> <span class="at">--size-only</span> DataDir /rdw/04/rse-training/user/</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="ex">[user@login01</span> ~]$ rsync <span class="at">-rltv</span> <span class="at">--inplace</span> <span class="at">--size-only</span> <span class="at">--stats</span> DataDir /rdw/04/rse-training/user/</span></code></pre>
 </div>
 <p>–inplace - saves resources by not creating temporary files –size-only
 - saves time by only checking whether a file’s size has changed (and not
