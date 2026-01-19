@@ -599,24 +599,13 @@ command, it added a directory to the beginning of our <code>$PATH</code>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> ls /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> ls ls /opt/software/manual/apps/Python/3.14.0/bin</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>2to3              nosetests-3.8  python                 rst2s5.py
-2to3-3.8          pasteurize     python3                rst2xetex.py
-chardetect        pbr            python3.8              rst2xml.py
-cygdb             pip            python3.8-config       rstpep2html.py
-cython            pip3           python3-config         runxlrd.py
-cythonize         pip3.8         rst2html4.py           sphinx-apidoc
-easy_install      pybabel        rst2html5.py           sphinx-autogen
-easy_install-3.8  __pycache__    rst2html.py            sphinx-build
-futurize          pydoc3         rst2latex.py           sphinx-quickstart
-idle3             pydoc3.8       rst2man.py             tabulate
-idle3.8           pygmentize     rst2odt_prepstyles.py  virtualenv
-netaddr           pytest         rst2odt.py             wheel
-nosetests         py.test        rst2pseudoxml.py</code></pre>
+<pre class="output" tabindex="0"><code>idle3     pip3     pydoc3     python3     python3.14-config
+idle3.14  pip3.14  pydoc3.14  python3.14  python3-config</code></pre>
 </div>
 <p>Taking this to its conclusion, <code>module load</code> will add
 software to your <code>$PATH</code>. It “loads” software. A special note
