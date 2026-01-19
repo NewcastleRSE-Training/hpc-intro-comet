@@ -17,7 +17,8 @@ remote:
   user: "user"
   prompt: '[user@cometlogin01(comet) ~]'
   prompt_work: #"userid@uan01:/work/ta114/ta114/userid>"
-  module_python3: "Python"
+  modules:
+    python: "Python"
   shebang: "#!/bin/bash"
 
 sched:

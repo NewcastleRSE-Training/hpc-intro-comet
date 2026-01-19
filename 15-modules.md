@@ -167,7 +167,7 @@ We can load the `python3` command with `module load`:
 
 
 ```bash
-[user@cometlogin01(comet) ~] module load 
+[user@cometlogin01(comet) ~] module load Python
 [user@cometlogin01(comet) ~] which python3
 ```
 
@@ -384,7 +384,7 @@ compute node).
 #SBATCH 
 r config$sched$comment` -t 00:00:30
 
-module load 
+module load Python
 
 python3 --version
 ```
