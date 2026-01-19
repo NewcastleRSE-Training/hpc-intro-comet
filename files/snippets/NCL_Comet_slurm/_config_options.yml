@@ -1,7 +1,7 @@
 ---
 local:
   prompt: "[you@laptop:~]$"
-  bash_shebang: "#!/usr/bin/env bash"
+  shebang: "#!/usr/bin/env bash"
 
 snippets: NCL_Comet_slurm
 baseurl: "https://NewcastleRSE-Training.github.io/probable-pancake/"
@@ -18,7 +18,7 @@ remote:
   prompt: '[user@cometlogin01(comet) ~]'
   prompt_work: #"userid@uan01:/work/ta114/ta114/userid>"
   module_python3: "Python"
-  bash_shebang: "#!/bin/bash"
+  shebang: "#!/bin/bash"
 
 sched:
   name: "Slurm"
