@@ -57,7 +57,7 @@ In this case, the job we want to run is a shell script -- essentially a
 text file containing a list of UNIX commands to be executed in a sequential
 manner. Our shell script will have three parts:
 
-- On the very first line, add ``r config$remote$shebang``. The `#!`
+- On the very first line, add ``r config$remote$bash_shebang``. The `#!`
   (pronounced "hash-bang" or "shebang") tells the computer what program is
   meant to process the contents of this file. In this case, we are telling it
   that the commands that follow are written for the command-line shell (what
