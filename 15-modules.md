@@ -172,7 +172,7 @@ We can load the `python3` command with `module load`:
 ```
 
 ```output
-/cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin/python3
+/usr/bin/python3
 ```
 
 So, what just happened?
