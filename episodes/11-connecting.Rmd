@@ -63,7 +63,7 @@ When logging in to a laptop, tablet, or other personal device, a username,
 password, or pattern are normally required to prevent unauthorized access. In
 these situations, the likelihood of somebody else intercepting your password is
 low, since logging your keystrokes requires a malicious exploit or physical
-access. For systems like ``r config$remote$host`` running an SSH server, anybody
+access. For systems like Comet running an SSH server, anybody
 on the network can log in, or try to. Since usernames are often public or easy
 to guess, your password is often the weakest link in the security chain. Many
 clusters therefore forbid password-based login, requiring instead that you
