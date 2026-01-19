@@ -196,7 +196,7 @@ What command would best for backing up a large amount of data from Comet to RDW?
 
 :::solution
 ```bash
-[user@login01 ~]$ rsync -rltv --inplace --size-only DataDir /rdw/04/rse-training/user/
+[user@login01 ~]$ rsync -rltv --inplace --size-only --stats DataDir /rdw/04/rse-training/user/
 ```
 
 --inplace - saves resources by not creating temporary files
