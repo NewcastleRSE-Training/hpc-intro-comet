@@ -459,6 +459,8 @@ When you are done with the interactive job, log out to quit your session.
 - The scheduler handles how compute resources are shared between users.
 - A job is just a shell script.
 - Request *slightly* more resources than you will need.
+- For interactive sessions, use `srun`
+- For graphical interactive sessions, use [Open OnDemand](https://ood01.comet.hpc.ncl.ac.uk/)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
