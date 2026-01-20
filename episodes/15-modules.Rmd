@@ -133,7 +133,8 @@ variables we can print it out using `echo`.
 ```
 
 ```output
-/cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin:/cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/SQLite/3.31.1-GCCcore-x.y.z/bin:/cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Tcl/8.6.10-GCCcore-x.y.z/bin:/cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/GCCcore/x.y.z/bin:/cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin:/opt/software/slurm/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/home/user01/.local/bin:/home/user01/bin
+/opt/software/manual/apps/Python/3.14.0/bin:/mnt/nfs/home/ncb176/.sdkman/candidates/java/current/bin:/mnt/nfs/home/ncb176/.local/bin:/mnt/nfs/home/ncb176/bin:/usr/share/lmod/lmod/libexec:/opt/slurm/24.05.3/el9/bin:/opt/slurm/24.05.3/el9/sbin:/opt/slurm/dmtcp/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+(OSS 2410.0) [ncb176@cometlogin02(comet) ~]$
 ```
 
 You'll notice a similarity to the output of the `which` command. In this case,
