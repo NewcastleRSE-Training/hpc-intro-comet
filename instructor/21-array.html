@@ -118,11 +118,11 @@
   Introduction to High-Performance Computing
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 84%" class="percentage">
-    84%
+<aside class="col-md-12 lesson-progress"><div style="width: 64%" class="percentage">
+    64%
   </div>
   <div class="progress carpentries">
-    <div class="progress-bar carpentries" role="progressbar" style="width: 84%" aria-valuenow="84" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar carpentries" role="progressbar" style="width: 64%" aria-valuenow="64" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -275,23 +275,23 @@
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
-<div class="accordion accordion-flush" id="accordionFlush10">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading10">
-        <a href="17-parallel.html">9. Running a parallel job</a>
-    </div><!--/div.accordion-header-->
-
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
 <div class="accordion accordion-flush" id="accordionFlushcurrent">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-headingcurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
-        10. Parallelising with Job Arrays.
+        9. Parallelising with Job Arrays.
         </span>
       
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush11">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading11">
+        <a href="17-parallel.html">10. Running a parallel job</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -356,17 +356,17 @@
         <!-- START: inst/pkgdown/templates/content-instructor.html -->
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Previous and Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link" href="../instructor/17-parallel.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="../instructor/18-resources.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link" href="../instructor/20-rdw.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
+        <a class="chapter-link float-end" href="../instructor/17-parallel.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link" href="../instructor/17-parallel.html" rel="prev">
+        <a class="chapter-link" href="../instructor/20-rdw.html" rel="prev">
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
-          Previous: Running a parallel
+          Previous: Using the Research
         </a>
-        <a class="chapter-link float-end" href="../instructor/18-resources.html" rel="next">
-          Next: Using resources...
+        <a class="chapter-link float-end" href="../instructor/17-parallel.html" rel="next">
+          Next: Running a parallel...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -465,47 +465,294 @@ that failed.</p>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="ex">-</span> we can look for repeated words</span>
 <span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="ex">and</span> count them <span class="er">(</span><span class="ex">to</span> see which words are repeated most often<span class="kw">)</span><span class="bu">.</span></span></code></pre>
 </div>
-<p>Run at command line with a small test file
-(/nobackup/proj/comet_training/ArrayJob/test-data.txt)</p>
-<p>Write a batch script to call the word-freq.sh as single job and run
-using slurm (job_single_word-freq.sh) or download it from <a href="https://github.com/NewcastleRSE-Training/hpc-intro/blob/main/episodes/files/job_single_word-freq.sh" class="external-link uri">https://github.com/NewcastleRSE-Training/hpc-intro/blob/main/episodes/files/job_single_word-freq.sh</a></p>
-<p>Download the data using <a href="https://github.com/NewcastleRSE-Training/hpc-intro/blob/main/episodes/files/make-data.sh" class="external-link uri">https://github.com/NewcastleRSE-Training/hpc-intro/blob/main/episodes/files/make-data.sh</a></p>
-<p>Update the batch sript to run on the first file of 4 text files named
-data.1 data.2 data.3 data.4 downloaded from the Guteberg project (in
-/nobackup/proj/comet_training/ArrayJob/ - see make-data.sh to download
-again)</p>
-<p>Write a batch script to call the word-freq.sh as an array job with 4
-parallel jobs to process all 4 text files (job_array_word-freq.sh) or
-download it from <a href="https://github.com/NewcastleRSE-Training/hpc-intro/blob/main/episodes/files/job_array_word-freq.sh" class="external-link uri">https://github.com/NewcastleRSE-Training/hpc-intro/blob/main/episodes/files/job_array_word-freq.sh</a></p>
-<p>Check slurm.out files to see how quickly the jobs completed</p>
+<p>To test the script we will run it on the login node. Remember, never
+do this with resource intensive script. You could even run the script on
+your laptop or desktop if it uses Linux or Mac. This specific script
+will not work on Windows as not all the commands in the script are
+available on the Windows operating system.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a></span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="co">#SBATCH --partition=short_free</span></span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co">#SBATCH --job-name=</span></span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#SBATCH --nodes=1</span></span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#SBATCH --tasks=1</span></span>
-<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
-<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co"># Do a word frequency analysis of the collected works of Shakespeare</span></span>
-<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="va">DATA_FILE</span><span class="op">=</span>data.1</span>
-<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Starting word frequency analysis of </span><span class="va">$DATA_FILE</span><span class="st">"</span></span>
-<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"=============================================="</span></span>
-<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="bu">time</span> cat <span class="va">$DATA_FILE</span> <span class="kw">|</span> <span class="dt">\</span></span>
-<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a>	<span class="fu">sed</span> s<span class="st">'/\ /\n/g'</span> <span class="kw">|</span> <span class="dt">\</span></span>
-<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a>	<span class="fu">tr</span> <span class="at">-c</span> <span class="at">-d</span> <span class="st">"[A-Za-z\n]"</span> <span class="kw">|</span> <span class="dt">\</span></span>
-<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a>	<span class="fu">tr</span> <span class="pp">[</span><span class="ss">A</span><span class="pp">-</span><span class="ss">Z</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">a</span><span class="pp">-</span><span class="ss">z</span><span class="pp">]</span> <span class="kw">|</span> <span class="dt">\</span></span>
-<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a>	<span class="fu">sort</span> <span class="kw">|</span> <span class="dt">\</span></span>
-<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a>	<span class="fu">strings</span> <span class="at">-n</span> 1 <span class="kw">|</span> <span class="dt">\</span></span>
-<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a>	<span class="fu">uniq</span> <span class="at">-c</span> <span class="kw">|</span> <span class="dt">\</span></span>
-<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a>	<span class="fu">sort</span> <span class="at">-n</span> <span class="op">&gt;</span> data.out</span>
-<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a></span>
-<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"====================================="</span></span>
-<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Completed word analysis of </span><span class="va">$DATA_FILE</span><span class="st">"</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">bash</span> word-freq.sh test-data.txt</span></code></pre>
+</div>
+<p>To the results, type the output of the script to screen:</p>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">cat</span> analyzed_test-data.txt</span></code></pre>
+</div>
+<p>You should get something like this:</p>
+<pre><code>      1 a
+      1 and
+      1 be
+      1 can
+      1 count
+      1 in
+      1 is
+      1 it
+      1 look
+      1 most
+      1 often
+      1 our
+      1 out
+      1 script
+      1 see
+      1 small
+      1 some
+      1 them
+      1 to
+      1 trying
+      1 useful
+      1 very
+      1 we
+      1 which
+      1 will
+      2 are
+      2 file
+      2 for
+      2 this
+      3 repeated
+      3 words
+</code></pre>
+<p>Once we have proved that the script runs without a problem we can
+write a script that can be submitted to Slurm. Using <code>nano</code>,
+create a script called <code>job_single_word-freq.sh</code> containing
+the following:</p>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co">#SBATCH --partition=short_free</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co">#SBATCH --account=comet_training</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co">#SBATCH --job-name=word-freq_single-test1</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="co">#SBATCH --nodes=1</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co">#SBATCH --tasks=1</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Starting word frequency script"</span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="fu">bash</span> word-freq.sh test-data.txt</span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Finished word frequency script"</span></span></code></pre>
+</div>
+<div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
+  <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+</button>
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div class="accordion-body">
+<p>The complete script can be downloaded from: <a href="https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/job_single_word-freq.sh" class="external-link uri">https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/job_single_word-freq.sh</a></p>
+</div>
+</div>
+</div>
+</div>
+<div id="challenge1" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div class="callout-inner">
+<h3 class="callout-title">Challenge</h3>
+<div class="callout-content">
+<p>How would you submit the script to Slurm for execution?</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">sbatch</span> job_single_word-freq.sh</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>If you haven’t done so already, download the data to be used for the
+script. The data consists of several books from the Gutenberg project as
+text files. The downloaded books should be as follows:</p>
+<table class="table"><thead><tr class="header"><th>Filename</th>
+<th>Book name</th>
+</tr></thead><tbody><tr class="odd"><td>data.1</td>
+<td>The collected works of Shakespeare</td>
+</tr><tr class="even"><td>data.2</td>
+<td>Geoffrey Chaucers Cantebury Tales</td>
+</tr><tr class="odd"><td>data.3</td>
+<td>Moby Dick by Herman Melville</td>
+</tr><tr class="even"><td>data.4</td>
+<td>Homers Odyssey</td>
+</tr></tbody></table><div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
+  <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+</button>
+<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
+<div class="accordion-body">
+<p>Download the data using <a href="https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/make-data.sh" class="external-link uri">https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/make-data.sh</a></p>
+</div>
+</div>
+</div>
+</div>
+<div id="challenge2" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div class="callout-inner">
+<h3 class="callout-title">Challenge</h3>
+<div class="callout-content">
+<p>How would we change the <code>job_single_word-freq.sh</code> script
+to use the first of the four data files in stead of
+<code>test-data.txt</code>?</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
+</button>
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb10">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="co">#SBATCH --partition=short_free</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co">#SBATCH --account=comet_training</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="co">#SBATCH --job-name=wordfreq</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="co">#SBATCH --nodes=1</span></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="co">#SBATCH --tasks=1</span></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Starting word frequency script"</span></span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="fu">bash</span> word-freq.sh data.1</span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Finished word frequency script"</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="challenge3" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div class="callout-inner">
+<h3 class="callout-title">Challenge</h3>
+<div class="callout-content">
+<p>Write a batch script to call the word-freq.sh as an array job with 4
+parallel jobs to process all 4 text files (job_array_word-freq.sh). To
+do this you will need the directive <code>#SBATCH --array=1-4</code>.
+When using this directive, each job will be given a job number. In this
+case it will be job numbers one to four. While running the script for a
+specific job number, that number will be available in an environment
+variable called <code>${SLURM_ARRAY_TASK_ID}</code>.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
+  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
+</button>
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb11">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="co">#SBATCH --partition=short_free</span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="co">#SBATCH --account=comet_training</span></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="co">#SBATCH --job-name=makefreq</span></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a><span class="co">#SBATCH --nodes=1</span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a><span class="co">#SBATCH --tasks=4</span></span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="co">#SBATCH --array=1-4</span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a><span class="co"># Do a word frequency analysis of each of the following</span></span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a><span class="co"># data sets simultaneously:</span></span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a><span class="co"># data.1 - The collected works of Shakespeare</span></span>
+<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a><span class="co"># data.2 - Geoffrey Chaucers Cantebury Tales </span></span>
+<span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a><span class="co"># data.3 - Moby Dick by Herman Melville</span></span>
+<span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a><span class="co"># data.4 - Homers Odyssey</span></span>
+<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb11-20"><a href="#cb11-20" tabindex="-1"></a><span class="co"># We should be able to process all four data sets in the same</span></span>
+<span id="cb11-21"><a href="#cb11-21" tabindex="-1"></a><span class="co"># time it took to process just the first.</span></span>
+<span id="cb11-22"><a href="#cb11-22" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Starting word frequency script"</span></span>
+<span id="cb11-24"><a href="#cb11-24" tabindex="-1"></a><span class="fu">bash</span> word-freq.sh data.<span class="va">${SLURM_ARRAY_TASK_ID}</span></span>
+<span id="cb11-25"><a href="#cb11-25" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Finished word frequency script"</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionInstructor3" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor3" aria-expanded="false" aria-controls="collapseInstructor3">
+  <h3 class="accordion-header" id="headingInstructor3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+</button>
+<div id="collapseInstructor3" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor3" aria-labelledby="headingInstructor3">
+<div class="accordion-body">
+<p>You can download the script from <a href="https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/job_array_word-freq.sh" class="external-link uri">https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/job_array_word-freq.sh</a></p>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionInstructor4" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor4" aria-expanded="false" aria-controls="collapseInstructor4">
+  <h3 class="accordion-header" id="headingInstructor4">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+</button>
+<div id="collapseInstructor4" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor4" aria-labelledby="headingInstructor4">
+<div class="accordion-body">
+<p>Not sure what the point of this script is but I’ll leave it here for
+time being …</p>
+<p>Check slurm.out files to see how quickly the jobs completed</p>
+<div class="codewrapper sourceCode" id="cb12">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="co">#SBATCH --partition=short_free</span></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="co">#SBATCH --job-name=</span></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="co">#SBATCH --nodes=1</span></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="co">#SBATCH --tasks=1</span></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a><span class="co"># Do a word frequency analysis of the collected works of Shakespeare</span></span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="va">DATA_FILE</span><span class="op">=</span>data.1</span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Starting word frequency analysis of </span><span class="va">$DATA_FILE</span><span class="st">"</span></span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"=============================================="</span></span>
+<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a><span class="bu">time</span> cat <span class="va">$DATA_FILE</span> <span class="kw">|</span> <span class="dt">\</span></span>
+<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a>	<span class="fu">sed</span> s<span class="st">'/\ /\n/g'</span> <span class="kw">|</span> <span class="dt">\</span></span>
+<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a>	<span class="fu">tr</span> <span class="at">-c</span> <span class="at">-d</span> <span class="st">"[A-Za-z\n]"</span> <span class="kw">|</span> <span class="dt">\</span></span>
+<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a>	<span class="fu">tr</span> <span class="pp">[</span><span class="ss">A</span><span class="pp">-</span><span class="ss">Z</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">a</span><span class="pp">-</span><span class="ss">z</span><span class="pp">]</span> <span class="kw">|</span> <span class="dt">\</span></span>
+<span id="cb12-20"><a href="#cb12-20" tabindex="-1"></a>	<span class="fu">sort</span> <span class="kw">|</span> <span class="dt">\</span></span>
+<span id="cb12-21"><a href="#cb12-21" tabindex="-1"></a>	<span class="fu">strings</span> <span class="at">-n</span> 1 <span class="kw">|</span> <span class="dt">\</span></span>
+<span id="cb12-22"><a href="#cb12-22" tabindex="-1"></a>	<span class="fu">uniq</span> <span class="at">-c</span> <span class="kw">|</span> <span class="dt">\</span></span>
+<span id="cb12-23"><a href="#cb12-23" tabindex="-1"></a>	<span class="fu">sort</span> <span class="at">-n</span> <span class="op">&gt;</span> data.out</span>
+<span id="cb12-24"><a href="#cb12-24" tabindex="-1"></a></span>
+<span id="cb12-25"><a href="#cb12-25" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"====================================="</span></span>
+<span id="cb12-26"><a href="#cb12-26" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Completed word analysis of </span><span class="va">$DATA_FILE</span><span class="st">"</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
@@ -529,17 +776,17 @@ over several CPUs or nodes</li>
 
       </div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link" href="../instructor/17-parallel.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="../instructor/18-resources.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link" href="../instructor/20-rdw.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
+        <a class="chapter-link float-end" href="../instructor/17-parallel.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link" href="../instructor/17-parallel.html" rel="prev">
+        <a class="chapter-link" href="../instructor/20-rdw.html" rel="prev">
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
-          Previous: Running a parallel
+          Previous: Using the Research
         </a>
-        <a class="chapter-link float-end" href="../instructor/18-resources.html" rel="next">
-          Next: Using resources...
+        <a class="chapter-link float-end" href="../instructor/17-parallel.html" rel="next">
+          Next: Running a parallel...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>

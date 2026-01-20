@@ -338,7 +338,7 @@
 <div class="accordion accordion-flush" id="accordionFlush10">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading10">
-        <a href="17-parallel.html">9. Running a parallel job</a>
+        <a href="21-array.html">9. Parallelising with Job Arrays.</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -350,7 +350,7 @@
 <div class="accordion accordion-flush" id="accordionFlush11">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading11">
-        <a href="21-array.html">10. Parallelising with Job Arrays.</a>
+        <a href="17-parallel.html">10. Running a parallel job</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -547,8 +547,61 @@ File System</a></dt>
 <hr class="half-width"></section><section id="15-modules"><h2 class="section-heading"><a href="15-modules.html">Accessing software via Modules</a></h2>
 <hr class="half-width"></section><section id="16-transferring-files"><h2 class="section-heading"><a href="16-transferring-files.html">Transferring files with remote computers</a></h2>
 <hr class="half-width"></section><section id="20-rdw"><h2 class="section-heading"><a href="20-rdw.html">Using the Research Data Warehouse</a></h2>
-<hr class="half-width"></section><section id="17-parallel"><h2 class="section-heading"><a href="17-parallel.html">Running a parallel job</a></h2>
 <hr class="half-width"></section><section id="21-array"><h2 class="section-heading"><a href="21-array.html">Parallelising with Job Arrays.</a></h2>
+<hr class="half-width">
+<h3 id="21-array-headingInstructor1">
+<a href="21-array.html#headingInstructor1">Instructor Note</a><a class="anchor" aria-label="anchor" href="#21-array-headingInstructor1"></a>
+</h3>
+<p>The complete script can be downloaded from: <a href="https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/job_single_word-freq.sh" class="external-link uri">https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/job_single_word-freq.sh</a></p>
+<hr>
+<br><h3 id="21-array-headingInstructor2">
+<a href="21-array.html#headingInstructor2">Instructor Note</a><a class="anchor" aria-label="anchor" href="#21-array-headingInstructor2"></a>
+</h3>
+<p>Download the data using <a href="https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/make-data.sh" class="external-link uri">https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/make-data.sh</a></p>
+<hr>
+<br><h3 id="21-array-headingInstructor3">
+<a href="21-array.html#headingInstructor3">Instructor Note</a><a class="anchor" aria-label="anchor" href="#21-array-headingInstructor3"></a>
+</h3>
+<p>You can download the script from <a href="https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/job_array_word-freq.sh" class="external-link uri">https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/job_array_word-freq.sh</a></p>
+<hr>
+<br><h3 id="21-array-headingInstructor4">
+<a href="21-array.html#headingInstructor4">Instructor Note</a><a class="anchor" aria-label="anchor" href="#21-array-headingInstructor4"></a>
+</h3>
+<p>Not sure what the point of this script is but I’ll leave it here for
+time being …</p>
+<p>Check slurm.out files to see how quickly the jobs completed</p>
+<div class="codewrapper sourceCode" id="cb12">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="co">#SBATCH --partition=short_free</span></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="co">#SBATCH --job-name=</span></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="co">#SBATCH --nodes=1</span></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="co">#SBATCH --tasks=1</span></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a><span class="co"># Do a word frequency analysis of the collected works of Shakespeare</span></span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="va">DATA_FILE</span><span class="op">=</span>data.1</span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Starting word frequency analysis of </span><span class="va">$DATA_FILE</span><span class="st">"</span></span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"=============================================="</span></span>
+<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a><span class="bu">time</span> cat <span class="va">$DATA_FILE</span> <span class="kw">|</span> <span class="dt">\</span></span>
+<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a>	<span class="fu">sed</span> s<span class="st">'/\ /\n/g'</span> <span class="kw">|</span> <span class="dt">\</span></span>
+<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a>	<span class="fu">tr</span> <span class="at">-c</span> <span class="at">-d</span> <span class="st">"[A-Za-z\n]"</span> <span class="kw">|</span> <span class="dt">\</span></span>
+<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a>	<span class="fu">tr</span> <span class="pp">[</span><span class="ss">A</span><span class="pp">-</span><span class="ss">Z</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">a</span><span class="pp">-</span><span class="ss">z</span><span class="pp">]</span> <span class="kw">|</span> <span class="dt">\</span></span>
+<span id="cb12-20"><a href="#cb12-20" tabindex="-1"></a>	<span class="fu">sort</span> <span class="kw">|</span> <span class="dt">\</span></span>
+<span id="cb12-21"><a href="#cb12-21" tabindex="-1"></a>	<span class="fu">strings</span> <span class="at">-n</span> 1 <span class="kw">|</span> <span class="dt">\</span></span>
+<span id="cb12-22"><a href="#cb12-22" tabindex="-1"></a>	<span class="fu">uniq</span> <span class="at">-c</span> <span class="kw">|</span> <span class="dt">\</span></span>
+<span id="cb12-23"><a href="#cb12-23" tabindex="-1"></a>	<span class="fu">sort</span> <span class="at">-n</span> <span class="op">&gt;</span> data.out</span>
+<span id="cb12-24"><a href="#cb12-24" tabindex="-1"></a></span>
+<span id="cb12-25"><a href="#cb12-25" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"====================================="</span></span>
+<span id="cb12-26"><a href="#cb12-26" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Completed word analysis of </span><span class="va">$DATA_FILE</span><span class="st">"</span></span></code></pre>
+</div>
+<hr>
+<br></section><section id="17-parallel"><h2 class="section-heading"><a href="17-parallel.html">Running a parallel job</a></h2>
 <hr class="half-width"></section><section id="18-resources"><h2 class="section-heading"><a href="18-resources.html">Using resources effectively</a></h2>
 <hr class="half-width"></section><section id="19-responsibility"><h2 class="section-heading"><a href="19-responsibility.html">Using shared resources responsibly</a></h2>
 <hr class="half-width"></section></section>
