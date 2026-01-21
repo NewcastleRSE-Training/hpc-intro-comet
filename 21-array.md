@@ -233,8 +233,6 @@ You can download the script from https://raw.githubusercontent.com/NewcastleRSE-
 
 Not sure what the point of this script is but I'll leave it here for time being ...
 
-Check slurm.out files to see how quickly the jobs completed
-
 ```bash
 
 
