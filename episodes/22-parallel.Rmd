@@ -35,6 +35,22 @@ a single task to be distributed over several CPU cores.
 
 It is thus possible to use array jobs in conjunction with MPI. 
 
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## What is MPI?
+
+The Message Passing Interface is a set of tools which allow multiple tasks
+running simultaneously to communicate with each other.
+Typically, a single executable is run multiple times, possibly on different
+machines, and the MPI tools are used to inform each instance of the
+executable about its sibling processes, and which instance it is.
+MPI also provides tools to allow communication between instances to
+coordinate work, exchange information about elements of the task, or to
+transfer data.
+An MPI instance typically has its own copy of all the local variables.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 In this episode we will use two small programs, written in C, to 
 calculate the number of primes found between two given numbers. One of
 the programs calculates prime and by using MPI spreads the job over several 
@@ -161,18 +177,46 @@ This message doesn't tell us much about what the program *does*, but it does
 tell us that we need to provide two numbers that specify the beginning and
 the end of a range that lies between 1 and 2^32.
 
+:::: callout 
+
+### The `time` command
+
+You will notice in the batch scripts that we will be creating we will be using
+the `time` command before the name of the program. For example:
+
+```bash
+`r config$remote$prompt` time ./single_gcc
+```
+
+```output
+You must enter two positive numbers in the range 2 - 2^32
+
+real	0m0.005s
+user	0m0.000s
+sys	0m0.002s
+```
+The very first line of the output is the output of the program we want to run, 
+i.e. `single_gcc`. After that `time` returns three times. `real` is wall clock 
+time. If you ran a stopwatch, that is how long it would have taken. The `user` 
+time is the amount of CPU time it has taken. `sys` is kernel/system call time. 
+That is the time the code spent doing things that were not part of your code, 
+but essential stuff like interrupts, time the kernel spent setting up processes 
+and memory.
+
+:::::
+
 ## Running the Job on a Compute Node
 
 Create a submission file, requesting one task on a single node, then launch it.
 
-```{r, child=paste(snippets, '/parallel/job_single.sh', sep=''), eval=TRUE}
+```{r, child=paste(snippets, '/parallel/job_single.Rmd', sep=''), eval=TRUE}
 ```
 
-As before, use the `r config$sched$name` status commands to check whether your job
+Use the `r config$sched$name` status commands to check whether your job
 is running and when it ends:
 
 ```bash
-`r config$remote$prompt` `r config$sched$status` `r config$sched$flag$user`
+`r config$remote$prompt` `r config$sched$status` --me
 ```
 
 Use `ls` to locate the output file. The `-t` flag sorts in
@@ -190,56 +234,30 @@ job from. For example,
 ```
 
 ```output
-slurm-347087.out  serial-job.sh  amdahl  README.md  LICENSE.txt
+slurm-1177272.out  job_single.sh  job_multi.sh  single_gcc  multi
 ```
 
 ```bash
-`r config$remote$prompt` cat slurm-347087.out
+`r config$remote$prompt` cat slurm-1177272.out
 ```
 
 ```output
-Doing 30.000 seconds of 'work' on 1 processor,
-which should take 30.000 seconds with 0.850 parallel proportion of the workload.
+Starting single process primes calculation (2 - 10000000)
+=====================
+main: Calculating primes in the range 2 - 10000000
+primeCount: Calculating primes 2 - 10000000
+primeCount: Found 664579 primes
+main: Found a total of 664579 primes
 
-  Hello, World! I am process 0 of 1 on `r config$remote$node`. I will do all the serial 'work' for 4.500 seconds.
-  Hello, World! I am process 0 of 1 on `r config$remote$node`. I will do parallel 'work' for 25.500 seconds.
+real	0m34.476s
+user	0m34.247s
+sys	0m0.002s
+=====================
+Primes calculation complete
 
-Total execution time (according to rank 0): 30.033 seconds
 ```
 
 :::::::::::::::::::::::::
-
-As we saw before, two of the `amdahl` program flags set the amount of work and
-the proportion of that work that is parallel in nature. Based on the output, we
-can see that the code uses a default of 30 seconds of work that is 85%
-parallel. The program ran for just over 30 seconds in total, and if we run the
-numbers, it is true that 15% of it was marked 'serial' and 85% was 'parallel'.
-
-Since we only gave the job one CPU, this job wasn't really parallel: the same
-processor performed the 'serial' work for 4.5 seconds, then the 'parallel' part
-for 25.5 seconds, and no time was saved. The cluster can do better, if we ask.
-
-## Running the Parallel Job
-
-The `amdahl` program uses the Message Passing Interface (MPI) for parallelism
--- this is a common tool on HPC systems.
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## What is MPI?
-
-The Message Passing Interface is a set of tools which allow multiple tasks
-running simultaneously to communicate with each other.
-Typically, a single executable is run multiple times, possibly on different
-machines, and the MPI tools are used to inform each instance of the
-executable about its sibling processes, and which instance it is.
-MPI also provides tools to allow communication between instances to
-coordinate work, exchange information about elements of the task, or to
-transfer data.
-An MPI instance typically has its own copy of all the local variables.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 While MPI-aware executables can generally be run as stand-alone programs, in
 order for them to run in parallel they must use an MPI *run-time environment*,
@@ -248,6 +266,12 @@ To activate the MPI environment, the program should be started via a command
 such as `mpiexec` (or `mpirun`, or `srun`, etc. depending on the MPI run-time
 you need to use), which will ensure that the appropriate run-time support for
 parallelism is included.
+
+## Running the Parallel Job
+
+The program `multi` uses the Message Passing Interface (MPI) for parallelism.
+-- this is a common tool on HPC systems.
+
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
@@ -265,7 +289,7 @@ by examining the environment variables set when the job is launched.
 
 Let's modify the job script to request more cores and use the MPI run-time.
 
-```{r, child=paste(snippets, '/parallel/four-tasks.Rmd', sep=''), eval=TRUE}
+```{r, child=paste(snippets, '/parallel/job_multi.Rmd', sep=''), eval=TRUE}
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
