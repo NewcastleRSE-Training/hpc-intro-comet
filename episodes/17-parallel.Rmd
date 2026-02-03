@@ -167,7 +167,8 @@ tell us the important flags we might want to use when launching it.
 
 Create a submission file, requesting one task on a single node, then launch it.
 
-```{r, child=paste(snippets, '/parallel/one-task.Rmd', sep=''), eval=TRUE}
+```{r, echo=FALSE, results='asis'}
+snippets('parallel/one-task.Rmd')
 ```
 
 As before, use the `r config$sched$name` status commands to check whether your job
@@ -267,7 +268,8 @@ by examining the environment variables set when the job is launched.
 
 Let's modify the job script to request more cores and use the MPI run-time.
 
-```{r, child=paste(snippets, '/parallel/four-tasks.Rmd', sep=''), eval=TRUE}
+```{r, echo=FALSE, results='asis'}
+snippets('parallel/four-tasks.Rmd')
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
@@ -330,7 +332,8 @@ versus the number of CPUs *n* would give a straight line, *S* = *n*.
 Let's run one more job, so we can see how close to a straight line our `amdahl`
 code gets.
 
-```{r, child=paste(snippets, '/parallel/eight-tasks.Rmd', sep=''), eval=TRUE}
+```{r, echo=FALSE, results='asis'}
+snippets('parallel/eight-tasks.Rmd')
 ```
 
 ::::::::::::::::::::::::::::::::::::::  discussion
