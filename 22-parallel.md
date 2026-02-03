@@ -57,7 +57,7 @@ one can compare their output to see the difference in efficiency.
 If you disconnected, log back in to the cluster.
 
 ```bash
-[you@laptop:~]$ ssh yourUsername@cluster.hpc-carpentry.org
+[you@laptop:~]$ ssh user@comet.ncl.ac.uk
 ```
 
 :::: instructor
@@ -95,7 +95,7 @@ Only do this if pre-compiled binaries of the programs have not been made availab
 If you disconnected, log back in to the cluster.
 
 ```bash
-[you@laptop:~]$ ssh yourUsername@cluster.hpc-carpentry.org
+[you@laptop:~]$ ssh user@comet.ncl.ac.uk
 ```
 
 Clone the repository
@@ -163,7 +163,7 @@ compile the code yourself according to the above challenge:
 Many command-line programs include a "help" message. Try it with `single_gcc`:
 
 ```bash
-[yourUsername@login1 ~]$ ./single_gcc
+[user@cometlogin01(comet) ~] ./single_gcc
 ```
 
 ```output
@@ -182,7 +182,7 @@ You will notice in the batch scripts that we will be creating we will be using
 the `time` command before the name of the program. For example:
 
 ```bash
-[yourUsername@login1 ~]$ time ./single_gcc
+[user@cometlogin01(comet) ~] time ./single_gcc
 ```
 
 ```output
@@ -207,11 +207,35 @@ and memory.
 Create a submission file, requesting one task on a single node, then launch it.
 
 
-``` error
-Error in `snippets()`:
-! Snippet not found: parallel/job_single.Rmd
-Main: /home/runner/work/hpc-intro-comet/hpc-intro-comet/site/built/files/customization/HPCC_MagicCastle_slurm/snippets/parallel/job_single.Rmd
-Fallback: /home/runner/work/hpc-intro-comet/hpc-intro-comet/site/built/files/customization/HPCC_MagicCastle_slurm/snippets/parallel/job_single.Rmd
+```bash
+[user@cometlogin01(comet) ~] nano job_single.sh
+[user@cometlogin01(comet) ~] cat job_single.sh
+```
+
+```bash
+#!/bin/bash
+
+#SBATCH --partition=short_free
+#SBATCH --account=comet_training
+#SBATCH --job-name=single
+#SBATCH --tasks=1
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=1
+
+
+PRIMES_START=2
+PRIMES_END=10000000
+
+echo "Starting single process primes calculation ($PRIMES_START - $PRIMES_END)"
+echo "====================="
+
+time ./single_gcc $PRIMES_START $PRIMES_END
+echo "====================="
+echo "Primes calculation complete"
+```
+
+```bash
+[user@cometlogin01(comet) ~] sbatch job_single.sh
 ```
 
 
@@ -219,7 +243,7 @@ Use the Slurm status commands to check whether your job
 is running and when it ends:
 
 ```bash
-[yourUsername@login1 ~]$ squeue --me
+[user@cometlogin01(comet) ~] squeue --me
 ```
 
 Use `ls` to locate the output file. The `-t` flag sorts in
@@ -233,7 +257,7 @@ The cluster output should be written to a file in the folder you launched the
 job from. For example,
 
 ```bash
-[yourUsername@login1 ~]$ ls -t
+[user@cometlogin01(comet) ~] ls -t
 ```
 
 ```output
@@ -241,7 +265,7 @@ slurm-1177272.out  job_single.sh  job_multi.sh  single_gcc  multi
 ```
 
 ```bash
-[yourUsername@login1 ~]$ cat slurm-1177272.out
+[user@cometlogin01(comet) ~] cat slurm-1177272.out
 ```
 
 ```output
@@ -293,11 +317,65 @@ by examining the environment variables set when the job is launched.
 Let's modify the job script to request more cores and use the MPI run-time.
 
 
-``` error
-Error in `snippets()`:
-! Snippet not found: parallel/job_multi.Rmd
-Main: /home/runner/work/hpc-intro-comet/hpc-intro-comet/site/built/files/customization/HPCC_MagicCastle_slurm/snippets/parallel/job_multi.Rmd
-Fallback: /home/runner/work/hpc-intro-comet/hpc-intro-comet/site/built/files/customization/HPCC_MagicCastle_slurm/snippets/parallel/job_multi.Rmd
+```bash
+[user@cometlogin01(comet) ~] nano parallel-job.sh
+[user@cometlogin01(comet) ~] cat parallel-job.sh
+```
+
+```output
+#!/bin/bash
+
+#SBATCH --partition=short_free
+#SBATCH --account=comet_training
+#SBATCH --job-name=multi
+#SBATCH --ntasks-per-node=16
+#SBATCH --nodes=1
+
+
+PRIMES_START=2
+PRIMES_END=10000000
+
+module load OpenMPI
+
+echo "Starting Multi-process primes calculation ($PRIMES_START - $PRIMES_END) x${SLURM_NTASKS}"
+echo "====================="
+
+time mpirun ./multi $PRIMES_START $PRIMES_END
+echo "====================="
+echo "Primes calculation complete"
+```
+
+Submit the job as before.
+
+```bash
+[user@cometlogin01(comet) ~] sbatch parallel-job.sh
+```
+
+As before, use the status commands to check when your job runs.
+
+```bash
+[user@cometlogin01(comet) ~] ls -t
+```
+
+```output
+slurm-347178.out  parallel-job.sh  slurm-347087.out  serial-job.sh  amdahl  README.md  LICENSE.txt
+```
+
+```bash
+[user@cometlogin01(comet) ~] cat slurm-347178.out
+```
+
+```output
+Doing 30.000 seconds of 'work' on 4 processors,
+which should take 10.875 seconds with 0.850 parallel proportion of the workload.
+
+  Hello, World! I am process 0 of 4 on compute030. I will do all the serial 'work' for 4.500 seconds.
+  Hello, World! I am process 2 of 4 on compute030. I will do parallel 'work' for 6.375 seconds.
+  Hello, World! I am process 1 of 4 on compute030. I will do parallel 'work' for 6.375 seconds.
+  Hello, World! I am process 3 of 4 on compute030. I will do parallel 'work' for 6.375 seconds.
+  Hello, World! I am process 0 of 4 on compute030. I will do parallel 'work' for 6.375 seconds.
+
+Total execution time (according to rank 0): 10.888 seconds
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
@@ -362,14 +440,14 @@ code gets.
 
 
 ```bash
-[yourUsername@login1 ~]$ nano parallel-job.sh
-[yourUsername@login1 ~]$ cat parallel-job.sh
+[user@cometlogin01(comet) ~] nano parallel-job.sh
+[user@cometlogin01(comet) ~] cat parallel-job.sh
 ```
 
 ```bash
 #!/bin/bash
-#SBATCH -J parallel-job
-#SBATCH -p cpubase_bycore_b1
+#SBATCH --job-name= parallel-job
+#SBATCH --partition= cpubase_bycore_b1
 #SBATCH -N 1
 #SBATCH -n 8
 
@@ -387,13 +465,13 @@ from how we submitted the serial job: all the parallel settings are in the
 batch file rather than the command line.
 
 ```bash
-[yourUsername@login1 ~]$ sbatch parallel-job.sh
+[user@cometlogin01(comet) ~] sbatch parallel-job.sh
 ```
 
 As before, use the status commands to check when your job runs.
 
 ```bash
-[yourUsername@login1 ~]$ ls -t
+[user@cometlogin01(comet) ~] ls -t
 ```
 
 ```output
@@ -401,21 +479,21 @@ slurm-347271.out  parallel-job.sh  slurm-347178.out  slurm-347087.out  serial-jo
 ```
 
 ```bash
-[yourUsername@login1 ~]$ cat slurm-347178.out
+[user@cometlogin01(comet) ~] cat slurm-347178.out
 ```
 
 ```output
 which should take 7.688 seconds with 0.850 parallel proportion of the workload.
 
-  Hello, World! I am process 4 of 8 on smnode1. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 0 of 8 on smnode1. I will do all the serial 'work' for 4.500 seconds.
-  Hello, World! I am process 2 of 8 on smnode1. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 1 of 8 on smnode1. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 3 of 8 on smnode1. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 5 of 8 on smnode1. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 6 of 8 on smnode1. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 7 of 8 on smnode1. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 0 of 8 on smnode1. I will do parallel 'work' for 3.188 seconds.
+  Hello, World! I am process 4 of 8 on compute030. I will do parallel 'work' for 3.188 seconds.
+  Hello, World! I am process 0 of 8 on compute030. I will do all the serial 'work' for 4.500 seconds.
+  Hello, World! I am process 2 of 8 on compute030. I will do parallel 'work' for 3.188 seconds.
+  Hello, World! I am process 1 of 8 on compute030. I will do parallel 'work' for 3.188 seconds.
+  Hello, World! I am process 3 of 8 on compute030. I will do parallel 'work' for 3.188 seconds.
+  Hello, World! I am process 5 of 8 on compute030. I will do parallel 'work' for 3.188 seconds.
+  Hello, World! I am process 6 of 8 on compute030. I will do parallel 'work' for 3.188 seconds.
+  Hello, World! I am process 7 of 8 on compute030. I will do parallel 'work' for 3.188 seconds.
+  Hello, World! I am process 0 of 8 on compute030. I will do parallel 'work' for 3.188 seconds.
 
 Total execution time (according to rank 0): 7.697 seconds
 ```
@@ -450,7 +528,7 @@ S(t_{n}) = \frac{t_{1}}{t_{n}}
 $$
 
 ```bash
-[yourUsername@login1 ~]$ for n in 30.033 10.888 7.697; do python3 -c "print(30.033 / $n)"; done
+[user@cometlogin01(comet) ~] for n in 30.033 10.888 7.697; do python3 -c "print(30.033 / $n)"; done
 ```
 
 | Number of CPUs | Speedup       | Ideal |

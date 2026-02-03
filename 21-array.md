@@ -45,8 +45,8 @@ wget https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro/refs/head
 write a small file to test our script
 
 ```bash
-[yourUsername@login1 ~]$ nano test-data.txt
-[yourUsername@login1 ~]$ cat test-data.txt
+[user@cometlogin01(comet) ~] nano test-data.txt
+[user@cometlogin01(comet) ~] cat test-data.txt
 ```
 
 ```bash
@@ -194,13 +194,13 @@ Write a batch script to call the word-freq.sh as an array job with 4 parallel jo
 
 
 
-#SBATCH -pshort_free
+#SBATCH --partition=short_free
 #SBATCH --account=comet_training
-#SBATCH -Jmakefreq
-#SBATCH 1
-#SBATCH 4
+#SBATCH --job-name=makefreq
+#SBATCH --nodes=1
+#SBATCH --tasks=4
 #SBATCH --array=1-4
-#SBATCH 1
+#SBATCH --cpus-per-task=1
 
 # Do a word frequency analysis of each of the following
 # data sets simultaneously:
