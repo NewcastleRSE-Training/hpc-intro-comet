@@ -20,7 +20,7 @@ carpentry: 'cp'
 title: 'Introduction to High-Performance Computing'
 
 # Date the lesson was created (YYYY-MM-DD, this is empty by default)
-created: 2017-03-24
+created: '2017-03-24'
 
 # Comma-separated list of keywords for the lesson
 keywords: 'software, data, lesson, The Carpentries'
@@ -64,32 +64,16 @@ contact: 'training.researchcomputing@newcastle.ac.uk'
 # - another-learner.md
 
 # Order of episodes in your lesson
-episodes:
-  - 10-hpc-intro.Rmd
-  - 11-connecting.Rmd
-  - 12-cluster.Rmd
-  - 13-scheduler.Rmd
-  - 14-environment-variables.Rmd
-  - 15-modules.Rmd
-  - 16-transferring-files.Rmd
-  - 20-rdw.Rmd
-  - 21-array.Rmd
-  - 22-parallel.Rmd
-  - 17-parallel.Rmd
-  - 18-resources.Rmd
-  - 19-responsibility.Rmd
+episodes: 
 
 # Information for Learners
-learners:
-  - setup.md
+learners: setup.md
 
 # Information for Instructors
-instructors:
-  - instructor-notes.Rmd
+instructors: instructor-notes.Rmd
 
 # Learner Profiles
-profiles:
-  - learner-profiles.md
+profiles: learner-profiles.md
 
 # Customisation ---------------------------------------------
 #
@@ -97,7 +81,3 @@ profiles:
 # sandpaper and varnish versions) should live
 
 
-carpentry_description: Lesson Description
-url: 'https://github.com/NewcastleRSE-Training/hpc-intro'
-analytics: carpentries
-lang: en
