@@ -18,7 +18,7 @@
   <div class="container-fluid top-nav-container">
     <div class="col-md-8">
       <div class="large-logo">
-        <img id="cp-logo" alt="The Carpentries" src="../assets/images/carpentries-logo.svg"><span class="badge text-bg-info">
+        <img id="cp-logo" alt="Lesson Description" src="../assets/images/carpentries-logo.svg"><span class="badge text-bg-info">
           <abbr title="This lesson is in the beta phase, which means that it is ready for teaching by instructors outside of the original author team.">
             <a href="https://docs.carpentries.org/resources/curriculum/lesson-life-cycle.html" class="external-link alert-link">
               <i aria-hidden="true" class="icon" data-feather="alert-circle" style="border-radius: 5px"></i>
@@ -72,7 +72,7 @@
       <span class="menu-title">Menu</span>
     </button>
     <div class="nav-logo">
-      <img class="small-logo" alt="The Carpentries" src="../assets/images/carpentries-logo-sm.svg"></div>
+      <img class="small-logo" alt="Lesson Description" src="../assets/images/carpentries-logo-sm.svg"></div>
     <div class="lesson-title-md">
       Introduction to High-Performance Computing
     </div>
@@ -118,11 +118,11 @@
   Introduction to High-Performance Computing
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 64%" class="percentage">
-    64%
+<aside class="col-md-12 lesson-progress"><div style="width: 91%" class="percentage">
+    91%
   </div>
   <div class="progress carpentries">
-    <div class="progress-bar carpentries" role="progressbar" style="width: 64%" aria-valuenow="64" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar carpentries" role="progressbar" style="width: 91%" aria-valuenow="91" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -269,7 +269,34 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="17-parallel.html">8. Running a parallel job</a>
+        <a href="20-rdw.html">8. Using the Research Data Warehouse</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush10">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading10">
+        <a href="21-array.html">9. Parallelising with Job Arrays.</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush11">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading11">
+        <a href="22-parallel.html">10. Running a parallel job (alternative episode)</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush12">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading12">
+        <a href="17-parallel.html">11. Running a parallel job</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -281,7 +308,7 @@
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
-        9. Using resources effectively
+        12. Using resources effectively
         </span>
       </button>
     </div><!--/div.accordion-header-->
@@ -297,37 +324,10 @@
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
-<div class="accordion accordion-flush" id="accordionFlush11">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading11">
-        <a href="19-responsibility.html">10. Using shared resources responsibly</a>
-    </div><!--/div.accordion-header-->
-
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush12">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading12">
-        <a href="20-rdw.html">11. Using the Research Data Warehouse</a>
-    </div><!--/div.accordion-header-->
-
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush13">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading13">
-        <a href="21-array.html">12. Parallelising with Job Arrays.</a>
-    </div><!--/div.accordion-header-->
-
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
 <div class="accordion accordion-flush" id="accordionFlush14">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading14">
-        <a href="22-parallel.html">13. Running a parallel job (alternative episode)</a>
+        <a href="19-responsibility.html">13. Using shared resources responsibly</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -392,7 +392,7 @@
         <h1>Using resources effectively</h1>
         <p>Last updated on 2026-02-03 |
 
-        <a href="https://github.com/carpentries-incubator/hpc-intro/edit/main/episodes/18-resources.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/NewcastleRSE-Training/hpc-intro-comet/edit/main/episodes/18-resources.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
 
 
@@ -456,25 +456,24 @@ might have written up guidance for getting the most out of it.</p>
 </div>
 <p>A convenient way of figuring out the resources required for a job to
 run successfully is to submit a test job, and then ask the scheduler
-about its impact using <code>sacct -u yourUsername</code>. You can use
-this knowledge to set up the next job with a closer estimate of its load
-on the system. A good general rule is to ask the scheduler for 20% to
-30% more time and memory than you expect the job to need. This ensures
-that minor fluctuations in run time or memory use will not result in
-your job being cancelled by the scheduler. Keep in mind that if you ask
-for too much, your job may not run even though enough resources are
-available, because the scheduler will be waiting for other people’s jobs
-to finish and free up the resources needed to match what you asked
-for.</p>
+about its impact using <code>sacct -u user</code>. You can use this
+knowledge to set up the next job with a closer estimate of its load on
+the system. A good general rule is to ask the scheduler for 20% to 30%
+more time and memory than you expect the job to need. This ensures that
+minor fluctuations in run time or memory use will not result in your job
+being cancelled by the scheduler. Keep in mind that if you ask for too
+much, your job may not run even though enough resources are available,
+because the scheduler will be waiting for other people’s jobs to finish
+and free up the resources needed to match what you asked for.</p>
 </section><section><h2 class="section-heading" id="stats">Stats<a class="anchor" aria-label="anchor" href="#stats"></a></h2>
 <hr class="half-width"><p>Since we already submitted <code>amdahl</code> to run on the cluster,
 we can query the scheduler to see how long our job took and what
-resources were used. We will use <code>sacct -u yourUsername</code> to
-get statistics about <code>parallel-job.sh</code>.</p>
+resources were used. We will use <code>sacct -u user</code> to get
+statistics about <code>parallel-job.sh</code>.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sacct <span class="at">-u</span> yourUsername</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sacct <span class="at">-u</span> user</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -497,7 +496,7 @@ entries per job). To get info about a specific job (for example,
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sacct <span class="at">-u</span> yourUsername <span class="at">-l</span> <span class="at">-j</span> 347087</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sacct <span class="at">-u</span> user <span class="at">-l</span> <span class="at">-j</span> 347087</span></code></pre>
 </div>
 <p>It will show a lot of info; in fact, every single piece of info
 collected on your job by the scheduler will show up here. It may be
@@ -507,7 +506,7 @@ fields).</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sacct <span class="at">-u</span> yourUsername <span class="at">-l</span> <span class="at">-j</span> 347087 <span class="kw">|</span> <span class="fu">less</span> <span class="at">-S</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sacct <span class="at">-u</span> user <span class="at">-l</span> <span class="at">-j</span> 347087 <span class="kw">|</span> <span class="fu">less</span> <span class="at">-S</span></span></code></pre>
 </div>
 <div id="discussion" class="callout discussion">
 <div class="callout-square">
@@ -554,7 +553,7 @@ close can you get?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The following line tells Slurm that our job should finish within 2
 minutes:</p>
@@ -603,13 +602,13 @@ shared resources.</li>
         <p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
         <p>
 
-        <a href="https://github.com/carpentries-incubator/hpc-intro/edit/main/episodes/18-resources.Rmd" class="external-link">Edit on GitHub</a>
+        <a href="https://github.com/NewcastleRSE-Training/hpc-intro-comet/edit/main/episodes/18-resources.Rmd" class="external-link">Edit on GitHub</a>
 
 	
-        | <a href="https://github.com/carpentries-incubator/hpc-intro/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
-        | <a href="https://github.com/carpentries-incubator/hpc-intro/" class="external-link">Source</a></p>
+        | <a href="https://github.com/NewcastleRSE-Training/hpc-intro-comet/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
+        | <a href="https://github.com/NewcastleRSE-Training/hpc-intro-comet/" class="external-link">Source</a></p>
         <p>
-        <a href="https://github.com/carpentries-incubator/hpc-intro/blob/main/" class="external-link">Cite</a>
+        <a href="https://github.com/NewcastleRSE-Training/hpc-intro-comet/blob/main/" class="external-link">Cite</a>
         | <a href="mailto:training.researchcomputing@newcastle.ac.uk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 		</div>
 		<div class="col-md-6">
@@ -629,15 +628,15 @@ shared resources.</li>
     {
   "@context": "https://schema.org",
   "@type": "LearningResource",
-  "@id": "https://carpentries-incubator.github.io/hpc-intro/instructor/18-resources.html",
+  "@id": "https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/18-resources.html",
   "inLanguage": "en",
   "dct:conformsTo": "https://bioschemas.org/profiles/LearningResource/1.0-RELEASE",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
   "keywords": "software, data, lesson, The Carpentries",
   "name": "Using resources effectively",
   "creativeWorkStatus": "active",
-  "url": "https://carpentries-incubator.github.io/hpc-intro/instructor/18-resources.html",
-  "identifier": "https://carpentries-incubator.github.io/hpc-intro/instructor/18-resources.html",
+  "url": "https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/18-resources.html",
+  "identifier": "https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/18-resources.html",
   "dateCreated": "2017-03-24",
   "dateModified": "2026-02-03",
   "datePublished": "2026-02-03"
@@ -645,5 +644,21 @@ shared resources.</li>
 
   </script><script>
 		feather.replace();
-	</script></body></html><!-- END:   inst/pkgdown/templates/layout.html-->
+	</script><!-- Matomo --><script>
+          var _paq = window._paq = window._paq || [];
+          /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+          _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+          _paq.push(["setDomains", ["*.lessons.carpentries.org","*.datacarpentry.github.io","*.datacarpentry.org","*.librarycarpentry.github.io","*.librarycarpentry.org","*.swcarpentry.github.io", "*.carpentries.github.io"]]);
+          _paq.push(["setDoNotTrack", true]);
+          _paq.push(["disableCookies"]);
+          _paq.push(["trackPageView"]);
+          _paq.push(["enableLinkTracking"]);
+          (function() {
+              var u="https://matomo.carpentries.org/";
+              _paq.push(["setTrackerUrl", u+"matomo.php"]);
+              _paq.push(["setSiteId", "1"]);
+              var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0];
+              g.async=true; g.src="https://matomo.carpentries.org/matomo.js"; s.parentNode.insertBefore(g,s);
+          })();
+        </script><!-- End Matomo Code --></body></html><!-- END:   inst/pkgdown/templates/layout.html-->
 

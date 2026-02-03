@@ -1,120 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/10-hpc-intro.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/10-hpc-intro.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/11-connecting.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/11-connecting.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/12-cluster.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/12-cluster.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/13-scheduler.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/13-scheduler.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/14-environment-variables.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/14-environment-variables.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/15-modules.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/15-modules.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/16-transferring-files.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/16-transferring-files.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/17-parallel.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/17-parallel.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/18-resources.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/18-resources.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/19-responsibility.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/19-responsibility.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/20-rdw.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/20-rdw.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/21-array.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/21-array.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/22-parallel.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/22-parallel.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/404.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/404.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/CODE_OF_CONDUCT.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/LICENSE.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/MAINTENANCE.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/MAINTENANCE.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/files/jargon.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/files/jargon.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/index.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/index.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/instructor/10-hpc-intro.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/10-hpc-intro.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/instructor/11-connecting.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/11-connecting.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/instructor/12-cluster.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/12-cluster.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/instructor/13-scheduler.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/13-scheduler.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/instructor/14-environment-variables.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/14-environment-variables.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/instructor/15-modules.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/15-modules.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/instructor/16-transferring-files.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/16-transferring-files.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/instructor/17-parallel.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/17-parallel.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/instructor/18-resources.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/18-resources.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/instructor/19-responsibility.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/19-responsibility.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/instructor/20-rdw.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/20-rdw.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/instructor/21-array.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/21-array.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/instructor/22-parallel.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/22-parallel.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/instructor/404.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/404.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/instructor/CODE_OF_CONDUCT.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/instructor/LICENSE.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/instructor/MAINTENANCE.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/MAINTENANCE.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/instructor/index.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/index.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/instructor/profiles.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/profiles.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-intro/profiles.html</loc>
+    <loc>https://NewcastleRSE-Training.github.io/hpc-intro-comet/profiles.html</loc>
   </url>
 </urlset>
