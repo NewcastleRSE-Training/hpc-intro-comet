@@ -117,7 +117,8 @@ available to perform the work.
 `r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options` example-job.sh
 ```
 
-```{r, child=paste(snippets, '/scheduler/basic-job-script.Rmd', sep=''), eval=TRUE}
+```{r, echo=FALSE, results='asis'}
+snippets('scheduler/basic-job-script.Rmd')
 ```
 
 And that's all we need to do to submit a job. Our work is done -- now the

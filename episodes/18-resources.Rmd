@@ -69,7 +69,8 @@ use ``r config$sched$hist`` to get statistics about `parallel-job.sh`.
 `r config$remote$prompt` `r config$sched$hist`
 ```
 
-```{r, child=paste(snippets, '/resources/account-history.Rmd', sep=''), eval=TRUE}
+```{r, echo=FALSE, results='asis'}
+snippets('resources/account-history.Rmd')
 ```
 
 This shows all the jobs we ran today (note that there are multiple entries per

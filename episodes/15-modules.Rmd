@@ -79,7 +79,8 @@ you are using.
 
 To see available software modules, use `module avail`:
 
-```{r, child=paste(snippets, '/modules/available-modules.Rmd', sep=''), eval=TRUE}
+```{r, echo=FALSE, results='asis'}
+snippets('modules/available-modules.Rmd')
 ```
 
 Note that piping the output through `less` allows us to search within the output using the <kbd>/</kbd> key.
@@ -111,12 +112,14 @@ where a particular piece of software is stored.
 `r config$remote$prompt` which python3
 ```
 
-```{r, child=paste(snippets, '/modules/missing-python.Rmd', sep=''), eval=TRUE}
+```{r, echo=FALSE, results='asis'}
+snippets('modules/missing-python.Rmd')
 ```
 
 We can load the `python3` command with `module load`:
 
-```{r, child=paste(snippets, '/modules/module-load-python.Rmd', sep=''), eval=TRUE}
+```{r, echo=FALSE, results='asis'}
+snippets('modules/module-load-python.Rmd')
 ```
 
 So, what just happened?
@@ -142,7 +145,8 @@ there's only one difference: the different directory at the beginning. When we
 ran the `module load` command, it added a directory to the beginning of our
 `$PATH` -- or "prepended to PATH". Let's examine what's there:
 
-```{r, child=paste(snippets, '/modules/python-executable-dir.Rmd', sep=''), eval=TRUE}
+```{r, echo=FALSE, results='asis'}
+snippets('modules/python-executable-dir.Rmd')
 ```
 
 Taking this to its conclusion, `module load` will add software to your `$PATH`.
@@ -150,7 +154,8 @@ It "loads" software. A special note on this - depending on which version of the
 `module` program that is installed at your site, `module load` will also load
 required software dependencies.
 
-```{r, child=paste(snippets, '/modules/software-dependencies.Rmd', sep=''), eval=TRUE}
+```{r, echo=FALSE, results='asis'}
+snippets('modules/software-dependencies.Rmd')
 ```
 
 Note that this module loading process happens principally through
@@ -178,7 +183,8 @@ software is loaded.
 Let's examine the output of `module avail` more closely, using the pager since
 there may be reams of output:
 
-```{r, child=paste(snippets, '/modules/available-modules.Rmd', sep=''), eval=TRUE}
+```{r, echo=FALSE, results='asis'}
+snippets('modules/available-modules.Rmd')
 ```
 
 If the software your Slurm script runs requires on a specific version

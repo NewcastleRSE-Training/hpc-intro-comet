@@ -75,7 +75,7 @@ sends back. We will use the Secure SHell protocol (or SSH) to open an encrypted
 network connection between two machines, allowing you to send & receive text
 and data without having to worry about prying eyes.
 
-![Connect to cluster](fig/connect-to-remote.svg){alt-text="Connect to cluster"}
+![Connect to cluster](fig/connect-to-remote.svg){alt="Connect to cluster"}
 
 Make sure you have a SSH client installed on your laptop. Refer to the
 [setup](../index.md) section for more details. SSH clients are
@@ -206,7 +206,8 @@ For example, we can view all of the worker nodes by running the command
 `r config$remote$prompt` `r config$sched$info`
 ```
 
-```{r, child=paste(snippets, '/cluster/queue-info.Rmd', sep='')}
+```{r, echo=FALSE, results='asis'}
+snippets('cluster/queue-info.Rmd')
 ```
 
 There are also specialized machines used for managing disk storage, user
@@ -321,7 +322,8 @@ This is an important point to remember: files saved on one node
 
 :::
 
-```{r, child=paste(snippets, '/cluster/specific-node-info.Rmd', sep=''), eval=TRUE}
+```{r, echo=FALSE, results='asis'}
+snippets('cluster/specific-node-info.Rmd')
 ```
 
 ::: discussion

@@ -38,7 +38,7 @@ docs/
 # translation temp files
 po/*~
 # renv detritus
-renv/sandbox/
+renv/
 *.pyc
 *~
 .DS_Store
