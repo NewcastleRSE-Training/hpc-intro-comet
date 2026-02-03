@@ -78,29 +78,29 @@ To see available software modules, use `module avail`:
 
 
 ```bash
-[user@cometlogin01(comet) ~] module avail | less
+[yourUsername@login1 ~]$ module avail | less
 ```
 
 ```output
------------------------------------------------------------------------------------------- /opt/slurm/modules/el9 -------------------------------------------------------------------------------------------
-   nvidia-cuda/12.1.1    pmix/2.2.5    pmix/3.2.5    pmix/4.2.9    pmix/5.0.3 (D)    slurm/24.05.3 (S,L)
-
------------------------------------------------------------------------------------- /opt/software/easybuild/modules/all ------------------------------------------------------------------------------------
-   AFNI/24.0.02-foss-2023a                               M4/1.4.19-GCCcore-11.2.0                          XZ/5.4.5-GCCcore-13.3.0                           libgd/2.3.3-GCCcore-12.3.0
-   AOCC-TC/5.0.0-GCCcore-14.2.0                          M4/1.4.19-GCCcore-11.3.0                          XZ/5.6.3-GCCcore-14.2.0                    (D)    libgd/2.3.3-GCCcore-13.3.0                 (D)
-   AOCC/4.2.0-GCCcore-13.3.0                             M4/1.4.19-GCCcore-12.2.0                          Xvfb/21.1.8-GCCcore-12.3.0                        libgit2/1.7.1-GCCcore-12.3.0
-   AOCC/5.0.0-GCCcore-14.2.0                             M4/1.4.19-GCCcore-12.3.0                          Yasm/1.3.0-GCCcore-12.3.0                         libgit2/1.8.1-GCCcore-13.3.0               (D)
-   ATK/2.38.0-GCCcore-12.3.0                             M4/1.4.19-GCCcore-13.2.0                          Yasm/1.3.0-GCCcore-13.2.0                  (D)    libglvnd/1.3.3-GCCcore-10.3.0
-   Abseil/20230125.3-GCCcore-12.3.0                      M4/1.4.19-GCCcore-13.3.0                          Z3/4.13.0-GCCcore-13.2.0                          libglvnd/1.6.0-GCCcore-12.3.0
-   Abseil/20240116.1-GCCcore-13.2.0            (D)       M4/1.4.19-GCCcore-14.2.0                          Z3/4.13.0-GCCcore-13.3.0                   (D)    libglvnd/1.7.0-GCCcore-13.2.0
-   Archive-Zip/1.68-GCCcore-13.3.0             (D)       M4/1.4.19                                  (D)    ZeroMQ/4.3.5-GCCcore-13.3.0                (D)    libglvnd/1.7.0-GCCcore-13.3.0              (D)
+~~~ /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/modules/all ~~~
+  Bazel/3.6.0-GCCcore-x.y.z              NSS/3.51-GCCcore-x.y.z
+  Bison/3.5.3-GCCcore-x.y.z              Ninja/1.10.0-GCCcore-x.y.z
+  Boost/1.72.0-gompi-2020a               OSU-Micro-Benchmarks/5.6.3-gompi-2020a
+  CGAL/4.14.3-gompi-2020a-Python-3.x.y   OpenBLAS/0.3.9-GCC-x.y.z
+  CMake/3.16.4-GCCcore-x.y.z             OpenFOAM/v2006-foss-2020a
 
 [removed most of the output here for clarity]
-```
 
-Use `module spider` to find all possible modules and extensions.
-Use `module keyword key1 key2 ...` to search for all possible modules matching
+  Where:
+   L:        Module is loaded
+   D:        Default Module
+   Aliases exist: foo/1.2.3 (1.2) means that
+             "module load foo/1.2" will load foo/1.2.3
+
+Use "module spider" to find all possible modules and extensions.
+Use "module keyword key1 key2 ..." to search for all possible modules matching
 any of the "keys".
+```
 
 Note that piping the output through `less` allows us to search within the output using the <kbd>/</kbd> key.
 
@@ -111,7 +111,7 @@ loaded in your environment. If you have no modules loaded, you will see a
 message telling you so.
 
 ```bash
-[user@cometlogin01(comet) ~] module list
+[yourUsername@login1 ~]$ module list
 ```
 
 ```output
@@ -128,14 +128,14 @@ programs the same way that Bash does, so we can use it to tell us
 where a particular piece of software is stored.
 
 ```bash
-[user@cometlogin01(comet) ~] which python3
+[yourUsername@login1 ~]$ which python3
 ```
 
 
 If the `python3` command was unavailable, we would see output like
 
 ```output
-/usr/bin/which: no python3 in (/cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin:/opt/software/slurm/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/home/user/.local/bin:/home/user/bin)
+/usr/bin/which: no python3 in (/cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin:/opt/software/slurm/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/home/yourUsername/.local/bin:/home/yourUsername/bin)
 ```
 
 Note that this wall of text is really a list, with values separated
@@ -150,8 +150,8 @@ searched the following directories for `python3`, without success:
 /usr/local/sbin
 /usr/sbin
 /opt/puppetlabs/bin
-/home/user/.local/bin
-/home/user/bin
+/home/yourUsername/.local/bin
+/home/yourUsername/bin
 ```
 
 However, in our case we do have an existing `python3` available so we see
@@ -167,12 +167,12 @@ We can load the `python3` command with `module load`:
 
 
 ```bash
-[user@cometlogin01(comet) ~] module load Python
-[user@cometlogin01(comet) ~] which python3
+[yourUsername@login1 ~]$ module load Python
+[yourUsername@login1 ~]$ which python3
 ```
 
 ```output
-/usr/bin/python3
+/cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin/python3
 ```
 
 So, what just happened?
@@ -185,7 +185,7 @@ before giving up and telling us it can't find it. As with all environment
 variables we can print it out using `echo`.
 
 ```bash
-[user@cometlogin01(comet) ~] echo $PATH
+[yourUsername@login1 ~]$ echo $PATH
 ```
 
 ```output
@@ -200,13 +200,23 @@ ran the `module load` command, it added a directory to the beginning of our
 
 
 ```bash
-[user@cometlogin01(comet) ~] ls ls /opt/software/manual/apps/Python/3.14.0/bin
-
+[yourUsername@login1 ~]$ ls /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin
 ```
 
 ```output
-idle3     pip3     pydoc3     python3     python3.14-config
-idle3.14  pip3.14  pydoc3.14  python3.14  python3-config
+2to3              nosetests-3.8  python                 rst2s5.py
+2to3-3.8          pasteurize     python3                rst2xetex.py
+chardetect        pbr            python3.8              rst2xml.py
+cygdb             pip            python3.8-config       rstpep2html.py
+cython            pip3           python3-config         runxlrd.py
+cythonize         pip3.8         rst2html4.py           sphinx-apidoc
+easy_install      pybabel        rst2html5.py           sphinx-autogen
+easy_install-3.8  __pycache__    rst2html.py            sphinx-build
+futurize          pydoc3         rst2latex.py           sphinx-quickstart
+idle3             pydoc3.8       rst2man.py             tabulate
+idle3.8           pygmentize     rst2odt_prepstyles.py  virtualenv
+netaddr           pytest         rst2odt.py             wheel
+nosetests         py.test        rst2pseudoxml.py
 ```
 
 Taking this to its conclusion, `module load` will add software to your `$PATH`.
@@ -219,56 +229,72 @@ To demonstrate, let's use `module list`. `module list` shows all loaded
 software modules.
 
 ```bash
-[user@cometlogin01(comet) ~] module list
+[yourUsername@login1 ~]$ module list
 ```
 
 ```output
 Currently Loaded Modules:
-  1) slurm/24.05.3 (S)   2) lmod (S)   3) Python/3.14.0
-
-  Where:
-   S:  Module is Sticky, requires --force to unload or purge
+  1) GCCcore/x.y.z                 4) GMP/6.2.0-GCCcore-x.y.z
+  2) Tcl/8.6.10-GCCcore-x.y.z      5) libffi/3.3-GCCcore-x.y.z
+  3) SQLite/3.31.1-GCCcore-x.y.z   6) Python/3.x.y-GCCcore-x.y.z
 ```
 
 ```bash
-[user@cometlogin01(comet) ~] module load GROMACS
-[user@cometlogin01(comet) ~] module list
+[yourUsername@login1 ~]$ module load GROMACS
+[yourUsername@login1 ~]$ module list
 ```
 
 ```output
 Currently Loaded Modules:
-  1) slurm/24.05.3 (S)   3) Python/3.14.0   5) GROMACS/2025.2
-  2) lmod          (S)   4) GCC/14.3.0
-
-  Where:
-   S:  Module is Sticky, requires --force to unload or purge
+  1) GCCcore/x.y.z                    14) libfabric/1.11.0-GCCcore-x.y.z
+  2) Tcl/8.6.10-GCCcore-x.y.z         15) PMIx/3.1.5-GCCcore-x.y.z
+  3) SQLite/3.31.1-GCCcore-x.y.z      16) OpenMPI/4.0.3-GCC-x.y.z
+  4) GMP/6.2.0-GCCcore-x.y.z          17) OpenBLAS/0.3.9-GCC-x.y.z
+  5) libffi/3.3-GCCcore-x.y.z         18) gompi/2020a
+  6) Python/3.x.y-GCCcore-x.y.z       19) FFTW/3.3.8-gompi-2020a
+  7) GCC/x.y.z                        20) ScaLAPACK/2.1.0-gompi-2020a
+  8) numactl/2.0.13-GCCcore-x.y.z     21) foss/2020a
+  9) libxml2/2.9.10-GCCcore-x.y.z     22) pybind11/2.4.3-GCCcore-x.y.z-Pytho...
+ 10) libpciaccess/0.16-GCCcore-x.y.z  23) SciPy-bundle/2020.03-foss-2020a-Py...
+ 11) hwloc/2.2.0-GCCcore-x.y.z        24) networkx/2.4-foss-2020a-Python-3.8...
+ 12) libevent/2.1.11-GCCcore-x.y.z    25) GROMACS/2020.1-foss-2020a-Python-3...
+ 13) UCX/1.8.0-GCCcore-x.y.z
 ```
 
 So in this case, loading the `GROMACS` module (a bioinformatics software
-package), also loaded `GCC/14.3.0`.
-Let's try unloading the
+package), also loaded `GMP/6.2.0-GCCcore-x.y.z` and
+`SciPy-bundle/2020.03-foss-2020a-Python-3.x.y` as well. Let's try unloading the
 `GROMACS` package.
 
 ```bash
-[user@cometlogin01(comet) ~] module unload GROMACS
-[user@cometlogin01(comet) ~] module list
+[yourUsername@login1 ~]$ module unload GROMACS
+[yourUsername@login1 ~]$ module list
 ```
 
 ```output
 Currently Loaded Modules:
-  1) slurm/24.05.3 (S)   2) lmod (S)   3) Python/3.14.0
-
-  Where:
-   S:  Module is Sticky, requires --force to unload or purge
+  1) GCCcore/x.y.z                    13) UCX/1.8.0-GCCcore-x.y.z
+  2) Tcl/8.6.10-GCCcore-x.y.z         14) libfabric/1.11.0-GCCcore-x.y.z
+  3) SQLite/3.31.1-GCCcore-x.y.z      15) PMIx/3.1.5-GCCcore-x.y.z
+  4) GMP/6.2.0-GCCcore-x.y.z          16) OpenMPI/4.0.3-GCC-x.y.z
+  5) libffi/3.3-GCCcore-x.y.z         17) OpenBLAS/0.3.9-GCC-x.y.z
+  6) Python/3.x.y-GCCcore-x.y.z       18) gompi/2020a
+  7) GCC/x.y.z                        19) FFTW/3.3.8-gompi-2020a
+  8) numactl/2.0.13-GCCcore-x.y.z     20) ScaLAPACK/2.1.0-gompi-2020a
+  9) libxml2/2.9.10-GCCcore-x.y.z     21) foss/2020a
+ 10) libpciaccess/0.16-GCCcore-x.y.z  22) pybind11/2.4.3-GCCcore-x.y.z-Pytho...
+ 11) hwloc/2.2.0-GCCcore-x.y.z        23) SciPy-bundle/2020.03-foss-2020a-Py...
+ 12) libevent/2.1.11-GCCcore-x.y.z    24) networkx/2.4-foss-2020a-Python-3.x.y
 ```
+
 So using `module unload` "un-loads" a module, and depending on how a site is
 configured it may also unload all of the dependencies (in our case it does
 not). If we wanted to unload everything at once, we could run `module purge`
 (unloads everything).
 
 ```bash
-[user@cometlogin01(comet) ~] module purge
-[user@cometlogin01(comet) ~] module list
+[yourUsername@login1 ~]$ module purge
+[yourUsername@login1 ~]$ module list
 ```
 
 ```output
@@ -306,29 +332,29 @@ there may be reams of output:
 
 
 ```bash
-[user@cometlogin01(comet) ~] module avail | less
+[yourUsername@login1 ~]$ module avail | less
 ```
 
 ```output
------------------------------------------------------------------------------------------- /opt/slurm/modules/el9 -------------------------------------------------------------------------------------------
-   nvidia-cuda/12.1.1    pmix/2.2.5    pmix/3.2.5    pmix/4.2.9    pmix/5.0.3 (D)    slurm/24.05.3 (S,L)
-
------------------------------------------------------------------------------------- /opt/software/easybuild/modules/all ------------------------------------------------------------------------------------
-   AFNI/24.0.02-foss-2023a                               M4/1.4.19-GCCcore-11.2.0                          XZ/5.4.5-GCCcore-13.3.0                           libgd/2.3.3-GCCcore-12.3.0
-   AOCC-TC/5.0.0-GCCcore-14.2.0                          M4/1.4.19-GCCcore-11.3.0                          XZ/5.6.3-GCCcore-14.2.0                    (D)    libgd/2.3.3-GCCcore-13.3.0                 (D)
-   AOCC/4.2.0-GCCcore-13.3.0                             M4/1.4.19-GCCcore-12.2.0                          Xvfb/21.1.8-GCCcore-12.3.0                        libgit2/1.7.1-GCCcore-12.3.0
-   AOCC/5.0.0-GCCcore-14.2.0                             M4/1.4.19-GCCcore-12.3.0                          Yasm/1.3.0-GCCcore-12.3.0                         libgit2/1.8.1-GCCcore-13.3.0               (D)
-   ATK/2.38.0-GCCcore-12.3.0                             M4/1.4.19-GCCcore-13.2.0                          Yasm/1.3.0-GCCcore-13.2.0                  (D)    libglvnd/1.3.3-GCCcore-10.3.0
-   Abseil/20230125.3-GCCcore-12.3.0                      M4/1.4.19-GCCcore-13.3.0                          Z3/4.13.0-GCCcore-13.2.0                          libglvnd/1.6.0-GCCcore-12.3.0
-   Abseil/20240116.1-GCCcore-13.2.0            (D)       M4/1.4.19-GCCcore-14.2.0                          Z3/4.13.0-GCCcore-13.3.0                   (D)    libglvnd/1.7.0-GCCcore-13.2.0
-   Archive-Zip/1.68-GCCcore-13.3.0             (D)       M4/1.4.19                                  (D)    ZeroMQ/4.3.5-GCCcore-13.3.0                (D)    libglvnd/1.7.0-GCCcore-13.3.0              (D)
+~~~ /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/modules/all ~~~
+  Bazel/3.6.0-GCCcore-x.y.z              NSS/3.51-GCCcore-x.y.z
+  Bison/3.5.3-GCCcore-x.y.z              Ninja/1.10.0-GCCcore-x.y.z
+  Boost/1.72.0-gompi-2020a               OSU-Micro-Benchmarks/5.6.3-gompi-2020a
+  CGAL/4.14.3-gompi-2020a-Python-3.x.y   OpenBLAS/0.3.9-GCC-x.y.z
+  CMake/3.16.4-GCCcore-x.y.z             OpenFOAM/v2006-foss-2020a
 
 [removed most of the output here for clarity]
-```
 
-Use `module spider` to find all possible modules and extensions.
-Use `module keyword key1 key2 ...` to search for all possible modules matching
+  Where:
+   L:        Module is loaded
+   D:        Default Module
+   Aliases exist: foo/1.2.3 (1.2) means that
+             "module load foo/1.2" will load foo/1.2.3
+
+Use "module spider" to find all possible modules and extensions.
+Use "module keyword key1 key2 ..." to search for all possible modules matching
 any of the "keys".
+```
 
 If the software your Slurm script runs requires on a specific version
 of a dependency, make sure you use the full name of the module, rather
@@ -349,8 +375,8 @@ compute node).
 ## Solution
 
 ```bash
-[user@cometlogin01(comet) ~] nano python-module.sh
-[user@cometlogin01(comet) ~] cat python-module.sh
+[yourUsername@login1 ~]$ nano python-module.sh
+[yourUsername@login1 ~]$ cat python-module.sh
 ```
 
 ```output
@@ -364,7 +390,7 @@ python3 --version
 ```
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch --partition=short_free --account=comet_training python-module.sh
+[yourUsername@login1 ~]$ sbatch  python-module.sh
 ```
 
 :::::::::::::::::::::::::
