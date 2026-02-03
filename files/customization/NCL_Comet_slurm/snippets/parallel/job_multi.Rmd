@@ -1,0 +1,60 @@
+```bash
+`r config$remote$prompt` nano parallel-job.sh
+`r config$remote$prompt` cat parallel-job.sh
+```
+
+```output
+#!/bin/bash
+
+#SBATCH --partition=short_free
+#SBATCH --account=comet_training
+#SBATCH --job-name=multi
+#SBATCH --ntasks-per-node=16
+#SBATCH --nodes=1
+
+
+PRIMES_START=2
+PRIMES_END=10000000
+
+module load OpenMPI
+
+echo "Starting Multi-process primes calculation ($PRIMES_START - $PRIMES_END) x${SLURM_NTASKS}"
+echo "====================="
+
+time mpirun ./multi $PRIMES_START $PRIMES_END
+echo "====================="
+echo "Primes calculation complete"
+```
+
+Submit the job as before.
+
+```bash
+`r config$remote$prompt` `r config$sched$submit$name` parallel-job.sh
+```
+
+As before, use the status commands to check when your job runs.
+
+```bash
+`r config$remote$prompt` ls -t
+```
+
+```output
+slurm-347178.out  parallel-job.sh  slurm-347087.out  serial-job.sh  amdahl  README.md  LICENSE.txt
+```
+
+```bash
+`r config$remote$prompt` cat slurm-347178.out
+```
+
+```output
+Doing 30.000 seconds of 'work' on 4 processors,
+which should take 10.875 seconds with 0.850 parallel proportion of the workload.
+
+  Hello, World! I am process 0 of 4 on `r config$remote$node`. I will do all the serial 'work' for 4.500 seconds.
+  Hello, World! I am process 2 of 4 on `r config$remote$node`. I will do parallel 'work' for 6.375 seconds.
+  Hello, World! I am process 1 of 4 on `r config$remote$node`. I will do parallel 'work' for 6.375 seconds.
+  Hello, World! I am process 3 of 4 on `r config$remote$node`. I will do parallel 'work' for 6.375 seconds.
+  Hello, World! I am process 0 of 4 on `r config$remote$node`. I will do parallel 'work' for 6.375 seconds.
+
+Total execution time (according to rank 0): 10.888 seconds
+```
