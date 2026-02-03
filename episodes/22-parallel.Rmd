@@ -209,8 +209,10 @@ and memory.
 
 Create a submission file, requesting one task on a single node, then launch it.
 
-```{r, child=paste(snippets, '/parallel/job_single.Rmd', sep=''), eval=TRUE}
+```{r, echo=FALSE, results='asis'}
+snippets('parallel/job_single.Rmd')
 ```
+
 
 Use the `r config$sched$name` status commands to check whether your job
 is running and when it ends:
@@ -289,7 +291,8 @@ by examining the environment variables set when the job is launched.
 
 Let's modify the job script to request more cores and use the MPI run-time.
 
-```{r, child=paste(snippets, '/parallel/job_multi.Rmd', sep=''), eval=TRUE}
+```{r, echo=FALSE, results='asis'}
+snippets('parallel/job_multi.Rmd')
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
@@ -352,7 +355,8 @@ versus the number of CPUs *n* would give a straight line, *S* = *n*.
 Let's run one more job, so we can see how close to a straight line our `amdahl`
 code gets.
 
-```{r, child=paste(snippets, '/parallel/eight-tasks.Rmd', sep=''), eval=TRUE}
+```{r, echo=FALSE, results='asis'}
+snippets('parallel/eight-tasks.Rmd')
 ```
 
 ::::::::::::::::::::::::::::::::::::::  discussion
