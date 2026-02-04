@@ -78,7 +78,7 @@ be duplication if all the students copy the binaries to their own working direct
 should not really matter. In doing it this way, students will also get the 
 opportunity to submit a job where the program they are using is in their local 
 directory (rather than loading a module).
-
+ 
 ::::
 
 :::: spoiler
@@ -238,7 +238,7 @@ job from. For example,
 ```output
 slurm-1177272.out  job_single.sh  job_multi.sh  single_gcc  multi
 ```
-
+ 
 ```bash
 `r config$remote$prompt` cat slurm-1177272.out
 ```
