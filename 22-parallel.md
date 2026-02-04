@@ -75,7 +75,7 @@ be duplication if all the students copy the binaries to their own working direct
 should not really matter. In doing it this way, students will also get the 
 opportunity to submit a job where the program they are using is in their local 
 directory (rather than loading a module).
-
+ 
 ::::
 
 :::: spoiler
@@ -263,7 +263,7 @@ job from. For example,
 ```output
 slurm-1177272.out  job_single.sh  job_multi.sh  single_gcc  multi
 ```
-
+ 
 ```bash
 [user@cometlogin01(comet) ~] cat slurm-1177272.out
 ```
@@ -318,8 +318,8 @@ Let's modify the job script to request more cores and use the MPI run-time.
 
 
 ```bash
-[user@cometlogin01(comet) ~] nano parallel-job.sh
-[user@cometlogin01(comet) ~] cat parallel-job.sh
+[user@cometlogin01(comet) ~] nano job_multi.sh
+[user@cometlogin01(comet) ~] cat job_multi.sh
 ```
 
 ```output
@@ -348,7 +348,7 @@ echo "Primes calculation complete"
 Submit the job as before.
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch parallel-job.sh
+[user@cometlogin01(comet) ~] sbatch job_multi.sh
 ```
 
 As before, use the status commands to check when your job runs.
@@ -358,24 +358,122 @@ As before, use the status commands to check when your job runs.
 ```
 
 ```output
-slurm-347178.out  parallel-job.sh  slurm-347087.out  serial-job.sh  amdahl  README.md  LICENSE.txt
+slurm-1177273.out  job_multi.sh  slurm-1177272.out job_single.sh  single_gcc  multi
 ```
 
 ```bash
-[user@cometlogin01(comet) ~] cat slurm-347178.out
+[user@cometlogin01(comet) ~] slurm-1177273.out
 ```
-
+ 
 ```output
-Doing 30.000 seconds of 'work' on 4 processors,
-which should take 10.875 seconds with 0.850 parallel proportion of the workload.
+Starting Multi-process primes calculation (2 - 10000000) x16
+=====================
+main[11]: Started process
+main[11]: Calculating primes 6875002 - 7500001
+primeCount: Calculating primes 6875002 - 7500001
+main[13]: Started process
+main[13]: Calculating primes 8125002 - 8750001
+primeCount: Calculating primes 8125002 - 8750001
+main[8]: Started process
+main[8]: Calculating primes 5000002 - 5625001
+primeCount: Calculating primes 5000002 - 5625001
+main[2]: Started process
+main[2]: Calculating primes 1250002 - 1875001
+primeCount: Calculating primes 1250002 - 1875001
+main[15]: Started process
+main[15]: Calculating primes 9375002 - 10000000
+primeCount: Calculating primes 9375002 - 10000000
+main[14]: Started process
+main[14]: Calculating primes 8750002 - 9375001
+primeCount: Calculating primes 8750002 - 9375001
+main[6]: Started process
+main[6]: Calculating primes 3750002 - 4375001
+primeCount: Calculating primes 3750002 - 4375001
+main[7]: Started process
+main[7]: Calculating primes 4375002 - 5000001
+primeCount: Calculating primes 4375002 - 5000001
+main[10]: Started process
+main[10]: Calculating primes 6250002 - 6875001
+primeCount: Calculating primes 6250002 - 6875001
+main[5]: Started process
+main[5]: Calculating primes 3125002 - 3750001
+primeCount: Calculating primes 3125002 - 3750001
+main[1]: Started process
+main[1]: Calculating primes 625002 - 1250001
+primeCount: Calculating primes 625002 - 1250001
+main[9]: Started process
+main[9]: Calculating primes 5625002 - 6250001
+primeCount: Calculating primes 5625002 - 6250001
+main[0]: Started process
+main[0]: Total range is 9999998
+main[0]: Sub-range per instance is 624999
+main[0]: Calculating primes 2 - 625001
+primeCount: Calculating primes 2 - 625001
+main[4]: Started process
+main[4]: Calculating primes 2500002 - 3125001
+primeCount: Calculating primes 2500002 - 3125001
+main[12]: Started process
+main[12]: Calculating primes 7500002 - 8125001
+primeCount: Calculating primes 7500002 - 8125001
+main[3]: Started process
+main[3]: Calculating primes 1875002 - 2500001
+primeCount: Calculating primes 1875002 - 2500001
+primeCount: Found 50986 primes
+main[0]: Found 50986 primes
+main[0]: Now waiting for results from instances...
+primeCount: Found 45483 primes
+main[1]: Found 45483 primes
+main[0]: Got 45483 from [1]
+primeCount: Found 43822 primes
+main[2]: Found 43822 primes
+main[0]: Got 43822 from [2]
+primeCount: Found 42781 primes
+main[3]: Found 42781 primes
+main[0]: Got 42781 from [3]
+primeCount: Found 42103 primes
+main[4]: Found 42103 primes
+main[0]: Got 42103 from [4]
+primeCount: Found 41543 primes
+main[5]: Found 41543 primes
+main[0]: Got 41543 from [5]
+primeCount: Found 41009 primes
+main[6]: Found 41009 primes
+main[0]: Got 41009 from [6]
+primeCount: Found 40786 primes
+main[7]: Found 40786 primes
+main[0]: Got 40786 from [7]
+primeCount: Found 40279 primes
+main[8]: Found 40279 primes
+main[0]: Got 40279 from [8]
+primeCount: Found 40024 primes
+main[9]: Found 40024 primes
+main[0]: Got 40024 from [9]
+primeCount: Found 39875 primes
+main[10]: Found 39875 primes
+main[0]: Got 39875 from [10]
+primeCount: Found 39570 primes
+main[11]: Found 39570 primes
+main[0]: Got 39570 from [11]
+primeCount: Found 39350 primes
+main[12]: Found 39350 primes
+main[0]: Got 39350 from [12]
+primeCount: Found 39239 primes
+main[13]: Found 39239 primes
+main[0]: Got 39239 from [13]
+primeCount: Found 39003 primes
+main[14]: Found 39003 primes
+main[0]: Got 39003 from [14]
+primeCount: Found 38726 primes
+main[15]: Found 38726 primes
+main[0]: Got 38726 from [15]
+main[0]: Found a total of 664579 primes
 
-  Hello, World! I am process 0 of 4 on compute030. I will do all the serial 'work' for 4.500 seconds.
-  Hello, World! I am process 2 of 4 on compute030. I will do parallel 'work' for 6.375 seconds.
-  Hello, World! I am process 1 of 4 on compute030. I will do parallel 'work' for 6.375 seconds.
-  Hello, World! I am process 3 of 4 on compute030. I will do parallel 'work' for 6.375 seconds.
-  Hello, World! I am process 0 of 4 on compute030. I will do parallel 'work' for 6.375 seconds.
+real	0m3.493s
+user	0m38.221s
+sys	0m0.198s
+=====================
+Primes calculation complete
 
-Total execution time (according to rank 0): 10.888 seconds
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
