@@ -300,6 +300,7 @@
         <ul><li><a href="#copying-the-programs-into-your-local-directory">Copying the programs into your local directory</a></li>
 <li><a href="#help">Help!</a></li>
 <li><a href="#running-the-job-on-a-compute-node">Running the Job on a Compute Node</a></li>
+<li><a href="#read-the-job-output">Read the Job Output</a></li>
 <li><a href="#running-the-parallel-job">Running the Parallel Job</a></li>
 <li><a href="#how-much-does-parallel-execution-improve-performance">How Much Does Parallel Execution Improve Performance?</a></li>
         </ul></div><!--/div.accordion-body-->
@@ -392,7 +393,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Running a parallel job (alternative episode)</h1>
-        <p>Last updated on 2026-02-04 |
+        <p>Last updated on 2026-02-05 |
 
         <a href="https://github.com/NewcastleRSE-Training/hpc-intro-comet/edit/main/episodes/22-parallel.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -679,14 +680,8 @@ and when it ends:</p>
 <p>Use <code>ls</code> to locate the output file. The <code>-t</code>
 flag sorts in reverse-chronological order: newest first. What was the
 output?</p>
-<div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
-  <h3 class="accordion-header" id="headingSpoiler2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Read the Job Output </h3>
-</button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
-<div class="accordion-body">
-<p>The cluster output should be written to a file in the folder you
+</section><section><h2 class="section-heading" id="read-the-job-output">Read the Job Output<a class="anchor" aria-label="anchor" href="#read-the-job-output"></a></h2>
+<hr class="half-width"><p>The cluster output should be written to a file in the folder you
 launched the job from. For example,</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -719,10 +714,6 @@ sys	0m0.002s
 =====================
 Primes calculation complete
 </code></pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 <p>While MPI-aware executables can generally be run as stand-alone
 programs, in order for them to run in parallel they must use an MPI
@@ -919,16 +910,16 @@ sys	0m0.198s
 Primes calculation complete
 </code></pre>
 </div>
-<div id="is-it-4-faster" class="callout challenge">
+<div id="is-it-16-faster" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="is-it-4-faster" class="callout-inner">
-<h3 class="callout-title">Is it 4× faster?</h3>
+<div id="is-it-16-faster" class="callout-inner">
+<h3 class="callout-title">Is it 16× faster?</h3>
 <div class="callout-content">
-<p>The parallel job received 4× more processors than the serial job:
-does that mean it finished in ¼ the time?</p>
+<p>The parallel job received 16× more processors than the serial job:
+does that mean it finished in 1/16th of the time?</p>
 </div>
 </div>
 </div>
@@ -939,8 +930,8 @@ does that mean it finished in ¼ the time?</p>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<p>The parallel job did take <em>less</em> time: 11 seconds is better
-than 30! But it is only a 2.7× improvement, not 4×.</p>
+<p>The parallel job did take <em>less</em> time: 3.493s is better than
+34.476s! But it is only a 9.87× improvement, not 16×.</p>
 <p>Look at the job output:</p>
 <ul><li>While “process 0” did serial work, processes 1 through 3 did their
 parallel work.</li>
@@ -1189,8 +1180,8 @@ linearly.</li>
   "url": "https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/22-parallel.html",
   "identifier": "https://NewcastleRSE-Training.github.io/hpc-intro-comet/instructor/22-parallel.html",
   "dateCreated": "2017-03-24",
-  "dateModified": "2026-02-04",
-  "datePublished": "2026-02-04"
+  "dateModified": "2026-02-05",
+  "datePublished": "2026-02-05"
 }
 
   </script><script>
