@@ -249,8 +249,6 @@ is running and when it ends:
 Use `ls` to locate the output file. The `-t` flag sorts in
 reverse-chronological order: newest first. What was the output?
 
-:::::::::::::::  spoiler
-
 ## Read the Job Output
 
 The cluster output should be written to a file in the folder you launched the
@@ -283,8 +281,6 @@ sys	0m0.002s
 Primes calculation complete
 
 ```
-
-:::::::::::::::::::::::::
 
 While MPI-aware executables can generally be run as stand-alone programs, in
 order for them to run in parallel they must use an MPI *run-time environment*,
@@ -478,17 +474,17 @@ Primes calculation complete
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Is it 4× faster?
+## Is it 16× faster?
 
-The parallel job received 4× more processors than the serial job:
-does that mean it finished in ¼ the time?
+The parallel job received 16× more processors than the serial job:
+does that mean it finished in 1/16th of the time?
 
 :::::::::::::::  solution
 
 ## Solution
 
-The parallel job did take *less* time: 11 seconds is better than 30!
-But it is only a 2.7× improvement, not 4×.
+The parallel job did take *less* time: 3.493s is better than 34.476s!
+But it is only a 9.87× improvement, not 16×.
 
 Look at the job output:
 
