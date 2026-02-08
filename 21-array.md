@@ -5,6 +5,10 @@ exercises: 5
 ---
 
 
+``` error
+Error in `yaml.load()`:
+! (files/customization/NCL_Comet_slurm/_config_options.yml) Parser error: while parsing a block mapping at line 25, column 3 did not find expected key at line 50, column 26
+```
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
@@ -45,8 +49,8 @@ wget https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro/refs/head
 write a small file to test our script
 
 ```bash
-[user@cometlogin01(comet) ~] nano test-data.txt
-[user@cometlogin01(comet) ~] cat test-data.txt
+[yourUsername@login1 ~]$ nano test-data.txt
+[yourUsername@login1 ~]$ cat test-data.txt
 ```
 
 ```bash
@@ -194,13 +198,13 @@ Write a batch script to call the word-freq.sh as an array job with 4 parallel jo
 
 
 
-#SBATCH --partition=short_free
+#SBATCH -pshort_free
 #SBATCH --account=comet_training
-#SBATCH --job-name=makefreq
-#SBATCH --nodes=1
-#SBATCH --tasks=4
+#SBATCH -Jmakefreq
+#SBATCH 1
+#SBATCH 4
 #SBATCH --array=1-4
-#SBATCH --cpus-per-task=1
+#SBATCH 1
 
 # Do a word frequency analysis of each of the following
 # data sets simultaneously:

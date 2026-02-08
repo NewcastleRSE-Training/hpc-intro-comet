@@ -5,6 +5,10 @@ exercises: 15
 ---
 
 
+``` error
+Error in `yaml.load()`:
+! (files/customization/NCL_Comet_slurm/_config_options.yml) Parser error: while parsing a block mapping at line 25, column 3 did not find expected key at line 50, column 26
+```
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
@@ -77,30 +81,10 @@ you are using.
 To see available software modules, use `module avail`:
 
 
-```bash
-[user@cometlogin01(comet) ~] module avail | less
+``` error
+Error in `snippets()`:
+! snippets() called before configuration was loaded.
 ```
-
-```output
------------------------------------------------------------------------------------------- /opt/slurm/modules/el9 -------------------------------------------------------------------------------------------
-   nvidia-cuda/12.1.1    pmix/2.2.5    pmix/3.2.5    pmix/4.2.9    pmix/5.0.3 (D)    slurm/24.05.3 (S,L)
-
------------------------------------------------------------------------------------- /opt/software/easybuild/modules/all ------------------------------------------------------------------------------------
-   AFNI/24.0.02-foss-2023a                               M4/1.4.19-GCCcore-11.2.0                          XZ/5.4.5-GCCcore-13.3.0                           libgd/2.3.3-GCCcore-12.3.0
-   AOCC-TC/5.0.0-GCCcore-14.2.0                          M4/1.4.19-GCCcore-11.3.0                          XZ/5.6.3-GCCcore-14.2.0                    (D)    libgd/2.3.3-GCCcore-13.3.0                 (D)
-   AOCC/4.2.0-GCCcore-13.3.0                             M4/1.4.19-GCCcore-12.2.0                          Xvfb/21.1.8-GCCcore-12.3.0                        libgit2/1.7.1-GCCcore-12.3.0
-   AOCC/5.0.0-GCCcore-14.2.0                             M4/1.4.19-GCCcore-12.3.0                          Yasm/1.3.0-GCCcore-12.3.0                         libgit2/1.8.1-GCCcore-13.3.0               (D)
-   ATK/2.38.0-GCCcore-12.3.0                             M4/1.4.19-GCCcore-13.2.0                          Yasm/1.3.0-GCCcore-13.2.0                  (D)    libglvnd/1.3.3-GCCcore-10.3.0
-   Abseil/20230125.3-GCCcore-12.3.0                      M4/1.4.19-GCCcore-13.3.0                          Z3/4.13.0-GCCcore-13.2.0                          libglvnd/1.6.0-GCCcore-12.3.0
-   Abseil/20240116.1-GCCcore-13.2.0            (D)       M4/1.4.19-GCCcore-14.2.0                          Z3/4.13.0-GCCcore-13.3.0                   (D)    libglvnd/1.7.0-GCCcore-13.2.0
-   Archive-Zip/1.68-GCCcore-13.3.0             (D)       M4/1.4.19                                  (D)    ZeroMQ/4.3.5-GCCcore-13.3.0                (D)    libglvnd/1.7.0-GCCcore-13.3.0              (D)
-
-[removed most of the output here for clarity]
-```
-
-Use `module spider` to find all possible modules and extensions.
-Use `module keyword key1 key2 ...` to search for all possible modules matching
-any of the "keys".
 
 Note that piping the output through `less` allows us to search within the output using the <kbd>/</kbd> key.
 
@@ -111,7 +95,7 @@ loaded in your environment. If you have no modules loaded, you will see a
 message telling you so.
 
 ```bash
-[user@cometlogin01(comet) ~] module list
+[yourUsername@login1 ~]$ module list
 ```
 
 ```output
@@ -128,51 +112,21 @@ programs the same way that Bash does, so we can use it to tell us
 where a particular piece of software is stored.
 
 ```bash
-[user@cometlogin01(comet) ~] which python3
+[yourUsername@login1 ~]$ which python3
 ```
 
 
-If the `python3` command was unavailable, we would see output like
-
-```output
-/usr/bin/which: no python3 in (/cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin:/opt/software/slurm/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/home/user/.local/bin:/home/user/bin)
+``` error
+Error in `snippets()`:
+! snippets() called before configuration was loaded.
 ```
-
-Note that this wall of text is really a list, with values separated
-by the `:` character. The output is telling us that the `which` command
-searched the following directories for `python3`, without success:
-
-```output
-/cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin
-/opt/software/slurm/bin
-/usr/local/bin
-/usr/bin
-/usr/local/sbin
-/usr/sbin
-/opt/puppetlabs/bin
-/home/user/.local/bin
-/home/user/bin
-```
-
-However, in our case we do have an existing `python3` available so we see
-
-```output
-/cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin/python3
-```
-
-We need a different Python than the system provided one though, so let us load
-a module to access it.
 
 We can load the `python3` command with `module load`:
 
 
-```bash
-[user@cometlogin01(comet) ~] module load Python
-[user@cometlogin01(comet) ~] which python3
-```
-
-```output
-/usr/bin/python3
+``` error
+Error in `snippets()`:
+! snippets() called before configuration was loaded.
 ```
 
 So, what just happened?
@@ -185,7 +139,7 @@ before giving up and telling us it can't find it. As with all environment
 variables we can print it out using `echo`.
 
 ```bash
-[user@cometlogin01(comet) ~] echo $PATH
+[yourUsername@login1 ~]$ echo $PATH
 ```
 
 ```output
@@ -199,14 +153,9 @@ ran the `module load` command, it added a directory to the beginning of our
 `$PATH` -- or "prepended to PATH". Let's examine what's there:
 
 
-```bash
-[user@cometlogin01(comet) ~] ls ls /opt/software/manual/apps/Python/3.14.0/bin
-
-```
-
-```output
-idle3     pip3     pydoc3     python3     python3.14-config
-idle3.14  pip3.14  pydoc3.14  python3.14  python3-config
+``` error
+Error in `snippets()`:
+! snippets() called before configuration was loaded.
 ```
 
 Taking this to its conclusion, `module load` will add software to your `$PATH`.
@@ -215,69 +164,10 @@ It "loads" software. A special note on this - depending on which version of the
 required software dependencies.
 
 
-To demonstrate, let's use `module list`. `module list` shows all loaded
-software modules.
-
-```bash
-[user@cometlogin01(comet) ~] module list
+``` error
+Error in `snippets()`:
+! snippets() called before configuration was loaded.
 ```
-
-```output
-Currently Loaded Modules:
-  1) slurm/24.05.3 (S)   2) lmod (S)   3) Python/3.14.0
-
-  Where:
-   S:  Module is Sticky, requires --force to unload or purge
-```
-
-```bash
-[user@cometlogin01(comet) ~] module load GROMACS
-[user@cometlogin01(comet) ~] module list
-```
-
-```output
-Currently Loaded Modules:
-  1) slurm/24.05.3 (S)   3) Python/3.14.0   5) GROMACS/2025.2
-  2) lmod          (S)   4) GCC/14.3.0
-
-  Where:
-   S:  Module is Sticky, requires --force to unload or purge
-```
-
-So in this case, loading the `GROMACS` module (a bioinformatics software
-package), also loaded `GCC/14.3.0`.
-Let's try unloading the
-`GROMACS` package.
-
-```bash
-[user@cometlogin01(comet) ~] module unload GROMACS
-[user@cometlogin01(comet) ~] module list
-```
-
-```output
-Currently Loaded Modules:
-  1) slurm/24.05.3 (S)   2) lmod (S)   3) Python/3.14.0
-
-  Where:
-   S:  Module is Sticky, requires --force to unload or purge
-```
-So using `module unload` "un-loads" a module, and depending on how a site is
-configured it may also unload all of the dependencies (in our case it does
-not). If we wanted to unload everything at once, we could run `module purge`
-(unloads everything).
-
-```bash
-[user@cometlogin01(comet) ~] module purge
-[user@cometlogin01(comet) ~] module list
-```
-
-```output
-No modules loaded
-```
-
-Note that `module purge` is informative. It will also let us know if a default
-set of "sticky" packages cannot be unloaded (and how to actually unload these
-if we truly so desired).
 
 Note that this module loading process happens principally through
 the manipulation of environment variables like `$PATH`. There
@@ -305,30 +195,10 @@ Let's examine the output of `module avail` more closely, using the pager since
 there may be reams of output:
 
 
-```bash
-[user@cometlogin01(comet) ~] module avail | less
+``` error
+Error in `snippets()`:
+! snippets() called before configuration was loaded.
 ```
-
-```output
------------------------------------------------------------------------------------------- /opt/slurm/modules/el9 -------------------------------------------------------------------------------------------
-   nvidia-cuda/12.1.1    pmix/2.2.5    pmix/3.2.5    pmix/4.2.9    pmix/5.0.3 (D)    slurm/24.05.3 (S,L)
-
------------------------------------------------------------------------------------- /opt/software/easybuild/modules/all ------------------------------------------------------------------------------------
-   AFNI/24.0.02-foss-2023a                               M4/1.4.19-GCCcore-11.2.0                          XZ/5.4.5-GCCcore-13.3.0                           libgd/2.3.3-GCCcore-12.3.0
-   AOCC-TC/5.0.0-GCCcore-14.2.0                          M4/1.4.19-GCCcore-11.3.0                          XZ/5.6.3-GCCcore-14.2.0                    (D)    libgd/2.3.3-GCCcore-13.3.0                 (D)
-   AOCC/4.2.0-GCCcore-13.3.0                             M4/1.4.19-GCCcore-12.2.0                          Xvfb/21.1.8-GCCcore-12.3.0                        libgit2/1.7.1-GCCcore-12.3.0
-   AOCC/5.0.0-GCCcore-14.2.0                             M4/1.4.19-GCCcore-12.3.0                          Yasm/1.3.0-GCCcore-12.3.0                         libgit2/1.8.1-GCCcore-13.3.0               (D)
-   ATK/2.38.0-GCCcore-12.3.0                             M4/1.4.19-GCCcore-13.2.0                          Yasm/1.3.0-GCCcore-13.2.0                  (D)    libglvnd/1.3.3-GCCcore-10.3.0
-   Abseil/20230125.3-GCCcore-12.3.0                      M4/1.4.19-GCCcore-13.3.0                          Z3/4.13.0-GCCcore-13.2.0                          libglvnd/1.6.0-GCCcore-12.3.0
-   Abseil/20240116.1-GCCcore-13.2.0            (D)       M4/1.4.19-GCCcore-14.2.0                          Z3/4.13.0-GCCcore-13.3.0                   (D)    libglvnd/1.7.0-GCCcore-13.2.0
-   Archive-Zip/1.68-GCCcore-13.3.0             (D)       M4/1.4.19                                  (D)    ZeroMQ/4.3.5-GCCcore-13.3.0                (D)    libglvnd/1.7.0-GCCcore-13.3.0              (D)
-
-[removed most of the output here for clarity]
-```
-
-Use `module spider` to find all possible modules and extensions.
-Use `module keyword key1 key2 ...` to search for all possible modules matching
-any of the "keys".
 
 If the software your Slurm script runs requires on a specific version
 of a dependency, make sure you use the full name of the module, rather
@@ -349,8 +219,8 @@ compute node).
 ## Solution
 
 ```bash
-[user@cometlogin01(comet) ~] nano python-module.sh
-[user@cometlogin01(comet) ~] cat python-module.sh
+[yourUsername@login1 ~]$ nano python-module.sh
+[yourUsername@login1 ~]$ cat python-module.sh
 ```
 
 ```output
@@ -364,7 +234,7 @@ python3 --version
 ```
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch --partition=short_free --account=comet_training python-module.sh
+[yourUsername@login1 ~]$ sbatch  python-module.sh
 ```
 
 :::::::::::::::::::::::::
