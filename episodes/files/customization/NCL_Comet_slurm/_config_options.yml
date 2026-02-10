@@ -47,7 +47,7 @@ sched:
   hist: "sacct -u user"
   hist_filter: ""
   partition: "short_free"
-  reservation: "shortqos"WS
+  reservation: "shortqos"
   qos: "short"
   budget: "comet_training"
   project: ""
