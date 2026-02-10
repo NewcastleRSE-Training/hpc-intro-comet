@@ -395,12 +395,6 @@
 
         
 
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `yaml.load()`:
-! (files/customization/NCL_Comet_slurm/_config_options.yml) Parser error: while parsing a block mapping at line 25, column 3 did not find expected key at line 50, column 26</code></pre>
-</div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
 <div class="row g-0">
@@ -455,46 +449,46 @@ one set of scripts to which you supply a list of files. Slurm will
 automatically distribute the jobs across available nodes. If any of the
 jobs fail you can easily restart the jobs to execute only on the files
 that failed.</p>
-<div class="codewrapper sourceCode" id="cb2">
+<div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="bu">cd</span> training directory</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">mkdir</span> username</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="bu">cd</span> username</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="bu">cd</span> training directory</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">mkdir</span> username</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="bu">cd</span> username</span></code></pre>
 </div>
 <p>Download the word frequency script</p>
 <pre><code>wget https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro/refs/heads/main/episodes/files/word-freq.sh
 </code></pre>
 <p>write a small file to test our script</p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> nano test-data.txt</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cat test-data.txt</span></code></pre>
+</div>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~]$ nano test-data.txt</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~]$ cat test-data.txt</span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb5">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">This</span> is a small file <span class="at">-</span> it will be very useful for trying out our script.</span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="ex">Some</span> words are repeated in this file</span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="ex">-</span> we can look for repeated words</span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="ex">and</span> count them <span class="er">(</span><span class="ex">to</span> see which words are repeated most often<span class="kw">)</span><span class="bu">.</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">This</span> is a small file <span class="at">-</span> it will be very useful for trying out our script.</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="ex">Some</span> words are repeated in this file</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="ex">-</span> we can look for repeated words</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="ex">and</span> count them <span class="er">(</span><span class="ex">to</span> see which words are repeated most often<span class="kw">)</span><span class="bu">.</span></span></code></pre>
 </div>
 <p>To test the script we will run it on the login node. Remember, never
 do this with resource intensive script. You could even run the script on
 your laptop or desktop if it uses Linux or Mac. This specific script
 will not work on Windows as not all the commands in the script are
 available on the Windows operating system.</p>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">bash</span> word-freq.sh test-data.txt</span></code></pre>
+</div>
+<p>To the results, type the output of the script to screen:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">bash</span> word-freq.sh test-data.txt</span></code></pre>
-</div>
-<p>To the results, type the output of the script to screen:</p>
-<div class="codewrapper sourceCode" id="cb7">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">cat</span> analyzed_test-data.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">cat</span> analyzed_test-data.txt</span></code></pre>
 </div>
 <p>You should get something like this:</p>
 <pre><code>      1 a
@@ -533,21 +527,21 @@ available on the Windows operating system.</p>
 write a script that can be submitted to Slurm. Using <code>nano</code>,
 create a script called <code>job_single_word-freq.sh</code> containing
 the following:</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co">#SBATCH --partition=short_free</span></span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co">#SBATCH --account=comet_training</span></span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co">#SBATCH --job-name=word-freq_single-test1</span></span>
-<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co">#SBATCH --nodes=1</span></span>
-<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="co">#SBATCH --tasks=1</span></span>
-<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
-<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a></span>
-<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Starting word frequency script"</span></span>
-<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="fu">bash</span> word-freq.sh test-data.txt</span>
-<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Finished word frequency script"</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co">#SBATCH --partition=short_free</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co">#SBATCH --account=comet_training</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co">#SBATCH --job-name=word-freq_single-test1</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="co">#SBATCH --nodes=1</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co">#SBATCH --tasks=1</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Starting word frequency script"</span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="fu">bash</span> word-freq.sh test-data.txt</span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Finished word frequency script"</span></span></code></pre>
 </div>
 <div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
@@ -580,10 +574,10 @@ the following:</p>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">sbatch</span> job_single_word-freq.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">sbatch</span> job_single_word-freq.sh</span></code></pre>
 </div>
 </div>
 </div>
@@ -635,21 +629,21 @@ to use the first of the four data files in stead of
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="co">#SBATCH --partition=short_free</span></span>
-<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="co">#SBATCH --account=comet_training</span></span>
-<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="co">#SBATCH --job-name=wordfreq</span></span>
-<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="co">#SBATCH --nodes=1</span></span>
-<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a><span class="co">#SBATCH --tasks=1</span></span>
-<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
-<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a></span>
-<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Starting word frequency script"</span></span>
-<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a><span class="fu">bash</span> word-freq.sh data.1</span>
-<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Finished word frequency script"</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="co">#SBATCH --partition=short_free</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co">#SBATCH --account=comet_training</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="co">#SBATCH --job-name=wordfreq</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="co">#SBATCH --nodes=1</span></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="co">#SBATCH --tasks=1</span></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Starting word frequency script"</span></span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="fu">bash</span> word-freq.sh data.1</span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Finished word frequency script"</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -680,34 +674,34 @@ variable called <code>${SLURM_ARRAY_TASK_ID}</code>.</p>
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="co">#SBATCH -pshort_free</span></span>
-<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="co">#SBATCH --account=comet_training</span></span>
-<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="co">#SBATCH -Jmakefreq</span></span>
-<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="co">#SBATCH 1</span></span>
-<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="co">#SBATCH 4</span></span>
-<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a><span class="co">#SBATCH --array=1-4</span></span>
-<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="co">#SBATCH 1</span></span>
-<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a></span>
-<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a><span class="co"># Do a word frequency analysis of each of the following</span></span>
-<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="co"># data sets simultaneously:</span></span>
-<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a><span class="co"># data.1 - The collected works of Shakespeare</span></span>
-<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a><span class="co"># data.2 - Geoffrey Chaucers Cantebury Tales </span></span>
-<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a><span class="co"># data.3 - Moby Dick by Herman Melville</span></span>
-<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a><span class="co"># data.4 - Homers Odyssey</span></span>
-<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb12-20"><a href="#cb12-20" tabindex="-1"></a><span class="co"># We should be able to process all four data sets in the same</span></span>
-<span id="cb12-21"><a href="#cb12-21" tabindex="-1"></a><span class="co"># time it took to process just the first.</span></span>
-<span id="cb12-22"><a href="#cb12-22" tabindex="-1"></a></span>
-<span id="cb12-23"><a href="#cb12-23" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Starting word frequency script"</span></span>
-<span id="cb12-24"><a href="#cb12-24" tabindex="-1"></a><span class="fu">bash</span> word-freq.sh data.<span class="va">${SLURM_ARRAY_TASK_ID}</span></span>
-<span id="cb12-25"><a href="#cb12-25" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Finished word frequency script"</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="co">#SBATCH --partition=short_free</span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="co">#SBATCH --account=comet_training</span></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="co">#SBATCH --job-name=makefreq</span></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a><span class="co">#SBATCH --nodes=1</span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a><span class="co">#SBATCH --tasks=4</span></span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="co">#SBATCH --array=1-4</span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a><span class="co"># Do a word frequency analysis of each of the following</span></span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a><span class="co"># data sets simultaneously:</span></span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a><span class="co"># data.1 - The collected works of Shakespeare</span></span>
+<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a><span class="co"># data.2 - Geoffrey Chaucers Cantebury Tales </span></span>
+<span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a><span class="co"># data.3 - Moby Dick by Herman Melville</span></span>
+<span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a><span class="co"># data.4 - Homers Odyssey</span></span>
+<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb11-20"><a href="#cb11-20" tabindex="-1"></a><span class="co"># We should be able to process all four data sets in the same</span></span>
+<span id="cb11-21"><a href="#cb11-21" tabindex="-1"></a><span class="co"># time it took to process just the first.</span></span>
+<span id="cb11-22"><a href="#cb11-22" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Starting word frequency script"</span></span>
+<span id="cb11-24"><a href="#cb11-24" tabindex="-1"></a><span class="fu">bash</span> word-freq.sh data.<span class="va">${SLURM_ARRAY_TASK_ID}</span></span>
+<span id="cb11-25"><a href="#cb11-25" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Finished word frequency script"</span></span></code></pre>
 </div>
 </div>
 </div>

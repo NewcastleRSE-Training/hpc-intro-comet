@@ -404,12 +404,6 @@
 
         
 
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `yaml.load()`:
-! (files/customization/NCL_Comet_slurm/_config_options.yml) Parser error: while parsing a block mapping at line 25, column 3 did not find expected key at line 50, column 26</code></pre>
-</div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
 <div class="row g-0">
@@ -541,10 +535,10 @@ key pair <em>with</em> a strong password.</li>
 Linux<a class="anchor" aria-label="anchor" href="#ssh-keys-on-linux-mac-mobaxterm-and-windows-subsystem-for-linux"></a></h4>
 <p>Once you have opened a terminal, check for existing SSH keys and
 filenames since existing SSH keys are overwritten.</p>
-<div class="codewrapper sourceCode" id="cb2">
+<div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ls ~/.ssh/</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ls ~/.ssh/</span></code></pre>
 </div>
 <p>If <code>~/.ssh/id_ed25519</code> already exists, you will need to
 specify a different name for the new key-pair.</p>
@@ -563,10 +557,10 @@ specifies <a href="https://en.wikipedia.org/wiki/EdDSA" class="external-link">Ed
 <code>-f</code> (default is /home/user/.ssh/id_algorithm): filename
 to store your private key. The public key filename will be identical,
 with a <code>.pub</code> extension added.</li>
-</ul><div class="codewrapper sourceCode" id="cb3">
+</ul><div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ssh-keygen <span class="at">-a</span> 100 <span class="at">-f</span> ~/.ssh/id_ed25519 <span class="at">-t</span> ed25519</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ssh-keygen <span class="at">-a</span> 100 <span class="at">-f</span> ~/.ssh/id_ed25519 <span class="at">-t</span> ed25519</span></code></pre>
 </div>
 <p>When prompted, enter a strong password with the <a href="#considerations-for-ssh-key-passwords">above considerations in
 mind</a>. Note that the terminal will not appear to change while you
@@ -591,10 +585,10 @@ safe to upload to websites such as GitHub: it is meant to be seen.</li>
 <p>If key generation failed because ed25519 is not available, try using
 the older (but still strong and trustworthy) <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)" class="external-link">RSA</a>
 cryptosystem. Again, first check for an existing key:</p>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ls ~/.ssh/</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ls ~/.ssh/</span></code></pre>
 </div>
 <p>If <code>~/.ssh/id_rsa</code> already exists, you will need to
 specify choose a different name for the new key-pair. Generate it as
@@ -606,10 +600,10 @@ effect.</li>
 <li>
 <code>-o</code> (no default): use the OpenSSH key format, rather
 than PEM.</li>
-</ul><div class="codewrapper sourceCode" id="cb5">
+</ul><div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ssh-keygen <span class="at">-a</span> 100 <span class="at">-b</span> 4096 <span class="at">-f</span> ~/.ssh/id_rsa <span class="at">-o</span> <span class="at">-t</span> rsa</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ssh-keygen <span class="at">-a</span> 100 <span class="at">-b</span> 4096 <span class="at">-f</span> ~/.ssh/id_rsa <span class="at">-o</span> <span class="at">-t</span> rsa</span></code></pre>
 </div>
 <p>When prompted, enter a strong password with the <a href="#considerations-for-ssh-key-passwords">above considerations in
 mind</a>.</p>
@@ -663,10 +657,10 @@ you have to type it in again.</p>
 <div class="section level4">
 <h4 id="ssh-agents-on-linux-macos-and-windows">SSH Agents on Linux, macOS, and Windows<a class="anchor" aria-label="anchor" href="#ssh-agents-on-linux-macos-and-windows"></a></h4>
 <p>Open your terminal application and check if an agent is running:</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ssh-add <span class="at">-l</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ssh-add <span class="at">-l</span></span></code></pre>
 </div>
 <ul><li>
 <p>If you get an error like this one,</p>
@@ -676,10 +670,10 @@ you have to type it in again.</p>
 <pre class="error" tabindex="0"><code>Error connecting to agent: No such file or directory</code></pre>
 </div>
 <p>… then you need to launch the agent as follows:</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> eval <span class="va">$(</span><span class="fu">ssh-agent</span><span class="va">)</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> eval <span class="va">$(</span><span class="fu">ssh-agent</span><span class="va">)</span></span></code></pre>
 </div>
 <div id="whats-in-a-..." class="callout">
 <div class="callout-square">
@@ -695,10 +689,10 @@ seen in the UNIX Shell lesson. This is because the
 <code>ssh-agent</code> command creates opens a connection that only you
 have access to, and prints a series of shell commands that can be used
 to reach it – but <em>does not execute them!</em></p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ssh-agent</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ssh-agent</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -721,10 +715,10 @@ makes this easier.</p>
 <li><p>Otherwise, your agent is already running: don’t mess with
 it.</p></li>
 </ul><p>Add your key to the agent, with session expiration after 8 hours:</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ssh-add <span class="at">-t</span> 8h ~/.ssh/id_ed25519</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ssh-add <span class="at">-t</span> 8h ~/.ssh/id_ed25519</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -752,12 +746,12 @@ to upload your SSH public key. (Remember, it’s the one ending in
 </div>
 </section><section><h2 class="section-heading" id="log-in-to-the-cluster">Log In to the Cluster<a class="anchor" aria-label="anchor" href="#log-in-to-the-cluster"></a></h2>
 <hr class="half-width"><p>Go ahead and open your terminal or graphical SSH client, then log in
-to the cluster. Replace <code>yourUsername</code> with your username or
-the one supplied by the instructors.</p>
-<div class="codewrapper sourceCode" id="cb13">
+to the cluster. Replace <code>user</code> with your username or the one
+supplied by the instructors.</p>
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ssh yourUsername@cluster.hpc-carpentry.org</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ssh user@comet.ncl.ac.uk</span></code></pre>
 </div>
 <p>You may be asked for your password. Watch out: the characters you
 type after the password prompt are not displayed on the screen. Normal
@@ -778,7 +772,7 @@ convention:</p>
 <code>[you@laptop:~]$</code> when the command is to be entered on a
 terminal connected to your local computer</li>
 <li>
-<code>[yourUsername@login1 ~]$</code> when the command is to be
+<code>[user@cometlogin01(comet) ~]</code> when the command is to be
 entered on a terminal connected to the remote system</li>
 <li>
 <code>$</code> when it really doesn’t matter which system the
@@ -791,35 +785,35 @@ computing cluster. So what’s really happening? What computer have we
 logged on to? The name of the current computer we are logged onto can be
 checked with the <code>hostname</code> command. (You may also notice
 that the current hostname is also part of our prompt!)</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~]$ hostname</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> hostname</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code><span><span class="va">login1</span></span></code></pre>
+<pre class="output" tabindex="0"><code><span><span class="va">cometlogin01</span></span></code></pre>
 </div>
 <p>So, we’re definitely on the remote machine. Next, let’s find out
 where we are by running <code>pwd</code> to <strong>p</strong>rint the
 <strong>w</strong>orking <strong>d</strong>irectory.</p>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~]$ pwd</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> pwd</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>/home/yourUsername</code></pre>
+<pre class="output" tabindex="0"><code>/mnt/nfs/home/user</code></pre>
 </div>
 <p>Great, we know where we are! Let’s see what’s in our current
 directory:</p>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~]$ ls</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> ls</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -831,10 +825,10 @@ with some helpful files, folders, and links (shortcuts) to space
 reserved for you on other filesystems. If they did not, your home
 directory may appear empty. To double-check, include hidden files in
 your directory listing:</p>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~]$ ls <span class="at">-a</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> ls <span class="at">-a</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -844,10 +838,10 @@ your directory listing:</p>
 </div>
 <p>In the first column, <code>.</code> is a reference to the current
 directory and <code>..</code> a reference to its parent
-(<code>/home</code>). You may or may not see the other files, or files
-like them: <code>.bashrc</code> is a shell configuration file, which you
-can edit with your preferences; and <code>.ssh</code> is a directory
-storing SSH keys and a record of authorized connections.</p>
+(<code>/mnt/nfs/home</code>). You may or may not see the other files, or
+files like them: <code>.bashrc</code> is a shell configuration file,
+which you can edit with your preferences; and <code>.ssh</code> is a
+directory storing SSH keys and a record of authorized connections.</p>
 <div class="section level3">
 <h3 id="install-your-ssh-key">Install Your SSH Key<a class="anchor" aria-label="anchor" href="#install-your-ssh-key"></a></h3>
 <div id="there-may-be-a-better-way" class="callout">
@@ -871,30 +865,30 @@ should see <code>id_ed25519.pub</code> in your home directory. To
 <code>authorized_keys</code> under the <code>.ssh</code> folder.</p>
 <p>If the <code>.ssh</code> folder was not listed above, then it does
 not yet exist: create it.</p>
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~]$ mkdir ~/.ssh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> mkdir ~/.ssh</span></code></pre>
 </div>
 <p>Now, use <code>cat</code> to print your public key, but redirect the
 output, appending it to the <code>authorized_keys</code> file:</p>
-<div class="codewrapper sourceCode" id="cb23">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~]$ cat ~/id_ed25519.pub <span class="op">&gt;&gt;</span> ~/.ssh/authorized_keys</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cat ~/id_ed25519.pub <span class="op">&gt;&gt;</span> ~/.ssh/authorized_keys</span></code></pre>
 </div>
 <p>That’s all! Disconnect, then try to log back into the remote: if your
 key and agent have been configured correctly, you should not be prompted
 for the password for your SSH key.</p>
+<div class="codewrapper sourceCode" id="cb23">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> logout</span></code></pre>
+</div>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~]$ logout</span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb25">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ssh yourUsername@cluster.hpc-carpentry.org</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ssh user@comet.ncl.ac.uk</span></code></pre>
 </div>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">

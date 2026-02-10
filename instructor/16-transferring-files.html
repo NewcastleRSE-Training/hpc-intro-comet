@@ -406,12 +406,6 @@
 
         
 
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `yaml.load()`:
-! (files/customization/NCL_Comet_slurm/_config_options.yml) Parser error: while parsing a block mapping at line 25, column 3 did not find expected key at line 50, column 26</code></pre>
-</div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
 <div class="row g-0">
@@ -484,12 +478,12 @@ the above commands to save the tarball as
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb2">
+<div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> wget <span class="at">-O</span> amdahl.tar.gz https://github.com/hpc-carpentry/amdahl/tarball/main</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> curl <span class="at">-o</span> amdahl.tar.gz <span class="at">-L</span> https://github.com/hpc-carpentry/amdahl/tarball/main</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> wget <span class="at">-O</span> amdahl.tar.gz https://github.com/hpc-carpentry/amdahl/tarball/main</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> curl <span class="at">-o</span> amdahl.tar.gz <span class="at">-L</span> https://github.com/hpc-carpentry/amdahl/tarball/main</span></code></pre>
 </div>
 <p>The <code>-L</code> option to <code>curl</code> tells it to follow
 URL redirects (which <code>wget</code> does by default).</p>
@@ -499,10 +493,10 @@ URL redirects (which <code>wget</code> does by default).</p>
 </div>
 <p>After downloading the file, use <code>ls</code> to see it in your
 working directory:</p>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ls</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ls</span></code></pre>
 </div>
 </section><section><h2 class="section-heading" id="archiving-files">Archiving Files<a class="anchor" aria-label="anchor" href="#archiving-files"></a></h2>
 <hr class="half-width"><p>One of the biggest challenges we often face when transferring data
@@ -534,23 +528,23 @@ concatenate the two flags: writing <code>-t -f</code> is interchangeable
 with writing <code>-tf</code> together. However, the argument following
 <code>-f</code> must be a filename, so writing <code>-ft</code> will
 <em>not</em> work.</p>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> tar <span class="at">-tf</span> amdahl.tar.gz</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/</span></span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/.github/</span></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/.github/workflows/</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/.github/workflows/python-publish.yml</span></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/.gitignore</span></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/LICENSE</span></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/README.md</span></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/amdahl/</span></span>
-<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/amdahl/__init__.py</span></span>
-<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/amdahl/__main__.py</span></span>
-<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/amdahl/amdahl.py</span></span>
-<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/requirements.txt</span></span>
-<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/setup.py</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> tar <span class="at">-tf</span> amdahl.tar.gz</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/.github/</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/.github/workflows/</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/.github/workflows/python-publish.yml</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/.gitignore</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/LICENSE</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/README.md</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/amdahl/</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/amdahl/__init__.py</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/amdahl/__main__.py</span></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/amdahl/amdahl.py</span></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/requirements.txt</span></span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a><span class="ex">hpc-carpentry-amdahl-46c9b4b/setup.py</span></span></code></pre>
 </div>
 <p>This example output shows a folder which contains a few files, where
 <code>46c9b4b</code> is an 8-character <a href="https://swcarpentry.github.io/git-novice/" class="external-link">git</a> commit hash
@@ -575,10 +569,10 @@ common flags:</p>
 <div class="callout-content">
 <p>Using the flags above, unpack the source code tarball into a new
 directory named “amdahl” using <code>tar</code>.</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> tar <span class="at">-xvzf</span> amdahl.tar.gz</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> tar <span class="at">-xvzf</span> amdahl.tar.gz</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -607,31 +601,31 @@ extract.</p>
 </div>
 <p>The folder has an unfortunate name, so let’s change that to something
 more convenient.</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> mv hpc-carpentry-amdahl-46c9b4b amdahl</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> mv hpc-carpentry-amdahl-46c9b4b amdahl</span></code></pre>
 </div>
 <p>Check the size of the extracted directory and compare to the
 compressed file size, using <code>du</code> for “<strong>d</strong>isk
 <strong>u</strong>sage”.</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> du <span class="at">-sh</span> amdahl.tar.gz</span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="ex">8.0K</span>     amdahl.tar.gz</span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> du <span class="at">-sh</span> amdahl</span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="ex">48K</span>    amdahl</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> du <span class="at">-sh</span> amdahl.tar.gz</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="ex">8.0K</span>     amdahl.tar.gz</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> du <span class="at">-sh</span> amdahl</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="ex">48K</span>    amdahl</span></code></pre>
 </div>
 <p>Text files (including Python source code) compress nicely: the
 “tarball” is one-sixth the total size of the raw data!</p>
 <p>If you want to reverse the process – compressing raw data instead of
 extracting it – set a <code>c</code> flag instead of <code>x</code>, set
 the archive filename, then provide a directory to compress:</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> tar <span class="at">-cvzf</span> compressed_code.tar.gz amdahl</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> tar <span class="at">-cvzf</span> compressed_code.tar.gz amdahl</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -694,10 +688,10 @@ new users, but we’ll break it down. The <code>scp</code> command is a
 relative of the <code>ssh</code> command we used to access the system,
 and can use the same public-key authentication mechanism.</p>
 <p>To <em>upload to</em> another computer, the template command is</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> scp local_file yourUsername@cluster.hpc-carpentry.org:remote_destination</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> scp local_file user@comet.ncl.ac.uk:remote_destination</span></code></pre>
 </div>
 <p>in which <code>@</code> and <code>:</code> are field separators and
 <code>remote_destination</code> is a path relative to your remote home
@@ -713,19 +707,19 @@ overwritten with the contents of <code>local_file</code>; if it does not
 exist, it is assumed to be a destination filename for
 <code>local_file</code>.</p>
 <p>Upload the lesson material to your remote home directory like so:</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> scp amdahl.tar.gz yourUsername@cluster.hpc-carpentry.org:</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> scp amdahl.tar.gz user@comet.ncl.ac.uk:</span></code></pre>
 </div>
-<div id="why-not-download-on-hpc-carpentrys-cloud-cluster-directly" class="callout challenge">
+<div id="why-not-download-on-introduction-to-hpc-for-comet-directly" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="why-not-download-on-hpc-carpentrys-cloud-cluster-directly" class="callout-inner">
-<h3 class="callout-title">Why Not Download on HPC Carpentry’s Cloud
-Cluster Directly?</h3>
+<div id="why-not-download-on-introduction-to-hpc-for-comet-directly" class="callout-inner">
+<h3 class="callout-title">Why Not Download on Introduction to HPC for
+Comet Directly?</h3>
 <div class="callout-content">
 <p>Most computer clusters are protected from the open internet by a
 <em>firewall</em>. For enhanced security, some are configured to allow
@@ -745,26 +739,26 @@ that’s OK!</p>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ssh yourUsername@cluster.hpc-carpentry.org</span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~]$ wget <span class="at">-O</span> amdahl.tar.gz https://github.com/hpc-carpentry/amdahl/tarball/main</span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~]$ curl <span class="at">-o</span> amdahl.tar.gz https://github.com/hpc-carpentry/amdahl/tarball/main</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ssh user@comet.ncl.ac.uk</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> wget <span class="at">-O</span> amdahl.tar.gz https://github.com/hpc-carpentry/amdahl/tarball/main</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> curl <span class="at">-o</span> amdahl.tar.gz https://github.com/hpc-carpentry/amdahl/tarball/main</span></code></pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div id="why-not-download-on-hpc-carpentrys-cloud-cluster-directly" class="callout discussion">
+<div id="why-not-download-on-introduction-to-hpc-for-comet-directly" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <span class="callout-header">Discussion</span>
-<div id="why-not-download-on-hpc-carpentrys-cloud-cluster-directly" class="callout-inner">
-<h3 class="callout-title">Why Not Download on HPC Carpentry’s Cloud
-Cluster Directly?<em> (continued)</em>
+<div id="why-not-download-on-introduction-to-hpc-for-comet-directly" class="callout-inner">
+<h3 class="callout-title">Why Not Download on Introduction to HPC for
+Comet Directly?<em> (continued)</em>
 </h3>
 <div class="callout-content">
 <p>Did it work? If not, what does the terminal output tell you about
@@ -777,10 +771,10 @@ what happened?</p>
 “<strong>r</strong>ecursive”: copy the item specified, and every item
 below it, and every item below those… until it reaches the bottom of the
 directory tree rooted at the folder name you provided.</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> scp <span class="at">-r</span> amdahl yourUsername@cluster.hpc-carpentry.org:</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> scp <span class="at">-r</span> amdahl user@comet.ncl.ac.uk:</span></code></pre>
 </div>
 <div id="caution" class="callout">
 <div class="callout-square">
@@ -834,10 +828,10 @@ useful for transferring large and/or many files and for synchronizing
 folder contents between computers.</p>
 <p>The syntax is similar to <code>scp</code>. To transfer <em>to</em>
 another computer with commonly used options:</p>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">-avP</span> amdahl.tar.gz yourUsername@cluster.hpc-carpentry.org:</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">-avP</span> amdahl.tar.gz user@comet.ncl.ac.uk:</span></code></pre>
 </div>
 <p>The options are:</p>
 <ul><li>
@@ -852,10 +846,10 @@ help monitor the transfer</li>
 files in case of an interruption and also displays the progress of the
 transfer.</li>
 </ul><p>To recursively copy a directory, we can use the same options:</p>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">-avP</span> amdahl yourUsername@cluster.hpc-carpentry.org:~/</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">-avP</span> amdahl user@comet.ncl.ac.uk:~/</span></code></pre>
 </div>
 <p>As written, this will place the local directory and its contents
 under your home directory on the remote system. If a trailing slash is
@@ -863,10 +857,10 @@ added to the source, a new directory corresponding to the transferred
 directory will not be created, and the contents of the source directory
 will be copied directly into the destination directory.</p>
 <p>To download a file, we simply change the source and destination:</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">-avP</span> yourUsername@cluster.hpc-carpentry.org:amdahl ./</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">-avP</span> user@comet.ncl.ac.uk:amdahl ./</span></code></pre>
 </div>
 </div>
 </div>
@@ -888,10 +882,10 @@ page if you’re unsure.</p>
 <div class="callout-content">
 <p>Say we have to connect <code>rsync</code> through port 768 instead of
 22. How would we modify this command?</p>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> rsync amdahl.tar.gz yourUsername@cluster.hpc-carpentry.org:</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> rsync amdahl.tar.gz user@comet.ncl.ac.uk:</span></code></pre>
 </div>
 <p><em>Hint:</em> check the <code>man</code> page or “help” for
 <code>rsync</code>.</p>
@@ -905,14 +899,14 @@ page if you’re unsure.</p>
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb19">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> man rsync</span>
-<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">--help</span> <span class="kw">|</span> <span class="fu">grep</span> port</span>
-<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a>     <span class="ex">--port=PORT</span>             specify double-colon alternate port number</span>
-<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="ex">See</span> http://rsync.samba.org/ for updates, bug reports, and answers</span>
-<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">--port</span><span class="op">=</span>768 amdahl.tar.gz yourUsername@cluster.hpc-carpentry.org:</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> man rsync</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">--help</span> <span class="kw">|</span> <span class="fu">grep</span> port</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>     <span class="ex">--port=PORT</span>             specify double-colon alternate port number</span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="ex">See</span> http://rsync.samba.org/ for updates, bug reports, and answers</span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">--port</span><span class="op">=</span>768 amdahl.tar.gz user@comet.ncl.ac.uk:</span></code></pre>
 </div>
 <p>(Note that this command will fail, as the correct port in this case
 is the default: 22.)</p>
@@ -933,7 +927,7 @@ connect to the cluster, your cluster files will appear on the right hand
 side.</p>
 <p>To connect to the cluster, we’ll just need to enter our credentials
 at the top of the screen:</p>
-<ul><li>Host: <code>sftp://cluster.hpc-carpentry.org</code>
+<ul><li>Host: <code>sftp://comet.ncl.ac.uk</code>
 </li>
 <li>User: Your cluster username</li>
 <li>Password: Your cluster password</li>

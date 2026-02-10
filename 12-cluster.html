@@ -405,12 +405,6 @@
 
         
 
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `yaml.load()`:
-! (files/customization/NCL_Comet_slurm/_config_options.yml) Parser error: while parsing a block mapping at line 25, column 3 did not find expected key at line 50, column 26</code></pre>
-</div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
 <div class="row g-0">
@@ -499,16 +493,16 @@ the terminal, you’ll write something like
 separate the two parts of a single argument.</p>
 <p>Go ahead and open your terminal or graphical SSH client, then log in
 to the cluster using your username and the remote computer you can reach
-from the outside world, cluster.hpc-carpentry.org.</p>
-<div class="codewrapper sourceCode" id="cb2">
+from the outside world, comet.ncl.ac.uk.</p>
+<div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ssh yourUsername@cluster.hpc-carpentry.org</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ssh user@comet.ncl.ac.uk</span></code></pre>
 </div>
-<p>Remember to replace <code>yourUsername</code> with your username or
-the one supplied by the instructors. You may be asked for your password.
-Watch out: the characters you type after the password prompt are not
-displayed on the screen. Normal output will resume once you press
+<p>Remember to replace <code>user</code> with your username or the one
+supplied by the instructors. You may be asked for your password. Watch
+out: the characters you type after the password prompt are not displayed
+on the screen. Normal output will resume once you press
 <code>Enter</code>.</p>
 </section><section><h2 class="section-heading" id="where-are-we">Where Are We?<a class="anchor" aria-label="anchor" href="#where-are-we"></a></h2>
 <hr class="half-width"><p>Very often, many users are tempted to think of a high-performance
@@ -518,15 +512,15 @@ computing cluster. So what’s really happening? What computer have we
 logged on to? The name of the current computer we are logged onto can be
 checked with the <code>hostname</code> command. (You may also notice
 that the current hostname is also part of our prompt!)</p>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~]$ hostname</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> hostname</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code><span><span class="va">login1</span></span></code></pre>
+<pre class="output" tabindex="0"><code><span><span class="va">cometlogin01</span></span></code></pre>
 </div>
 <div id="whats-in-your-home-directory" class="callout challenge">
 <div class="callout-square">
@@ -553,26 +547,26 @@ neighbors.</p>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<p>The deepest layer should differ: <code>yourUsername</code> is
-uniquely yours. Are there differences in the path at higher levels?</p>
+<p>The deepest layer should differ: <code>user</code> is uniquely yours.
+Are there differences in the path at higher levels?</p>
 <p>If both of you have empty directories, they will look identical. If
 you or your neighbor has used the system before, there may be
 differences. What are you working on?</p>
 <p>Use <code>pwd</code> to <strong>p</strong>rint the
 <strong>w</strong>orking <strong>d</strong>irectory path:</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~]$ pwd</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> pwd</span></code></pre>
 </div>
 <p>You can run <code>ls</code> to <strong>l</strong>i<strong>s</strong>t
 the directory contents, though it’s possible nothing will show up (if no
 files have been provided). To be sure, use the <code>-a</code> flag to
 show hidden files, too.</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~]$ ls <span class="at">-a</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> ls <span class="at">-a</span></span></code></pre>
 </div>
 <p>At a minimum, this will show the current directory as <code>.</code>,
 and the parent directory as <code>..</code>.</p>
@@ -625,16 +619,18 @@ scheduler to submit jobs next, but for now, it can also tell us more
 information about the worker nodes.</p>
 <p>For example, we can view all of the worker nodes by running the
 command <code>sinfo</code>.</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sinfo</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sinfo</span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error in `snippets()`:
-! snippets() called before configuration was loaded.</code></pre>
+<pre class="output" tabindex="0"><code>PARTITION          AVAIL  TIMELIMIT  NODES  STATE NODELIST
+short_free            up   infinite      4   idle node[1-2],smnode[1-2]
+node                  up   infinite      2   idle node[1-2]
+smnode                up   infinite      2   idle smnode[1-2]</code></pre>
 </div>
 <p>There are also specialized machines used for managing disk storage,
 user authentication, and other infrastructure-related tasks. Although we
@@ -666,11 +662,11 @@ remote fileserver or cluster of servers.</p>
 your personal computer. Note that, if you’re logged in to the remote
 computer cluster, you need to log out first. To do so, type
 <code>Ctrl+d</code> or <code>exit</code>:</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~]$ exit</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> exit</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -687,24 +683,24 @@ graphical system monitor, like the Windows Task Manager. More detailed
 information can sometimes be found on the command line. For example,
 some of the commands used on a Linux system are:</p>
 <p>Run system utilities</p>
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> nproc <span class="at">--all</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> free <span class="at">-m</span></span></code></pre>
+</div>
+<p>Read from <code>/proc</code></p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> nproc <span class="at">--all</span></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> free <span class="at">-m</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> cat /proc/cpuinfo</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> cat /proc/meminfo</span></code></pre>
 </div>
-<p>Read from <code>/proc</code></p>
+<p>Use a system monitor</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> cat /proc/cpuinfo</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> cat /proc/meminfo</span></code></pre>
-</div>
-<p>Use a system monitor</p>
-<div class="codewrapper sourceCode" id="cb12">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> htop</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> htop</span></code></pre>
 </div>
 </div>
 </div>
@@ -730,30 +726,30 @@ node.</p>
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ssh yourUsername@cluster.hpc-carpentry.org</span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~]$ nproc <span class="at">--all</span></span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~]$ free <span class="at">-m</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ssh user@comet.ncl.ac.uk</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> nproc <span class="at">--all</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> free <span class="at">-m</span></span></code></pre>
 </div>
 <p>You can get more information about the processors using
 <code>lscpu</code>, and a lot of detail about the memory by reading the
 file <code>/proc/meminfo</code>:</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~]$ less /proc/meminfo</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> less /proc/meminfo</span></code></pre>
 </div>
 <p>You can also explore the available filesystems using <code>df</code>
 to show <strong>d</strong>isk <strong>f</strong>ree space. The
 <code>-h</code> flag renders the sizes in a human-friendly format, i.e.,
 GB instead of B. The <strong>t</strong>ype flag <code>-T</code> shows
 what kind of filesystem each resource is.</p>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~]$ df <span class="at">-Th</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> df <span class="at">-Th</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -769,7 +765,7 @@ what kind of filesystem each resource is.</p>
 <p>The local filesystems (ext, tmp, xfs, zfs) will depend on whether
 you’re on the same login node (or compute node, later on). Networked
 filesystems (beegfs, cifs, gpfs, nfs, pvfs) will be similar — but may
-include yourUsername, depending on how it is <a href="https://en.wikipedia.org/wiki/Mount_(computing)" class="external-link">mounted</a>.</p>
+include user, depending on how it is <a href="https://en.wikipedia.org/wiki/Mount_(computing)" class="external-link">mounted</a>.</p>
 </div>
 </div>
 </div>
@@ -786,11 +782,24 @@ include yourUsername, depending on how it is <a href="https://en.wikipedia.org/w
 </div>
 </div>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<div id="explore-a-worker-node" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<span class="callout-header">Discussion</span>
+<div id="explore-a-worker-node" class="callout-inner">
+<h3 class="callout-title">Explore a Worker Node</h3>
+<div class="callout-content">
+<p>Finally, let’s look at the resources available on the worker nodes
+where your jobs will actually run. Try running this command to see the
+name, CPUs and memory available on one of the worker nodes:</p>
+<div class="codewrapper sourceCode" id="cb15">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error in `snippets()`:
-! snippets() called before configuration was loaded.</code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sinfo <span class="at">-o</span> <span class="st">"%n %c %m"</span> <span class="kw">|</span> <span class="ex">column</span> <span class="at">-t</span></span></code></pre>
+</div>
+</div>
+</div>
 </div>
 <div id="compare-your-computer-the-login-node-and-the-compute-node" class="callout discussion">
 <div class="callout-square">

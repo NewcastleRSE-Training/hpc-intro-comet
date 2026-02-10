@@ -404,12 +404,6 @@
 
         
 
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `yaml.load()`:
-! (files/customization/NCL_Comet_slurm/_config_options.yml) Parser error: while parsing a block mapping at line 25, column 3 did not find expected key at line 50, column 26</code></pre>
-</div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
 <div class="row g-0">
@@ -690,18 +684,18 @@ run some tests that you can use to extrapolate how long it will take to
 transfer your data.</p>
 <p>Say you have a “data” folder containing 10,000 or so files, a healthy
 mix of small and large ASCII and binary data. Which of the following
-would be the best way to transfer them to HPC Carpentry’s Cloud
-Cluster?</p>
-<ol style="list-style-type: decimal"><li><p><code>scp -r data yourUsername@cluster.hpc-carpentry.org:~/</code></p></li>
-<li><p><code>rsync -ra data yourUsername@cluster.hpc-carpentry.org:~/</code></p></li>
-<li><p><code>rsync -raz data yourUsername@cluster.hpc-carpentry.org:~/</code></p></li>
+would be the best way to transfer them to Introduction to HPC for
+Comet?</p>
+<ol style="list-style-type: decimal"><li><p><code>scp -r data user@comet.ncl.ac.uk:~/</code></p></li>
+<li><p><code>rsync -ra data user@comet.ncl.ac.uk:~/</code></p></li>
+<li><p><code>rsync -raz data user@comet.ncl.ac.uk:~/</code></p></li>
 <li>
 <p><code>tar -cvf data.tar data;</code></p>
-<p><code>rsync -raz data.tar yourUsername@cluster.hpc-carpentry.org:~/</code></p>
+<p><code>rsync -raz data.tar user@comet.ncl.ac.uk:~/</code></p>
 </li>
 <li>
 <p><code>tar -cvzf data.tar.gz data;</code></p>
-<p><code>rsync -ra data.tar.gz yourUsername@cluster.hpc-carpentry.org:~/</code></p>
+<p><code>rsync -ra data.tar.gz user@comet.ncl.ac.uk:~/</code></p>
 </li>
 </ol></div>
 </div>
