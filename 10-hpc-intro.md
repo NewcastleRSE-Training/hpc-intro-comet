@@ -5,10 +5,6 @@ exercises: 5
 ---
 
 
-``` error
-Error in `yaml.load()`:
-! (files/customization/NCL_Comet_slurm/_config_options.yml) Parser error: while parsing a block mapping at line 25, column 3 did not find expected key at line 50, column 26
-```
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 

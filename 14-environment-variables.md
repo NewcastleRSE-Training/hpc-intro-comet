@@ -5,10 +5,6 @@ exercises: 5
 ---
 
 
-``` error
-Error in `yaml.load()`:
-! (files/customization/NCL_Comet_slurm/_config_options.yml) Parser error: while parsing a block mapping at line 25, column 3 did not find expected key at line 50, column 26
-```
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
@@ -208,8 +204,8 @@ job was submitted.
 ## Solution
 
 ```bash
-[yourUsername@login1 ~]$ nano example-job.sh
-[yourUsername@login1 ~]$ cat example-job.sh
+[user@cometlogin01(comet) ~] nano example-job.sh
+[user@cometlogin01(comet) ~] cat example-job.sh
 ```
 
 ```output

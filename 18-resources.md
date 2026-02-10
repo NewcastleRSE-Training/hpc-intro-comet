@@ -5,10 +5,6 @@ exercises: 20
 ---
 
 
-``` error
-Error in `yaml.load()`:
-! (files/customization/NCL_Comet_slurm/_config_options.yml) Parser error: while parsing a block mapping at line 25, column 3 did not find expected key at line 50, column 26
-```
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
@@ -51,7 +47,7 @@ written up guidance for getting the most out of it.
 
 A convenient way of figuring out the resources required for a job to run
 successfully is to submit a test job, and then ask the scheduler about its
-impact using `sacct -u yourUsername`. You can use this knowledge to set up the
+impact using `sacct -u user`. You can use this knowledge to set up the
 next job with a closer estimate of its load on the system. A good general rule
 is to ask the scheduler for 20% to 30% more time and memory than you expect the
 job to need. This ensures that minor fluctuations in run time or memory use
@@ -64,16 +60,25 @@ finish and free up the resources needed to match what you asked for.
 
 Since we already submitted `amdahl` to run on the cluster, we can query the
 scheduler to see how long our job took and what resources were used. We will
-use `sacct -u yourUsername` to get statistics about `parallel-job.sh`.
+use `sacct -u user` to get statistics about `parallel-job.sh`.
 
 ```bash
-[yourUsername@login1 ~]$ sacct -u yourUsername
+[user@cometlogin01(comet) ~] sacct -u user
 ```
 
 
-``` error
-Error in `snippets()`:
-! snippets() called before configuration was loaded.
+```output
+       JobID    JobName  Partition    Account  AllocCPUS      State ExitCode
+------------ ---------- ---------- ---------- ---------- ---------- --------
+7               file.sh cpubase_b+ def-spons+          1  COMPLETED      0:0
+7.batch           batch            def-spons+          1  COMPLETED      0:0
+7.extern         extern            def-spons+          1  COMPLETED      0:0
+8               file.sh cpubase_b+ def-spons+          1  COMPLETED      0:0
+8.batch           batch            def-spons+          1  COMPLETED      0:0
+8.extern         extern            def-spons+          1  COMPLETED      0:0
+9            example-j+ cpubase_b+ def-spons+          1  COMPLETED      0:0
+9.batch           batch            def-spons+          1  COMPLETED      0:0
+9.extern         extern            def-spons+          1  COMPLETED      0:0
 ```
 
 This shows all the jobs we ran today (note that there are multiple entries per
@@ -82,7 +87,7 @@ To get info about a specific job (for example, 347087), we change command
 slightly.
 
 ```bash
-[yourUsername@login1 ~]$ sacct -u yourUsername -l -j 347087
+[user@cometlogin01(comet) ~] sacct -u user -l -j 347087
 ```
 
 It will show a lot of info; in fact, every single piece of info collected on
@@ -91,7 +96,7 @@ information to `less` to make it easier to view (use the left and right arrow
 keys to scroll through fields).
 
 ```bash
-[yourUsername@login1 ~]$ sacct -u yourUsername -l -j 347087 | less -S
+[user@cometlogin01(comet) ~] sacct -u user -l -j 347087 | less -S
 ```
 
 ::::::::::::::::::::::::::::::::::::::  discussion

@@ -5,10 +5,6 @@ exercises: 10
 ---
 
 
-``` error
-Error in `yaml.load()`:
-! (files/customization/NCL_Comet_slurm/_config_options.yml) Parser error: while parsing a block mapping at line 25, column 3 did not find expected key at line 50, column 26
-```
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
@@ -317,11 +313,11 @@ Visit [https://mokey.cluster.hpc-carpentry.org](https://mokey.cluster.hpc-carpen
 ## Log In to the Cluster
 
 Go ahead and open your terminal or graphical SSH client, then log in to the
-cluster. Replace `yourUsername` with your username or the one
+cluster. Replace `user` with your username or the one
 supplied by the instructors.
 
 ```bash
-[you@laptop:~]$ ssh yourUsername@cluster.hpc-carpentry.org
+[you@laptop:~]$ ssh user@comet.ncl.ac.uk
 ```
 
 You may be asked for your password. Watch out: the characters you type after
@@ -341,7 +337,7 @@ on though so we will adopt the following convention:
 
 - `[you@laptop:~]$` when the command is to be entered on a terminal
   connected to your local computer
-- `[yourUsername@login1 ~]$` when the command is to be entered on a
+- `[user@cometlogin01(comet) ~]` when the command is to be entered on a
   terminal connected to the remote system
 - `$` when it really doesn't matter which system the terminal is connected to.
 
@@ -355,28 +351,28 @@ computer we are logged onto can be checked with the `hostname` command. (You
 may also notice that the current hostname is also part of our prompt!)
 
 ```bash
-[yourUsername@login1 ~]$ hostname
+[user@cometlogin01(comet) ~] hostname
 ```
 
 ```output
-login1
+cometlogin01
 ```
 
 So, we're definitely on the remote machine. Next, let's find out where we are
 by running `pwd` to **p**rint the **w**orking **d**irectory.
 
 ```bash
-[yourUsername@login1 ~]$ pwd
+[user@cometlogin01(comet) ~] pwd
 ```
 
 ```output
-/home/yourUsername
+/mnt/nfs/home/user
 ```
 
 Great, we know where we are! Let's see what's in our current directory:
 
 ```bash
-[yourUsername@login1 ~]$ ls
+[user@cometlogin01(comet) ~] ls
 ```
 
 ```output
@@ -389,7 +385,7 @@ other filesystems. If they did not, your home directory may appear empty. To
 double-check, include hidden files in your directory listing:
 
 ```bash
-[yourUsername@login1 ~]$ ls -a
+[user@cometlogin01(comet) ~] ls -a
 ```
 
 ```output
@@ -398,7 +394,7 @@ double-check, include hidden files in your directory listing:
 ```
 
 In the first column, `.` is a reference to the current directory and `..` a
-reference to its parent (`/home`). You may or may not see
+reference to its parent (`/mnt/nfs/home`). You may or may not see
 the other files, or files like them: `.bashrc` is a shell configuration file,
 which you can edit with your preferences; and `.ssh` is a directory storing SSH
 keys and a record of authorized connections.
@@ -423,14 +419,14 @@ If the `.ssh` folder was not listed above, then it does not yet
 exist: create it.
 
 ```bash
-[yourUsername@login1 ~]$ mkdir ~/.ssh
+[user@cometlogin01(comet) ~] mkdir ~/.ssh
 ```
 
 Now, use `cat` to print your public key, but redirect the output, appending it
 to the `authorized_keys` file:
 
 ```bash
-[yourUsername@login1 ~]$ cat ~/id_ed25519.pub >> ~/.ssh/authorized_keys
+[user@cometlogin01(comet) ~] cat ~/id_ed25519.pub >> ~/.ssh/authorized_keys
 ```
 
 That's all! Disconnect, then try to log back into the remote: if your key and
@@ -438,11 +434,11 @@ agent have been configured correctly, you should not be prompted for the
 password for your SSH key.
 
 ```bash
-[yourUsername@login1 ~]$ logout
+[user@cometlogin01(comet) ~] logout
 ```
 
 ```bash
-[you@laptop:~]$ ssh yourUsername@cluster.hpc-carpentry.org
+[you@laptop:~]$ ssh user@comet.ncl.ac.uk
 ```
 
 [gh-ssh]: https://docs.github.com/en/authentication/connecting-to-github-with-ssh
