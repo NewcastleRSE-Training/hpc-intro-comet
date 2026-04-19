@@ -141,22 +141,22 @@ Move (or copy) the binaries to your home directory
 ::::
 
 
-## Copying the programs into your local directory
+## Copying the programs into your home directory
 
 Make sure you are in your home directory. 
 
 ```bash
-`r config$local$prompt` cd ~
+`r config$remote$prompt` cd ~
 ```
 
 You will need to amend the from-directory in the instruction below if you did not
 compile the code yourself according to the above challenge:
 
 ```bash
-`r config$local$prompt` mkdir primes
-`r config$local$prompt` cd primes
-`r config$local$prompt` cp ~/HPC_Training_Example_Jobs/c/multi ~/HPC_Training_Example_Jobs/c/single_gcc .
-`r config$local$prompt` 
+`r config$remote$prompt` mkdir primes
+`r config$remote$prompt` cd primes
+`r config$remote$prompt` cp ~/HPC_Training_Example_Jobs/c/multi ~/HPC_Training_Example_Jobs/c/single_gcc .
+`r config$remote$prompt` 
 
 ```
 
