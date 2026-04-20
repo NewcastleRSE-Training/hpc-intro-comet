@@ -86,6 +86,7 @@ Only do this if pre-compiled binaries of the programs have not been made availab
 
 ### Requirements
 - GCC
+- OpenMPI
 
 ### Steps
 - Download code
@@ -101,14 +102,14 @@ If you disconnected, log back in to the cluster.
 Clone the repository
 
 ```bash
-[you@laptop:~]$ git clone git@github.com:NewcastleRSE-Training/HPC_Training_Example_Jobs.git
+[you@laptop:~]$ git clone git clone https://github.com/NewcastleRSE-Training/HPC_Training_Example_Jobs.git
 ```
 
 Compile the code.
 
 ```bash
 [you@laptop:~]$ cd HPC_Training_Example/c
-[you@laptop:~]$ module load GCC
+[you@laptop:~]$ module load GCC OpenMPI
 [you@laptop:~]$ ./compile.sh
 ```
 
@@ -137,22 +138,22 @@ Move (or copy) the binaries to your home directory
 ::::
 
 
-## Copying the programs into your local directory
+## Copying the programs into your home directory
 
 Make sure you are in your home directory. 
 
 ```bash
-[you@laptop:~]$ cd ~
+[user@cometlogin01(comet) ~] cd ~
 ```
 
 You will need to amend the from-directory in the instruction below if you did not
 compile the code yourself according to the above challenge:
 
 ```bash
-[you@laptop:~]$ mkdir primes
-[you@laptop:~]$ cd primes
-[you@laptop:~]$ cp ~/HPC_Training_Example_Jobs/c/multi ~/HPC_Training_Example_Jobs/c/single_gcc .
-[you@laptop:~]$ 
+[user@cometlogin01(comet) ~] mkdir primes
+[user@cometlogin01(comet) ~] cd primes
+[user@cometlogin01(comet) ~] cp ~/HPC_Training_Example_Jobs/c/multi ~/HPC_Training_Example_Jobs/c/single_gcc .
+[user@cometlogin01(comet) ~] 
 
 ```
 
