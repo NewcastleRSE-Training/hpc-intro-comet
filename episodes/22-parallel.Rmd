@@ -105,7 +105,7 @@ If you disconnected, log back in to the cluster.
 Clone the repository
 
 ```bash
-`r config$local$prompt` git clone git clone https://github.com/NewcastleRSE-Training/HPC_Training_Example_Jobs.git
+`r config$local$prompt` git clone https://github.com/NewcastleRSE-Training/HPC_Training_Example_Jobs.git
 ```
 
 Compile the code.
@@ -325,99 +325,12 @@ can be subdivided and run in parallel to some extent.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## How Much Does Parallel Execution Improve Performance?
-
-In theory, dividing up a perfectly parallel calculation among *n* MPI processes
-should produce a decrease in total run time by a factor of *n*.
-As we have just seen, real programs need some time for the MPI processes to
-communicate and coordinate, and some types of calculations can't be subdivided:
-they only run effectively on a single CPU.
-
-Additionally, if the MPI processes operate on different physical CPUs in the
-computer, or across multiple compute nodes, even more time is required for
-communication than it takes when all processes operate on a single CPU.
-
-In practice, it's common to evaluate the parallelism of an MPI program by
-
-- running the program across a range of CPU counts,
-- recording the execution time on each run,
-- comparing each execution time to the time when using a single CPU.
-
-Since "more is better" -- improvement is easier to interpret from increases in
-some quantity than decreases -- comparisons are made using the speedup factor
-*S*, which is calculated as the single-CPU execution time divided by the multi-CPU
-execution time. For a perfectly parallel program, a plot of the speedup *S*
-versus the number of CPUs *n* would give a straight line, *S* = *n*.
-
-Let's run one more job, so we can see how close to a straight line our `amdahl`
-code gets.
-
-```{r, echo=FALSE, results='asis'}
-snippets('parallel/eight-tasks.Rmd')
-```
-
-::::::::::::::::::::::::::::::::::::::  discussion
-
-## Non-Linear Output
-
-When we ran the job with 4 parallel workers, the serial job wrote its output
-first, then the parallel processes wrote their output, with process 0 coming
-in first and last.
-
-With 8 workers, this is not the case: since the parallel workers take less
-time than the serial work, it is hard to say which process will write its
-output first, except that it will *not* be process 0!
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-Now, let's summarize the amount of time it took each job to run:
-
-| Number of CPUs | Runtime (sec) |
-| -------------- | ------------- |
-| 1              | 30\.033        |
-| 4              | 10\.888        |
-| 8              | 7\.697         |
-
-Then, use the first row to compute speedups $S$, using Python as a command-line
-calculator and the formula
-
-$$
-S(t_{n}) = \frac{t_{1}}{t_{n}}
-$$
-
-```bash
-`r config$remote$prompt` for n in 30.033 10.888 7.697; do python3 -c "print(30.033 / $n)"; done
-```
-
-| Number of CPUs | Speedup       | Ideal |
-| -------------- | ------------- | ----- |
-| 1              | 1\.0           | 1     |
-| 4              | 2\.75          | 4     |
-| 8              | 3\.90          | 8     |
-
-The job output files have been telling us that this program is performing 85%
-of its work in parallel, leaving 15% to run in serial. This seems reasonably
-high, but our quick study of speedup shows that in order to get a 4× speedup,
-we have to use 8 or 9 processors in parallel. In real programs, the speedup
-factor is influenced by
-
-- CPU design
-- communication network between compute nodes
-- MPI library implementations
-- details of the MPI program itself
-
-Using Amdahl's Law, you can prove that with this program, it is *impossible*
-to reach 8× speedup, no matter how many processors you have on hand. Details of
-that analysis, with results to back it up, are left for the next class in the
-HPC Carpentry workshop, *HPC Workflows*.
-
 In an HPC environment, we try to reduce the execution time for all types of
 jobs, and MPI is an extremely common way to combine dozens, hundreds, or
 thousands of CPUs into solving a single problem. To learn more about
 parallelization, see the [parallel novice lesson][parallel-novice] lesson.
 
 
-[amdahl]: https://en.wikipedia.org/wiki/Amdahl\'s_law
 [parallel-novice]: https://www.hpc-carpentry.org/hpc-parallel-novice/
 
 
@@ -428,3 +341,4 @@ parallelization, see the [parallel novice lesson][parallel-novice] lesson.
 - Performance improvements from parallel execution do not scale linearly.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
+
