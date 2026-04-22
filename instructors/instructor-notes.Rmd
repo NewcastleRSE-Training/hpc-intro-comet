@@ -36,7 +36,7 @@ The following list captures terms that need to be added to this glossary. This i
 [Shared Memory](#shared-memory)  
 [Single Instruction, Multiple Data](#simd)  
 [Single Instruction, Multiple Threads](#simt)  
-[Slurm](#slurm)  
+[Simple Linux Utility for Resource Management](#slurm)  
 [Symmetric Multiprocessing](#smp)  
 [Simultaneous Multithreading](#smt)  
 [Supercomputer](#supercomputer)  
@@ -99,7 +99,7 @@ More info: [Distributed memory](https://en.wikipedia.org/wiki/Distributed_memory
 
 ### Execution Node {#execution-node}
 
-An *execution node* is a node on which a job or task is actively running within a cluster environment. 
+An **execution node** is a node on which a job or task is actively running within a cluster environment. 
 It is typically a [compute node](#compute-node) allocated by the scheduler to execute a specific workload.
 
 ### Flynn's Taxonomy {#flynns-taxonomy}
@@ -237,17 +237,17 @@ More info: [Slurm](https://en.wikipedia.org/wiki/Slurm_Workload_Manager)
 **Symmetric Multiprocessing (SMP)** involves a multiprocessor hardware and software architecture where two or more identical processors are connected to a single shared main memory with equal access to all memory and I/O devices. 
 It is controlled by a single operating system and treats all processes equally with no single processor having privileged access.
 
-More info: [Symmetric multiprocessing](https://en.wikipedia.org/wiki/Symmetric_multiprocessing)
+More info: [Symmetric Multiprocessing](https://en.wikipedia.org/wiki/Symmetric_multiprocessing)
 
-### Simultaneous multithreading (SMT) {#smt}
+### Simultaneous Multithreading (SMT) {#smt}
 
-**Simultaneous multithreading (SMT)** is a technique for improving the overall efficiency of superscalar CPUs with hardware multithreading. 
+**Simultaneous Multithreading (SMT)** is a technique for improving the overall efficiency of superscalar CPUs with hardware multithreading.
 
-More info: [Simultaneous multithreading](https://en.wikipedia.org/wiki/Simultaneous_multithreading)
+More info: [Simultaneous Multithreading](https://en.wikipedia.org/wiki/Simultaneous_multithreading)
 
 ### Supercomputer {#supercomputer}
 
-A **supercomputer** is a type of computer with a high level of performance as compared to general-purpose computers.
+A **supercomputer** is a type of computer with a high level of performance as compared to [general-purpose computers](https://en.wikipedia.org/wiki/Computer).
 
 More info: [Supercomputer](https://en.wikipedia.org/wiki/Supercomputer)
 
