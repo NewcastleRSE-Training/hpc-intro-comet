@@ -149,7 +149,7 @@ directory you have deleted by mistake). Protecting critical data from
 corruption or deletion is primarily your responsibility: keep your own backup
 copies.
 
-**V**ersion **C**ontrol **S**ystems (VCS, such as Git) often have free, cloud-based
+_**V**ersion **C**ontrol **S**ystems_ (VCS, such as Git) often have free, cloud-based
 offerings (e.g., GitHub and GitLab) that are generally used for storing source code.
 Even if you are not writing your own programs, these can be very useful for storing
 job scripts, analysis scripts and small input files.
