@@ -45,7 +45,7 @@ slurm-347087.out  serial-job.sh    LICENSE  README.md
 
 ```output
 Doing 30.000000 seconds of 'work' on 4 processors,
-which should take 12.000000 seconds with 0.800000 parallel proportion of the workload.
+ which should take 12.000000 seconds with 0.800000 parallel proportion of the workload.
 
   Hello, World! I am process 0 of 4 on `r config$remote$node`. I will do all the serial 'work' for 6.851971 seconds.
   Hello, World! I am process 2 of 4 on `r config$remote$node`. I will do parallel 'work' for 6.726753 seconds.
