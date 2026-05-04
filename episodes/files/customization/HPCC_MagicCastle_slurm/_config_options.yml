@@ -21,10 +21,9 @@ remote:
   name: "HPC Carpentry's Cloud Cluster"
   login: "cluster.hpc-carpentry.org"
   portal: "https://mokey.cluster.hpc-carpentry.org"
-  computername: "TURING"
   host: "login1"
-  hosttype: "i686"
-  processors: "4"
+  hosttype: "x86_64" # architecture/ ISA, output from `uname -m`
+  processors: "4" # `cat /proc/cpuinfo | grep processor | awk '{print $3}' | sort -nru | head -1`
   node: "smnode1"
   location: "cluster.hpc-carpentry.org"
   homedir: "/home"

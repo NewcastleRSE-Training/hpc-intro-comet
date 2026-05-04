@@ -55,7 +55,6 @@ in a typical shell session:
 ```
 
 ```output
-COMPUTERNAME=`r config$remote$computername`
 HOME=`r config$remote$home`/`r config$remote$user`
 HOSTNAME=`r config$remote$host`
 HOSTTYPE=`r config$remote$hosttype`
