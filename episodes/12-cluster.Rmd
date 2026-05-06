@@ -84,7 +84,7 @@ only required argument. If your username on the remote system differs from what
 you use locally, you must provide that as well. If your SSH client has a
 graphical front-end, such as PuTTY or MobaXterm, you will set these arguments
 before clicking "connect." From the terminal, you'll write something like `ssh
-userName@hostname`, where the "@" symbol is used to separate the two parts of a
+username@hostname`, where the "@" symbol is used to separate the two parts of a
 single argument.
 
 Go ahead and open your terminal or graphical SSH client, then log in to the
