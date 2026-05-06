@@ -58,11 +58,10 @@ in a typical shell session:
 HOME=`r config$remote$home`/`r config$remote$user`
 HOSTNAME=`r config$remote$host`
 HOSTTYPE=`r config$remote$hosttype`
-NUMBER_OF_PROCESSORS=`r config$remote$processors`
 PATH=`r config$remote$home`/`r config$remote$user`/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 PWD=`r config$remote$home`/`r config$remote$user`
 UID=1000
-USERNAME=`r config$remote$user`
+USER=`r config$remote$user`
 ...
 ```
 
