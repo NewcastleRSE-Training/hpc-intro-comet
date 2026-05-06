@@ -253,7 +253,7 @@ More info: [Supercomputer](https://en.wikipedia.org/wiki/Supercomputer)
 
 ### Worker Node {#worker-node}
 
-A **worker node** is a node in a cluster that performs assigned computational tasks as part of a distributed system, typically under the coordination of a scheduler or master node.
+A **worker node** is a compute node in a cluster that executes assigned computational tasks as part of a distributed system, typically under the coordination of a scheduler or control node.
 
 ### Workstation {#workstation}
 
