@@ -48,19 +48,17 @@ Let's start by running the command `set` and looking at some of the variables
 in a typical shell session:
 
 ```bash
-set
+[user@cometlogin01(comet) ~] set
 ```
 
 ```output
-COMPUTERNAME=TURING
-HOME=/home/vlad
-HOSTNAME=TURING
-HOSTTYPE=i686
-NUMBER_OF_PROCESSORS=4
-PATH=/Users/vlad/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
-PWD=/home/vlad
+HOME=/mnt/nfs/home/user
+HOSTNAME=cometlogin01
+HOSTTYPE=x86_64
+PATH=/mnt/nfs/home/user/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+PWD=/mnt/nfs/home/user
 UID=1000
-USERNAME=vlad
+USER=user
 ...
 ```
 
@@ -83,7 +81,7 @@ string to an integer.
 Let's show the value of the variable `HOME`:
 
 ```bash
-echo HOME
+[user@cometlogin01(comet) ~] echo HOME
 ```
 
 ```output
@@ -95,18 +93,18 @@ That just prints "HOME", which isn't what we wanted
 Let's try this instead:
 
 ```bash
-echo $HOME
+[user@cometlogin01(comet) ~] echo $HOME
 ```
 
 ```output
-/home/vlad
+/mnt/nfs/home/user
 ```
 
 The dollar sign tells the shell that we want the *value* of the variable
 rather than its name.
 This works just like wildcards:
 the shell does the replacement *before* running the program we've asked for.
-Thanks to this expansion, what we actually run is `echo /home/vlad`,
+Thanks to this expansion, what we actually run is ``echo /mnt/nfs/home/user ``,
 which displays the right thing.
 
 ## Creating and Changing Variables
@@ -254,7 +252,7 @@ To show how this works,
 here are the components of `PATH` listed one per line:
 
 ```output
-/Users/vlad/bin
+/mnt/nfs/home/user/bin
 /usr/local/git/bin
 /usr/bin
 /bin
@@ -268,12 +266,12 @@ there are actually three programs called `analyze`
 in three different directories:
 `/bin/analyze`,
 `/usr/local/bin/analyze`,
-and `/users/vlad/analyze`.
+and `` /mnt/nfs/home/user/analyze ``.
 Since the shell searches the directories in the order they're listed in `PATH`,
 it finds `/bin/analyze` first and runs that.
-Notice that it will *never* find the program `/users/vlad/analyze`
+Notice that it will *never* find the program `` /mnt/nfs/home/user/analyze ``
 unless we type in the full path to the program,
-since the directory `/users/vlad` isn't in `PATH`.
+since the directory `` /mnt/nfs/home/user `` isn't in `PATH`.
 
 This means that I can have executables in lots of different places as long as
 I remember that I need to update my `PATH` so that my shell can find them.
@@ -285,6 +283,56 @@ In the next episode we'll learn how to use helper tools to help us manage our
 runtime environment to make that possible without us needing to do a lot of
 bookkeeping on what the value of `PATH` (and other important environment
 variables) is or should be.
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+## Modifying your PATH
+
+Create a directory called `bin` in your home directory (if it doesn't already
+exist) and add it to the front of your `PATH` variable. Verify that your
+change has been made by displaying the contents of your `PATH` variable.
+Create a script called `hello.sh` in your new `bin` directory that prints
+"Hello, World!" to the terminal. Make the script executable and run it
+from any location in your terminal.
+
+:::::::::::::::  solution
+
+## Solution
+
+```bash
+mkdir -p ~/bin
+echo '#!/bin/bash' > ~/bin/hello.sh
+echo 'echo "Hello, World!"' >> ~/bin/hello.sh
+chmod +x ~/bin/hello.sh
+```
+
+To update the `PATH` variable to include your new `bin` directory at the front,
+you can do:
+
+```bash
+export PATH=~/bin:$PATH
+```
+
+It is extremely important to retain the current content of `PATH` by appending
+`:$PATH` to the new value; otherwise, you will overwrite your existing `PATH`.
+This is especially important on HPC systems, where the `module load` command
+relies on modifying the `PATH` variable to make software available to you.
+
+Now, verify that your `PATH` variable has been updated:
+
+```bash
+echo $PATH
+```
+
+You should be able to run `hello.sh` from any location in your terminal.
+
+```bash
+cd /tmp
+hello.sh
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
