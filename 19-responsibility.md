@@ -262,7 +262,7 @@ data.
 
 Say you have a "data" folder containing 10,000 or so files, a healthy mix of
 small and large ASCII and binary data. Which of the following would be the
-best way to transfer them to Introduction to HPC for Comet?
+best way to transfer them to Comet?
 
 1. `scp -r data user@comet.ncl.ac.uk:~/`
 2. `rsync -ra data user@comet.ncl.ac.uk:~/`

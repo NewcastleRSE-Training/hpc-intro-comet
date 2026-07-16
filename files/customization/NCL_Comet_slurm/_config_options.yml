@@ -7,7 +7,7 @@ snippets: NCL_Comet_slurm
 baseurl: "https://NewcastleRSE-Training.github.io/probable-pancake/"
 
 remote:
-  name: "Introduction to HPC for Comet"
+  name: "Comet"
   host_id: "NCL_Comet"
   login: "comet.ncl.ac.uk"
   host: "cometlogin01"

@@ -290,7 +290,7 @@ Upload the lesson material to your remote home directory like so:
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Why Not Download on Introduction to HPC for Comet Directly?
+## Why Not Download on Comet Directly?
 
 Most computer clusters are protected from the open internet by a *firewall*.
 For enhanced security, some are configured to allow traffic *inbound*, but
