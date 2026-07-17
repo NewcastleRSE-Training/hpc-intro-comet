@@ -1,3 +1,6 @@
+# local .gitignore
+.gitignore
+
 # sandpaper files
 episodes/*html
 site/*
@@ -55,3 +58,6 @@ Gemfile.lock
 scratch/
 .vendor
 .bundle
+
+# Large data files
+episodes/files/data.*
