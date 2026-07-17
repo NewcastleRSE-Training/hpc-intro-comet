@@ -1,5 +1,5 @@
 ```bash
-cd cd /nobackup/proj/comet_training/
+cd `r config$remote$fs$work`
 mkdir username
 cd username
 ```
