@@ -1,5 +1,20 @@
+
+
 ```bash
-wget https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/hpc-intro-array-jobs.tar.gz
+cp  `r config$remote$fs$store`array-jobs.tar.gz
 tar -xvf hpc-intro-array-jobs.tar.gz
 cd array-jobs 
 ```
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Getting the data
+
+Above we assume that your instructor already made a local copy of the archive file.
+Alternatively, you can download the files we need as an archive from the GitHub repository for this lesson website: 
+https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/array-jobs.tar.gz. 
+
+```bash
+wget https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/array-jobs.tar.gz
+```
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
