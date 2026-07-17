@@ -45,7 +45,21 @@ You can run them in series which would take two hundred hours or you can manuall
 But it would take you some time to start all these jobs if you do it manually. To complicate matters things will quite often go wrong and workflow won't complete in which case you have to first notice this, correct the problem and then restart it all.
 
 Array jobs are controlled by the Slurm scheduler. You will need only one set of scripts to which you supply a list of files. 
-Slurm will automatically distribute the jobs across available nodes. If any of the jobs fail you can easily restart the jobs to execute only on the files that failed.
+Slurm will automatically distribute the jobs across available nodes. If any of the jobs fail you can easily restart only those failed jobs.
+
+## A case of counting words
+
+Peter, a linguistics researcher, wants to investigate changes in language over time by comparing how often words are used in various texts. 
+The data consists of several books from the Gutenberg project as text files:
+
+|Filename|Book name|
+|---|---|
+|data.1|The collected works of Shakespeare|
+|data.2|Geoffrey Chaucers Cantebury Tales |
+|data.3|Moby Dick by Herman Melville|
+|data.4|Homers Odyssey|
+
+Peter has been doing this work on their laptop using a programme called `word-freq.sh` but it's taking far too long so they have decided to move their work to HPC in order to get through the processing more quickly.
 
 ### Preparing a directory to work in
 
@@ -64,7 +78,7 @@ snippets('array/download-extract-data.Rmd')
 
 ### Checking the script runs as expected
 
-Write a small file to test our script:
+Create a small data file to test our script:
 
 ```bash
 `r config$remote$prompt` nano test-data.txt
