@@ -23,7 +23,7 @@ remote:
   location: "comet.ncl.ac.uk"
   homedir: "/mnt/nfs/home"
   user: "user"
-  prompt: "user@cometlogin01(comet) ]"
+  prompt: "[user@cometlogin01(comet) ~]"
   prompt_work: "[user@cometlogin01(comet) comet_training]"
   shebang: "#!/bin/bash"
     
