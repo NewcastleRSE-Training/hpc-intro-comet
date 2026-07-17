@@ -1,0 +1,5 @@
+```bash
+cd cd /nobackup/proj/comet_training/
+mkdir username
+cd username
+```
