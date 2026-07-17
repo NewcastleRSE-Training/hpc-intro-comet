@@ -1,5 +1,5 @@
 ---
-title: Parallelising with Job Arrays.
+title: Parallelising with Job Arrays
 teaching: 15
 exercises: 5
 ---
@@ -21,16 +21,32 @@ exercises: 5
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+::::instructor
+Download the archive of data and scripts using wget https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/array-jobs.tar.gz
+::::
 
-Parallel computing is a technique used to divide big tasks into smaller ones that can be solved simultaneously. Parallelism can be accomplished in different ways and it depends on the tasks that needs doing as well as the algorithms implemented to perform these tasks.
+## Job Arrays for High Throughput
 
-One way of implementing parallel computing is to distribute a job across multiple processors. This is usually accomplished by using the Message Passage Interface (MPI) which is a standardised way for CPU cores to communicate with one another while working together on a task. Software has to be written specifically to utilize MPI to take advantage of this.
+Parallel computing is a technique used to divide big tasks into smaller ones that can be solved simultaneously. 
+Parallelism can be accomplished in different ways; the best approach depends on the tasks that need doing as well as the algorithms implemented to perform these tasks.
 
-Another form of parallel computing is an array job. This type of job is advantages if the same software has to be run across several files. An example of this would be in bioinformatics where the same workflow has to applied to a set of files that contain data for different samples. There is no need for the different jobs to "talk" to one another while they run. The advantage only lies in the fact that the jobs can run in parallel. One could potentially run such processes manually across different computers but imagine having a hundred files and each taking two hours to complete. You can run them in series which would take two hundred hours or you can manually start them across, say, four computers which would mean it would take 25 hours. But it would take you some time to start all these jobs if you do it manually. To complicate matters things will quite often go wrong and workflow won't complete in which case you have to first notice this, correct the problem and then restart it all.
+One way of implementing parallel computing is to distribute a job across multiple processors. 
+This is usually accomplished by using the Message Passage Interface (MPI) which is a standardised way for CPU cores to communicate with one another while working together on a task. 
+Software has to be written specifically to utilize MPI to take advantage of this.
 
-Array jobs are controlled by the Slurm scheduler. You will need only one set of scripts to which you supply a list of files. Slurm will automatically distribute the jobs across available nodes. If any of the jobs fail you can easily restart the jobs to execute only on the files that failed.
+Another form of parallel computing is an array job. This type of job is advantageous where the same software has to be run across several files. 
+An example of this would be in bioinformatics where the same workflow has to applied to a set of files that contain data for different samples. 
+There is no need for the different jobs to "talk" to one another while they run. The advantage lies in the fact that the jobs can run in parallel. 
+One could potentially run such processes manually across different computers but imagine having a hundred files and each taking two hours to complete. 
+You can run them in series which would take two hundred hours or you can manually start them across, say, four computers which would mean it would take 25 hours. 
+But it would take you some time to start all these jobs if you do it manually. To complicate matters things will quite often go wrong and workflow won't complete in which case you have to first notice this, correct the problem and then restart it all.
 
-First, create a directory to work in:
+Array jobs are controlled by the Slurm scheduler. You will need only one set of scripts to which you supply a list of files. 
+Slurm will automatically distribute the jobs across available nodes. If any of the jobs fail you can easily restart the jobs to execute only on the files that failed.
+
+### Preparing a directory to work in
+
+First, create a directory in a shared area so that your collaborators can access your work:
 
 
 
@@ -40,15 +56,29 @@ mkdir username
 cd username
 ```
 
-Download the word frequency scripts and data:
+Gather the scripts and data into a working directory:
 
 
 ```bash
-wget https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/hpc-intro-array-jobs.tar.gz
+cp  /rdw/04/rse-training/array-jobs.tar.gz
 tar -xvf hpc-intro-array-jobs.tar.gz
 cd array-jobs 
 ```
+:::::::::::::::::::::::::::::::::::::::::  callout
 
+## Getting the data
+
+Above we assume that your instructor already made a local copy of the archive file.
+Alternatively, you can download the files we need as an archive from the GitHub repository for this lesson website: 
+https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/array-jobs.tar.gz. 
+
+```bash
+wget https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/array-jobs.tar.gz
+```
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+### Checking the script runs as expected
 
 Write a small file to test our script:
 
@@ -112,7 +142,12 @@ You should get something like this:
       3 words
 
 ```
-Once we have proved that the script runs without a problem we can write a script that can be submitted to Slurm. Using `nano`, create a script called `job_single_word-freq.sh` containing the following:
+
+### Create a submission script
+
+Once we have proved that the script runs without a problem we can write a script that can be submitted to Slurm. 
+We will check our submission script first by using our test data, rather than trying to run with a large dataset.
+Using `nano`, create a script called `job_single_word-freq.sh` containing the following:
 
 ```bash
 #!/bin/bash
