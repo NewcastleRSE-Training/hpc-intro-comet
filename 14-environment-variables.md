@@ -48,7 +48,7 @@ Let's start by running the command `set` and looking at some of the variables
 in a typical shell session:
 
 ```bash
-user@cometlogin01(comet) ] set
+[user@cometlogin01(comet) ~] set
 ```
 
 ```output
@@ -81,7 +81,7 @@ string to an integer.
 Let's show the value of the variable `HOME`:
 
 ```bash
-user@cometlogin01(comet) ] echo HOME
+[user@cometlogin01(comet) ~] echo HOME
 ```
 
 ```output
@@ -93,7 +93,7 @@ That just prints "HOME", which isn't what we wanted
 Let's try this instead:
 
 ```bash
-user@cometlogin01(comet) ] echo $HOME
+[user@cometlogin01(comet) ~] echo $HOME
 ```
 
 ```output
@@ -202,8 +202,8 @@ job was submitted.
 ## Solution
 
 ```bash
-user@cometlogin01(comet) ] nano example-job.sh
-user@cometlogin01(comet) ] cat example-job.sh
+[user@cometlogin01(comet) ~] nano example-job.sh
+[user@cometlogin01(comet) ~] cat example-job.sh
 ```
 
 ```output

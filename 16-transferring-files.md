@@ -308,9 +308,9 @@ OK!
 
 ```bash
 [you@laptop:~]$ ssh user@comet.ncl.ac.uk
-user@cometlogin01(comet) ] wget -O amdahl.tar.gz https://github.com/hpc-carpentry/amdahl/tarball/main
+[user@cometlogin01(comet) ~] wget -O amdahl.tar.gz https://github.com/hpc-carpentry/amdahl/tarball/main
 # or
-user@cometlogin01(comet) ] curl -o amdahl.tar.gz -L https://github.com/hpc-carpentry/amdahl/tarball/main
+[user@cometlogin01(comet) ~] curl -o amdahl.tar.gz -L https://github.com/hpc-carpentry/amdahl/tarball/main
 ```
 
 :::::::::::::::::::::::::

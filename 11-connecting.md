@@ -340,7 +340,7 @@ on though so we will adopt the following convention:
 
 - `[you@laptop:~]$` when the command is to be entered on a terminal
   connected to your local computer
-- `user@cometlogin01(comet) ]` when the command is to be entered on a
+- `[user@cometlogin01(comet) ~]` when the command is to be entered on a
   terminal connected to the remote system
 - `$` when it really doesn't matter which system the terminal is connected to.
 
@@ -354,7 +354,7 @@ computer we are logged onto can be checked with the `hostname` command. (You
 may also notice that the current hostname is also part of our prompt!)
 
 ```bash
-user@cometlogin01(comet) ] hostname
+[user@cometlogin01(comet) ~] hostname
 ```
 
 ```output
@@ -365,7 +365,7 @@ So, we're definitely on the remote machine. Next, let's find out where we are
 by running `pwd` to **p**rint the **w**orking **d**irectory.
 
 ```bash
-user@cometlogin01(comet) ] pwd
+[user@cometlogin01(comet) ~] pwd
 ```
 
 ```output
@@ -375,7 +375,7 @@ user@cometlogin01(comet) ] pwd
 Great, we know where we are! Let's see what's in our current directory:
 
 ```bash
-user@cometlogin01(comet) ] ls
+[user@cometlogin01(comet) ~] ls
 ```
 
 ```output
@@ -388,7 +388,7 @@ other filesystems. If they did not, your home directory may appear empty. To
 double-check, include hidden files in your directory listing:
 
 ```bash
-user@cometlogin01(comet) ] ls -a
+[user@cometlogin01(comet) ~] ls -a
 ```
 
 ```output
@@ -422,14 +422,14 @@ If the `.ssh` folder was not listed above, then it does not yet
 exist: create it.
 
 ```bash
-user@cometlogin01(comet) ] mkdir ~/.ssh
+[user@cometlogin01(comet) ~] mkdir ~/.ssh
 ```
 
 Now, use `cat` to print your public key, but redirect the output, appending it
 to the `authorized_keys` file:
 
 ```bash
-user@cometlogin01(comet) ] cat ~/id_ed25519.pub >> ~/.ssh/authorized_keys
+[user@cometlogin01(comet) ~] cat ~/id_ed25519.pub >> ~/.ssh/authorized_keys
 ```
 
 That's all! Disconnect, then try to log back into the remote: if your key and
@@ -437,7 +437,7 @@ agent have been configured correctly, you should not be prompted for the
 password for your SSH key.
 
 ```bash
-user@cometlogin01(comet) ] logout
+[user@cometlogin01(comet) ~] logout
 ```
 
 ```bash

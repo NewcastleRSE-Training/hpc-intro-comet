@@ -53,8 +53,8 @@ cd array-jobs
 Write a small file to test our script:
 
 ```bash
-user@cometlogin01(comet) ] nano test-data.txt
-user@cometlogin01(comet) ] cat test-data.txt
+[user@cometlogin01(comet) ~] nano test-data.txt
+[user@cometlogin01(comet) ~] cat test-data.txt
 ```
 
 ```bash
