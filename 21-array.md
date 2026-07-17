@@ -30,23 +30,31 @@ Another form of parallel computing is an array job. This type of job is advantag
 
 Array jobs are controlled by the Slurm scheduler. You will need only one set of scripts to which you supply a list of files. Slurm will automatically distribute the jobs across available nodes. If any of the jobs fail you can easily restart the jobs to execute only on the files that failed.
 
+First, create a directory to work in:
+
+
+
 ```bash
-cd training directory
+cd /nobackup/proj/comet_training
 mkdir username
 cd username
 ```
 
-Download the word frequency script
-```
-wget https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro/refs/heads/main/episodes/files/word-freq.sh
+Download the word frequency scripts and data:
 
-```
-
-write a small file to test our script
 
 ```bash
-[user@cometlogin01(comet) ~] nano test-data.txt
-[user@cometlogin01(comet) ~] cat test-data.txt
+wget https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/hpc-intro-array-jobs.tar.gz
+tar -xvf hpc-intro-array-jobs.tar.gz
+cd array-jobs 
+```
+
+
+Write a small file to test our script:
+
+```bash
+user@cometlogin01(comet) ] nano test-data.txt
+user@cometlogin01(comet) ] cat test-data.txt
 ```
 
 ```bash

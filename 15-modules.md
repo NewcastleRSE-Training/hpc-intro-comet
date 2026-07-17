@@ -78,7 +78,7 @@ To see available software modules, use `module avail`:
 
 
 ```bash
-[user@cometlogin01(comet) ~] module avail | less
+user@cometlogin01(comet) ] module avail | less
 ```
 
 ```output
@@ -111,7 +111,7 @@ loaded in your environment. If you have no modules loaded, you will see a
 message telling you so.
 
 ```bash
-[user@cometlogin01(comet) ~] module list
+user@cometlogin01(comet) ] module list
 ```
 
 ```output
@@ -128,7 +128,7 @@ programs the same way that Bash does, so we can use it to tell us
 where a particular piece of software is stored.
 
 ```bash
-[user@cometlogin01(comet) ~] which python3
+user@cometlogin01(comet) ] which python3
 ```
 
 
@@ -167,8 +167,8 @@ We can load the `python3` command with `module load`:
 
 
 ```bash
-[user@cometlogin01(comet) ~] module load Python
-[user@cometlogin01(comet) ~] which python3
+user@cometlogin01(comet) ] module load Python
+user@cometlogin01(comet) ] which python3
 ```
 
 ```output
@@ -185,7 +185,7 @@ before giving up and telling us it can't find it. As with all environment
 variables we can print it out using `echo`.
 
 ```bash
-[user@cometlogin01(comet) ~] echo $PATH
+user@cometlogin01(comet) ] echo $PATH
 ```
 
 ```output
@@ -200,7 +200,7 @@ ran the `module load` command, it added a directory to the beginning of our
 
 
 ```bash
-[user@cometlogin01(comet) ~] ls ls /opt/software/manual/apps/Python/3.14.0/bin
+user@cometlogin01(comet) ] ls ls /opt/software/manual/apps/Python/3.14.0/bin
 
 ```
 
@@ -219,7 +219,7 @@ To demonstrate, let's use `module list`. `module list` shows all loaded
 software modules.
 
 ```bash
-[user@cometlogin01(comet) ~] module list
+user@cometlogin01(comet) ] module list
 ```
 
 ```output
@@ -231,8 +231,8 @@ Currently Loaded Modules:
 ```
 
 ```bash
-[user@cometlogin01(comet) ~] module load GROMACS
-[user@cometlogin01(comet) ~] module list
+user@cometlogin01(comet) ] module load GROMACS
+user@cometlogin01(comet) ] module list
 ```
 
 ```output
@@ -250,8 +250,8 @@ Let's try unloading the
 `GROMACS` package.
 
 ```bash
-[user@cometlogin01(comet) ~] module unload GROMACS
-[user@cometlogin01(comet) ~] module list
+user@cometlogin01(comet) ] module unload GROMACS
+user@cometlogin01(comet) ] module list
 ```
 
 ```output
@@ -267,8 +267,8 @@ not). If we wanted to unload everything at once, we could run `module purge`
 (unloads everything).
 
 ```bash
-[user@cometlogin01(comet) ~] module purge
-[user@cometlogin01(comet) ~] module list
+user@cometlogin01(comet) ] module purge
+user@cometlogin01(comet) ] module list
 ```
 
 ```output
@@ -306,7 +306,7 @@ there may be reams of output:
 
 
 ```bash
-[user@cometlogin01(comet) ~] module avail | less
+user@cometlogin01(comet) ] module avail | less
 ```
 
 ```output
@@ -349,8 +349,8 @@ compute node).
 ## Solution
 
 ```bash
-[user@cometlogin01(comet) ~] nano python-module.sh
-[user@cometlogin01(comet) ~] cat python-module.sh
+user@cometlogin01(comet) ] nano python-module.sh
+user@cometlogin01(comet) ] cat python-module.sh
 ```
 
 ```output
@@ -365,7 +365,7 @@ python3 --version
 ```
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch --partition=short_free --account=comet_training python-module.sh
+user@cometlogin01(comet) ] sbatch --partition=short_free --account=comet_training python-module.sh
 ```
 
 :::::::::::::::::::::::::

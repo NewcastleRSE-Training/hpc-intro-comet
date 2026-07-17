@@ -1,0 +1,5 @@
+```bash
+wget https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/hpc-intro-array-jobs.tar.gz
+tar -xvf hpc-intro-array-jobs.tar.gz
+cd array-jobs 
+```

@@ -143,17 +143,17 @@ Move (or copy) the binaries to your home directory
 Make sure you are in your home directory. 
 
 ```bash
-[user@cometlogin01(comet) ~] cd ~
+user@cometlogin01(comet) ] cd ~
 ```
 
 You will need to amend the from-directory in the instruction below if you did not
 compile the code yourself according to the above challenge:
 
 ```bash
-[user@cometlogin01(comet) ~] mkdir primes
-[user@cometlogin01(comet) ~] cd primes
-[user@cometlogin01(comet) ~] cp ~/HPC_Training_Example_Jobs/c/multi ~/HPC_Training_Example_Jobs/c/single_gcc .
-[user@cometlogin01(comet) ~] 
+user@cometlogin01(comet) ] mkdir primes
+user@cometlogin01(comet) ] cd primes
+user@cometlogin01(comet) ] cp ~/HPC_Training_Example_Jobs/c/multi ~/HPC_Training_Example_Jobs/c/single_gcc .
+user@cometlogin01(comet) ] 
 
 ```
 
@@ -164,7 +164,7 @@ compile the code yourself according to the above challenge:
 Many command-line programs include a "help" message. Try it with `single_gcc`:
 
 ```bash
-[user@cometlogin01(comet) ~] ./single_gcc
+user@cometlogin01(comet) ] ./single_gcc
 ```
 
 ```output
@@ -183,7 +183,7 @@ You will notice in the batch scripts that we will be creating we will be using
 the `time` command before the name of the program. For example:
 
 ```bash
-[user@cometlogin01(comet) ~] time ./single_gcc
+user@cometlogin01(comet) ] time ./single_gcc
 ```
 
 ```output
@@ -209,8 +209,8 @@ Create a submission file, requesting one task on a single node, then launch it.
 
 
 ```bash
-[user@cometlogin01(comet) ~] nano job_single.sh
-[user@cometlogin01(comet) ~] cat job_single.sh
+user@cometlogin01(comet) ] nano job_single.sh
+user@cometlogin01(comet) ] cat job_single.sh
 ```
 
 ```bash
@@ -236,7 +236,7 @@ echo "Primes calculation complete"
 ```
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch job_single.sh
+user@cometlogin01(comet) ] sbatch job_single.sh
 ```
 
 
@@ -244,7 +244,7 @@ Use the Slurm status commands to check whether your job
 is running and when it ends:
 
 ```bash
-[user@cometlogin01(comet) ~] squeue --me
+user@cometlogin01(comet) ] squeue --me
 ```
 
 Use `ls` to locate the output file. The `-t` flag sorts in
@@ -256,7 +256,7 @@ The cluster output should be written to a file in the folder you launched the
 job from. For example,
 
 ```bash
-[user@cometlogin01(comet) ~] ls -t
+user@cometlogin01(comet) ] ls -t
 ```
 
 ```output
@@ -264,7 +264,7 @@ slurm-1177272.out  job_single.sh  job_multi.sh  single_gcc  multi
 ```
  
 ```bash
-[user@cometlogin01(comet) ~] cat slurm-1177272.out
+user@cometlogin01(comet) ] cat slurm-1177272.out
 ```
 
 ```output
@@ -315,8 +315,8 @@ Let's modify the job script to request more cores and use the MPI run-time.
 
 
 ```bash
-[user@cometlogin01(comet) ~] nano job_multi.sh
-[user@cometlogin01(comet) ~] cat job_multi.sh
+user@cometlogin01(comet) ] nano job_multi.sh
+user@cometlogin01(comet) ] cat job_multi.sh
 ```
 
 ```output
@@ -345,13 +345,13 @@ echo "Primes calculation complete"
 Submit the job as before.
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch job_multi.sh
+user@cometlogin01(comet) ] sbatch job_multi.sh
 ```
 
 As before, use the status commands to check when your job runs.
 
 ```bash
-[user@cometlogin01(comet) ~] ls -t
+user@cometlogin01(comet) ] ls -t
 ```
 
 ```output
@@ -359,7 +359,7 @@ slurm-1177273.out  job_multi.sh  slurm-1177272.out job_single.sh  single_gcc  mu
 ```
 
 ```bash
-[user@cometlogin01(comet) ~] slurm-1177273.out
+user@cometlogin01(comet) ] slurm-1177273.out
 ```
  
 ```output

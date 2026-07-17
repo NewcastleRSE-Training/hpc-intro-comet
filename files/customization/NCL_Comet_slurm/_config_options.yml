@@ -1,3 +1,11 @@
+# ---------------------------------------------------------------
+# HPC Carpentries on Comet at Newcastle University, UK
+# ---------------------------------------------------------------
+##
+# Use the HPC_CARPENTRY_CUSTOMIZATION variable to invoke these:
+#
+# > HPC_CARPENTRY_CUSTOMIZATION=episodes/files/customization/NCL_Comet_slurm/_config_options.yml
+# > export HPC_CARPENTRY_CUSTOMIZATION
 ---
 local:
   prompt: "[you@laptop:~]$"
@@ -15,11 +23,18 @@ remote:
   location: "comet.ncl.ac.uk"
   homedir: "/mnt/nfs/home"
   user: "user"
-  prompt: '[user@cometlogin01(comet) ~]'
-  prompt_work: #"userid@uan01:/work/ta114/ta114/userid>"
+  prompt: "user@cometlogin01(comet) ]"
+  prompt_work: "[user@cometlogin01(comet) comet_training]"
+  shebang: "#!/bin/bash"
+    
+  fs:
+    home: "/mnt/nfs/home"
+    work: "/nobackup/proj/comet_training"
+    store: "/rdw/04/rse-training/"
+
   modules:
     python: "Python"
-  shebang: "#!/bin/bash"
+
 
 sched:
   name: "Slurm"
@@ -61,7 +76,7 @@ episode_order:
   - 15-modules
   - 16-transferring-files
   - 20-rdw
-  - 17-parallel
   - 21-array
+  - 17-parallel
   - 18-resources
   - 19-responsibility
