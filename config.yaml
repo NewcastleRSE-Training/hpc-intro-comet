@@ -66,7 +66,6 @@ contact: 'training.researchcomputing@newcastle.ac.uk'
 # Order of episodes in your lesson
 episodes: 
   - 10-hpc-intro.Rmd
-  - 11-connecting.Rmd
   - 12-cluster.Rmd
   - 13-scheduler.Rmd
   - 14-environment-variables.Rmd
