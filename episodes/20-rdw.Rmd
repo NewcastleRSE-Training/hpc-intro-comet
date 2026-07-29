@@ -106,8 +106,25 @@ For Comet and RDW, replace `-av` with `-rltv`
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-## Large data copies
-When copying large amounts of data, rsync really comes into its own. When you're copying a lot of data, it's important to keep track in case the copy is interrupted.  Rsync is great because it can pick up where it left off, rather than starting the copy all over again.  It's also useful to output to a log so you can see what was transferred and find any errors that need to be addressed.
+## `rsync` for large data copies
+When copying large amounts of data, rsync really comes into its own. When you're copying a lot of data, it's important to keep track in case the copy is interrupted.  
+Rsync can pick up where it left off after an interruption, rather than starting the copy all over again.  
+
+### Additional Options
+- `-z` compresses the files before transfer, speeding up transfers on slow networks but using unnecessary resources for fast connections.
+- `--size-only` can speed up transfers by skipping the checksum step
+- `--stats` and `--progress` can help you check that the transfer went as expected.
+- `--inplace` - saves resources by not creating temporary files
+- `--size-only` saves time by only checking whether a file's size has changed (and not its last-modified time) 
+- `--log-file=` sends the output to a file so you can see what was transferred and find any errors that need to be addressed.
+- `--delete` is an option that is very useful for tidying up when files have been duplicated.  
+
+#### `--delete` should be used with care!  
+Perhaps a collaborator has placed additional files in the destination directory. These could accidentally be deleted if you use `rsync --delete` to make the destination match your source.
+ 
+- Use `--dry-run --progress --stats` to check before you run.
+- Accidental deletions on RDW can be rolled back using Windows File Explorer.  Log a ticket with NUIT for help with rollback.
+- see `man rsync` and https://rsync.samba.org/ for more examples
 
 ### Fast Connections
 Transfers from Comet to RDW don’t leave our fast data centre network.  If you're using rsync with a fast network or disk to disk in the same machine:
@@ -122,7 +139,7 @@ Why?  compression uses lots of CPU, Rsync usually creates a temp file on disk be
 For a slow connection like the internet:
  
 - DO use compression `-z` 
-- DON’T use `--inplace`.  
+- DON’T use `--inplace`
 
 
 :::challenge
@@ -135,17 +152,11 @@ What command would best for backing up a large amount of data from Comet to RDW?
 [`r config$remote$user`@login01 ~]$ rsync -rltv --inplace --size-only --stats DataDir /rdw/04/rse-training/`r config$remote$user`/
 ```
 
---inplace - saves resources by not creating temporary files
---size-only - saves time by only checking whether a file's size has changed (and not its last-modified time) 
 
  
 :::
 
-see `man rsync` and https://rsync.samba.org/ for more examples
---delete is an option that is very useful for tidying up when files have been duplicated.  However it should be used with care!  
-Perhaps a collaborator has placed additional files in the directory you are syncing to.  
-Use --dry-run --progress --stats to check before you run
-Accidental deletions on RDW can be rolled back using Windows File Explorer.  Log a ticket with NUIT for help with rollback.
+
 
 :::
 
