@@ -239,7 +239,6 @@ Write a batch script to call the word-freq.sh as an array job with 4 parallel jo
 #SBATCH --account=comet_training
 `r config$sched$comment` `r config$sched$flag$name`makefreq
 `r config$sched$comment` `r config$sched$flag$nodes`1
-`r config$sched$comment` `r config$sched$flag$tasks`4
 #SBATCH --array=1-4
 `r config$sched$comment` `r config$sched$flag$cpu`1
 
@@ -275,8 +274,6 @@ You can download the script from https://raw.githubusercontent.com/NewcastleRSE-
 
 - Parallel programming allows applications to take advantage of parallel hardware.
 - The queuing system facilitates executing parallel tasks.
-- Parallel computing allows applications to distribute the workload over several CPUs or nodes
-- Parallelising over CPUs uses MPI (Message Passing Interface)
-- Parallelising over nodes can be accomplished using array jobs
+- Parallel computing allows applications to distribute the workload over several CPU cores or nodes
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
