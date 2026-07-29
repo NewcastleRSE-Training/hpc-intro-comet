@@ -93,7 +93,7 @@ The usual format for an `rsync` command is:
 
 `rsync -av source/directory/path destination/directory/path`
 
-The `-a` (archive) option is equivalent to -rlptgoD. It is a quick way of saying you want recursion and want to preserve almost everything, including permissions. 
+The `-a` (archive) option is equivalent to -rlptgoD. It is a quick way of saying you want to recurse through directories and to preserve almost everything, including permissions. 
 Use `man rsync` or `rsync --help` to find out more. 
 Because permission groups on RDW are set outside of Comet, we use a subset of `-a`
 
@@ -104,43 +104,6 @@ For Comet and RDW, replace `-av` with `-rltv`
 `-v` = verbose
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-```bash
-`r config$remote$prompt` rsync -rltv TestDir /rdw/04/rse-training/`r config$remote$user`/ 
-```
-```output
-sending incremental file list
-./
-testfile1
-testfile2
-
-sent 150 bytes  received 57 bytes  414.00 bytes/sec
-total size is 0  speedup is 0.00
-```
-
-:::challenge
-## Spot the difference
-Can you spot the difference betweent the 2 previous rsync commands?  Try `ls -l` on the destination.
-
-:::solution
-```bash
-`r config$remote$prompt` ls -R /rdw/04/rse-training/`r config$remote$user`/
-```
-```output
-/rdw/04/rse-training/`r config$remote$user`/:
-TestDir  testfile1  testfile2
-
-/rdw/04/rse-training/`r config$remote$user`/TestDir:
-testfile1  testfile2
-
-```
-
-We now have too many files!  The first rsync command copied `TestDir` because there was no trailing `/`.   
-The second rsync command only copied the contents of `TestDir` because of the trailing `/`.  
-We could have spotted this by looking at the output of `--dry-run` but this shows it's a good idea to check the destination after you copy.
-
-:::
-:::
 
 
 ## Large data copies
