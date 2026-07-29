@@ -1,0 +1,7 @@
+```bash
+`r config$remote$prompt` ls /rdw/04/rse-training/
+`r config$remote$prompt` mkdir /rdw/04/rse-training/`r config$remote$user`
+`r config$remote$prompt` cp example-job.sh /rdw/04/rse-training/`r config$remote$user`/
+`r config$remote$prompt` cd /rdw/04/rse-training/`r config$remote$user`/
+[user@cometlogin02(comet) rse-training]$ pwd
+```
