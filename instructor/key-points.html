@@ -493,15 +493,16 @@ a GUI.</li>
 <hr class="half-width">
 <ul>
 <li>
-<code>cp</code> and <code>rsync</code> transfer files between RDW
-and HPC.</li>
+<code>cp</code> and <code>rsync</code> transfer files in or between
+mounted filesystems</li>
+<li>
+<code>scp</code> and <code>rsync</code> transfer files between
+remote filesystems</li>
+<li>RDW shares have a pre-set group of campus users</li>
+<li>group permissions on RDW can’t be changed from linux</li>
 <li>try a dry-run of rsync to avoid accidental duplications or
 deletions</li>
 <li>re-run large rsync commands to confirm success</li>
-<li>output to a log to keep a record</li>
-<li>group permissions on RDW can’t be changed from linux</li>
-<li>RDW shares have a pre-set ‘modify’ group of campus users</li>
-<li>some RDW shares have a pre-set ‘read’ group of campus users</li>
 <li>RDW has a roll-back feature in case of accidents</li>
 </ul>
 <p>Find out more about where to store data on Comet: <a href="https://hpc.researchcomputing.ncl.ac.uk/dokuwiki/doku.php?id=started:filesystems" class="external-link uri">https://hpc.researchcomputing.ncl.ac.uk/dokuwiki/doku.php?id=started:filesystems</a></p></section><section id="21-array"><h2 class="section-heading"><a href="21-array.html">Parallelising with Job Arrays</a></h2>
