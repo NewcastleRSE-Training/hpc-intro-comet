@@ -23,6 +23,7 @@ remote:
   location: "comet.ncl.ac.uk"
   homedir: "/mnt/nfs/home"
   user: "user"
+  project: "comet_training"
   prompt: "[user@cometlogin01(comet) ~]"
   prompt_work: "[user@cometlogin01(comet) comet_training]"
   shebang: "#!/bin/bash"
@@ -65,7 +66,7 @@ sched:
   reservation: "shortqos"
   qos: "short"
   budget: "comet_training"
-  project: ""
+  
 
 episode_order:
   - 10-hpc-intro
