@@ -26,11 +26,13 @@ source("load_config.R")
 ## Transferring files to and from Campus Storage for Research Data (RDW)
 RDW (Research Data Warehouse) is mounted on Comet at `/rdw` so you can access it just like any local filesystem.
 Research project owners can request their own share on RDW for safe storage of research data.
-Although RDW a separate physical system, it's located in the same data centre as Comet and connected via fast ethernet.
-You can use `cp` and `rsync` to transfer data to RDW in the same way as copying to any other directory on Comet.  
-RDW is intended for data storage and NOT suitable for interactive use or software installation.  
-Working data should be in your home or project directory.
-User installed software should be in your home directory.
+Although RDW is a separate physical system, it's located in the same data centre as Comet and connected via fast ethernet.
+You can use `cp` and `rsync` to transfer data to RDW in the same way as copying to any other directory on Comet.
+  
+- RDW is intended for data storage and NOT suitable for interactive use or software installation.  
+- Working data should be in your home or project directory.
+- User installed software should be in your home directory.
+
 We can practice making a backup of the amdahl software we uploaded in the last episode.
 
 ### Using cp to copy to RDW
@@ -114,7 +116,7 @@ Rsync can pick up where it left off after an interruption, rather than starting 
 - `-z` compresses the files before transfer, speeding up transfers on slow networks but using unnecessary resources for fast connections.
 - `--size-only` can speed up transfers by skipping the checksum step
 - `--stats` and `--progress` can help you check that the transfer went as expected.
-- `--inplace` - saves resources by not creating temporary files
+- `--inplace` saves resources by not creating temporary files
 - `--size-only` saves time by only checking whether a file's size has changed (and not its last-modified time) 
 - `--log-file=` sends the output to a file so you can see what was transferred and find any errors that need to be addressed.
 - `--delete` is an option that is very useful for tidying up when files have been duplicated.  
@@ -132,8 +134,12 @@ Transfers from Comet to RDW don’t leave our fast data centre network.  If you'
 - DON'T use compression `-z`
 - DO use `--inplace`
 
-Why?  compression uses lots of CPU, Rsync usually creates a temp file on disk before copying.  For fast transfers, this places too much load on the CPU and hard drive.    
-`--inplace` tells rsync not to create the temp file but send the data straight away.  It doesn’t matter if the connection is interrupted, because rsync keeps track and tries again.  Always re-run transfer command to ensure nothing was missed.  The second run should be very fast, just listing all the files and not copying anything.
+Why?  compression uses lots of CPU, and `rsync` usually creates a temp file on disk before copying.  
+For fast connections, this places unnecessary load on the CPU and hard drive. 
+`--inplace` tells rsync not to create the temp file but send the data straight away.  
+It doesn’t matter if the connection is interrupted, because rsync keeps track and tries again.  
+Always re-run the transfer command to ensure nothing was missed.  
+The second run should be very fast, just listing all the files and not copying anything.
 
 ### Slow Connections
 For a slow connection like the internet:
@@ -142,56 +148,14 @@ For a slow connection like the internet:
 - DON’T use `--inplace`
 
 
-:::challenge
-##  Large Transfer to RDW
-RDW has a super-fast connection to Comet, which means that it takes more resource to compress and un-compress the data than it does to do the transfer.
-What command would best for backing up a large amount of data from Comet to RDW?
-
-:::solution
-```bash
-[`r config$remote$user`@login01 ~]$ rsync -rltv --inplace --size-only --stats DataDir /rdw/04/rse-training/`r config$remote$user`/
-```
-
-
- 
-:::
-
-
-
-:::
-
-:::challenge
-## add a dry run and a log file
- 
-:::solution
-Try out a dry run:
-```bash
-rsync --dry-run -rltv --inplace --itemize-changes --progress --stats  --size-only /nobackup/myusername/source /rdw/path/to/my/share/destination/ 2>&1 | tee /home/myusername/meaningful-log-name.log1
-```
-Run ‘for real’:
-```bash
-rsync -rltv --inplace --itemize-changes --progress --stats  --size-only /nobackup/myusername/source /rdw/path/to/my/share/destination/ 2>&1 | tee /home/myusername/meaningful-log-name.log2
-```
-
-- `--inplace  --size-only` speed up transfer and prevent rsync filling up space with a large temporary directory    
-- `--itemize-changes --progress --stats` for more informative output    
-- Remember `|` from the Unix Shell workshop?    
- `| tee` sends output both to the screen and to a log file    
-- All the arguments can be single letters like `-v` or full words like `--verbose`. Use `man rsync` to craft your favourite arguments list.
-
-:::
-:::
-
-
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- `cp` and `rsync` transfer files between RDW and HPC.
+- `cp` and `rsync` transfer files in or between mounted filesystems
+- `scp` and `rsync` transfer files between remote filesystems
+- RDW shares have a pre-set group of campus users
+- group permissions on RDW can't be changed from linux
 - try a dry-run of rsync to avoid accidental duplications or deletions
 - re-run large rsync commands to confirm success
-- output to a log to keep a record
-- group permissions on RDW can't be changed from linux
-- RDW shares have a pre-set 'modify' group of campus users
-- some RDW shares have a pre-set 'read' group of campus users
 - RDW has a roll-back feature in case of accidents
 
 Find out more about where to store data on Comet:
