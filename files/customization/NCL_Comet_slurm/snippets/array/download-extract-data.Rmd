@@ -10,11 +10,12 @@ cd array-jobs
 ## Getting the data
 
 Above we assume that your instructor already made a local copy of the archive file.
-Alternatively, you can download the files we need as an archive from the GitHub repository for this lesson website: 
-https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/array-jobs.tar.gz. 
+Alternatively, you can download the files we need using this script: 
+https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/make-data.sh
 
 ```bash
-wget https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/array-jobs.tar.gz
+wget https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/make-data.sh
+bash make-data.sh
 ```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::

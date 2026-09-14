@@ -1,5 +1,5 @@
 ```bash
-`r config$remote$prompt` ls ls /opt/software/manual/apps/Python/3.14.0/bin
+`r config$remote$prompt` ls /opt/software/manual/apps/Python/3.14.0/bin
 
 ```
 
