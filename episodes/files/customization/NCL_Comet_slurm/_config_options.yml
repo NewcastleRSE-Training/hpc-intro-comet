@@ -1,0 +1,38 @@
+# Customization for Newcastle University's Comet Cluster
+
+---
+snippets: NCL_Comet_slurm
+
+local:
+  prompt: "[you@laptop:~]$"
+  shebang: "#!/usr/bin/env bash"
+
+remote:
+  name: "Comet"
+  host_id: "FIXME_Comet"
+  login: "comet.ncl.ac.uk"
+  host: "cometlogin01"
+  node: "compute030"
+  location: "comet.ncl.ac.uk"
+  user: "user"
+  prompt: '[user@cometlogin01(comet) ~]'
+  shebang: "#!/bin/bash"
+
+  fs:
+    home: "/mnt/nfs/home"
+
+  module_python3:
+    python: "N/A"
+
+sched:
+  name: "Slurm"
+  submit:
+    name: "sbatch"
+    options: "--account=comet_training"
+  queue:
+    debug: "N/A"
+    testing: "short_free"
+  reservation: "shortqos"
+  qos: "short"
+  account: "comet_training"
+  project: "comet_training"
