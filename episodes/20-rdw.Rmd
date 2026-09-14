@@ -90,7 +90,7 @@ The usual format for an `rsync` command is:
 
 `rsync -av source/directory/path destination/directory/path`
 
-The `-a` (archive) option is equivalent to -rlptgoD. It is a quick way of saying you want to recurse through directories and to preserve almost everything, including permissions. 
+The `-a` (archive) option is equivalent to `-rlptgoD`. It is a quick way of saying you want to recurse through directories and to preserve almost everything, including permissions. 
 Use `man rsync` or `rsync --help` to find out more. 
 Because permission groups on RDW are set outside of Comet, we use a subset of `-a`
 
