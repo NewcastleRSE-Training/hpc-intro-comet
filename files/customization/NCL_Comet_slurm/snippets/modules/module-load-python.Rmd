@@ -4,5 +4,5 @@
 ```
 
 ```output
-/usr/bin/python3
+/opt/software/manual/apps/Python/3.14.0/bin/python3
 ```

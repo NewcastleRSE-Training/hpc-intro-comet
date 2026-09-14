@@ -1,83 +1,38 @@
-# ---------------------------------------------------------------
-# HPC Carpentries on Comet at Newcastle University, UK
-# ---------------------------------------------------------------
-##
-# Use the HPC_CARPENTRY_CUSTOMIZATION variable to invoke these:
-#
-# > HPC_CARPENTRY_CUSTOMIZATION=episodes/files/customization/NCL_Comet_slurm/_config_options.yml
-# > export HPC_CARPENTRY_CUSTOMIZATION
+# Customization for Newcastle University's Comet Cluster
+
 ---
+snippets: NCL_Comet_slurm
+
 local:
   prompt: "[you@laptop:~]$"
   shebang: "#!/usr/bin/env bash"
 
-snippets: NCL_Comet_slurm
-baseurl: "https://NewcastleRSE-Training.github.io/probable-pancake/"
-
 remote:
   name: "Comet"
-  host_id: "NCL_Comet"
+  host_id: "FIXME_Comet"
   login: "comet.ncl.ac.uk"
   host: "cometlogin01"
   node: "compute030"
   location: "comet.ncl.ac.uk"
-  homedir: "/mnt/nfs/home"
   user: "user"
-  project: "comet_training"
-  prompt: "[user@cometlogin01(comet) ~]"
-  prompt_work: "[user@cometlogin01(comet) comet_training]"
+  prompt: '[user@cometlogin01(comet) ~]'
   shebang: "#!/bin/bash"
-    
+
   fs:
     home: "/mnt/nfs/home"
-    work: "/nobackup/proj/comet_training"
-    store: "/rdw/04/rse-training/"
 
-  modules:
-    python: "Python"
-
+  module_python3:
+    python: "N/A"
 
 sched:
   name: "Slurm"
   submit:
     name: "sbatch"
-    options: "--partition=short_free --account=comet_training"
+    options: "--account=comet_training"
   queue:
-    debug: "smnode"
+    debug: "N/A"
     testing: "short_free"
-  status: "squeue"
-  flag:
-    user: "-u user"
-    interactive: ""
-    histdetail: "-l -j"
-    name: "--job-name="
-    time: "-t"
-    queue: "--partition="
-    nodes: "--nodes="
-    tasks: "--tasks="
-    cpu: "--cpus-per-task="
-  del: "scancel"
-  interactive: "srun"
-  info: "sinfo"
-  comment: "#SBATCH"
-  hist: "sacct -u user"
-  hist_filter: ""
-  partition: "short_free"
   reservation: "shortqos"
   qos: "short"
-  budget: "comet_training"
-  
-
-episode_order:
-  - 10-hpc-intro
-  - 11-connecting
-  - 12-cluster
-  - 13-scheduler
-  - 14-environment-variables
-  - 15-modules
-  - 16-transferring-files
-  - 20-rdw
-  - 21-array
-  - 17-parallel
-  - 18-resources
-  - 19-responsibility
+  account: "comet_training"
+  project: "comet_training"

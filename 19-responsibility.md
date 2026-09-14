@@ -4,8 +4,6 @@ teaching: 15
 exercises: 5
 ---
 
-
-
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Describe how the actions of a single user can affect the experience of others on a shared system.
@@ -248,7 +246,7 @@ talked about data transfer earlier.
 I/O. Each of the components on the figure is connected by a blue line of
 width proportional to the interface bandwidth. The small mazes at the
 link points illustrate the latency of the link, with more tortuous
-mazes indicating higher latency.](/fig/responsibility-bandwidth.svg){max-width="90%"
+mazes indicating higher latency.](fig/responsibility-bandwidth.svg){max-width="90%"
 alt="Schematic of network bandwidth"}
 
 :::::::::::::::::::::::::::::::::::::::  challenge
@@ -262,17 +260,17 @@ data.
 
 Say you have a "data" folder containing 10,000 or so files, a healthy mix of
 small and large ASCII and binary data. Which of the following would be the
-best way to transfer them to Comet?
+best way to transfer them to HPC Carpentry's Cloud Cluster?
 
-1. `scp -r data user@comet.ncl.ac.uk:~/`
-2. `rsync -ra data user@comet.ncl.ac.uk:~/`
-3. `rsync -raz data user@comet.ncl.ac.uk:~/`
+1. `scp -r data yourUsername@cluster.hpc-carpentry.org:~/`
+2. `rsync -ra data yourUsername@cluster.hpc-carpentry.org:~/`
+3. `rsync -raz data yourUsername@cluster.hpc-carpentry.org:~/`
 4. `tar -cvf data.tar data;`
 
-   `rsync -raz data.tar user@comet.ncl.ac.uk:~/`
+   `rsync -raz data.tar yourUsername@cluster.hpc-carpentry.org:~/`
 5. `tar -cvzf data.tar.gz data;`
 
-   `rsync -ra data.tar.gz user@comet.ncl.ac.uk:~/`
+   `rsync -ra data.tar.gz yourUsername@cluster.hpc-carpentry.org:~/`
 
 :::::::::::::::  solution
 

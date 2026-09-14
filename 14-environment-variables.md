@@ -4,8 +4,6 @@ teaching: 10
 exercises: 5
 ---
 
-
-
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Understand how variables are implemented in the shell
@@ -48,17 +46,18 @@ Let's start by running the command `set` and looking at some of the variables
 in a typical shell session:
 
 ```bash
-[user@cometlogin01(comet) ~] set
+[yourUsername@login1 ~]$ set
 ```
 
 ```output
-HOME=/mnt/nfs/home/user
-HOSTNAME=cometlogin01
+...
+HOME=/yourUsername
+HOSTNAME=login1
 HOSTTYPE=x86_64
-PATH=/mnt/nfs/home/user/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
-PWD=/mnt/nfs/home/user
+PATH=/yourUsername/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+PWD=/yourUsername
 UID=1000
-USER=user
+USER=yourUsername
 ...
 ```
 
@@ -68,20 +67,21 @@ And yes, using `set` to *show* things might seem a little strange,
 even for Unix, but if you don't give it any arguments,
 it might as well show you things you *could* set.
 
-Every variable has a name.
-All shell variables' values are strings,
-even those (like `UID`) that look like numbers.
-It's up to programs to convert these strings to other types when necessary.
-For example, if a program wanted to find out how many processors the computer
-had, it would convert the value of the `NUMBER_OF_PROCESSORS` variable from a
-string to an integer.
+Every shell variable has a name and stores its value as text (strings),
+even variables like `UID` _**U**ser **ID**_ that appear numeric.
+Programs that use these variables may convert the string value into
+another type when needed.
+For example, a program can read the value of `UID`, convert it from a
+string to an integer user ID, look up the corresponding username in
+the system user database, and return the username as a string. The
+command `id -un` performs this lookup automatically.
 
 ## Showing the Value of a Variable
 
 Let's show the value of the variable `HOME`:
 
 ```bash
-[user@cometlogin01(comet) ~] echo HOME
+[yourUsername@login1 ~]$ echo HOME
 ```
 
 ```output
@@ -93,18 +93,18 @@ That just prints "HOME", which isn't what we wanted
 Let's try this instead:
 
 ```bash
-[user@cometlogin01(comet) ~] echo $HOME
+[yourUsername@login1 ~]$ echo $HOME
 ```
 
 ```output
-/mnt/nfs/home/user
+/yourUsername
 ```
 
 The dollar sign tells the shell that we want the *value* of the variable
 rather than its name.
 This works just like wildcards:
 the shell does the replacement *before* running the program we've asked for.
-Thanks to this expansion, what we actually run is ``echo /mnt/nfs/home/user ``,
+Thanks to this expansion, what we actually run is ``echo /yourUsername ``,
 which displays the right thing.
 
 ## Creating and Changing Variables
@@ -202,13 +202,13 @@ job was submitted.
 ## Solution
 
 ```bash
-[user@cometlogin01(comet) ~] nano example-job.sh
-[user@cometlogin01(comet) ~] cat example-job.sh
+[yourUsername@login1 ~]$ nano example-job.sh
+[yourUsername@login1 ~]$ cat example-job.sh
 ```
 
 ```output
 #!/bin/bash
-#SBATCH -t 00:00:30
+#SBATCH --time 00:00:30
 
 echo -n "This script is running on "
 hostname
@@ -232,57 +232,47 @@ unset SECRET_IDENTITY
 
 Similarly, some environment variables (like `PATH`) store lists of values.
 In this case, the convention is to use a colon ':' as a separator.
-If a program wants the individual elements of such a list,
+If a program needs the individual elements of such a list,
 it's the program's responsibility to split the variable's string value into
-pieces.
+separate pieces.
 
-Let's have a closer look at that `PATH` variable.
-Its value defines the shell's search path for executables,
-i.e., the list of directories that the shell looks in for runnable programs
-when you type in a program name without specifying what directory it is in.
+Let's take a closer look at that `PATH` variable.
+Its value defines the shell's search path for executables;
+i.e., the list of directories the shell searches for runnable programs
+after you type a command name without specifying its full path.
 
-For example, when we type a command like `analyze`,
-the shell needs to decide whether to run `./analyze` or `/bin/analyze`.
-The rule it uses is simple:
-the shell checks each directory in the `PATH` variable in turn,
-looking for a program with the requested name in that directory.
-As soon as it finds a match, it stops searching and runs the program.
+For example, when we type a command like `bash`, the shell needs to decide
+which executable to run.
+The rule it follows is simple: the shell checks each directory listed in
+`PATH`, in order, looking for a program with the requested name. As soon
+as it finds a match, it stops searching and executes the program.
 
-To show how this works,
-here are the components of `PATH` listed one per line:
+To show how this works, here are the components of `PATH` listed one per line:
 
 ```output
-/mnt/nfs/home/user/bin
-/usr/local/git/bin
-/usr/bin
-/bin
-/usr/sbin
-/sbin
+/yourUsername/bin
 /usr/local/bin
+/usr/bin
+/usr/local/sbin
+/usr/sbin
 ```
 
-On our computer,
-there are actually three programs called `analyze`
-in three different directories:
-`/bin/analyze`,
-`/usr/local/bin/analyze`,
-and `` /mnt/nfs/home/user/analyze ``.
-Since the shell searches the directories in the order they're listed in `PATH`,
-it finds `/bin/analyze` first and runs that.
-Notice that it will *never* find the program `` /mnt/nfs/home/user/analyze ``
-unless we type in the full path to the program,
-since the directory `` /mnt/nfs/home/user `` isn't in `PATH`.
+On our computer, there is a program called `bash` located at: `/usr/bin/bash`.
+Since the shell searches the directories in `PATH` in the order they are listed,
+it finds `/usr/bin/bash` and runs it.
+If a program is stored in a directory that is not listed in `PATH`, the shell
+will not find it unless we explicitly provide the program's full path.
 
-This means that I can have executables in lots of different places as long as
-I remember that I need to update my `PATH` so that my shell can find them.
+This means that we can keep executables in many different locations, as long as
+we update `PATH` so that the shell knows where to search for them.
 
-What if I want to run two different versions of the same program?
-Since they share the same name, if I add them both to my `PATH` the first one
-found will always win.
-In the next episode we'll learn how to use helper tools to help us manage our
-runtime environment to make that possible without us needing to do a lot of
-bookkeeping on what the value of `PATH` (and other important environment
-variables) is or should be.
+What if we want to run two different versions of the same program?
+Since both executables share the same name, if we add both of their directories
+to `PATH`, the version found first will always take precedence.
+In the next episode, we'll learn how to use helper tools to manage our
+runtime environment more effectively, allowing us to switch between different
+software versions without manually keeping track of the value of `PATH` and
+other important environment variables.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 ## Modifying your PATH

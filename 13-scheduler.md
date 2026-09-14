@@ -4,8 +4,6 @@ teaching: 45
 exercises: 30
 ---
 
-
-
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Submit a simple script to the cluster.
@@ -68,7 +66,7 @@ manner. Our shell script will have three parts:
   name of the machine the script is run on.
 
 ```bash
-[user@cometlogin01(comet) ~] nano example-job.sh
+[yourUsername@login1 ~]$ nano example-job.sh
 ```
 
 ```bash
@@ -89,11 +87,11 @@ Run the script. Does it execute on the cluster or just our login node?
 ## Solution
 
 ```bash
-[user@cometlogin01(comet) ~] bash example-job.sh
+[yourUsername@login1 ~]$ bash example-job.sh
 ```
 
 ```output
-This script is running on cometlogin01
+This script is running on login1
 ```
 
 :::::::::::::::::::::::::
@@ -111,22 +109,22 @@ a compute node which the queuing system has identified as being
 available to perform the work.
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch --partition=short_free --account=comet_training example-job.sh
+[yourUsername@login1 ~]$ sbatch  example-job.sh
 ```
 
 
 ```output
-Submitted batch job 2789123
+Submitted batch job 7
 ```
 
 And that's all we need to do to submit a job. Our work is done -- now the
 scheduler takes over and tries to run the job for us. While the job is waiting
 to run, it goes into a list of jobs called the *queue*. To check on our job's
 status, we check the queue using the command
-`squeue -u user`.
+`squeue -u yourUsername`.
 
 ```bash
-[user@cometlogin01(comet) ~] squeue -u user
+[yourUsername@login1 ~]$ squeue -u yourUsername
 ```
 
 ```output
@@ -162,7 +160,7 @@ resources we must customize our job script.
 Comments in UNIX shell scripts (denoted by `#`) are typically ignored, but
 there are exceptions. For instance the special `#!` comment at the beginning of
 scripts specifies what program should be used to run it (you'll typically see
-`#!/usr/bin/env bash`). Schedulers like Slurm also
+`#!/bin/bash`). Schedulers like Slurm also
 have a special comment used to denote special scheduler-specific options.
 Though these comments differ from scheduler to scheduler,
 Slurm's special comment is `#SBATCH`. Anything
@@ -170,16 +168,16 @@ following the `#SBATCH` comment is interpreted as an
 instruction to the scheduler.
 
 Let's illustrate this by example. By default, a job's name is the name of the
-script, but the `--job-name=` option can be used to change the
+script, but the `--job-name` option can be used to change the
 name of a job. Add an option to the script:
 
 ```bash
-[user@cometlogin01(comet) ~] cat example-job.sh
+[yourUsername@login1 ~]$ cat example-job.sh
 ```
 
 ```bash
 #!/bin/bash
-#SBATCH --job-name=hello-world
+#SBATCH --job-name hello-world
 
 echo -n "This script is running on "
 hostname
@@ -188,8 +186,8 @@ hostname
 Submit the job and monitor its status:
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch --partition=short_free --account=comet_training example-job.sh
-[user@cometlogin01(comet) ~] squeue -u user
+[yourUsername@login1 ~]$ sbatch  example-job.sh
+[yourUsername@login1 ~]$ squeue -u yourUsername
 ```
 
 ```output
@@ -201,30 +199,51 @@ Fantastic, we've successfully changed the name of our job!
 
 ### Resource Requests
 
-What about more important changes, such as the number of cores and memory for
-our jobs? One thing that is absolutely critical when working on an HPC system
-is specifying the resources required to run a job. This allows the scheduler to
-find the right time and place to schedule our job. If you do not specify
-requirements (such as the amount of time you need), you will likely be stuck
-with your site's default resources, which is probably not what you want.
+What about more important changes, such as the number of CPUs and the amount of
+memory required for our jobs? One thing that is absolutely critical when working
+on an HPC system is specifying the resources required to run a job. This allows
+the scheduler to find suitable resources and schedule the job effectively. If you
+do not specify requirements (such as the amount of time you need), you will likely
+be assigned your site's default resources, which is probably not what you want.
 
 The following are several key resource requests:
 
-- `--ntasks=<ntasks>` or `-n <ntasks>`: How many CPU cores does your job need,
-  in total?
+- `--ntasks=<number>` or `-n <number>`: How many parallel tasks (typically MPI
+  ranks or processes) should Slurm launch?
 
-- `--time <days-hours:minutes:seconds>` or `-t <days-hours:minutes:seconds>`:
+- `--ntasks-per-node=<ntasks>`: How many tasks should be launched on each compute
+  node?
+
+- `--cpus-per-task=<ncpus>` or `-c <ncpus>`: How many CPUs should be allocated
+  to each task/process?
+
+- `--partition=<partition>` or `-p <partition>`: Specify which scheduler
+  partition/queue the job should run in.
+
+- `--time=<days-hours:minutes:seconds>` or `-t <days-hours:minutes:seconds>`:
   How much real-world time (walltime) will your job take to run? The `<days>`
   part can be omitted.
 
-- `--mem=<megabytes>`: How much memory on a node does your job need in
-  megabytes? You can also specify gigabytes using by adding a little "g"
-  afterwards (example: `--mem=5g`)
+- `--mem=<size>[units]`: How much memory should be allocated per node for your job?
+  Memory units may be specified using the following suffixes:
+    - `K` or `k` for kilobytes
+    - `M` or `m` for megabytes
+    - `G` or `g` for gigabytes
+    - `T` or `t` for terabytes
+  Example: `--mem=5G` or `--mem=5g`
 
-- `--nodes=<nnodes>` or `-N <nnodes>`: How many separate machines does your job
-  need to run on? Note that if you set `ntasks` to a number greater than what
-  one machine can offer, Slurm will set this value
-  automatically.
+- `--mem-per-cpu=<size>[units]`: How much memory should be allocated per CPU?
+  This is commonly used on shared-node systems where memory allocation is tied to
+  CPU allocation.
+
+- `--nodes=<nnodes>` or `-N <nnodes>`: How many compute nodes should be allocated
+  for your job? Note that if the requested `ntasks` count cannot fit within
+  available resources of one node, Slurm may allocate multiple
+  nodes automatically, subject to partition limits and scheduler policies.
+
+For some resources, such as GPUs, the way to request them may be site-specific
+or specific to version of the resource scheduler. For this reason we do not
+include them in the list above.
 
 Note that just *requesting* these resources does not make your job run faster,
 nor does it necessarily mean that you will consume all of these resources. It
@@ -248,12 +267,12 @@ for it on the cluster.
 ## Solution
 
 ```bash
-[user@cometlogin01(comet) ~] cat example-job.sh
+[yourUsername@login1 ~]$ cat example-job.sh
 ```
 
 ```bash
 #!/bin/bash
-#SBATCH -t 00:01 # timeout in HH:MM
+#SBATCH --time 00:01 # timeout in HH:MM
 
 echo -n "This script is running on "
 sleep 20 # time in seconds
@@ -261,7 +280,7 @@ hostname
 ```
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch --partition=short_free --account=comet_training example-job.sh
+[yourUsername@login1 ~]$ sbatch  example-job.sh
 ```
 
 Why are the Slurm runtime and `sleep` time not identical?
@@ -277,13 +296,13 @@ killed. Let's use wall time as an example. We will request 1 minute of
 wall time, and attempt to run a job for two minutes.
 
 ```bash
-[user@cometlogin01(comet) ~] cat example-job.sh
+[yourUsername@login1 ~]$ cat example-job.sh
 ```
 
 ```bash
 #!/bin/bash
-#SBATCH --job-name=long_job
-#SBATCH -t 00:01 # timeout in HH:MM
+#SBATCH --job-name long_job
+#SBATCH --time 00:01 # timeout in HH:MM
 
 echo "This script is running on ... "
 sleep 240 # time in seconds
@@ -294,12 +313,12 @@ Submit the job and wait for it to finish. Once it is has finished, check the
 log file.
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch --partition=short_free --account=comet_training example-job.sh
-[user@cometlogin01(comet) ~] squeue -u user
+[yourUsername@login1 ~]$ sbatch  example-job.sh
+[yourUsername@login1 ~]$ squeue -u yourUsername
 ```
 
 ```bash
-[user@cometlogin01(comet) ~] cat slurm-12.out
+[yourUsername@login1 ~]$ cat slurm-12.out
 ```
 
 ```output
@@ -327,8 +346,8 @@ its job number (remember to change the walltime so that it runs long enough for
 you to cancel it before it is killed!).
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch --partition=short_free --account=comet_training example-job.sh
-[user@cometlogin01(comet) ~] squeue -u user
+[yourUsername@login1 ~]$ sbatch  example-job.sh
+[yourUsername@login1 ~]$ squeue -u yourUsername
 ```
 
 ```output
@@ -343,9 +362,9 @@ return of your command prompt indicates that the request to cancel the job was
 successful.
 
 ```bash
-[user@cometlogin01(comet) ~] scancel 38759
+[yourUsername@login1 ~]$ scancel 38759
 # It might take a minute for the job to disappear from the queue...
-[user@cometlogin01(comet) ~] squeue -u user
+[yourUsername@login1 ~]$ squeue -u yourUsername
 ```
 
 ```output
@@ -369,15 +388,15 @@ Try submitting multiple jobs and then cancelling them all.
 First, submit a trio of jobs:
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch --partition=short_free --account=comet_training example-job.sh
-[user@cometlogin01(comet) ~] sbatch --partition=short_free --account=comet_training example-job.sh
-[user@cometlogin01(comet) ~] sbatch --partition=short_free --account=comet_training example-job.sh
+[yourUsername@login1 ~]$ sbatch  example-job.sh
+[yourUsername@login1 ~]$ sbatch  example-job.sh
+[yourUsername@login1 ~]$ sbatch  example-job.sh
 ```
 
 Then, cancel them all:
 
 ```bash
-[user@cometlogin01(comet) ~] scancel -u user
+[yourUsername@login1 ~]$ scancel -u yourUsername
 ```
 
 :::::::::::::::::::::::::
@@ -401,11 +420,11 @@ exits. Let's demonstrate this by running the `hostname` command with
 job with `Ctrl-c`.)
 
 ```bash
-[user@cometlogin01(comet) ~] srun hostname
+[yourUsername@login1 ~]$ srun hostname
 ```
 
 ```output
-compute030
+smnode1
 ```
 
 `srun` accepts all of the same options as
@@ -414,7 +433,7 @@ these options are specified on the command-line when starting a job. To submit
 a job that uses 2 CPUs for instance, we could use the following command:
 
 ```bash
-[user@cometlogin01(comet) ~] srun -n 2 echo "This job will use 2 CPUs."
+[yourUsername@login1 ~]$ srun -n 2 echo "This job will use 2 CPUs."
 ```
 
 ```output
@@ -433,7 +452,7 @@ went wrong with a previous job. Fortunately, Slurm makes it
 easy to start an interactive job with `srun`:
 
 ```bash
-[user@cometlogin01(comet) ~] srun --partition=short_free --account=comet_training --pty bash
+[yourUsername@login1 ~]$ srun  --pty bash
 ```
 
 You should be presented with a bash prompt. Note that the prompt will likely

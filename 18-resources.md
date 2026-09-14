@@ -4,8 +4,6 @@ teaching: 10
 exercises: 20
 ---
 
-
-
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Look up job statistics.
@@ -47,7 +45,7 @@ written up guidance for getting the most out of it.
 
 A convenient way of figuring out the resources required for a job to run
 successfully is to submit a test job, and then ask the scheduler about its
-impact using `sacct -u user`. You can use this knowledge to set up the
+impact using `sacct -u yourUsername`. You can use this knowledge to set up the
 next job with a closer estimate of its load on the system. A good general rule
 is to ask the scheduler for 20% to 30% more time and memory than you expect the
 job to need. This ensures that minor fluctuations in run time or memory use
@@ -60,10 +58,10 @@ finish and free up the resources needed to match what you asked for.
 
 Since we already submitted `amdahl` to run on the cluster, we can query the
 scheduler to see how long our job took and what resources were used. We will
-use `sacct -u user` to get statistics about `parallel-job.sh`.
+use `sacct -u yourUsername` to get statistics about `parallel-job.sh`.
 
 ```bash
-[user@cometlogin01(comet) ~] sacct -u user
+[yourUsername@login1 ~]$ sacct -u yourUsername
 ```
 
 
@@ -87,7 +85,7 @@ To get info about a specific job (for example, 347087), we change command
 slightly.
 
 ```bash
-[user@cometlogin01(comet) ~] sacct -u user -l -j 347087
+[yourUsername@login1 ~]$ sacct -u yourUsername --long --jobs 347087
 ```
 
 It will show a lot of info; in fact, every single piece of info collected on
@@ -96,7 +94,7 @@ information to `less` to make it easier to view (use the left and right arrow
 keys to scroll through fields).
 
 ```bash
-[user@cometlogin01(comet) ~] sacct -u user -l -j 347087 | less -S
+[yourUsername@login1 ~]$ sacct -u yourUsername --long --jobs 347087 | less -S
 ```
 
 ::::::::::::::::::::::::::::::::::::::  discussion
@@ -132,7 +130,7 @@ get your job dispatched earlier.
 Edit `parallel_job.sh` to set a better time estimate. How close can
 you get?
 
-Hint: use `-t`.
+Hint: use `--time`.
 
 :::::::::::::::  solution
 
@@ -142,7 +140,7 @@ The following line tells Slurm that our job should
 finish within 2 minutes:
 
 ```bash
-#SBATCH -t 00:02:00
+#SBATCH --time 00:02:00
 ```
 
 :::::::::::::::::::::::::

@@ -4,11 +4,8 @@ teaching: 30
 exercises: 60
 ---
 
-
-
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Install a Python package using `pip`
 - Prepare a job submission script for the parallel executable.
 - Launch jobs with parallel execution.
 - Record and summarize the timing and accuracy of jobs.
@@ -24,156 +21,24 @@ exercises: 60
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-We now have the tools we need to run a multi-processor job. This is a very
-important aspect of HPC systems, as parallelism is one of the primary tools
-we have to improve the performance of computational tasks.
-
-If you disconnected, log back in to the cluster.
-
-```bash
-[you@laptop:~]$ ssh user@comet.ncl.ac.uk
-```
-
-## Install the Amdahl Program
-
-With the Amdahl source code on the cluster, we can install it, which will
-provide access to the `amdahl` executable.
-Move into the extracted directory, then use the Package Installer for Python,
-or `pip`, to install it in your ("user") home directory:
-
-```bash
-[user@cometlogin01(comet) ~] cd amdahl
-[user@cometlogin01(comet) ~] python3 -m pip install --user .
-```
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## Amdahl is Python Code
-
-The Amdahl program is written in Python, and installing or using it requires
-locating the `python3` executable on the login node.
-If it can't be found, try listing available modules using `module avail`,
-load the appropriate one, and try the command again.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-### MPI for Python
-
-The Amdahl code has one dependency: **mpi4py**.
-If it hasn't already been installed on the cluster, `pip` will attempt to
-collect mpi4py from the Internet and install it for you.
-If this fails due to a one-way firewall, you must retrieve mpi4py on your
-local machine and upload it, just as we did for Amdahl.
-
-::::::::::::::::::::::::::::::::::::::  discussion
-
-## Retrieve and Upload `mpi4py`
-
-If installing Amdahl failed because mpi4py could not be installed,
-retrieve the tarball from <https://github.com/mpi4py/mpi4py/tarball/master>
-then `rsync` it to the cluster, extract, and install:
-
-```bash
-[you@laptop:~]$ wget -O mpi4py.tar.gz https://github.com/mpi4py/mpi4py/releases/download/3.1.4/mpi4py-3.1.4.tar.gz
-[you@laptop:~]$ scp mpi4py.tar.gz user@comet.ncl.ac.uk:
-# or
-[you@laptop:~]$ rsync -avP mpi4py.tar.gz user@comet.ncl.ac.uk:
-```
-
-```bash
-[you@laptop:~]$ ssh user@comet.ncl.ac.uk
-[user@cometlogin01(comet) ~] tar -xvzf mpi4py.tar.gz  # extract the archive
-[user@cometlogin01(comet) ~] mv mpi4py* mpi4py        # rename the directory
-[user@cometlogin01(comet) ~] cd mpi4py
-[user@cometlogin01(comet) ~] python3 -m pip install --user .
-[user@cometlogin01(comet) ~] cd ../amdahl
-[user@cometlogin01(comet) ~] python3 -m pip install --user .
-```
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::  discussion
-
-## If `pip` Raises a Warning...
-
-`pip` may warn that your user package binaries are not in your PATH.
-
-```warning
-WARNING: The script amdahl is installed in "${HOME}/.local/bin" which is
-not on PATH. Consider adding this directory to PATH or, if you prefer to
-suppress this warning, use --no-warn-script-location.
-```
-
-To check whether this warning is a problem, use `which` to search for the
-`amdahl` program:
-
-```bash
-[user@cometlogin01(comet) ~] which amdahl
-```
-
-If the command returns no output, displaying a new prompt, it means the file
-`amdahl` has not been found. You must update the environment variable named
-`PATH` to include the missing folder.
-Edit your shell configuration file as follows, then log off the cluster and
-back on again so it takes effect.
-
-```bash
-[user@cometlogin01(comet) ~] nano ~/.bashrc
-[user@cometlogin01(comet) ~] tail ~/.bashrc
-```
-
-```output
-export PATH=${PATH}:${HOME}/.local/bin
-```
-
-After logging back in to comet.ncl.ac.uk, `which` should be able to
-find `amdahl` without difficulties.
-If you had to load a Python module, load it again.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-## Help!
-
-Many command-line programs include a "help" message. Try it with `amdahl`:
-
-```bash
-[user@cometlogin01(comet) ~] amdahl --help
-```
-
-```output
-usage: amdahl [-h] [-p [PARALLEL_PROPORTION]] [-w [WORK_SECONDS]] [-t] [-e] [-j [JITTER_PROPORTION]]
-
-options:
-  -h, --help            show this help message and exit
-  -p, --parallel-proportion [PARALLEL_PROPORTION]
-                        Parallel proportion: a float between 0 and 1
-  -w, --work-seconds [WORK_SECONDS]
-                        Total seconds of workload: an integer greater than 0
-  -t, --terse           Format output as a machine-readable object for easier analysis
-  -e, --exact           Exactly match requested timing by disabling random jitter
-  -j, --jitter-proportion [JITTER_PROPORTION]
-                        Random jitter: a float between -1 and +1
-```
-
-This message doesn't tell us much about what the program *does*, but it does
-tell us the important flags we might want to use when launching it.
 
 ## Running the Job on a Compute Node
+
+At this point, we have installed the `amdahl` executable on the
+system, and can now run it on the cluster.
 
 Create a submission file, requesting one task on a single node, then launch it.
 
 
 ```bash
-[user@cometlogin01(comet) ~] nano serial-job.sh
-[user@cometlogin01(comet) ~] cat serial-job.sh
+[yourUsername@login1 ~]$ nano serial-job.sh
+[yourUsername@login1 ~]$ cat serial-job.sh
 ```
 
 ```bash
 #!/bin/bash
-#SBATCH --job-name= solo-job
-#SBATCH --partition= short_free
+#SBATCH --job-name solo-job
+#SBATCH --partition cpubase_bycore_b1
 #SBATCH -N 1
 #SBATCH -n 1
 
@@ -185,14 +50,14 @@ amdahl
 ```
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch serial-job.sh
+[yourUsername@login1 ~]$ sbatch serial-job.sh
 ```
 
 As before, use the Slurm status commands to check whether your job
 is running and when it ends:
 
 ```bash
-[user@cometlogin01(comet) ~] squeue -u user
+[yourUsername@login1 ~]$ squeue -u yourUsername
 ```
 
 Use `ls` to locate the output file. The `-t` flag sorts in
@@ -206,7 +71,7 @@ The cluster output should be written to a file in the folder you launched the
 job from. For example,
 
 ```bash
-[user@cometlogin01(comet) ~] ls -t
+[yourUsername@login1 ~]$ ls -t
 ```
 
 ```output
@@ -214,15 +79,15 @@ slurm-347087.out  serial-job.sh  amdahl  LICENSE  pyproject.toml  README.md
 ```
 
 ```bash
-[user@cometlogin01(comet) ~] cat slurm-347087.out
+[yourUsername@login1 ~]$ cat slurm-347087.out
 ```
 
 ```output
 Doing 30.000000 seconds of 'work' on 1 processor,
 which should take 30.000000 seconds with 0.800000 parallel proportion of the workload.
 
-  Hello, World! I am process 0 of 1 on compute030. I will do all the serial 'work' for 7.021608 seconds.
-  Hello, World! I am process 0 of 1 on compute030. I will do parallel 'work' for 26.302983 seconds.
+  Hello, World! I am process 0 of 1 on smnode1. I will do all the serial 'work' for 7.021608 seconds.
+  Hello, World! I am process 0 of 1 on smnode1. I will do parallel 'work' for 26.302983 seconds.
 
 Total execution time (according to rank 0): 33.326056 seconds
 ```
@@ -287,15 +152,15 @@ Let's modify the job script to request more cores and use the MPI run-time.
 
 
 ```bash
-[user@cometlogin01(comet) ~] cp serial-job.sh parallel-job.sh
-[user@cometlogin01(comet) ~] nano parallel-job.sh
-[user@cometlogin01(comet) ~] cat parallel-job.sh
+[yourUsername@login1 ~]$ cp serial-job.sh parallel-job.sh
+[yourUsername@login1 ~]$ nano parallel-job.sh
+[yourUsername@login1 ~]$ cat parallel-job.sh
 ```
 
 ```bash
 #!/bin/bash
-#SBATCH --job-name= parallel-job
-#SBATCH --partition= short_free
+#SBATCH --job-name parallel-job
+#SBATCH --partition cpubase_bycore_b1
 #SBATCH -N 1
 #SBATCH -n 4
 
@@ -313,34 +178,35 @@ from how we submitted the serial job: all the parallel settings are in the
 batch file rather than the command line.
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch parallel-job.sh
+[yourUsername@login1 ~]$ sbatch parallel-job.sh
 ```
 
 As before, use the status commands to check when your job runs.
 
 ```bash
-[user@cometlogin01(comet) ~] ls -t
+[yourUsername@login1 ~]$ ls -t
 ```
 
 ```output
-slurm-347178.out  parallel-job.sh  slurm-347087.out  serial-job.sh  amdahl  README.md  LICENSE.txt
+slurm-347178.out  parallel-job.sh  amdahl   pyproject.toml
+slurm-347087.out  serial-job.sh    LICENSE  README.md
 ```
 
 ```bash
-[user@cometlogin01(comet) ~] cat slurm-347178.out
+[yourUsername@login1 ~]$ cat slurm-347178.out
 ```
 
 ```output
-Doing 30.000 seconds of 'work' on 4 processors,
-which should take 10.875 seconds with 0.850 parallel proportion of the workload.
+Doing 30.000000 seconds of 'work' on 4 processors,
+ which should take 12.000000 seconds with 0.800000 parallel proportion of the workload.
 
-  Hello, World! I am process 0 of 4 on compute030. I will do all the serial 'work' for 4.500 seconds.
-  Hello, World! I am process 2 of 4 on compute030. I will do parallel 'work' for 6.375 seconds.
-  Hello, World! I am process 1 of 4 on compute030. I will do parallel 'work' for 6.375 seconds.
-  Hello, World! I am process 3 of 4 on compute030. I will do parallel 'work' for 6.375 seconds.
-  Hello, World! I am process 0 of 4 on compute030. I will do parallel 'work' for 6.375 seconds.
+  Hello, World! I am process 0 of 4 on smnode1. I will do all the serial 'work' for 6.851971 seconds.
+  Hello, World! I am process 2 of 4 on smnode1. I will do parallel 'work' for 6.726753 seconds.
+  Hello, World! I am process 1 of 4 on smnode1. I will do parallel 'work' for 6.742398 seconds.
+  Hello, World! I am process 3 of 4 on smnode1. I will do parallel 'work' for 6.782674 seconds.
+  Hello, World! I am process 0 of 4 on smnode1. I will do parallel 'work' for 6.468167 seconds.
 
-Total execution time (according to rank 0): 10.888 seconds
+Total execution time (according to rank 0): 13.579746 seconds
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
@@ -405,14 +271,14 @@ code gets.
 
 
 ```bash
-[user@cometlogin01(comet) ~] nano parallel-job.sh
-[user@cometlogin01(comet) ~] cat parallel-job.sh
+[yourUsername@login1 ~]$ nano parallel-job.sh
+[yourUsername@login1 ~]$ cat parallel-job.sh
 ```
 
 ```bash
 #!/bin/bash
-#SBATCH --job-name= parallel-job
-#SBATCH --partition= short_free
+#SBATCH --job-name parallel-job
+#SBATCH --partition cpubase_bycore_b1
 #SBATCH -N 1
 #SBATCH -n 8
 
@@ -430,37 +296,39 @@ from how we submitted the serial job: all the parallel settings are in the
 batch file rather than the command line.
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch parallel-job.sh
+[yourUsername@login1 ~]$ sbatch parallel-job.sh
 ```
 
 As before, use the status commands to check when your job runs.
 
 ```bash
-[user@cometlogin01(comet) ~] ls -t
+[yourUsername@login1 ~]$ ls -t
 ```
 
 ```output
-slurm-347271.out  parallel-job.sh  slurm-347178.out  slurm-347087.out  serial-job.sh  amdahl  README.md  LICENSE.txt
+slurm-347271.out     slurm-347178.out  serial-job.sh  LICENSE         README.md
+parallel-job.sh      slurm-347087.out  amdahl         pyproject.toml
 ```
 
 ```bash
-[user@cometlogin01(comet) ~] cat slurm-347178.out
+[yourUsername@login1 ~]$ cat slurm-347178.out
 ```
 
 ```output
-which should take 7.688 seconds with 0.850 parallel proportion of the workload.
+Doing 30.000000 seconds of 'work' on 8 processors,
+ which should take 9.000000 seconds with 0.800000 parallel proportion of the workload.
 
-  Hello, World! I am process 4 of 8 on compute030. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 0 of 8 on compute030. I will do all the serial 'work' for 4.500 seconds.
-  Hello, World! I am process 2 of 8 on compute030. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 1 of 8 on compute030. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 3 of 8 on compute030. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 5 of 8 on compute030. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 6 of 8 on compute030. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 7 of 8 on compute030. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 0 of 8 on compute030. I will do parallel 'work' for 3.188 seconds.
+  Hello, World! I am process 4 of 8 on smnode1. I will do parallel 'work' for 3.157831 seconds.
+  Hello, World! I am process 0 of 8 on smnode1. I will do all the serial 'work' for 6.031285 seconds.
+  Hello, World! I am process 2 of 8 on smnode1. I will do parallel 'work' for 3.215214 seconds.
+  Hello, World! I am process 1 of 8 on smnode1. I will do parallel 'work' for 3.524280 seconds.
+  Hello, World! I am process 3 of 8 on smnode1. I will do parallel 'work' for 3.589039 seconds.
+  Hello, World! I am process 5 of 8 on smnode1. I will do parallel 'work' for 3.501589 seconds.
+  Hello, World! I am process 6 of 8 on smnode1. I will do parallel 'work' for 3.207707 seconds.
+  Hello, World! I am process 7 of 8 on smnode1. I will do parallel 'work' for 3.071680 seconds.
+  Hello, World! I am process 0 of 8 on smnode1. I will do parallel 'work' for 3.482018 seconds.
 
-Total execution time (according to rank 0): 7.697 seconds
+Total execution time (according to rank 0): 9.514393 seconds
 ```
 
 ::::::::::::::::::::::::::::::::::::::  discussion
@@ -493,7 +361,7 @@ S(t_{n}) = \frac{t_{1}}{t_{n}}
 $$
 
 ```bash
-[user@cometlogin01(comet) ~] for n in 33.326056 13.579746 9.514393; do python3 -c "print(33.326056 / $n)"; done
+[yourUsername@login1 ~]$ for n in 33.326056 13.579746 9.514393; do python3 -c "print(33.326056 / $n)"; done
 ```
 
 | Number of CPUs | Speedup        | Ideal |

@@ -4,8 +4,6 @@ teaching: 25
 exercises: 10
 ---
 
-
-
 ::: questions
 - "What is an HPC system?"
 - "How does an HPC system work?"
@@ -86,13 +84,13 @@ single argument.
 
 Go ahead and open your terminal or graphical SSH client, then log in to the
 cluster using your username and the remote computer you can reach from the
-outside world, comet.ncl.ac.uk.
+outside world, cluster.hpc-carpentry.org.
 
 ```bash
-[you@laptop:~]$ ssh user@comet.ncl.ac.uk
+[you@laptop:~]$ ssh yourUsername@cluster.hpc-carpentry.org
 ```
 
-Remember to replace `user` with your username or the one
+Remember to replace `yourUsername` with your username or the one
 supplied by the instructors. You may be asked for your password. Watch out: the
 characters you type after the password prompt are not displayed on the screen.
 Normal output will resume once you press `Enter`.
@@ -107,11 +105,11 @@ computer we are logged onto can be checked with the `hostname` command. (You
 may also notice that the current hostname is also part of our prompt!)
 
 ```bash
-[user@cometlogin01(comet) ~] hostname
+[yourUsername@login1 ~]$ hostname
 ```
 
 ```output
-cometlogin01
+login1
 ```
 
 ::: challenge
@@ -129,7 +127,7 @@ differences you spot with your neighbors.
 
 ## It's a Beautiful Day in the Neighborhood
 
-The deepest layer should differ: `user` is uniquely yours.
+The deepest layer should differ: `yourUsername` is uniquely yours.
 Are there differences in the path at higher levels?
 
 If both of you have empty directories, they will look identical. If you
@@ -139,7 +137,7 @@ are you working on?
 Use `pwd` to **p**rint the **w**orking **d**irectory path:
 
 ```bash
-[user@cometlogin01(comet) ~] pwd
+[yourUsername@login1 ~]$ pwd
 ```
 
 You can run `ls` to **l**i**s**t the directory contents, though it's
@@ -147,7 +145,7 @@ possible nothing will show up (if no files have been provided). To be sure,
 use the `-a` flag to show hidden files, too.
 
 ```bash
-[user@cometlogin01(comet) ~] ls -a
+[yourUsername@login1 ~]$ ls -a
 ```
 
 At a minimum, this will show the current directory as `.`, and the parent
@@ -200,13 +198,13 @@ For example, we can view all of the worker nodes by running the command
 `sinfo`.
 
 ```bash
-[user@cometlogin01(comet) ~] sinfo
+[yourUsername@login1 ~]$ sinfo
 ```
 
 
 ```output
 PARTITION          AVAIL  TIMELIMIT  NODES  STATE NODELIST
-short_free            up   infinite      4   idle node[1-2],smnode[1-2]
+cpubase_bycore_b1*    up   infinite      4   idle node[1-2],smnode[1-2]
 node                  up   infinite      2   idle node[1-2]
 smnode                up   infinite      2   idle smnode[1-2]
 ```
@@ -241,7 +239,7 @@ Note that, if you're logged in to the remote computer cluster, you need to
 log out first. To do so, type `Ctrl+d` or `exit`:
 
 ```bash
-[user@cometlogin01(comet) ~] exit
+[yourUsername@login1 ~]$ exit
 [you@laptop:~]$
 ```
 
@@ -284,16 +282,16 @@ Now compare the resources of your computer with those of the head node.
 :::: solution
 
 ```bash
-[you@laptop:~]$ ssh user@comet.ncl.ac.uk
-[user@cometlogin01(comet) ~] nproc --all
-[user@cometlogin01(comet) ~] free -m
+[you@laptop:~]$ ssh yourUsername@cluster.hpc-carpentry.org
+[yourUsername@login1 ~]$ nproc --all
+[yourUsername@login1 ~]$ free -m
 ```
 
 You can get more information about the processors using `lscpu`,
 and a lot of detail about the memory by reading the file `/proc/meminfo`:
 
 ```bash
-[user@cometlogin01(comet) ~] less /proc/meminfo
+[yourUsername@login1 ~]$ less /proc/meminfo
 ```
 
 You can also explore the available filesystems using `df` to show **d**isk
@@ -302,7 +300,7 @@ i.e., GB instead of B. The **t**ype flag `-T` shows what kind of filesystem
 each resource is.
 
 ```bash
-[user@cometlogin01(comet) ~] df -Th
+[yourUsername@login1 ~]$ df -Th
 ```
 ::::
 :::
@@ -311,8 +309,7 @@ each resource is.
 The local filesystems (ext, tmp, xfs, zfs) will depend on whether you're
 on the same login node (or compute node, later on). Networked filesystems
 (beegfs, cifs, gpfs, nfs, pvfs) will be similar --- but may include
-user, depending on how it is [mounted](
-https://en.wikipedia.org/wiki/Mount_(computing)).
+`/usr`, depending on how it is [mounted](https://en.wikipedia.org/wiki/Mount_(computing)).
 :::
 
 ::: callout
@@ -333,7 +330,7 @@ where your jobs will actually run. Try running this command to see
 the name, CPUs and memory available on one of the worker nodes:
 
 ```bash
-[user@cometlogin01(comet) ~] sinfo -o "%n %c %m" | column -t
+[yourUsername@login1 ~]$ sinfo -o "%n %c %m" | column -t
 ```
 :::
 
