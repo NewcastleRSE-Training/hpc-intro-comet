@@ -21,27 +21,71 @@ exercises: 5
 
 
 ::::instructor
-Download the archive of data and scripts using wget https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/array-jobs.tar.gz
+Download the data using script https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/make-data.sh
 ::::
 
 ## Job Arrays for High Throughput
+Parallel computing allows multiple computational tasks to execute
+simultaneously in order to reduce execution time for a task, or
+increase throughput for multiple tasks. Depending on the application,
+the workload may be divided into cooperating subtasks that communicate with
+one another, or into independent tasks that execute separately.
 
-Parallel computing is a technique used to divide big tasks into smaller ones that can be solved simultaneously. 
-Parallelism can be accomplished in different ways; the best approach depends on the tasks that need doing as well as the algorithms implemented to perform these tasks.
-
-One way of implementing parallel computing is to distribute a job across multiple processors. 
-This is usually accomplished by using the Message Passage Interface (MPI) which is a standardised way for CPU cores to communicate with one another while working together on a task. 
+One common approach to parallel computing is to distribute computation across
+multiple processes that cooperate by exchanging information during
+execution using the Message Passing Interface (MPI).  
 Software has to be written specifically to utilize MPI to take advantage of this.
 
-Another form of parallel computing is an array job. This type of job is advantageous where the same software has to be run across several files. 
-An example of this would be in bioinformatics where the same workflow has to applied to a set of files that contain data for different samples. 
-There is no need for the different jobs to "talk" to one another while they run. The advantage lies in the fact that the jobs can run in parallel. 
-One could potentially run such processes manually across different computers but imagine having a hundred files and each taking two hours to complete. 
-You can run them in series which would take two hundred hours or you can manually start them across, say, four computers which would mean it would take 25 hours. 
-But it would take you some time to start all these jobs if you do it manually. To complicate matters things will quite often go wrong and workflow won't complete in which case you have to first notice this, correct the problem and then restart it all.
+Not all workloads require processes to cooperate. Many scientific workflows
+are made up of independent jobs. For these cases, `r config$sched$name`
+provides Job Arrays, allowing many similar jobs to be submitted and managed together.
 
-Array jobs are controlled by the Slurm scheduler. You will need only one set of scripts to which you supply a list of files. 
-Slurm will automatically distribute the jobs across available nodes. If any of the jobs fail you can easily restart only those failed jobs.
+For instance,
+you might need to run the same task on several independent input
+files, or you may have multiple serial tasks that take some parameter,
+and you need to explore several values of the parameter.
+Workflows made up of these independent elements are 
+also sometimes called "high-throughput" computing.
+
+A Job Array is a collection of related batch jobs submitted using a single job script.
+All the jobs in the Array are controlled by the scheduler. 
+You need only one set of scripts to which you supply a list of file or parameters. 
+The scheduler will automatically distribute the jobs across available nodes. 
+If any of the jobs fail you can easily restart only those failed jobs.
+
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+What distinguishes workloads that are suitable for job arrays from those
+that require traditional parallel programming?
+Describe some examples.
+
+:::::::::::::::  solution
+
+Tasks appropriate for array jobs are "high-throughput", where
+the same thing needs to be done many times, possibly over a set
+of parameters, but where each task is independent of the others.
+
+For example, running the same statistical analysis on a large
+number of independent input files is a good candidate for an
+array solution.
+
+Parallel tasks which have interactions between the various
+parallel processes need to communicate between processes at
+run-time, and are not appropriate for job arrays.
+
+For example, most parallel scientific codes that run in
+parallel have a requirement to communicate between parallel
+elements at run-time, and are not appropriate for job arrays.
+
+Similarly, serial tasks which only need to be run once do not
+benefit from parallelism. Aggregating unrelated tasks into an
+array merely for the sake of grouping does not make sense.
+
+:::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 ## A case of counting words
 
@@ -55,7 +99,8 @@ The data consists of several books from the Gutenberg project as text files:
 |data.3|Moby Dick by Herman Melville|
 |data.4|Homers Odyssey|
 
-Peter has been doing this work on their laptop using a programme called `word-freq.sh` but it's taking far too long so they have decided to move their work to HPC in order to get through the processing more quickly.
+Peter has been doing this work on their laptop using a programme called `word-freq.sh` 
+but it's taking far too long so they have decided to move their work to HPC in order to get through the processing more quickly.
 
 ### Preparing a directory to work in
 
@@ -88,7 +133,9 @@ Some words are repeated in this file
 and count them (to see which words are repeated most often).
 ```
 
-To test the script we will run it on the login node. Remember, never do this with resource intensive script. You could even run the script on your laptop or desktop if it uses Linux or Mac. This specific script will not work on Windows as not all the commands in the script are available on the Windows operating system.
+To test the script we will run it on the login node. Remember, never do this with resource intensive script. 
+You could even run the script on your laptop or desktop if it uses Linux or Mac. 
+This specific script will not work on Windows as not all the commands in the script are available on the Windows operating system.
 
 ```bash
 bash word-freq.sh test-data.txt
@@ -164,107 +211,6 @@ The complete script can be downloaded from: https://raw.githubusercontent.com/Ne
 
 
 
-
-# Andrew's version
-Parallel computing allows multiple computational tasks to execute
-simultaneously in order to reduce execution time for a task, or
-increase throughput for multiple tasks. Depending on the application,
-the workload may be divided into cooperating subtasks that communicate with
-one another, or into independent tasks that execute separately.
-
-One common approach to parallel computing is to distribute computation across
-multiple processes that cooperate by exchanging information during
-execution using the Message Passing Interface. This is the "MPI" that we
-saw as a dependency of the `amdahl` application.
-
-Not all workloads require processes to cooperate. Many scientific workflows
-are made up of independent jobs. For these cases, `r config$sched$name`
-provides Job Arrays, allowing many similar jobs to be submitted and managed together.
-
-For instance,
-you might need to run the same task on several independent input
-files, or you may have multiple serial tasks that take some parameter,
-and you need to explore several values of the parameter.
-Workflows made up of these independent elements are 
-also sometimes called "high-throughput" computing.
-
-Operationally speaking, a Job Array is a collection of related batch
-jobs submitted using a single job script.
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-What distinguishes workloads that are suitable for job arrays from those
-that require traditional parallel programming?
-Describe some examples.
-
-:::::::::::::::  solution
-
-Tasks appropriate for array jobs are "high-throughput", where
-the same thing needs to be done many times, possibly over a set
-of parameters, but where each task is independent of the others.
-
-For example, running the same statistical analysis on a large
-number of independent input files is a good candidate for an
-array solution.
-
-Parallel tasks which have interactions between the various
-parallel processes need to communicate between processes at
-run-time, and are not appropriate for job arrays.
-
-For example, most parallel scientific codes that run in
-parallel have a requirement to communicate between parallel
-elements at run-time, and are not appropriate for job arrays.
-
-Similarly, serial tasks which only need to be run once do not
-benefit from parallelism. Aggregating unrelated tasks into an
-array merely for the sake of grouping does not make sense.
-
-:::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::::::::::::
-
-We have already seen how to submit a single serial job to the
-Slurm scheduler.
-
-Array jobs differ in character, but are specified in a similar manner.
-The batch file describes the array to the system, and at submission
-time, all of the array elements are submitted together. They may
-dispatch at different times, and may or may not run concurrently.
-
-Within
-the execution environment of an array element, a number of environment
-variables will be set, which can be used at run-time by the
-array elements to identify the size of the array, and their
-position within it, allowing them to select the correct input
-file. These jobs will be dispatched as their resource requirements
-and priorities are met, and they may or may not run concurrently.
-
-By way of review, we will construct a job submission script that
-runs the `amdahl` executable with the default arguments.
-
-Using `nano`, create a script called
-`job_single_amdahl.sh` containing the following:
-
-```{r, echo=FALSE, results='asis'}
-snippets('array/job_single_amdahl.Rmd')
-```
-
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-How would you submit the script to Slurm for execution?
-
-:::::::::::::::  solution
-
-  
-```bash
-sbatch job_single_amdahl.sh
-```
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
 ## Array Job Syntax
 
 
@@ -311,25 +257,6 @@ There are also some file-name patterns you can use to control
 where your executable reads and writes data. The most important
 of these is the `%a` pattern, which corresponds to the index
 of the current array element, similarly to `SLURM_ARRAY_TASK_ID`.
-
-::::: challenge
-
-
-Write a batch script to run the `amdahl` program as an array job with
-4 independent jobs, to examine the effects of jitter.
-
-Use the directives discussed above to specify the array elements,
-and to direct the output of each array element to a separate file.
-
-:::: solution
-
-```{r, echo=FALSE, results='asis'}
-snippets('array/job_array_amdahl.Rmd')
-```
-
-::::
-
-:::::
 
 
 
