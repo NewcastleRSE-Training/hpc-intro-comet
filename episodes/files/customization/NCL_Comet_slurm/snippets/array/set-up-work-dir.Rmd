@@ -1,5 +1,0 @@
-```bash
-cd `r config$remote$fs$work`
-mkdir username
-cd username
-```

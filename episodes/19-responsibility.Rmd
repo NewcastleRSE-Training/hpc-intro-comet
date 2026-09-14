@@ -4,11 +4,6 @@ teaching: 15
 exercises: 5
 ---
 
-```{r, echo=FALSE}
-# Source the external configuration script
-source("load_config.R")
-```
-
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Describe how the actions of a single user can affect the experience of others on a shared system.
@@ -251,7 +246,7 @@ talked about data transfer earlier.
 I/O. Each of the components on the figure is connected by a blue line of
 width proportional to the interface bandwidth. The small mazes at the
 link points illustrate the latency of the link, with more tortuous
-mazes indicating higher latency.](/fig/responsibility-bandwidth.svg){max-width="90%"
+mazes indicating higher latency.](fig/responsibility-bandwidth.svg){max-width="90%"
 alt="Schematic of network bandwidth"}
 
 :::::::::::::::::::::::::::::::::::::::  challenge

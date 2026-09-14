@@ -1,8 +1,0 @@
-```bash
-`r config$remote$prompt` module load `r config$remote$modules$python`
-`r config$remote$prompt` which python3
-```
-
-```output
-/usr/bin/python3
-```
