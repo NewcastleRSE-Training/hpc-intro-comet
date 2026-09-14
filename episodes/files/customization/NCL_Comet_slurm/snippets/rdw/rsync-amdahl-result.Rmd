@@ -1,0 +1,13 @@
+```bash
+`r config$remote$prompt` ls /rdw/04/rse-training/`r config$remote$user`/
+```
+```output
+amdahl  example-job.sh
+```
+
+```bash
+`r config$remote$prompt` ls /rdw/04/rse-training/`r config$remote$user`/amdahl/
+```
+```output
+amdahl  LICENSE  pyproject.toml  README.md
+```

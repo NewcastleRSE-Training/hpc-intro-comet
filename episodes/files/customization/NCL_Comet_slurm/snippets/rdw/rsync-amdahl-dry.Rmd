@@ -1,0 +1,23 @@
+```bash
+`r config$remote$prompt` cd ~
+`r config$remote$prompt` rsync -rltv amdahl /rdw/04/rse-training/`r config$remote$user`/ --dry-run
+```
+```output
+sending incremental file list
+amdahl/
+amdahl/.gitignore
+amdahl/LICENSE
+amdahl/README.md
+amdahl/pyproject.toml
+amdahl/.github/
+amdahl/.github/workflows/
+amdahl/.github/workflows/python-publish.yml
+amdahl/.github/workflows/test.yml
+amdahl/amdahl/
+amdahl/amdahl/__init__.py
+amdahl/amdahl/__main__.py
+amdahl/amdahl/amdahl.py
+
+sent 361 bytes  received 59 bytes  840.00 bytes/sec
+total size is 21,987  speedup is 52.35 (DRY RUN)
+```

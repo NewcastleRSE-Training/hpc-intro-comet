@@ -1,0 +1,22 @@
+```bash
+`r config$remote$prompt` rsync -rltv amdahl /rdw/04/rse-training/`r config$remote$user`/
+```
+```output
+sending incremental file list
+amdahl/
+amdahl/.gitignore
+amdahl/LICENSE
+amdahl/README.md
+amdahl/pyproject.toml
+amdahl/.github/
+amdahl/.github/workflows/
+amdahl/.github/workflows/python-publish.yml
+amdahl/.github/workflows/test.yml
+amdahl/amdahl/
+amdahl/amdahl/__init__.py
+amdahl/amdahl/__main__.py
+amdahl/amdahl/amdahl.py
+
+sent 22,716 bytes  received 211 bytes  45,854.00 bytes/sec
+total size is 21,987  speedup is 0.96
+```
