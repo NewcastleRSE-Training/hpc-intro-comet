@@ -1,0 +1,8 @@
+```bash
+`r config$remote$prompt` module load `r config$remote$modules$python`
+`r config$remote$prompt` which python3
+```
+
+```output
+/opt/software/manual/apps/Python/3.14.0/bin/python3
+```
