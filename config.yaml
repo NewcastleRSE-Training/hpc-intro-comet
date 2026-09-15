@@ -116,6 +116,8 @@ workbench_base_customization: HPCC_MagicCastle_slurm
 # or
 # 2. a new workbench_overlay_customization config option in this file.
 
+workbench_overlay_customization: NCL_Comet_slurm
+
 carpentry_description: Lesson Description
 url: 'https://NewcastleRSE-Training.github.io/hpc-intro-comet/'
 analytics: carpentries
