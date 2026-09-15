@@ -422,15 +422,15 @@ launch it.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">[yourUsername@login1</span> ~]$ nano serial-job.sh</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a><span class="ex">[yourUsername@login1</span> ~]$ cat serial-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> nano serial-job.sh</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cat serial-job.sh</span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1" aria-label="code-block-2-2"></a><span class="co">#SBATCH --job-name solo-job</span></span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1" aria-label="code-block-2-3"></a><span class="co">#SBATCH --partition cpubase_bycore_b1</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1" aria-label="code-block-2-3"></a><span class="co">#SBATCH --partition short_free</span></span>
 <span id="cb2-4"><a href="#cb2-4" tabindex="-1" aria-label="code-block-2-4"></a><span class="co">#SBATCH -N 1</span></span>
 <span id="cb2-5"><a href="#cb2-5" tabindex="-1" aria-label="code-block-2-5"></a><span class="co">#SBATCH -n 1</span></span>
 <span id="cb2-6"><a href="#cb2-6" tabindex="-1" aria-label="code-block-2-6"></a></span>
@@ -443,14 +443,14 @@ launch it.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sbatch serial-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch serial-job.sh</span></code></pre>
 </div>
 <p>As before, use the Slurm status commands to check whether your job is
 running and when it ends:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">[yourUsername@login1</span> ~]$ squeue <span class="at">-u</span> yourUsername</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> squeue <span class="at">-u</span> yourUsername</span></code></pre>
 </div>
 <p>Use <code>ls</code> to locate the output file. The <code>-t</code>
 flag sorts in reverse-chronological order: newest first. What was the
@@ -460,14 +460,14 @@ output?</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Read the Job Output </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>The cluster output should be written to a file in the folder you
 launched the job from. For example,</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">[yourUsername@login1</span> ~]$ ls <span class="at">-t</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> ls <span class="at">-t</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -477,7 +477,7 @@ launched the job from. For example,</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="ex">[yourUsername@login1</span> ~]$ cat slurm-347087.out</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cat slurm-347087.out</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -485,8 +485,8 @@ launched the job from. For example,</p>
 <pre class="output" tabindex="0"><code>Doing 30.000000 seconds of 'work' on 1 processor,
 which should take 30.000000 seconds with 0.800000 parallel proportion of the workload.
 
-  Hello, World! I am process 0 of 1 on smnode1. I will do all the serial 'work' for 7.021608 seconds.
-  Hello, World! I am process 0 of 1 on smnode1. I will do parallel 'work' for 26.302983 seconds.
+  Hello, World! I am process 0 of 1 on compute030. I will do all the serial 'work' for 7.021608 seconds.
+  Hello, World! I am process 0 of 1 on compute030. I will do parallel 'work' for 26.302983 seconds.
 
 Total execution time (according to rank 0): 33.326056 seconds</code></pre>
 </div>
@@ -558,16 +558,16 @@ run-time.</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="ex">[yourUsername@login1</span> ~]$ cp serial-job.sh parallel-job.sh</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1" aria-label="code-block-9-2"></a><span class="ex">[yourUsername@login1</span> ~]$ nano parallel-job.sh</span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1" aria-label="code-block-9-3"></a><span class="ex">[yourUsername@login1</span> ~]$ cat parallel-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cp serial-job.sh parallel-job.sh</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1" aria-label="code-block-9-2"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> nano parallel-job.sh</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1" aria-label="code-block-9-3"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cat parallel-job.sh</span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb10-2"><a href="#cb10-2" tabindex="-1" aria-label="code-block-10-2"></a><span class="co">#SBATCH --job-name parallel-job</span></span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1" aria-label="code-block-10-3"></a><span class="co">#SBATCH --partition cpubase_bycore_b1</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1" aria-label="code-block-10-3"></a><span class="co">#SBATCH --partition short_free</span></span>
 <span id="cb10-4"><a href="#cb10-4" tabindex="-1" aria-label="code-block-10-4"></a><span class="co">#SBATCH -N 1</span></span>
 <span id="cb10-5"><a href="#cb10-5" tabindex="-1" aria-label="code-block-10-5"></a><span class="co">#SBATCH -n 4</span></span>
 <span id="cb10-6"><a href="#cb10-6" tabindex="-1" aria-label="code-block-10-6"></a></span>
@@ -585,13 +585,13 @@ are in the batch file rather than the command line.</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sbatch parallel-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch parallel-job.sh</span></code></pre>
 </div>
 <p>As before, use the status commands to check when your job runs.</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="ex">[yourUsername@login1</span> ~]$ ls <span class="at">-t</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> ls <span class="at">-t</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -602,7 +602,7 @@ slurm-347087.out  serial-job.sh    LICENSE  README.md</code></pre>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="ex">[yourUsername@login1</span> ~]$ cat slurm-347178.out</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cat slurm-347178.out</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -610,11 +610,11 @@ slurm-347087.out  serial-job.sh    LICENSE  README.md</code></pre>
 <pre class="output" tabindex="0"><code>Doing 30.000000 seconds of 'work' on 4 processors,
  which should take 12.000000 seconds with 0.800000 parallel proportion of the workload.
 
-  Hello, World! I am process 0 of 4 on smnode1. I will do all the serial 'work' for 6.851971 seconds.
-  Hello, World! I am process 2 of 4 on smnode1. I will do parallel 'work' for 6.726753 seconds.
-  Hello, World! I am process 1 of 4 on smnode1. I will do parallel 'work' for 6.742398 seconds.
-  Hello, World! I am process 3 of 4 on smnode1. I will do parallel 'work' for 6.782674 seconds.
-  Hello, World! I am process 0 of 4 on smnode1. I will do parallel 'work' for 6.468167 seconds.
+  Hello, World! I am process 0 of 4 on compute030. I will do all the serial 'work' for 6.851971 seconds.
+  Hello, World! I am process 2 of 4 on compute030. I will do parallel 'work' for 6.726753 seconds.
+  Hello, World! I am process 1 of 4 on compute030. I will do parallel 'work' for 6.742398 seconds.
+  Hello, World! I am process 3 of 4 on compute030. I will do parallel 'work' for 6.782674 seconds.
+  Hello, World! I am process 0 of 4 on compute030. I will do parallel 'work' for 6.468167 seconds.
 
 Total execution time (according to rank 0): 13.579746 seconds</code></pre>
 </div>
@@ -636,7 +636,7 @@ does that mean it finished in ¼ the time?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The parallel job did take <em>less</em> time: 11 seconds is better
 than 30! But it is only a 2.7× improvement, not 4×.</p>
@@ -684,15 +684,15 @@ our <code>amdahl</code> code gets.</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="ex">[yourUsername@login1</span> ~]$ nano parallel-job.sh</span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1" aria-label="code-block-16-2"></a><span class="ex">[yourUsername@login1</span> ~]$ cat parallel-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> nano parallel-job.sh</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1" aria-label="code-block-16-2"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cat parallel-job.sh</span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb17-2"><a href="#cb17-2" tabindex="-1" aria-label="code-block-17-2"></a><span class="co">#SBATCH --job-name parallel-job</span></span>
-<span id="cb17-3"><a href="#cb17-3" tabindex="-1" aria-label="code-block-17-3"></a><span class="co">#SBATCH --partition cpubase_bycore_b1</span></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1" aria-label="code-block-17-3"></a><span class="co">#SBATCH --partition short_free</span></span>
 <span id="cb17-4"><a href="#cb17-4" tabindex="-1" aria-label="code-block-17-4"></a><span class="co">#SBATCH -N 1</span></span>
 <span id="cb17-5"><a href="#cb17-5" tabindex="-1" aria-label="code-block-17-5"></a><span class="co">#SBATCH -n 8</span></span>
 <span id="cb17-6"><a href="#cb17-6" tabindex="-1" aria-label="code-block-17-6"></a></span>
@@ -710,13 +710,13 @@ are in the batch file rather than the command line.</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sbatch parallel-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch parallel-job.sh</span></code></pre>
 </div>
 <p>As before, use the status commands to check when your job runs.</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1" aria-label="code-block-19-1"></a><span class="ex">[yourUsername@login1</span> ~]$ ls <span class="at">-t</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1" aria-label="code-block-19-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> ls <span class="at">-t</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -727,7 +727,7 @@ parallel-job.sh      slurm-347087.out  amdahl         pyproject.toml</code></pre
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a><span class="ex">[yourUsername@login1</span> ~]$ cat slurm-347178.out</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cat slurm-347178.out</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -735,15 +735,15 @@ parallel-job.sh      slurm-347087.out  amdahl         pyproject.toml</code></pre
 <pre class="output" tabindex="0"><code>Doing 30.000000 seconds of 'work' on 8 processors,
  which should take 9.000000 seconds with 0.800000 parallel proportion of the workload.
 
-  Hello, World! I am process 4 of 8 on smnode1. I will do parallel 'work' for 3.157831 seconds.
-  Hello, World! I am process 0 of 8 on smnode1. I will do all the serial 'work' for 6.031285 seconds.
-  Hello, World! I am process 2 of 8 on smnode1. I will do parallel 'work' for 3.215214 seconds.
-  Hello, World! I am process 1 of 8 on smnode1. I will do parallel 'work' for 3.524280 seconds.
-  Hello, World! I am process 3 of 8 on smnode1. I will do parallel 'work' for 3.589039 seconds.
-  Hello, World! I am process 5 of 8 on smnode1. I will do parallel 'work' for 3.501589 seconds.
-  Hello, World! I am process 6 of 8 on smnode1. I will do parallel 'work' for 3.207707 seconds.
-  Hello, World! I am process 7 of 8 on smnode1. I will do parallel 'work' for 3.071680 seconds.
-  Hello, World! I am process 0 of 8 on smnode1. I will do parallel 'work' for 3.482018 seconds.
+  Hello, World! I am process 4 of 8 on compute030. I will do parallel 'work' for 3.157831 seconds.
+  Hello, World! I am process 0 of 8 on compute030. I will do all the serial 'work' for 6.031285 seconds.
+  Hello, World! I am process 2 of 8 on compute030. I will do parallel 'work' for 3.215214 seconds.
+  Hello, World! I am process 1 of 8 on compute030. I will do parallel 'work' for 3.524280 seconds.
+  Hello, World! I am process 3 of 8 on compute030. I will do parallel 'work' for 3.589039 seconds.
+  Hello, World! I am process 5 of 8 on compute030. I will do parallel 'work' for 3.501589 seconds.
+  Hello, World! I am process 6 of 8 on compute030. I will do parallel 'work' for 3.207707 seconds.
+  Hello, World! I am process 7 of 8 on compute030. I will do parallel 'work' for 3.071680 seconds.
+  Hello, World! I am process 0 of 8 on compute030. I will do parallel 'work' for 3.482018 seconds.
 
 Total execution time (according to rank 0): 9.514393 seconds</code></pre>
 </div>
@@ -782,7 +782,7 @@ S(t_{n}) = \frac{t_{1}}{t_{n}}
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1" aria-label="code-block-23-1"></a><span class="ex">[yourUsername@login1</span> ~]$ for n in 33.326056 13.579746 9.514393<span class="kw">;</span> <span class="cf">do</span> <span class="ex">python3</span> <span class="at">-c</span> <span class="st">"print(33.326056 / </span><span class="va">$n</span><span class="st">)"</span><span class="kw">;</span> <span class="cf">done</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1" aria-label="code-block-23-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> for n in 33.326056 13.579746 9.514393<span class="kw">;</span> <span class="cf">do</span> <span class="ex">python3</span> <span class="at">-c</span> <span class="st">"print(33.326056 / </span><span class="va">$n</span><span class="st">)"</span><span class="kw">;</span> <span class="cf">done</span></span></code></pre>
 </div>
 <table class="table"><thead><tr><th>Number of CPUs</th>
 <th>Speedup</th>

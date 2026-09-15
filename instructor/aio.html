@@ -685,16 +685,16 @@ the terminal, you’ll write something like
 separate the two parts of a single argument.</p>
 <p>Go ahead and open your terminal or graphical SSH client, then log in
 to the cluster using your username and the remote computer you can reach
-from the outside world, cluster.hpc-carpentry.org.</p>
+from the outside world, comet.ncl.ac.uk.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">[you@laptop:~]$</span> ssh yourUsername@cluster.hpc-carpentry.org</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">[you@laptop:~]$</span> ssh user@comet.ncl.ac.uk</span></code></pre>
 </div>
-<p>Remember to replace <code>yourUsername</code> with your username or
-the one supplied by the instructors. You may be asked for your password.
-Watch out: the characters you type after the password prompt are not
-displayed on the screen. Normal output will resume once you press
+<p>Remember to replace <code>user</code> with your username or the one
+supplied by the instructors. You may be asked for your password. Watch
+out: the characters you type after the password prompt are not displayed
+on the screen. Normal output will resume once you press
 <code>Enter</code>.</p>
 </section><section><h2 class="section-heading" id="where-are-we">Where Are We?<a class="anchor" aria-label="anchor" href="#where-are-we"></a>
 </h2>
@@ -709,12 +709,12 @@ that the current hostname is also part of our prompt!)</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="ex">[yourUsername@login1</span> ~]$ hostname</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> hostname</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code><span><span class="va">login1</span></span></code></pre>
+<pre class="output" tabindex="0"><code><span><span class="va">cometlogin01</span></span></code></pre>
 </div>
 <div id="whats-in-your-home-directory" class="callout challenge">
 <div class="callout-square">
@@ -739,10 +739,10 @@ neighbors.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> It’s a Beautiful Day in the Neighborhood </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
-<p>The deepest layer should differ: <code>yourUsername</code> is
-uniquely yours. Are there differences in the path at higher levels?</p>
+<p>The deepest layer should differ: <code>user</code> is uniquely yours.
+Are there differences in the path at higher levels?</p>
 <p>If both of you have empty directories, they will look identical. If
 you or your neighbor has used the system before, there may be
 differences. What are you working on?</p>
@@ -751,7 +751,7 @@ differences. What are you working on?</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">[yourUsername@login1</span> ~]$ pwd</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> pwd</span></code></pre>
 </div>
 <p>You can run <code>ls</code> to <strong>l</strong>i<strong>s</strong>t
 the directory contents, though it’s possible nothing will show up (if no
@@ -760,7 +760,7 @@ show hidden files, too.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">[yourUsername@login1</span> ~]$ ls <span class="at">-a</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> ls <span class="at">-a</span></span></code></pre>
 </div>
 <p>At a minimum, this will show the current directory as <code>.</code>,
 and the parent directory as <code>..</code>.</p>
@@ -818,7 +818,7 @@ command <code>sinfo</code>.</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sinfo</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sinfo</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -863,7 +863,7 @@ computer cluster, you need to log out first. To do so, type
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">[yourUsername@login1</span> ~]$ exit</span>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> exit</span>
 <span id="cb8-2"><a href="#cb8-2" tabindex="-1" aria-label="code-block-8-2"></a><span class="ex">[you@laptop:~]$</span></span></code></pre>
 </div>
 </div>
@@ -874,7 +874,7 @@ computer cluster, you need to log out first. To do so, type
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>There are several ways to do this. Most operating systems have a
 graphical system monitor, like the Windows Task Manager. More detailed
@@ -922,14 +922,14 @@ node.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="ex">[you@laptop:~]$</span> ssh yourUsername@cluster.hpc-carpentry.org</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a><span class="ex">[yourUsername@login1</span> ~]$ nproc <span class="at">--all</span></span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1" aria-label="code-block-12-3"></a><span class="ex">[yourUsername@login1</span> ~]$ free <span class="at">-m</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="ex">[you@laptop:~]$</span> ssh user@comet.ncl.ac.uk</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> nproc <span class="at">--all</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1" aria-label="code-block-12-3"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> free <span class="at">-m</span></span></code></pre>
 </div>
 <p>You can get more information about the processors using
 <code>lscpu</code>, and a lot of detail about the memory by reading the
@@ -937,7 +937,7 @@ file <code>/proc/meminfo</code>:</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">[yourUsername@login1</span> ~]$ less /proc/meminfo</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> less /proc/meminfo</span></code></pre>
 </div>
 <p>You can also explore the available filesystems using <code>df</code>
 to show <strong>d</strong>isk <strong>f</strong>ree space. The
@@ -947,7 +947,7 @@ what kind of filesystem each resource is.</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="ex">[yourUsername@login1</span> ~]$ df <span class="at">-Th</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> df <span class="at">-Th</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -994,7 +994,7 @@ name, CPUs and memory available on one of the worker nodes:</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sinfo <span class="at">-o</span> <span class="st">"%n %c %m"</span> <span class="kw">|</span> <span class="ex">column</span> <span class="at">-t</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sinfo <span class="at">-o</span> <span class="st">"%n %c %m"</span> <span class="kw">|</span> <span class="ex">column</span> <span class="at">-t</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -1144,7 +1144,7 @@ which will print the name of the machine the script is run on.</li>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">[yourUsername@login1</span> ~]$ nano example-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> nano example-job.sh</span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1177,12 +1177,12 @@ node?</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">[yourUsername@login1</span> ~]$ bash example-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> bash example-job.sh</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>This script is running on login1</code></pre>
+<pre class="output" tabindex="0"><code>This script is running on cometlogin01</code></pre>
 </div>
 </div>
 </div>
@@ -1198,7 +1198,7 @@ identified as being available to perform the work.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sbatch  example-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--account</span><span class="op">=</span>comet_training example-job.sh</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1213,7 +1213,7 @@ the command <code>squeue -u yourUsername</code>.</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="ex">[yourUsername@login1</span> ~]$ squeue <span class="at">-u</span> yourUsername</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> squeue <span class="at">-u</span> yourUsername</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1254,18 +1254,19 @@ get access to these resources we must customize our job script.</p>
 typically ignored, but there are exceptions. For instance the special
 <code>#!</code> comment at the beginning of scripts specifies what
 program should be used to run it (you’ll typically see
-<code>#!/bin/bash</code>). Schedulers like Slurm also have a special
-comment used to denote special scheduler-specific options. Though these
-comments differ from scheduler to scheduler, Slurm’s special comment is
-<code>#SBATCH</code>. Anything following the <code>#SBATCH</code>
-comment is interpreted as an instruction to the scheduler.</p>
+<code>#!/usr/bin/env bash</code>). Schedulers like Slurm also have a
+special comment used to denote special scheduler-specific options.
+Though these comments differ from scheduler to scheduler, Slurm’s
+special comment is <code>#SBATCH</code>. Anything following the
+<code>#SBATCH</code> comment is interpreted as an instruction to the
+scheduler.</p>
 <p>Let’s illustrate this by example. By default, a job’s name is the
 name of the script, but the <code>--job-name</code> option can be used
 to change the name of a job. Add an option to the script:</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="ex">[yourUsername@login1</span> ~]$ cat example-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cat example-job.sh</span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1280,8 +1281,8 @@ to change the name of a job. Add an option to the script:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sbatch  example-job.sh</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1" aria-label="code-block-11-2"></a><span class="ex">[yourUsername@login1</span> ~]$ squeue <span class="at">-u</span> yourUsername</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--account</span><span class="op">=</span>comet_training example-job.sh</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1" aria-label="code-block-11-2"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> squeue <span class="at">-u</span> yourUsername</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1379,7 +1380,7 @@ then submit a job for it on the cluster.</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">[yourUsername@login1</span> ~]$ cat example-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cat example-job.sh</span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1394,7 +1395,7 @@ then submit a job for it on the cluster.</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sbatch  example-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--account</span><span class="op">=</span>comet_training example-job.sh</span></code></pre>
 </div>
 <p>Why are the Slurm runtime and <code>sleep</code> time not
 identical?</p>
@@ -1408,7 +1409,7 @@ minute of wall time, and attempt to run a job for two minutes.</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="ex">[yourUsername@login1</span> ~]$ cat example-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cat example-job.sh</span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1426,13 +1427,13 @@ check the log file.</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sbatch  example-job.sh</span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1" aria-label="code-block-18-2"></a><span class="ex">[yourUsername@login1</span> ~]$ squeue <span class="at">-u</span> yourUsername</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--account</span><span class="op">=</span>comet_training example-job.sh</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1" aria-label="code-block-18-2"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> squeue <span class="at">-u</span> yourUsername</span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1" aria-label="code-block-19-1"></a><span class="ex">[yourUsername@login1</span> ~]$ cat slurm-12.out</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1" aria-label="code-block-19-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cat slurm-12.out</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1463,8 +1464,8 @@ it runs long enough for you to cancel it before it is killed!).</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sbatch  example-job.sh</span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1" aria-label="code-block-21-2"></a><span class="ex">[yourUsername@login1</span> ~]$ squeue <span class="at">-u</span> yourUsername</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--account</span><span class="op">=</span>comet_training example-job.sh</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1" aria-label="code-block-21-2"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> squeue <span class="at">-u</span> yourUsername</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1480,9 +1481,9 @@ the job was successful.</p>
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1" aria-label="code-block-23-1"></a><span class="ex">[yourUsername@login1</span> ~]$ scancel 38759</span>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1" aria-label="code-block-23-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> scancel 38759</span>
 <span id="cb23-2"><a href="#cb23-2" tabindex="-1" aria-label="code-block-23-2"></a><span class="co"># It might take a minute for the job to disappear from the queue...</span></span>
-<span id="cb23-3"><a href="#cb23-3" tabindex="-1" aria-label="code-block-23-3"></a><span class="ex">[yourUsername@login1</span> ~]$ squeue <span class="at">-u</span> yourUsername</span></code></pre>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1" aria-label="code-block-23-3"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> squeue <span class="at">-u</span> yourUsername</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1515,15 +1516,15 @@ yourself). Note that you can only delete your own jobs.</p>
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1" aria-label="code-block-25-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sbatch  example-job.sh</span>
-<span id="cb25-2"><a href="#cb25-2" tabindex="-1" aria-label="code-block-25-2"></a><span class="ex">[yourUsername@login1</span> ~]$ sbatch  example-job.sh</span>
-<span id="cb25-3"><a href="#cb25-3" tabindex="-1" aria-label="code-block-25-3"></a><span class="ex">[yourUsername@login1</span> ~]$ sbatch  example-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1" aria-label="code-block-25-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--account</span><span class="op">=</span>comet_training example-job.sh</span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1" aria-label="code-block-25-2"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--account</span><span class="op">=</span>comet_training example-job.sh</span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1" aria-label="code-block-25-3"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--account</span><span class="op">=</span>comet_training example-job.sh</span></code></pre>
 </div>
 <p>Then, cancel them all:</p>
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" tabindex="-1" aria-label="code-block-26-1"></a><span class="ex">[yourUsername@login1</span> ~]$ scancel <span class="at">-u</span> yourUsername</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" tabindex="-1" aria-label="code-block-26-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> scancel <span class="at">-u</span> user</span></code></pre>
 </div>
 </div>
 </div>
@@ -1549,12 +1550,12 @@ with <code>Ctrl-c</code>.)</p>
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1" aria-label="code-block-27-1"></a><span class="ex">[yourUsername@login1</span> ~]$ srun hostname</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1" aria-label="code-block-27-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> srun hostname</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code><span><span class="va">smnode1</span></span></code></pre>
+<pre class="output" tabindex="0"><code><span><span class="va">compute030</span></span></code></pre>
 </div>
 <p><code>srun</code> accepts all of the same options as
 <code>sbatch</code>. However, instead of specifying these in a script,
@@ -1564,7 +1565,7 @@ command:</p>
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" tabindex="-1" aria-label="code-block-29-1"></a><span class="ex">[yourUsername@login1</span> ~]$ srun <span class="at">-n</span> 2 echo <span class="st">"This job will use 2 CPUs."</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" tabindex="-1" aria-label="code-block-29-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> srun <span class="at">-n</span> 2 echo <span class="st">"This job will use 2 CPUs."</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1584,7 +1585,7 @@ makes it easy to start an interactive job with <code>srun</code>:</p>
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" tabindex="-1" aria-label="code-block-31-1"></a><span class="ex">[yourUsername@login1</span> ~]$ srun  <span class="at">--pty</span> bash</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" tabindex="-1" aria-label="code-block-31-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> srun <span class="at">--account</span><span class="op">=</span>comet_training <span class="at">--pty</span> bash</span></code></pre>
 </div>
 <p>You should be presented with a bash prompt. Note that the prompt will
 likely change to reflect your new location, in this case the compute
@@ -1697,19 +1698,19 @@ some of the variables in a typical shell session:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">[yourUsername@login1</span> ~]$ set</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> set</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>...
-HOME=/yourUsername
-HOSTNAME=login1
+HOME=/user
+HOSTNAME=cometlogin01
 HOSTTYPE=x86_64
-PATH=/yourUsername/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
-PWD=/yourUsername
+PATH=/user/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+PWD=/user
 UID=1000
-USER=yourUsername
+USER=user
 ...</code></pre>
 </div>
 <p>As you can see, there are quite a few — in fact, four or five times
@@ -1733,7 +1734,7 @@ lookup automatically.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">[yourUsername@login1</span> ~]$ echo HOME</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> echo HOME</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1745,18 +1746,18 @@ what we actually asked for). Let’s try this instead:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">[yourUsername@login1</span> ~]$ echo <span class="va">$HOME</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> echo <span class="va">$HOME</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>/yourUsername</code></pre>
+<pre class="output" tabindex="0"><code>/user</code></pre>
 </div>
 <p>The dollar sign tells the shell that we want the <em>value</em> of
 the variable rather than its name. This works just like wildcards: the
 shell does the replacement <em>before</em> running the program we’ve
 asked for. Thanks to this expansion, what we actually run is
-<code>echo /yourUsername</code>, which displays the right thing.</p>
+<code>echo /user</code>, which displays the right thing.</p>
 </section><section><h2 class="section-heading" id="creating-and-changing-variables">Creating and Changing Variables<a class="anchor" aria-label="anchor" href="#creating-and-changing-variables"></a>
 </h2>
 <hr class="half-width">
@@ -1834,7 +1835,7 @@ command. Do you notice any difference?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The <code>TIME_STYLE</code> variable is not <em>seen</em> by
 <code>ls</code> until is exported, at which point it is used by
@@ -1871,13 +1872,13 @@ prints out the location from which the job was submitted.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">[yourUsername@login1</span> ~]$ nano example-job.sh</span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1" aria-label="code-block-13-2"></a><span class="ex">[yourUsername@login1</span> ~]$ cat example-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> nano example-job.sh</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1" aria-label="code-block-13-2"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cat example-job.sh</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1924,7 +1925,7 @@ listed one per line:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>/yourUsername/bin
+<pre class="output" tabindex="0"><code>/user/bin
 /usr/local/bin
 /usr/bin
 /usr/local/sbin
@@ -1970,7 +1971,7 @@ executable and run it from any location in your terminal.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2125,30 +2126,29 @@ of the system you are using.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">[yourUsername@login1</span> ~]$ module avail <span class="kw">|</span> <span class="fu">less</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> module avail <span class="kw">|</span> <span class="fu">less</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>~~~ /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/modules/all ~~~
-  Bazel/3.6.0-GCCcore-x.y.z              NSS/3.51-GCCcore-x.y.z
-  Bison/3.5.3-GCCcore-x.y.z              Ninja/1.10.0-GCCcore-x.y.z
-  Boost/1.72.0-gompi-2020a               OSU-Micro-Benchmarks/5.6.3-gompi-2020a
-  CGAL/4.14.3-gompi-2020a-Python-3.x.y   OpenBLAS/0.3.9-GCC-x.y.z
-  CMake/3.16.4-GCCcore-x.y.z             OpenFOAM/v2006-foss-2020a
+<pre class="output" tabindex="0"><code>------------------------------------------------------------------------------------------ /opt/slurm/modules/el9 -------------------------------------------------------------------------------------------
+   nvidia-cuda/12.1.1    pmix/2.2.5    pmix/3.2.5    pmix/4.2.9    pmix/5.0.3 (D)    slurm/24.05.3 (S,L)
 
-[removed most of the output here for clarity]
+------------------------------------------------------------------------------------ /opt/software/easybuild/modules/all ------------------------------------------------------------------------------------
+   AFNI/24.0.02-foss-2023a                               M4/1.4.19-GCCcore-11.2.0                          XZ/5.4.5-GCCcore-13.3.0                           libgd/2.3.3-GCCcore-12.3.0
+   AOCC-TC/5.0.0-GCCcore-14.2.0                          M4/1.4.19-GCCcore-11.3.0                          XZ/5.6.3-GCCcore-14.2.0                    (D)    libgd/2.3.3-GCCcore-13.3.0                 (D)
+   AOCC/4.2.0-GCCcore-13.3.0                             M4/1.4.19-GCCcore-12.2.0                          Xvfb/21.1.8-GCCcore-12.3.0                        libgit2/1.7.1-GCCcore-12.3.0
+   AOCC/5.0.0-GCCcore-14.2.0                             M4/1.4.19-GCCcore-12.3.0                          Yasm/1.3.0-GCCcore-12.3.0                         libgit2/1.8.1-GCCcore-13.3.0               (D)
+   ATK/2.38.0-GCCcore-12.3.0                             M4/1.4.19-GCCcore-13.2.0                          Yasm/1.3.0-GCCcore-13.2.0                  (D)    libglvnd/1.3.3-GCCcore-10.3.0
+   Abseil/20230125.3-GCCcore-12.3.0                      M4/1.4.19-GCCcore-13.3.0                          Z3/4.13.0-GCCcore-13.2.0                          libglvnd/1.6.0-GCCcore-12.3.0
+   Abseil/20240116.1-GCCcore-13.2.0            (D)       M4/1.4.19-GCCcore-14.2.0                          Z3/4.13.0-GCCcore-13.3.0                   (D)    libglvnd/1.7.0-GCCcore-13.2.0
+   Archive-Zip/1.68-GCCcore-13.3.0             (D)       M4/1.4.19                                  (D)    ZeroMQ/4.3.5-GCCcore-13.3.0                (D)    libglvnd/1.7.0-GCCcore-13.3.0              (D)
 
-  Where:
-   L:        Module is loaded
-   D:        Default Module
-   Aliases exist: foo/1.2.3 (1.2) means that
-             "module load foo/1.2" will load foo/1.2.3
-
-Use "module spider" to find all possible modules and extensions.
-Use "module keyword key1 key2 ..." to search for all possible modules matching
-any of the "keys".</code></pre>
+[removed most of the output here for clarity]</code></pre>
 </div>
+<p>Use <code>module spider</code> to find all possible modules and
+extensions. Use <code>module keyword key1 key2 ...</code> to search for
+all possible modules matching any of the “keys”.</p>
 <p>Note that piping the output through <code>less</code> allows us to
 search within the output using the <kbd>/</kbd> key.</p>
 </div>
@@ -2161,7 +2161,7 @@ loaded, you will see a message telling you so.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">[yourUsername@login1</span> ~]$ module list</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> module list</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2180,7 +2180,7 @@ We can test this by using the <code>which</code> command.
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">[yourUsername@login1</span> ~]$ which python3</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> which python3</span></code></pre>
 </div>
 <p>If the <code>python3</code> command is available, <code>which</code>
 shows the path to the executable:</p>
@@ -2195,13 +2195,13 @@ listed in the <code>$PATH</code> environment variable.</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="ex">[yourUsername@login1</span> ~]$ which pyython3</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> which pyython3</span></code></pre>
 </div>
 <p>we instead see something like:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>/usr/bin/which: no pyython3 in (/yourUsername/.local/bin:/yourUsername/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin)</code></pre>
+<pre class="output" tabindex="0"><code>/usr/bin/which: no pyython3 in (/user/.local/bin:/user/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin)</code></pre>
 </div>
 <p>This wall of text is actually a list of directories separated by the
 <code>:</code> character. The output tells us that the shell searched
@@ -2210,8 +2210,8 @@ it:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>/yourUsername/.local/bin
-/yourUsername/bin
+<pre class="output" tabindex="0"><code>/user/.local/bin
+/user/bin
 /usr/local/bin
 /usr/bin
 /usr/local/sbin
@@ -2227,13 +2227,13 @@ to dynamically switch to these alternative software environments.</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="ex">[yourUsername@login1</span> ~]$ module load Python</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1" aria-label="code-block-10-2"></a><span class="ex">[yourUsername@login1</span> ~]$ which python3</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> module load Python</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1" aria-label="code-block-10-2"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> which python3</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>/cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin/python3</code></pre>
+<pre class="output" tabindex="0"><code>/opt/software/manual/apps/Python/3.14.0/bin/python3</code></pre>
 </div>
 <p>So, what just happened?</p>
 <p>To understand the output, first we need to understand the nature of
@@ -2247,7 +2247,7 @@ all environment variables, we can print it out using
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="ex">[yourUsername@login1</span> ~]$ echo <span class="va">$PATH</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> echo <span class="va">$PATH</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2266,15 +2266,14 @@ system version. Let’s examine what’s located there:</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="ex">[yourUsername@login1</span> ~]$ ls /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> ls /opt/software/manual/apps/Python/3.14.0/bin</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>idle3     pip   pip3.13  pydoc3.13  python3     python3.13-config  python-config
-idle3.13  pip3  pydoc3   python     python3.13  python3-config     wheel</code></pre>
+<pre class="output" tabindex="0"><code>idle3     pip3     pydoc3     python3     python3.14-config
+idle3.14  pip3.14  pydoc3.14  python3.14  python3-config</code></pre>
 </div>
-<p>Note that the exact output may vary from cluster to cluster.</p>
 <p>Taking this to its conclusion, <code>module load</code> adds software
 locations to your <code>$PATH</code>. It effectively “loads” software
 into the current shell environment. A special note on this: depending on
@@ -2286,67 +2285,50 @@ dependencies required by the application.</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="ex">[yourUsername@login1</span> ~]$ module list</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> module list</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>Currently Loaded Modules:
-  1) GCCcore/x.y.z                 4) GMP/6.2.0-GCCcore-x.y.z
-  2) Tcl/8.6.10-GCCcore-x.y.z      5) libffi/3.3-GCCcore-x.y.z
-  3) SQLite/3.31.1-GCCcore-x.y.z   6) Python/3.x.y-GCCcore-x.y.z</code></pre>
+  1) slurm/24.05.3 (S)   2) lmod (S)   3) Python/3.14.0
+
+  Where:
+   S:  Module is Sticky, requires --force to unload or purge</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a><span class="ex">[yourUsername@login1</span> ~]$ module load GROMACS</span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1" aria-label="code-block-18-2"></a><span class="ex">[yourUsername@login1</span> ~]$ module list</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> module load GROMACS</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1" aria-label="code-block-18-2"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> module list</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>Currently Loaded Modules:
-  1) GCCcore/x.y.z                    14) libfabric/1.11.0-GCCcore-x.y.z
-  2) Tcl/8.6.10-GCCcore-x.y.z         15) PMIx/3.1.5-GCCcore-x.y.z
-  3) SQLite/3.31.1-GCCcore-x.y.z      16) OpenMPI/4.0.3-GCC-x.y.z
-  4) GMP/6.2.0-GCCcore-x.y.z          17) OpenBLAS/0.3.9-GCC-x.y.z
-  5) libffi/3.3-GCCcore-x.y.z         18) gompi/2020a
-  6) Python/3.x.y-GCCcore-x.y.z       19) FFTW/3.3.8-gompi-2020a
-  7) GCC/x.y.z                        20) ScaLAPACK/2.1.0-gompi-2020a
-  8) numactl/2.0.13-GCCcore-x.y.z     21) foss/2020a
-  9) libxml2/2.9.10-GCCcore-x.y.z     22) pybind11/2.4.3-GCCcore-x.y.z-Pytho...
- 10) libpciaccess/0.16-GCCcore-x.y.z  23) SciPy-bundle/2020.03-foss-2020a-Py...
- 11) hwloc/2.2.0-GCCcore-x.y.z        24) networkx/2.4-foss-2020a-Python-3.8...
- 12) libevent/2.1.11-GCCcore-x.y.z    25) GROMACS/2020.1-foss-2020a-Python-3...
- 13) UCX/1.8.0-GCCcore-x.y.z</code></pre>
+  1) slurm/24.05.3 (S)   3) Python/3.14.0   5) GROMACS/2025.2
+  2) lmod          (S)   4) GCC/14.3.0
+
+  Where:
+   S:  Module is Sticky, requires --force to unload or purge</code></pre>
 </div>
 <p>So in this case, loading the <code>GROMACS</code> module (a
-bioinformatics software package), also loaded
-<code>GMP/6.2.0-GCCcore-x.y.z</code> and
-<code>SciPy-bundle/2020.03-foss-2020a-Python-3.x.y</code> as well. Let’s
-try unloading the <code>GROMACS</code> package.</p>
+bioinformatics software package), also loaded <code>GCC/14.3.0</code>.
+Let’s try unloading the <code>GROMACS</code> package.</p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1" aria-label="code-block-20-1"></a><span class="ex">[yourUsername@login1</span> ~]$ module unload GROMACS</span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1" aria-label="code-block-20-2"></a><span class="ex">[yourUsername@login1</span> ~]$ module list</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1" aria-label="code-block-20-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> module unload GROMACS</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1" aria-label="code-block-20-2"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> module list</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>Currently Loaded Modules:
-  1) GCCcore/x.y.z                    13) UCX/1.8.0-GCCcore-x.y.z
-  2) Tcl/8.6.10-GCCcore-x.y.z         14) libfabric/1.11.0-GCCcore-x.y.z
-  3) SQLite/3.31.1-GCCcore-x.y.z      15) PMIx/3.1.5-GCCcore-x.y.z
-  4) GMP/6.2.0-GCCcore-x.y.z          16) OpenMPI/4.0.3-GCC-x.y.z
-  5) libffi/3.3-GCCcore-x.y.z         17) OpenBLAS/0.3.9-GCC-x.y.z
-  6) Python/3.x.y-GCCcore-x.y.z       18) gompi/2020a
-  7) GCC/x.y.z                        19) FFTW/3.3.8-gompi-2020a
-  8) numactl/2.0.13-GCCcore-x.y.z     20) ScaLAPACK/2.1.0-gompi-2020a
-  9) libxml2/2.9.10-GCCcore-x.y.z     21) foss/2020a
- 10) libpciaccess/0.16-GCCcore-x.y.z  22) pybind11/2.4.3-GCCcore-x.y.z-Pytho...
- 11) hwloc/2.2.0-GCCcore-x.y.z        23) SciPy-bundle/2020.03-foss-2020a-Py...
- 12) libevent/2.1.11-GCCcore-x.y.z    24) networkx/2.4-foss-2020a-Python-3.x.y</code></pre>
+  1) slurm/24.05.3 (S)   2) lmod (S)   3) Python/3.14.0
+
+  Where:
+   S:  Module is Sticky, requires --force to unload or purge</code></pre>
 </div>
 <p>So using <code>module unload</code> “un-loads” a module, and
 depending on how a site is configured it may also unload all of the
@@ -2356,8 +2338,8 @@ everything).</p>
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1" aria-label="code-block-22-1"></a><span class="ex">[yourUsername@login1</span> ~]$ module purge</span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1" aria-label="code-block-22-2"></a><span class="ex">[yourUsername@login1</span> ~]$ module list</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1" aria-label="code-block-22-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> module purge</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1" aria-label="code-block-22-2"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> module list</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2403,30 +2385,29 @@ using the pager since there may be reams of output:</p>
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1" aria-label="code-block-25-1"></a><span class="ex">[yourUsername@login1</span> ~]$ module avail <span class="kw">|</span> <span class="fu">less</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1" aria-label="code-block-25-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> module avail <span class="kw">|</span> <span class="fu">less</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>~~~ /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/modules/all ~~~
-  Bazel/3.6.0-GCCcore-x.y.z              NSS/3.51-GCCcore-x.y.z
-  Bison/3.5.3-GCCcore-x.y.z              Ninja/1.10.0-GCCcore-x.y.z
-  Boost/1.72.0-gompi-2020a               OSU-Micro-Benchmarks/5.6.3-gompi-2020a
-  CGAL/4.14.3-gompi-2020a-Python-3.x.y   OpenBLAS/0.3.9-GCC-x.y.z
-  CMake/3.16.4-GCCcore-x.y.z             OpenFOAM/v2006-foss-2020a
+<pre class="output" tabindex="0"><code>------------------------------------------------------------------------------------------ /opt/slurm/modules/el9 -------------------------------------------------------------------------------------------
+   nvidia-cuda/12.1.1    pmix/2.2.5    pmix/3.2.5    pmix/4.2.9    pmix/5.0.3 (D)    slurm/24.05.3 (S,L)
 
-[removed most of the output here for clarity]
+------------------------------------------------------------------------------------ /opt/software/easybuild/modules/all ------------------------------------------------------------------------------------
+   AFNI/24.0.02-foss-2023a                               M4/1.4.19-GCCcore-11.2.0                          XZ/5.4.5-GCCcore-13.3.0                           libgd/2.3.3-GCCcore-12.3.0
+   AOCC-TC/5.0.0-GCCcore-14.2.0                          M4/1.4.19-GCCcore-11.3.0                          XZ/5.6.3-GCCcore-14.2.0                    (D)    libgd/2.3.3-GCCcore-13.3.0                 (D)
+   AOCC/4.2.0-GCCcore-13.3.0                             M4/1.4.19-GCCcore-12.2.0                          Xvfb/21.1.8-GCCcore-12.3.0                        libgit2/1.7.1-GCCcore-12.3.0
+   AOCC/5.0.0-GCCcore-14.2.0                             M4/1.4.19-GCCcore-12.3.0                          Yasm/1.3.0-GCCcore-12.3.0                         libgit2/1.8.1-GCCcore-13.3.0               (D)
+   ATK/2.38.0-GCCcore-12.3.0                             M4/1.4.19-GCCcore-13.2.0                          Yasm/1.3.0-GCCcore-13.2.0                  (D)    libglvnd/1.3.3-GCCcore-10.3.0
+   Abseil/20230125.3-GCCcore-12.3.0                      M4/1.4.19-GCCcore-13.3.0                          Z3/4.13.0-GCCcore-13.2.0                          libglvnd/1.6.0-GCCcore-12.3.0
+   Abseil/20240116.1-GCCcore-13.2.0            (D)       M4/1.4.19-GCCcore-14.2.0                          Z3/4.13.0-GCCcore-13.3.0                   (D)    libglvnd/1.7.0-GCCcore-13.2.0
+   Archive-Zip/1.68-GCCcore-13.3.0             (D)       M4/1.4.19                                  (D)    ZeroMQ/4.3.5-GCCcore-13.3.0                (D)    libglvnd/1.7.0-GCCcore-13.3.0              (D)
 
-  Where:
-   L:        Module is loaded
-   D:        Default Module
-   Aliases exist: foo/1.2.3 (1.2) means that
-             "module load foo/1.2" will load foo/1.2.3
-
-Use "module spider" to find all possible modules and extensions.
-Use "module keyword key1 key2 ..." to search for all possible modules matching
-any of the "keys".</code></pre>
+[removed most of the output here for clarity]</code></pre>
 </div>
+<p>Use <code>module spider</code> to find all possible modules and
+extensions. Use <code>module keyword key1 key2 ...</code> to search for
+all possible modules matching any of the “keys”.</p>
 <p>If the software your Slurm script runs requires on a specific version
 of a dependency, make sure you use the full name of the module, rather
 than the <em>default</em> loaded when you give only its name (up to the
@@ -2451,13 +2432,13 @@ login node is loaded on a compute node).</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1" aria-label="code-block-27-1"></a><span class="ex">[yourUsername@login1</span> ~]$ nano python-module.sh</span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1" aria-label="code-block-27-2"></a><span class="ex">[yourUsername@login1</span> ~]$ cat python-module.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1" aria-label="code-block-27-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> nano python-module.sh</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1" aria-label="code-block-27-2"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cat python-module.sh</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2474,7 +2455,7 @@ python3 --version</code></pre>
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" tabindex="-1" aria-label="code-block-29-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sbatch  python-module.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" tabindex="-1" aria-label="code-block-29-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--account</span><span class="op">=</span>comet_training python-module.sh</span></code></pre>
 </div>
 </div>
 </div>
@@ -2813,7 +2794,7 @@ authentication mechanism.</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="ex">[you@laptop:~]$</span> scp local_file yourUsername@cluster.hpc-carpentry.org:remote_destination</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="ex">[you@laptop:~]$</span> scp local_file user@comet.ncl.ac.uk:remote_destination</span></code></pre>
 </div>
 <p>in which <code>@</code> and <code>:</code> are field separators and
 <code>remote_destination</code> is a path relative to your remote home
@@ -2832,16 +2813,15 @@ exist, it is assumed to be a destination filename for
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="ex">[you@laptop:~]$</span> scp amdahl.tar.gz yourUsername@cluster.hpc-carpentry.org:</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="ex">[you@laptop:~]$</span> scp amdahl.tar.gz user@comet.ncl.ac.uk:</span></code></pre>
 </div>
-<div id="why-not-download-on-hpc-carpentrys-cloud-cluster-directly" class="callout challenge">
+<div id="why-not-download-on-comet-directly" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="why-not-download-on-hpc-carpentrys-cloud-cluster-directly" class="callout-inner">
-<h3 class="callout-title">Why Not Download on HPC Carpentry’s Cloud
-Cluster Directly?</h3>
+<div id="why-not-download-on-comet-directly" class="callout-inner">
+<h3 class="callout-title">Why Not Download on Comet Directly?</h3>
 <div class="callout-content">
 <p>Most computer clusters are protected from the open internet by a
 <em>firewall</em>. For enhanced security, some are configured to allow
@@ -2864,23 +2844,23 @@ that’s OK!</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="ex">[you@laptop:~]$</span> ssh yourUsername@cluster.hpc-carpentry.org</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a><span class="ex">[yourUsername@login1</span> ~]$ wget <span class="at">-O</span> amdahl.tar.gz https://github.com/hpc-carpentry/amdahl/tarball/main</span>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="ex">[you@laptop:~]$</span> ssh user@comet.ncl.ac.uk</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> wget <span class="at">-O</span> amdahl.tar.gz https://github.com/hpc-carpentry/amdahl/tarball/main</span>
 <span id="cb12-3"><a href="#cb12-3" tabindex="-1" aria-label="code-block-12-3"></a><span class="co"># or</span></span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1" aria-label="code-block-12-4"></a><span class="ex">[yourUsername@login1</span> ~]$ curl <span class="at">-o</span> amdahl.tar.gz <span class="at">-L</span> https://github.com/hpc-carpentry/amdahl/tarball/main</span></code></pre>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1" aria-label="code-block-12-4"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> curl <span class="at">-o</span> amdahl.tar.gz <span class="at">-L</span> https://github.com/hpc-carpentry/amdahl/tarball/main</span></code></pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div id="why-not-download-on-hpc-carpentrys-cloud-cluster-directly" class="callout discussion">
+<div id="why-not-download-on-comet-directly" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <span class="callout-header">Discussion</span>
-<div id="why-not-download-on-hpc-carpentrys-cloud-cluster-directly" class="callout-inner">
-<h3 class="callout-title">Why Not Download on HPC Carpentry’s Cloud
-Cluster Directly?<em> (continued)</em>
+<div id="why-not-download-on-comet-directly" class="callout-inner">
+<h3 class="callout-title">Why Not Download on Comet Directly?<em>
+(continued)</em>
 </h3>
 <div class="callout-content">
 <p>Did it work? If not, what does the terminal output tell you about
@@ -2899,7 +2879,7 @@ provided.</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">[you@laptop:~]$</span> scp <span class="at">-r</span> amdahl yourUsername@cluster.hpc-carpentry.org:</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">[you@laptop:~]$</span> scp <span class="at">-r</span> amdahl user@comet.ncl.ac.uk:</span></code></pre>
 </div>
 <div id="caution" class="callout">
 <div class="callout-square">
@@ -2956,7 +2936,7 @@ another computer with commonly used options:</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">-avP</span> amdahl.tar.gz yourUsername@cluster.hpc-carpentry.org:</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">-avP</span> amdahl.tar.gz user@comet.ncl.ac.uk:</span></code></pre>
 </div>
 <p>The options are:</p>
 <ul>
@@ -2976,7 +2956,7 @@ transfer.</li>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">-avP</span> amdahl yourUsername@cluster.hpc-carpentry.org:~/</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">-avP</span> amdahl user@comet.ncl.ac.uk:~/</span></code></pre>
 </div>
 <p>As written, this will place the local directory and its contents
 under your home directory on the remote system. If a trailing slash is
@@ -2987,7 +2967,7 @@ will be copied directly into the destination directory.</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">-avP</span> yourUsername@cluster.hpc-carpentry.org:amdahl ./</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">-avP</span> user@comet.ncl.ac.uk:amdahl ./</span></code></pre>
 </div>
 </div>
 </div>
@@ -3012,7 +2992,7 @@ page if you’re unsure.</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a><span class="ex">[you@laptop:~]$</span> rsync amdahl.tar.gz yourUsername@cluster.hpc-carpentry.org:</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a><span class="ex">[you@laptop:~]$</span> rsync amdahl.tar.gz user@comet.ncl.ac.uk:</span></code></pre>
 </div>
 <p><em>Hint:</em> check the <code>man</code> page or “help” for
 <code>rsync</code>.</p>
@@ -3033,7 +3013,7 @@ page if you’re unsure.</p>
 <span id="cb18-2"><a href="#cb18-2" tabindex="-1" aria-label="code-block-18-2"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">--help</span> <span class="kw">|</span> <span class="fu">grep</span> port</span>
 <span id="cb18-3"><a href="#cb18-3" tabindex="-1" aria-label="code-block-18-3"></a>     <span class="ex">--port=PORT</span>             specify double-colon alternate port number</span>
 <span id="cb18-4"><a href="#cb18-4" tabindex="-1" aria-label="code-block-18-4"></a><span class="ex">See</span> http://rsync.samba.org/ for updates, bug reports, and answers</span>
-<span id="cb18-5"><a href="#cb18-5" tabindex="-1" aria-label="code-block-18-5"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">--port</span><span class="op">=</span>768 amdahl.tar.gz yourUsername@cluster.hpc-carpentry.org:</span></code></pre>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1" aria-label="code-block-18-5"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">--port</span><span class="op">=</span>768 amdahl.tar.gz user@comet.ncl.ac.uk:</span></code></pre>
 </div>
 <p>(Note that this command will fail, as the correct port in this case
 is the default: 22.)</p>
@@ -3057,7 +3037,7 @@ side.</p>
 <p>To connect to the cluster, we’ll just need to enter our credentials
 at the top of the screen:</p>
 <ul>
-<li>Host: <code>sftp://cluster.hpc-carpentry.org</code>
+<li>Host: <code>sftp://comet.ncl.ac.uk</code>
 </li>
 <li>User: Your cluster username</li>
 <li>Password: Your cluster password</li>
@@ -3160,29 +3140,31 @@ Let’s make our own directory inside the RDW share belonging to :</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">[yourUsername@login1</span> ~]$ pwd</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> pwd</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>/mnt/nfs/home/yourUsername</code></pre>
+<pre class="output" tabindex="0"><code>/mnt/nfs/home/user</code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error:
-! Snippet not found: rdw/create-dir.Rmd
-Paths checked: /__w/hpc-intro-comet/hpc-intro-comet/episodes/files/customization/HPCC_MagicCastle_slurm/snippets/rdw/create-dir.Rmd</code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> ls /rdw/04/rse-training/</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1" aria-label="code-block-3-2"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> mkdir /rdw/04/rse-training/user</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1" aria-label="code-block-3-3"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cp example-job.sh /rdw/04/rse-training/user/</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1" aria-label="code-block-3-4"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cd /rdw/04/rse-training/user/</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1" aria-label="code-block-3-5"></a><span class="ex">[user@cometlogin02</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">rse-training]$</span> pwd</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>/rdw/04/rse-training/yourUsername</code></pre>
+<pre class="output" tabindex="0"><code>/rdw/04/rse-training/user</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">[user@cometlogin02</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">yourUsername]$</span> ls</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">[user@cometlogin02</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">user]$</span> ls</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3205,31 +3187,83 @@ remote filesystem.</p>
 <div class="section level4">
 <h4 id="try-out-a-dry-run">Try out a dry run:<a class="anchor" aria-label="anchor" href="#try-out-a-dry-run"></a>
 </h4>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error:
-! Snippet not found: rdw/rsync-amdahl-dry.Rmd
-Paths checked: /__w/hpc-intro-comet/hpc-intro-comet/episodes/files/customization/HPCC_MagicCastle_slurm/snippets/rdw/rsync-amdahl-dry.Rmd</code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cd ~</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> rsync <span class="at">-rltv</span> amdahl /rdw/04/rse-training/user/ <span class="at">--dry-run</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>sending incremental file list
+amdahl/
+amdahl/.gitignore
+amdahl/LICENSE
+amdahl/README.md
+amdahl/pyproject.toml
+amdahl/.github/
+amdahl/.github/workflows/
+amdahl/.github/workflows/python-publish.yml
+amdahl/.github/workflows/test.yml
+amdahl/amdahl/
+amdahl/amdahl/__init__.py
+amdahl/amdahl/__main__.py
+amdahl/amdahl/amdahl.py
+
+sent 361 bytes  received 59 bytes  840.00 bytes/sec
+total size is 21,987  speedup is 52.35 (DRY RUN)</code></pre>
 </div>
 </div>
 <div class="section level4">
 <h4 id="run-for-real">Run ‘for real’:<a class="anchor" aria-label="anchor" href="#run-for-real"></a>
 </h4>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error:
-! Snippet not found: rdw/rsync-amdahl.Rmd
-Paths checked: /__w/hpc-intro-comet/hpc-intro-comet/episodes/files/customization/HPCC_MagicCastle_slurm/snippets/rdw/rsync-amdahl.Rmd</code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> rsync <span class="at">-rltv</span> amdahl /rdw/04/rse-training/user/</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>sending incremental file list
+amdahl/
+amdahl/.gitignore
+amdahl/LICENSE
+amdahl/README.md
+amdahl/pyproject.toml
+amdahl/.github/
+amdahl/.github/workflows/
+amdahl/.github/workflows/python-publish.yml
+amdahl/.github/workflows/test.yml
+amdahl/amdahl/
+amdahl/amdahl/__init__.py
+amdahl/amdahl/__main__.py
+amdahl/amdahl/amdahl.py
+
+sent 22,716 bytes  received 211 bytes  45,854.00 bytes/sec
+total size is 21,987  speedup is 0.96</code></pre>
 </div>
 <p>and check the result</p>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<div class="codewrapper sourceCode" id="cb11">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error:
-! Snippet not found: rdw/rsync-amdahl-result.Rmd
-Paths checked: /__w/hpc-intro-comet/hpc-intro-comet/episodes/files/customization/HPCC_MagicCastle_slurm/snippets/rdw/rsync-amdahl-result.Rmd</code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> ls /rdw/04/rse-training/user/</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>amdahl  example-job.sh</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb13">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> ls /rdw/04/rse-training/user/amdahl/</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>amdahl  LICENSE  pyproject.toml  README.md</code></pre>
 </div>
 <div id="common-options-for-rsync" class="callout">
 <div class="callout-square">
@@ -3525,55 +3559,75 @@ processing more quickly.</p>
 </h3>
 <p>First, create a directory in a shared area so that your collaborators
 can access your work:</p>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error:
-! Snippet not found: array/set-up-work-dir.Rmd
-Paths checked: /__w/hpc-intro-comet/hpc-intro-comet/episodes/files/customization/HPCC_MagicCastle_slurm/snippets/array/set-up-work-dir.Rmd</code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="bu">cd</span> </span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a><span class="fu">mkdir</span> username</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1" aria-label="code-block-1-3"></a><span class="bu">cd</span> username</span></code></pre>
 </div>
 <p>Gather the scripts and data into a working directory:</p>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error:
-! Snippet not found: array/download-extract-data.Rmd
-Paths checked: /__w/hpc-intro-comet/hpc-intro-comet/episodes/files/customization/HPCC_MagicCastle_slurm/snippets/array/download-extract-data.Rmd</code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="fu">cp</span>  array-jobs.tar.gz</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1" aria-label="code-block-2-2"></a><span class="fu">tar</span> <span class="at">-xvf</span> hpc-intro-array-jobs.tar.gz</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1" aria-label="code-block-2-3"></a><span class="bu">cd</span> array-jobs </span></code></pre>
+</div>
+<div id="getting-the-data" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="getting-the-data" class="callout-inner">
+<h3 class="callout-title">Getting the data</h3>
+<div class="callout-content">
+<p>Above we assume that your instructor already made a local copy of the
+archive file. Alternatively, you can download the files we need using
+this script: <a href="https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/make-data.sh" class="external-link uri">https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/make-data.sh</a></p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="fu">wget</span> https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/make-data.sh</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1" aria-label="code-block-3-2"></a><span class="fu">bash</span> make-data.sh</span></code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="checking-the-script-runs-as-expected">Checking the script runs as expected<a class="anchor" aria-label="anchor" href="#checking-the-script-runs-as-expected"></a>
 </h3>
 <p>Create a small data file to test our script:</p>
-<div class="codewrapper sourceCode" id="cb3">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">[yourUsername@login1</span> ~]$ nano test-data.txt</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1" aria-label="code-block-3-2"></a><span class="ex">[yourUsername@login1</span> ~]$ cat test-data.txt</span></code></pre>
-</div>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">This</span> is a small file <span class="at">-</span> it will be very useful for trying out our script.</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a><span class="ex">Some</span> words are repeated in this file</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1" aria-label="code-block-4-3"></a><span class="ex">-</span> we can look for repeated words</span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1" aria-label="code-block-4-4"></a><span class="ex">and</span> count them <span class="er">(</span><span class="ex">to</span> see which words are repeated most often<span class="kw">)</span><span class="bu">.</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> nano test-data.txt</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cat test-data.txt</span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">This</span> is a small file <span class="at">-</span> it will be very useful for trying out our script.</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1" aria-label="code-block-5-2"></a><span class="ex">Some</span> words are repeated in this file</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1" aria-label="code-block-5-3"></a><span class="ex">-</span> we can look for repeated words</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1" aria-label="code-block-5-4"></a><span class="ex">and</span> count them <span class="er">(</span><span class="ex">to</span> see which words are repeated most often<span class="kw">)</span><span class="bu">.</span></span></code></pre>
 </div>
 <p>To test the script we will run it on the login node. Remember, never
 do this with resource intensive script. You could even run the script on
 your laptop or desktop if it uses Linux or Mac. This specific script
 will not work on Windows as not all the commands in the script are
 available on the Windows operating system.</p>
-<div class="codewrapper sourceCode" id="cb5">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="fu">bash</span> word-freq.sh test-data.txt</span></code></pre>
-</div>
-<p>To the results, type the output of the script to screen:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="fu">cat</span> analyzed_test-data.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="fu">bash</span> word-freq.sh test-data.txt</span></code></pre>
+</div>
+<p>To the results, type the output of the script to screen:</p>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="fu">cat</span> analyzed_test-data.txt</span></code></pre>
 </div>
 <p>You should get something like this:</p>
 <pre><code>      1 a
@@ -3618,21 +3672,21 @@ submission script first by using our test data, rather than trying to
 run with a large dataset. Using <code>nano</code>, create a script
 called <code>job_single_word-freq.sh</code> containing the
 following:</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1" aria-label="code-block-8-2"></a></span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1" aria-label="code-block-8-3"></a><span class="co">#SBATCH --partition=short_free</span></span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1" aria-label="code-block-8-4"></a><span class="co">#SBATCH --account=comet_training</span></span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1" aria-label="code-block-8-5"></a><span class="co">#SBATCH --job-name=word-freq_single-test1</span></span>
-<span id="cb8-6"><a href="#cb8-6" tabindex="-1" aria-label="code-block-8-6"></a><span class="co">#SBATCH --nodes=1</span></span>
-<span id="cb8-7"><a href="#cb8-7" tabindex="-1" aria-label="code-block-8-7"></a><span class="co">#SBATCH --tasks=1</span></span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1" aria-label="code-block-8-8"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
-<span id="cb8-9"><a href="#cb8-9" tabindex="-1" aria-label="code-block-8-9"></a></span>
-<span id="cb8-10"><a href="#cb8-10" tabindex="-1" aria-label="code-block-8-10"></a><span class="bu">echo</span> <span class="st">"Starting word frequency script"</span></span>
-<span id="cb8-11"><a href="#cb8-11" tabindex="-1" aria-label="code-block-8-11"></a><span class="fu">bash</span> word-freq.sh test-data.txt</span>
-<span id="cb8-12"><a href="#cb8-12" tabindex="-1" aria-label="code-block-8-12"></a><span class="bu">echo</span> <span class="st">"Finished word frequency script"</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1" aria-label="code-block-9-2"></a></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1" aria-label="code-block-9-3"></a><span class="co">#SBATCH --partition=short_free</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1" aria-label="code-block-9-4"></a><span class="co">#SBATCH --account=comet_training</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1" aria-label="code-block-9-5"></a><span class="co">#SBATCH --job-name=word-freq_single-test1</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1" aria-label="code-block-9-6"></a><span class="co">#SBATCH --nodes=1</span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1" aria-label="code-block-9-7"></a><span class="co">#SBATCH --tasks=1</span></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1" aria-label="code-block-9-8"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1" aria-label="code-block-9-9"></a></span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1" aria-label="code-block-9-10"></a><span class="bu">echo</span> <span class="st">"Starting word frequency script"</span></span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1" aria-label="code-block-9-11"></a><span class="fu">bash</span> word-freq.sh test-data.txt</span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1" aria-label="code-block-9-12"></a><span class="bu">echo</span> <span class="st">"Finished word frequency script"</span></span></code></pre>
 </div>
 <div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
@@ -3654,10 +3708,10 @@ following:</p>
 your batch file, and then adapt your run command to take advantage of
 the information provided by the environment variables.</p>
 <p>The relevant array directive has this format:</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="co">#SBATCH --array=&lt;array-spec&gt;</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="co">#SBATCH --array=&lt;array-spec&gt;</span></span></code></pre>
 </div>
 <p>The <code>&lt;array-spec&gt;</code> above is a place-holder for
 specifying the size and extent of the array. The specification will
@@ -3713,33 +3767,33 @@ variable called <code>${SLURM_ARRAY_TASK_ID}</code>.</p>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1" aria-label="code-block-10-2"></a></span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1" aria-label="code-block-10-3"></a></span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1" aria-label="code-block-10-4"></a><span class="co">#SBATCH --partitionshort_free</span></span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1" aria-label="code-block-10-5"></a><span class="co">#SBATCH --account=comet_training</span></span>
-<span id="cb10-6"><a href="#cb10-6" tabindex="-1" aria-label="code-block-10-6"></a><span class="co">#SBATCH --job-namemakefreq</span></span>
-<span id="cb10-7"><a href="#cb10-7" tabindex="-1" aria-label="code-block-10-7"></a><span class="co">#SBATCH --nodes1</span></span>
-<span id="cb10-8"><a href="#cb10-8" tabindex="-1" aria-label="code-block-10-8"></a><span class="co">#SBATCH --array=1-4</span></span>
-<span id="cb10-9"><a href="#cb10-9" tabindex="-1" aria-label="code-block-10-9"></a><span class="co">#SBATCH 1</span></span>
-<span id="cb10-10"><a href="#cb10-10" tabindex="-1" aria-label="code-block-10-10"></a></span>
-<span id="cb10-11"><a href="#cb10-11" tabindex="-1" aria-label="code-block-10-11"></a><span class="co"># Do a word frequency analysis of each of the following</span></span>
-<span id="cb10-12"><a href="#cb10-12" tabindex="-1" aria-label="code-block-10-12"></a><span class="co"># data sets simultaneously:</span></span>
-<span id="cb10-13"><a href="#cb10-13" tabindex="-1" aria-label="code-block-10-13"></a><span class="co">#</span></span>
-<span id="cb10-14"><a href="#cb10-14" tabindex="-1" aria-label="code-block-10-14"></a><span class="co"># data.1 - The collected works of Shakespeare</span></span>
-<span id="cb10-15"><a href="#cb10-15" tabindex="-1" aria-label="code-block-10-15"></a><span class="co"># data.2 - Geoffrey Chaucers Cantebury Tales </span></span>
-<span id="cb10-16"><a href="#cb10-16" tabindex="-1" aria-label="code-block-10-16"></a><span class="co"># data.3 - Moby Dick by Herman Melville</span></span>
-<span id="cb10-17"><a href="#cb10-17" tabindex="-1" aria-label="code-block-10-17"></a><span class="co"># data.4 - Homers Odyssey</span></span>
-<span id="cb10-18"><a href="#cb10-18" tabindex="-1" aria-label="code-block-10-18"></a><span class="co">#</span></span>
-<span id="cb10-19"><a href="#cb10-19" tabindex="-1" aria-label="code-block-10-19"></a><span class="co"># We should be able to process all four data sets in the same</span></span>
-<span id="cb10-20"><a href="#cb10-20" tabindex="-1" aria-label="code-block-10-20"></a><span class="co"># time it took to process just the first.</span></span>
-<span id="cb10-21"><a href="#cb10-21" tabindex="-1" aria-label="code-block-10-21"></a></span>
-<span id="cb10-22"><a href="#cb10-22" tabindex="-1" aria-label="code-block-10-22"></a><span class="bu">echo</span> <span class="st">"Starting word frequency script"</span></span>
-<span id="cb10-23"><a href="#cb10-23" tabindex="-1" aria-label="code-block-10-23"></a><span class="fu">bash</span> word-freq.sh data.<span class="va">${SLURM_ARRAY_TASK_ID}</span></span>
-<span id="cb10-24"><a href="#cb10-24" tabindex="-1" aria-label="code-block-10-24"></a><span class="bu">echo</span> <span class="st">"Finished word frequency script"</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1" aria-label="code-block-11-2"></a></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1" aria-label="code-block-11-3"></a></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1" aria-label="code-block-11-4"></a><span class="co">#SBATCH --partitionshort_free</span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1" aria-label="code-block-11-5"></a><span class="co">#SBATCH --account=comet_training</span></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1" aria-label="code-block-11-6"></a><span class="co">#SBATCH --job-namemakefreq</span></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1" aria-label="code-block-11-7"></a><span class="co">#SBATCH --nodes1</span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1" aria-label="code-block-11-8"></a><span class="co">#SBATCH --array=1-4</span></span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1" aria-label="code-block-11-9"></a><span class="co">#SBATCH 1</span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1" aria-label="code-block-11-10"></a></span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1" aria-label="code-block-11-11"></a><span class="co"># Do a word frequency analysis of each of the following</span></span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1" aria-label="code-block-11-12"></a><span class="co"># data sets simultaneously:</span></span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1" aria-label="code-block-11-13"></a><span class="co">#</span></span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1" aria-label="code-block-11-14"></a><span class="co"># data.1 - The collected works of Shakespeare</span></span>
+<span id="cb11-15"><a href="#cb11-15" tabindex="-1" aria-label="code-block-11-15"></a><span class="co"># data.2 - Geoffrey Chaucers Cantebury Tales </span></span>
+<span id="cb11-16"><a href="#cb11-16" tabindex="-1" aria-label="code-block-11-16"></a><span class="co"># data.3 - Moby Dick by Herman Melville</span></span>
+<span id="cb11-17"><a href="#cb11-17" tabindex="-1" aria-label="code-block-11-17"></a><span class="co"># data.4 - Homers Odyssey</span></span>
+<span id="cb11-18"><a href="#cb11-18" tabindex="-1" aria-label="code-block-11-18"></a><span class="co">#</span></span>
+<span id="cb11-19"><a href="#cb11-19" tabindex="-1" aria-label="code-block-11-19"></a><span class="co"># We should be able to process all four data sets in the same</span></span>
+<span id="cb11-20"><a href="#cb11-20" tabindex="-1" aria-label="code-block-11-20"></a><span class="co"># time it took to process just the first.</span></span>
+<span id="cb11-21"><a href="#cb11-21" tabindex="-1" aria-label="code-block-11-21"></a></span>
+<span id="cb11-22"><a href="#cb11-22" tabindex="-1" aria-label="code-block-11-22"></a><span class="bu">echo</span> <span class="st">"Starting word frequency script"</span></span>
+<span id="cb11-23"><a href="#cb11-23" tabindex="-1" aria-label="code-block-11-23"></a><span class="fu">bash</span> word-freq.sh data.<span class="va">${SLURM_ARRAY_TASK_ID}</span></span>
+<span id="cb11-24"><a href="#cb11-24" tabindex="-1" aria-label="code-block-11-24"></a><span class="bu">echo</span> <span class="st">"Finished word frequency script"</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -3865,7 +3919,7 @@ get statistics about <code>parallel-job.sh</code>.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sacct <span class="at">-u</span> yourUsername</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sacct <span class="at">-u</span> yourUsername</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3888,7 +3942,7 @@ entries per job). To get info about a specific job (for example,
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sacct <span class="at">-u</span> yourUsername <span class="at">--long</span> <span class="at">--jobs</span> 347087</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sacct <span class="at">-u</span> yourUsername <span class="at">--long</span> <span class="at">--jobs</span> 347087</span></code></pre>
 </div>
 <p>It will show a lot of info; in fact, every single piece of info
 collected on your job by the scheduler will show up here. It may be
@@ -3898,7 +3952,7 @@ fields).</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sacct <span class="at">-u</span> yourUsername <span class="at">--long</span> <span class="at">--jobs</span> 347087 <span class="kw">|</span> <span class="fu">less</span> <span class="at">-S</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sacct <span class="at">-u</span> yourUsername <span class="at">--long</span> <span class="at">--jobs</span> 347087 <span class="kw">|</span> <span class="fu">less</span> <span class="at">-S</span></span></code></pre>
 </div>
 <div id="discussion" class="callout discussion">
 <div class="callout-square">
@@ -4092,7 +4146,7 @@ node?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Building software, creating directories, and unpacking software are
 common and acceptable &gt; tasks for the login node: options #2
@@ -4280,19 +4334,18 @@ run some tests that you can use to extrapolate how long it will take to
 transfer your data.</p>
 <p>Say you have a “data” folder containing 10,000 or so files, a healthy
 mix of small and large ASCII and binary data. Which of the following
-would be the best way to transfer them to HPC Carpentry’s Cloud
-Cluster?</p>
+would be the best way to transfer them to Comet?</p>
 <ol style="list-style-type: decimal">
-<li><p><code>scp -r data yourUsername@cluster.hpc-carpentry.org:~/</code></p></li>
-<li><p><code>rsync -ra data yourUsername@cluster.hpc-carpentry.org:~/</code></p></li>
-<li><p><code>rsync -raz data yourUsername@cluster.hpc-carpentry.org:~/</code></p></li>
+<li><p><code>scp -r data user@comet.ncl.ac.uk:~/</code></p></li>
+<li><p><code>rsync -ra data user@comet.ncl.ac.uk:~/</code></p></li>
+<li><p><code>rsync -raz data user@comet.ncl.ac.uk:~/</code></p></li>
 <li>
 <p><code>tar -cvf data.tar data;</code></p>
-<p><code>rsync -raz data.tar yourUsername@cluster.hpc-carpentry.org:~/</code></p>
+<p><code>rsync -raz data.tar user@comet.ncl.ac.uk:~/</code></p>
 </li>
 <li>
 <p><code>tar -cvzf data.tar.gz data;</code></p>
-<p><code>rsync -ra data.tar.gz yourUsername@cluster.hpc-carpentry.org:~/</code></p>
+<p><code>rsync -ra data.tar.gz user@comet.ncl.ac.uk:~/</code></p>
 </li>
 </ol>
 </div>
@@ -4303,7 +4356,7 @@ Cluster?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>
@@ -4438,7 +4491,7 @@ efficiency.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Ideally the code for this episode should be pre-compiled and made
 available for students to download. We have found that expecting
@@ -4462,7 +4515,7 @@ a module).</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Compiling the prime calculator from code </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>Only do this if pre-compiled binaries of the programs have not been
 made available to you.</p>
@@ -4718,7 +4771,7 @@ does that mean it finished in 1/16th of the time?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The parallel job did take <em>less</em> time: 3.493s is better than
 34.476s! But it is only a 9.87× improvement, not 16×.</p>
@@ -4812,15 +4865,15 @@ launch it.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">[yourUsername@login1</span> ~]$ nano serial-job.sh</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a><span class="ex">[yourUsername@login1</span> ~]$ cat serial-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> nano serial-job.sh</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cat serial-job.sh</span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1" aria-label="code-block-2-2"></a><span class="co">#SBATCH --job-name solo-job</span></span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1" aria-label="code-block-2-3"></a><span class="co">#SBATCH --partition cpubase_bycore_b1</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1" aria-label="code-block-2-3"></a><span class="co">#SBATCH --partition short_free</span></span>
 <span id="cb2-4"><a href="#cb2-4" tabindex="-1" aria-label="code-block-2-4"></a><span class="co">#SBATCH -N 1</span></span>
 <span id="cb2-5"><a href="#cb2-5" tabindex="-1" aria-label="code-block-2-5"></a><span class="co">#SBATCH -n 1</span></span>
 <span id="cb2-6"><a href="#cb2-6" tabindex="-1" aria-label="code-block-2-6"></a></span>
@@ -4833,14 +4886,14 @@ launch it.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sbatch serial-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch serial-job.sh</span></code></pre>
 </div>
 <p>As before, use the Slurm status commands to check whether your job is
 running and when it ends:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">[yourUsername@login1</span> ~]$ squeue <span class="at">-u</span> yourUsername</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> squeue <span class="at">-u</span> yourUsername</span></code></pre>
 </div>
 <p>Use <code>ls</code> to locate the output file. The <code>-t</code>
 flag sorts in reverse-chronological order: newest first. What was the
@@ -4850,14 +4903,14 @@ output?</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Read the Job Output </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>The cluster output should be written to a file in the folder you
 launched the job from. For example,</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">[yourUsername@login1</span> ~]$ ls <span class="at">-t</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> ls <span class="at">-t</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4867,7 +4920,7 @@ launched the job from. For example,</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="ex">[yourUsername@login1</span> ~]$ cat slurm-347087.out</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cat slurm-347087.out</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4875,8 +4928,8 @@ launched the job from. For example,</p>
 <pre class="output" tabindex="0"><code>Doing 30.000000 seconds of 'work' on 1 processor,
 which should take 30.000000 seconds with 0.800000 parallel proportion of the workload.
 
-  Hello, World! I am process 0 of 1 on smnode1. I will do all the serial 'work' for 7.021608 seconds.
-  Hello, World! I am process 0 of 1 on smnode1. I will do parallel 'work' for 26.302983 seconds.
+  Hello, World! I am process 0 of 1 on compute030. I will do all the serial 'work' for 7.021608 seconds.
+  Hello, World! I am process 0 of 1 on compute030. I will do parallel 'work' for 26.302983 seconds.
 
 Total execution time (according to rank 0): 33.326056 seconds</code></pre>
 </div>
@@ -4950,16 +5003,16 @@ run-time.</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="ex">[yourUsername@login1</span> ~]$ cp serial-job.sh parallel-job.sh</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1" aria-label="code-block-9-2"></a><span class="ex">[yourUsername@login1</span> ~]$ nano parallel-job.sh</span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1" aria-label="code-block-9-3"></a><span class="ex">[yourUsername@login1</span> ~]$ cat parallel-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cp serial-job.sh parallel-job.sh</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1" aria-label="code-block-9-2"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> nano parallel-job.sh</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1" aria-label="code-block-9-3"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cat parallel-job.sh</span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb10-2"><a href="#cb10-2" tabindex="-1" aria-label="code-block-10-2"></a><span class="co">#SBATCH --job-name parallel-job</span></span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1" aria-label="code-block-10-3"></a><span class="co">#SBATCH --partition cpubase_bycore_b1</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1" aria-label="code-block-10-3"></a><span class="co">#SBATCH --partition short_free</span></span>
 <span id="cb10-4"><a href="#cb10-4" tabindex="-1" aria-label="code-block-10-4"></a><span class="co">#SBATCH -N 1</span></span>
 <span id="cb10-5"><a href="#cb10-5" tabindex="-1" aria-label="code-block-10-5"></a><span class="co">#SBATCH -n 4</span></span>
 <span id="cb10-6"><a href="#cb10-6" tabindex="-1" aria-label="code-block-10-6"></a></span>
@@ -4977,13 +5030,13 @@ are in the batch file rather than the command line.</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sbatch parallel-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch parallel-job.sh</span></code></pre>
 </div>
 <p>As before, use the status commands to check when your job runs.</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="ex">[yourUsername@login1</span> ~]$ ls <span class="at">-t</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> ls <span class="at">-t</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4994,7 +5047,7 @@ slurm-347087.out  serial-job.sh    LICENSE  README.md</code></pre>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="ex">[yourUsername@login1</span> ~]$ cat slurm-347178.out</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cat slurm-347178.out</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5002,11 +5055,11 @@ slurm-347087.out  serial-job.sh    LICENSE  README.md</code></pre>
 <pre class="output" tabindex="0"><code>Doing 30.000000 seconds of 'work' on 4 processors,
  which should take 12.000000 seconds with 0.800000 parallel proportion of the workload.
 
-  Hello, World! I am process 0 of 4 on smnode1. I will do all the serial 'work' for 6.851971 seconds.
-  Hello, World! I am process 2 of 4 on smnode1. I will do parallel 'work' for 6.726753 seconds.
-  Hello, World! I am process 1 of 4 on smnode1. I will do parallel 'work' for 6.742398 seconds.
-  Hello, World! I am process 3 of 4 on smnode1. I will do parallel 'work' for 6.782674 seconds.
-  Hello, World! I am process 0 of 4 on smnode1. I will do parallel 'work' for 6.468167 seconds.
+  Hello, World! I am process 0 of 4 on compute030. I will do all the serial 'work' for 6.851971 seconds.
+  Hello, World! I am process 2 of 4 on compute030. I will do parallel 'work' for 6.726753 seconds.
+  Hello, World! I am process 1 of 4 on compute030. I will do parallel 'work' for 6.742398 seconds.
+  Hello, World! I am process 3 of 4 on compute030. I will do parallel 'work' for 6.782674 seconds.
+  Hello, World! I am process 0 of 4 on compute030. I will do parallel 'work' for 6.468167 seconds.
 
 Total execution time (according to rank 0): 13.579746 seconds</code></pre>
 </div>
@@ -5028,7 +5081,7 @@ does that mean it finished in ¼ the time?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The parallel job did take <em>less</em> time: 11 seconds is better
 than 30! But it is only a 2.7× improvement, not 4×.</p>
@@ -5082,15 +5135,15 @@ our <code>amdahl</code> code gets.</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="ex">[yourUsername@login1</span> ~]$ nano parallel-job.sh</span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1" aria-label="code-block-16-2"></a><span class="ex">[yourUsername@login1</span> ~]$ cat parallel-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> nano parallel-job.sh</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1" aria-label="code-block-16-2"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cat parallel-job.sh</span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb17-2"><a href="#cb17-2" tabindex="-1" aria-label="code-block-17-2"></a><span class="co">#SBATCH --job-name parallel-job</span></span>
-<span id="cb17-3"><a href="#cb17-3" tabindex="-1" aria-label="code-block-17-3"></a><span class="co">#SBATCH --partition cpubase_bycore_b1</span></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1" aria-label="code-block-17-3"></a><span class="co">#SBATCH --partition short_free</span></span>
 <span id="cb17-4"><a href="#cb17-4" tabindex="-1" aria-label="code-block-17-4"></a><span class="co">#SBATCH -N 1</span></span>
 <span id="cb17-5"><a href="#cb17-5" tabindex="-1" aria-label="code-block-17-5"></a><span class="co">#SBATCH -n 8</span></span>
 <span id="cb17-6"><a href="#cb17-6" tabindex="-1" aria-label="code-block-17-6"></a></span>
@@ -5108,13 +5161,13 @@ are in the batch file rather than the command line.</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sbatch parallel-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch parallel-job.sh</span></code></pre>
 </div>
 <p>As before, use the status commands to check when your job runs.</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1" aria-label="code-block-19-1"></a><span class="ex">[yourUsername@login1</span> ~]$ ls <span class="at">-t</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1" aria-label="code-block-19-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> ls <span class="at">-t</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5125,7 +5178,7 @@ parallel-job.sh      slurm-347087.out  amdahl         pyproject.toml</code></pre
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a><span class="ex">[yourUsername@login1</span> ~]$ cat slurm-347178.out</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cat slurm-347178.out</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5133,15 +5186,15 @@ parallel-job.sh      slurm-347087.out  amdahl         pyproject.toml</code></pre
 <pre class="output" tabindex="0"><code>Doing 30.000000 seconds of 'work' on 8 processors,
  which should take 9.000000 seconds with 0.800000 parallel proportion of the workload.
 
-  Hello, World! I am process 4 of 8 on smnode1. I will do parallel 'work' for 3.157831 seconds.
-  Hello, World! I am process 0 of 8 on smnode1. I will do all the serial 'work' for 6.031285 seconds.
-  Hello, World! I am process 2 of 8 on smnode1. I will do parallel 'work' for 3.215214 seconds.
-  Hello, World! I am process 1 of 8 on smnode1. I will do parallel 'work' for 3.524280 seconds.
-  Hello, World! I am process 3 of 8 on smnode1. I will do parallel 'work' for 3.589039 seconds.
-  Hello, World! I am process 5 of 8 on smnode1. I will do parallel 'work' for 3.501589 seconds.
-  Hello, World! I am process 6 of 8 on smnode1. I will do parallel 'work' for 3.207707 seconds.
-  Hello, World! I am process 7 of 8 on smnode1. I will do parallel 'work' for 3.071680 seconds.
-  Hello, World! I am process 0 of 8 on smnode1. I will do parallel 'work' for 3.482018 seconds.
+  Hello, World! I am process 4 of 8 on compute030. I will do parallel 'work' for 3.157831 seconds.
+  Hello, World! I am process 0 of 8 on compute030. I will do all the serial 'work' for 6.031285 seconds.
+  Hello, World! I am process 2 of 8 on compute030. I will do parallel 'work' for 3.215214 seconds.
+  Hello, World! I am process 1 of 8 on compute030. I will do parallel 'work' for 3.524280 seconds.
+  Hello, World! I am process 3 of 8 on compute030. I will do parallel 'work' for 3.589039 seconds.
+  Hello, World! I am process 5 of 8 on compute030. I will do parallel 'work' for 3.501589 seconds.
+  Hello, World! I am process 6 of 8 on compute030. I will do parallel 'work' for 3.207707 seconds.
+  Hello, World! I am process 7 of 8 on compute030. I will do parallel 'work' for 3.071680 seconds.
+  Hello, World! I am process 0 of 8 on compute030. I will do parallel 'work' for 3.482018 seconds.
 
 Total execution time (according to rank 0): 9.514393 seconds</code></pre>
 </div>
@@ -5192,7 +5245,7 @@ S(t_{n}) = \frac{t_{1}}{t_{n}}
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1" aria-label="code-block-23-1"></a><span class="ex">[yourUsername@login1</span> ~]$ for n in 33.326056 13.579746 9.514393<span class="kw">;</span> <span class="cf">do</span> <span class="ex">python3</span> <span class="at">-c</span> <span class="st">"print(33.326056 / </span><span class="va">$n</span><span class="st">)"</span><span class="kw">;</span> <span class="cf">done</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1" aria-label="code-block-23-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> for n in 33.326056 13.579746 9.514393<span class="kw">;</span> <span class="cf">do</span> <span class="ex">python3</span> <span class="at">-c</span> <span class="st">"print(33.326056 / </span><span class="va">$n</span><span class="st">)"</span><span class="kw">;</span> <span class="cf">done</span></span></code></pre>
 </div>
 <table class="table">
 <thead><tr>

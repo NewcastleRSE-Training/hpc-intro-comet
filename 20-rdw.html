@@ -433,29 +433,31 @@ Let’s make our own directory inside the RDW share belonging to :</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">[yourUsername@login1</span> ~]$ pwd</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> pwd</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>/mnt/nfs/home/yourUsername</code></pre>
+<pre class="output" tabindex="0"><code>/mnt/nfs/home/user</code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error:
-! Snippet not found: rdw/create-dir.Rmd
-Paths checked: /__w/hpc-intro-comet/hpc-intro-comet/episodes/files/customization/HPCC_MagicCastle_slurm/snippets/rdw/create-dir.Rmd</code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> ls /rdw/04/rse-training/</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1" aria-label="code-block-3-2"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> mkdir /rdw/04/rse-training/user</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1" aria-label="code-block-3-3"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cp example-job.sh /rdw/04/rse-training/user/</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1" aria-label="code-block-3-4"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cd /rdw/04/rse-training/user/</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1" aria-label="code-block-3-5"></a><span class="ex">[user@cometlogin02</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">rse-training]$</span> pwd</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>/rdw/04/rse-training/yourUsername</code></pre>
+<pre class="output" tabindex="0"><code>/rdw/04/rse-training/user</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">[user@cometlogin02</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">yourUsername]$</span> ls</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">[user@cometlogin02</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">user]$</span> ls</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -476,30 +478,82 @@ remote filesystem.</p>
 <p>Transfer <em>to</em> RDW from your home directory on Comet</p>
 <div class="section level4">
 <h4 id="try-out-a-dry-run">Try out a dry run:<a class="anchor" aria-label="anchor" href="#try-out-a-dry-run"></a></h4>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error:
-! Snippet not found: rdw/rsync-amdahl-dry.Rmd
-Paths checked: /__w/hpc-intro-comet/hpc-intro-comet/episodes/files/customization/HPCC_MagicCastle_slurm/snippets/rdw/rsync-amdahl-dry.Rmd</code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> cd ~</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> rsync <span class="at">-rltv</span> amdahl /rdw/04/rse-training/user/ <span class="at">--dry-run</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>sending incremental file list
+amdahl/
+amdahl/.gitignore
+amdahl/LICENSE
+amdahl/README.md
+amdahl/pyproject.toml
+amdahl/.github/
+amdahl/.github/workflows/
+amdahl/.github/workflows/python-publish.yml
+amdahl/.github/workflows/test.yml
+amdahl/amdahl/
+amdahl/amdahl/__init__.py
+amdahl/amdahl/__main__.py
+amdahl/amdahl/amdahl.py
+
+sent 361 bytes  received 59 bytes  840.00 bytes/sec
+total size is 21,987  speedup is 52.35 (DRY RUN)</code></pre>
 </div>
 </div>
 <div class="section level4">
 <h4 id="run-for-real">Run ‘for real’:<a class="anchor" aria-label="anchor" href="#run-for-real"></a></h4>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error:
-! Snippet not found: rdw/rsync-amdahl.Rmd
-Paths checked: /__w/hpc-intro-comet/hpc-intro-comet/episodes/files/customization/HPCC_MagicCastle_slurm/snippets/rdw/rsync-amdahl.Rmd</code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> rsync <span class="at">-rltv</span> amdahl /rdw/04/rse-training/user/</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>sending incremental file list
+amdahl/
+amdahl/.gitignore
+amdahl/LICENSE
+amdahl/README.md
+amdahl/pyproject.toml
+amdahl/.github/
+amdahl/.github/workflows/
+amdahl/.github/workflows/python-publish.yml
+amdahl/.github/workflows/test.yml
+amdahl/amdahl/
+amdahl/amdahl/__init__.py
+amdahl/amdahl/__main__.py
+amdahl/amdahl/amdahl.py
+
+sent 22,716 bytes  received 211 bytes  45,854.00 bytes/sec
+total size is 21,987  speedup is 0.96</code></pre>
 </div>
 <p>and check the result</p>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<div class="codewrapper sourceCode" id="cb11">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error:
-! Snippet not found: rdw/rsync-amdahl-result.Rmd
-Paths checked: /__w/hpc-intro-comet/hpc-intro-comet/episodes/files/customization/HPCC_MagicCastle_slurm/snippets/rdw/rsync-amdahl-result.Rmd</code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> ls /rdw/04/rse-training/user/</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>amdahl  example-job.sh</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb13">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> ls /rdw/04/rse-training/user/amdahl/</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>amdahl  LICENSE  pyproject.toml  README.md</code></pre>
 </div>
 <div id="common-options-for-rsync" class="callout">
 <div class="callout-square">

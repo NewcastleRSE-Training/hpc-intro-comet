@@ -488,7 +488,7 @@ node?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Building software, creating directories, and unpacking software are
 common and acceptable &gt; tasks for the login node: options #2
@@ -668,18 +668,17 @@ run some tests that you can use to extrapolate how long it will take to
 transfer your data.</p>
 <p>Say you have a “data” folder containing 10,000 or so files, a healthy
 mix of small and large ASCII and binary data. Which of the following
-would be the best way to transfer them to HPC Carpentry’s Cloud
-Cluster?</p>
-<ol style="list-style-type: decimal"><li><p><code>scp -r data yourUsername@cluster.hpc-carpentry.org:~/</code></p></li>
-<li><p><code>rsync -ra data yourUsername@cluster.hpc-carpentry.org:~/</code></p></li>
-<li><p><code>rsync -raz data yourUsername@cluster.hpc-carpentry.org:~/</code></p></li>
+would be the best way to transfer them to Comet?</p>
+<ol style="list-style-type: decimal"><li><p><code>scp -r data user@comet.ncl.ac.uk:~/</code></p></li>
+<li><p><code>rsync -ra data user@comet.ncl.ac.uk:~/</code></p></li>
+<li><p><code>rsync -raz data user@comet.ncl.ac.uk:~/</code></p></li>
 <li>
 <p><code>tar -cvf data.tar data;</code></p>
-<p><code>rsync -raz data.tar yourUsername@cluster.hpc-carpentry.org:~/</code></p>
+<p><code>rsync -raz data.tar user@comet.ncl.ac.uk:~/</code></p>
 </li>
 <li>
 <p><code>tar -cvzf data.tar.gz data;</code></p>
-<p><code>rsync -ra data.tar.gz yourUsername@cluster.hpc-carpentry.org:~/</code></p>
+<p><code>rsync -ra data.tar.gz user@comet.ncl.ac.uk:~/</code></p>
 </li>
 </ol></div>
 </div>
@@ -689,7 +688,7 @@ Cluster?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>
 <code>scp</code> will recursively copy the directory. This works,
