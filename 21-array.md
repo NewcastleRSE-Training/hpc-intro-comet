@@ -108,28 +108,42 @@ First, create a directory in a shared area so that your collaborators can access
 
 
 
-``` error
-Error:
-! Snippet not found: array/set-up-work-dir.Rmd
-Paths checked: /__w/hpc-intro-comet/hpc-intro-comet/episodes/files/customization/HPCC_MagicCastle_slurm/snippets/array/set-up-work-dir.Rmd
+```bash
+cd 
+mkdir username
+cd username
 ```
 
 Gather the scripts and data into a working directory:
 
 
-``` error
-Error:
-! Snippet not found: array/download-extract-data.Rmd
-Paths checked: /__w/hpc-intro-comet/hpc-intro-comet/episodes/files/customization/HPCC_MagicCastle_slurm/snippets/array/download-extract-data.Rmd
+```bash
+cp  array-jobs.tar.gz
+tar -xvf hpc-intro-array-jobs.tar.gz
+cd array-jobs 
 ```
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Getting the data
+
+Above we assume that your instructor already made a local copy of the archive file.
+Alternatively, you can download the files we need using this script: 
+https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/make-data.sh
+
+```bash
+wget https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/make-data.sh
+bash make-data.sh
+```
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ### Checking the script runs as expected
 
 Create a small data file to test our script:
 
 ```bash
-[yourUsername@login1 ~]$ nano test-data.txt
-[yourUsername@login1 ~]$ cat test-data.txt
+[user@cometlogin01(comet) ~] nano test-data.txt
+[user@cometlogin01(comet) ~] cat test-data.txt
 ```
 
 ```bash

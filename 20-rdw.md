@@ -35,23 +35,25 @@ Because `/rdw` is a mounted filesystem, we can use `cp` instead of `scp`.
 Let's make our own directory inside the RDW share belonging to :
 
 ```bash
-[yourUsername@login1 ~]$ pwd
+[user@cometlogin01(comet) ~] pwd
 ```
 ```output
-/mnt/nfs/home/yourUsername
+/mnt/nfs/home/user
 ```
 
-``` error
-Error:
-! Snippet not found: rdw/create-dir.Rmd
-Paths checked: /__w/hpc-intro-comet/hpc-intro-comet/episodes/files/customization/HPCC_MagicCastle_slurm/snippets/rdw/create-dir.Rmd
+```bash
+[user@cometlogin01(comet) ~] ls /rdw/04/rse-training/
+[user@cometlogin01(comet) ~] mkdir /rdw/04/rse-training/user
+[user@cometlogin01(comet) ~] cp example-job.sh /rdw/04/rse-training/user/
+[user@cometlogin01(comet) ~] cd /rdw/04/rse-training/user/
+[user@cometlogin02(comet) rse-training]$ pwd
 ```
 
 ```output
-/rdw/04/rse-training/yourUsername
+/rdw/04/rse-training/user
 ```
 ```bash
-[user@cometlogin02(comet) yourUsername]$ ls
+[user@cometlogin02(comet) user]$ ls
 ```
 ```output
 example-job.sh
@@ -71,27 +73,70 @@ Transfer *to* RDW from your home directory on Comet
 #### Try out a dry run:
 
 
-``` error
-Error:
-! Snippet not found: rdw/rsync-amdahl-dry.Rmd
-Paths checked: /__w/hpc-intro-comet/hpc-intro-comet/episodes/files/customization/HPCC_MagicCastle_slurm/snippets/rdw/rsync-amdahl-dry.Rmd
+```bash
+[user@cometlogin01(comet) ~] cd ~
+[user@cometlogin01(comet) ~] rsync -rltv amdahl /rdw/04/rse-training/user/ --dry-run
+```
+```output
+sending incremental file list
+amdahl/
+amdahl/.gitignore
+amdahl/LICENSE
+amdahl/README.md
+amdahl/pyproject.toml
+amdahl/.github/
+amdahl/.github/workflows/
+amdahl/.github/workflows/python-publish.yml
+amdahl/.github/workflows/test.yml
+amdahl/amdahl/
+amdahl/amdahl/__init__.py
+amdahl/amdahl/__main__.py
+amdahl/amdahl/amdahl.py
+
+sent 361 bytes  received 59 bytes  840.00 bytes/sec
+total size is 21,987  speedup is 52.35 (DRY RUN)
 ```
 
 #### Run ‘for real’:
 
 
-``` error
-Error:
-! Snippet not found: rdw/rsync-amdahl.Rmd
-Paths checked: /__w/hpc-intro-comet/hpc-intro-comet/episodes/files/customization/HPCC_MagicCastle_slurm/snippets/rdw/rsync-amdahl.Rmd
+```bash
+[user@cometlogin01(comet) ~] rsync -rltv amdahl /rdw/04/rse-training/user/
+```
+```output
+sending incremental file list
+amdahl/
+amdahl/.gitignore
+amdahl/LICENSE
+amdahl/README.md
+amdahl/pyproject.toml
+amdahl/.github/
+amdahl/.github/workflows/
+amdahl/.github/workflows/python-publish.yml
+amdahl/.github/workflows/test.yml
+amdahl/amdahl/
+amdahl/amdahl/__init__.py
+amdahl/amdahl/__main__.py
+amdahl/amdahl/amdahl.py
+
+sent 22,716 bytes  received 211 bytes  45,854.00 bytes/sec
+total size is 21,987  speedup is 0.96
 ```
 and check the result
 
 
-``` error
-Error:
-! Snippet not found: rdw/rsync-amdahl-result.Rmd
-Paths checked: /__w/hpc-intro-comet/hpc-intro-comet/episodes/files/customization/HPCC_MagicCastle_slurm/snippets/rdw/rsync-amdahl-result.Rmd
+```bash
+[user@cometlogin01(comet) ~] ls /rdw/04/rse-training/user/
+```
+```output
+amdahl  example-job.sh
+```
+
+```bash
+[user@cometlogin01(comet) ~] ls /rdw/04/rse-training/user/amdahl/
+```
+```output
+amdahl  LICENSE  pyproject.toml  README.md
 ```
 
     

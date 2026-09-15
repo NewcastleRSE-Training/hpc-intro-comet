@@ -46,18 +46,18 @@ Let's start by running the command `set` and looking at some of the variables
 in a typical shell session:
 
 ```bash
-[yourUsername@login1 ~]$ set
+[user@cometlogin01(comet) ~] set
 ```
 
 ```output
 ...
-HOME=/yourUsername
-HOSTNAME=login1
+HOME=/user
+HOSTNAME=cometlogin01
 HOSTTYPE=x86_64
-PATH=/yourUsername/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
-PWD=/yourUsername
+PATH=/user/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+PWD=/user
 UID=1000
-USER=yourUsername
+USER=user
 ...
 ```
 
@@ -81,7 +81,7 @@ command `id -un` performs this lookup automatically.
 Let's show the value of the variable `HOME`:
 
 ```bash
-[yourUsername@login1 ~]$ echo HOME
+[user@cometlogin01(comet) ~] echo HOME
 ```
 
 ```output
@@ -93,18 +93,18 @@ That just prints "HOME", which isn't what we wanted
 Let's try this instead:
 
 ```bash
-[yourUsername@login1 ~]$ echo $HOME
+[user@cometlogin01(comet) ~] echo $HOME
 ```
 
 ```output
-/yourUsername
+/user
 ```
 
 The dollar sign tells the shell that we want the *value* of the variable
 rather than its name.
 This works just like wildcards:
 the shell does the replacement *before* running the program we've asked for.
-Thanks to this expansion, what we actually run is ``echo /yourUsername ``,
+Thanks to this expansion, what we actually run is ``echo /user ``,
 which displays the right thing.
 
 ## Creating and Changing Variables
@@ -202,8 +202,8 @@ job was submitted.
 ## Solution
 
 ```bash
-[yourUsername@login1 ~]$ nano example-job.sh
-[yourUsername@login1 ~]$ cat example-job.sh
+[user@cometlogin01(comet) ~] nano example-job.sh
+[user@cometlogin01(comet) ~] cat example-job.sh
 ```
 
 ```output
@@ -250,7 +250,7 @@ as it finds a match, it stops searching and executes the program.
 To show how this works, here are the components of `PATH` listed one per line:
 
 ```output
-/yourUsername/bin
+/user/bin
 /usr/local/bin
 /usr/bin
 /usr/local/sbin

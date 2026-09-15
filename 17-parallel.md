@@ -31,14 +31,14 @@ Create a submission file, requesting one task on a single node, then launch it.
 
 
 ```bash
-[yourUsername@login1 ~]$ nano serial-job.sh
-[yourUsername@login1 ~]$ cat serial-job.sh
+[user@cometlogin01(comet) ~] nano serial-job.sh
+[user@cometlogin01(comet) ~] cat serial-job.sh
 ```
 
 ```bash
 #!/bin/bash
 #SBATCH --job-name solo-job
-#SBATCH --partition cpubase_bycore_b1
+#SBATCH --partition short_free
 #SBATCH -N 1
 #SBATCH -n 1
 
@@ -50,14 +50,14 @@ amdahl
 ```
 
 ```bash
-[yourUsername@login1 ~]$ sbatch serial-job.sh
+[user@cometlogin01(comet) ~] sbatch serial-job.sh
 ```
 
 As before, use the Slurm status commands to check whether your job
 is running and when it ends:
 
 ```bash
-[yourUsername@login1 ~]$ squeue -u yourUsername
+[user@cometlogin01(comet) ~] squeue -u yourUsername
 ```
 
 Use `ls` to locate the output file. The `-t` flag sorts in
@@ -71,7 +71,7 @@ The cluster output should be written to a file in the folder you launched the
 job from. For example,
 
 ```bash
-[yourUsername@login1 ~]$ ls -t
+[user@cometlogin01(comet) ~] ls -t
 ```
 
 ```output
@@ -79,15 +79,15 @@ slurm-347087.out  serial-job.sh  amdahl  LICENSE  pyproject.toml  README.md
 ```
 
 ```bash
-[yourUsername@login1 ~]$ cat slurm-347087.out
+[user@cometlogin01(comet) ~] cat slurm-347087.out
 ```
 
 ```output
 Doing 30.000000 seconds of 'work' on 1 processor,
 which should take 30.000000 seconds with 0.800000 parallel proportion of the workload.
 
-  Hello, World! I am process 0 of 1 on smnode1. I will do all the serial 'work' for 7.021608 seconds.
-  Hello, World! I am process 0 of 1 on smnode1. I will do parallel 'work' for 26.302983 seconds.
+  Hello, World! I am process 0 of 1 on compute030. I will do all the serial 'work' for 7.021608 seconds.
+  Hello, World! I am process 0 of 1 on compute030. I will do parallel 'work' for 26.302983 seconds.
 
 Total execution time (according to rank 0): 33.326056 seconds
 ```
@@ -152,15 +152,15 @@ Let's modify the job script to request more cores and use the MPI run-time.
 
 
 ```bash
-[yourUsername@login1 ~]$ cp serial-job.sh parallel-job.sh
-[yourUsername@login1 ~]$ nano parallel-job.sh
-[yourUsername@login1 ~]$ cat parallel-job.sh
+[user@cometlogin01(comet) ~] cp serial-job.sh parallel-job.sh
+[user@cometlogin01(comet) ~] nano parallel-job.sh
+[user@cometlogin01(comet) ~] cat parallel-job.sh
 ```
 
 ```bash
 #!/bin/bash
 #SBATCH --job-name parallel-job
-#SBATCH --partition cpubase_bycore_b1
+#SBATCH --partition short_free
 #SBATCH -N 1
 #SBATCH -n 4
 
@@ -178,13 +178,13 @@ from how we submitted the serial job: all the parallel settings are in the
 batch file rather than the command line.
 
 ```bash
-[yourUsername@login1 ~]$ sbatch parallel-job.sh
+[user@cometlogin01(comet) ~] sbatch parallel-job.sh
 ```
 
 As before, use the status commands to check when your job runs.
 
 ```bash
-[yourUsername@login1 ~]$ ls -t
+[user@cometlogin01(comet) ~] ls -t
 ```
 
 ```output
@@ -193,18 +193,18 @@ slurm-347087.out  serial-job.sh    LICENSE  README.md
 ```
 
 ```bash
-[yourUsername@login1 ~]$ cat slurm-347178.out
+[user@cometlogin01(comet) ~] cat slurm-347178.out
 ```
 
 ```output
 Doing 30.000000 seconds of 'work' on 4 processors,
  which should take 12.000000 seconds with 0.800000 parallel proportion of the workload.
 
-  Hello, World! I am process 0 of 4 on smnode1. I will do all the serial 'work' for 6.851971 seconds.
-  Hello, World! I am process 2 of 4 on smnode1. I will do parallel 'work' for 6.726753 seconds.
-  Hello, World! I am process 1 of 4 on smnode1. I will do parallel 'work' for 6.742398 seconds.
-  Hello, World! I am process 3 of 4 on smnode1. I will do parallel 'work' for 6.782674 seconds.
-  Hello, World! I am process 0 of 4 on smnode1. I will do parallel 'work' for 6.468167 seconds.
+  Hello, World! I am process 0 of 4 on compute030. I will do all the serial 'work' for 6.851971 seconds.
+  Hello, World! I am process 2 of 4 on compute030. I will do parallel 'work' for 6.726753 seconds.
+  Hello, World! I am process 1 of 4 on compute030. I will do parallel 'work' for 6.742398 seconds.
+  Hello, World! I am process 3 of 4 on compute030. I will do parallel 'work' for 6.782674 seconds.
+  Hello, World! I am process 0 of 4 on compute030. I will do parallel 'work' for 6.468167 seconds.
 
 Total execution time (according to rank 0): 13.579746 seconds
 ```
@@ -271,14 +271,14 @@ code gets.
 
 
 ```bash
-[yourUsername@login1 ~]$ nano parallel-job.sh
-[yourUsername@login1 ~]$ cat parallel-job.sh
+[user@cometlogin01(comet) ~] nano parallel-job.sh
+[user@cometlogin01(comet) ~] cat parallel-job.sh
 ```
 
 ```bash
 #!/bin/bash
 #SBATCH --job-name parallel-job
-#SBATCH --partition cpubase_bycore_b1
+#SBATCH --partition short_free
 #SBATCH -N 1
 #SBATCH -n 8
 
@@ -296,13 +296,13 @@ from how we submitted the serial job: all the parallel settings are in the
 batch file rather than the command line.
 
 ```bash
-[yourUsername@login1 ~]$ sbatch parallel-job.sh
+[user@cometlogin01(comet) ~] sbatch parallel-job.sh
 ```
 
 As before, use the status commands to check when your job runs.
 
 ```bash
-[yourUsername@login1 ~]$ ls -t
+[user@cometlogin01(comet) ~] ls -t
 ```
 
 ```output
@@ -311,22 +311,22 @@ parallel-job.sh      slurm-347087.out  amdahl         pyproject.toml
 ```
 
 ```bash
-[yourUsername@login1 ~]$ cat slurm-347178.out
+[user@cometlogin01(comet) ~] cat slurm-347178.out
 ```
 
 ```output
 Doing 30.000000 seconds of 'work' on 8 processors,
  which should take 9.000000 seconds with 0.800000 parallel proportion of the workload.
 
-  Hello, World! I am process 4 of 8 on smnode1. I will do parallel 'work' for 3.157831 seconds.
-  Hello, World! I am process 0 of 8 on smnode1. I will do all the serial 'work' for 6.031285 seconds.
-  Hello, World! I am process 2 of 8 on smnode1. I will do parallel 'work' for 3.215214 seconds.
-  Hello, World! I am process 1 of 8 on smnode1. I will do parallel 'work' for 3.524280 seconds.
-  Hello, World! I am process 3 of 8 on smnode1. I will do parallel 'work' for 3.589039 seconds.
-  Hello, World! I am process 5 of 8 on smnode1. I will do parallel 'work' for 3.501589 seconds.
-  Hello, World! I am process 6 of 8 on smnode1. I will do parallel 'work' for 3.207707 seconds.
-  Hello, World! I am process 7 of 8 on smnode1. I will do parallel 'work' for 3.071680 seconds.
-  Hello, World! I am process 0 of 8 on smnode1. I will do parallel 'work' for 3.482018 seconds.
+  Hello, World! I am process 4 of 8 on compute030. I will do parallel 'work' for 3.157831 seconds.
+  Hello, World! I am process 0 of 8 on compute030. I will do all the serial 'work' for 6.031285 seconds.
+  Hello, World! I am process 2 of 8 on compute030. I will do parallel 'work' for 3.215214 seconds.
+  Hello, World! I am process 1 of 8 on compute030. I will do parallel 'work' for 3.524280 seconds.
+  Hello, World! I am process 3 of 8 on compute030. I will do parallel 'work' for 3.589039 seconds.
+  Hello, World! I am process 5 of 8 on compute030. I will do parallel 'work' for 3.501589 seconds.
+  Hello, World! I am process 6 of 8 on compute030. I will do parallel 'work' for 3.207707 seconds.
+  Hello, World! I am process 7 of 8 on compute030. I will do parallel 'work' for 3.071680 seconds.
+  Hello, World! I am process 0 of 8 on compute030. I will do parallel 'work' for 3.482018 seconds.
 
 Total execution time (according to rank 0): 9.514393 seconds
 ```
@@ -361,7 +361,7 @@ S(t_{n}) = \frac{t_{1}}{t_{n}}
 $$
 
 ```bash
-[yourUsername@login1 ~]$ for n in 33.326056 13.579746 9.514393; do python3 -c "print(33.326056 / $n)"; done
+[user@cometlogin01(comet) ~] for n in 33.326056 13.579746 9.514393; do python3 -c "print(33.326056 / $n)"; done
 ```
 
 | Number of CPUs | Speedup        | Ideal |
