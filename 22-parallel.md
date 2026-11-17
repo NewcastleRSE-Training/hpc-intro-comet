@@ -1,0 +1,349 @@
+---
+title: Running a parallel job (alternative episode)
+teaching: 30
+exercises: 60
+---
+
+
+``` error
+Error in `find_config()`:
+! Could not find lesson configuration in any known location.
+```
+
+::::::::::::::::::::::::::::::::::::::: objectives
+
+- Distinguish between job arrays and MPI
+- Download prime generator program
+- Prepare a job submission script for the parallel executable.
+- Launch jobs with parallel execution.
+- Record and summarize the timing and accuracy of jobs.
+- Describe the relationship between job parallelism and performance.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::: questions
+
+- What is the difference between array jobs and MPI?
+- What benefits arise from parallel execution?
+- What are the limits of gains from execution in parallel?
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+In the previous episode we mentioned the use of the Message Passing Interface (MPI)
+to accomplish parallelisation. While array jobs allow us to launch several instances
+of the same program, but with different data, across several nodes, MPI allows
+a single task to be distributed over several CPU cores.
+
+It is thus possible to use array jobs in conjunction with MPI. 
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## What is MPI?
+
+The Message Passing Interface is a set of tools which allow multiple tasks
+running simultaneously to communicate with each other.
+Typically, a single executable is run multiple times, possibly on different
+machines, and the MPI tools are used to inform each instance of the
+executable about its sibling processes, and which instance it is.
+MPI also provides tools to allow communication between instances to
+coordinate work, exchange information about elements of the task, or to
+transfer data.
+An MPI instance typically has its own copy of all the local variables.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+In this episode we will use two small programs, written in C, to 
+calculate the number of primes found between two given numbers. One of
+the programs calculates prime and by using MPI spreads the job over several 
+CPU cores while the other program doesn't. After running both these programs
+one can compare their output to see the difference in efficiency.
+
+If you disconnected, log back in to the cluster.
+
+```bash
+ ssh @
+```
+
+:::: instructor
+
+Ideally the code for this episode should be pre-compiled and made available for
+students to download. We have found that expecting students to write or even 
+compile code causes information overload and confusion. 
+
+The code and scripts to compile can be downloaded from [https://github.com/NewcastleRSE-Training/HPC_Training_Example_Jobs](https://github.com/NewcastleRSE-Training/HPC_Training_Example_Jobs).
+After compiling the two versions of the program, copy it to a place where students
+can copy or download it from.
+
+The binaries of the two programs will be very small so the fact that there would
+be duplication if all the students copy the binaries to their own working directories
+should not really matter. In doing it this way, students will also get the 
+opportunity to submit a job where the program they are using is in their local 
+directory (rather than loading a module).
+ 
+::::
+
+:::: spoiler
+
+## Compiling the prime calculator from code
+
+Only do this if pre-compiled binaries of the programs have not been made available to you.
+
+### Requirements
+- GCC
+- OpenMPI
+
+### Steps
+- Download code
+- Compile code
+- Copy binaries to home directory
+
+If you disconnected, log back in to the cluster.
+
+```bash
+ ssh @
+```
+
+Clone the repository
+
+```bash
+ git clone https://github.com/NewcastleRSE-Training/HPC_Training_Example_Jobs.git
+```
+
+Compile the code.
+
+```bash
+ cd HPC_Training_Example/c
+ module load GCC OpenMPI
+ ./compile.sh
+```
+
+```output
+Compiling primes.c function...
+Compiling single process version...
+Creating executable binary...
+-rwxr-x--- 1 username group 17472 Jan 23 11:14 single_gcc
+
+Compiling primes.c function...
+Compiling single process version...
+Creating executable binary...
+-rwxr-x--- 1 username group 7176 Jan 23 11:14 single_aocc
+
+Compiling primes.c function...
+Compiling MPI multi-process version...
+Creating executable binary...
+-rwxr-x--- 1 username group 17096 Jan 23 11:14 multi
+ 
+
+```
+
+Move (or copy) the binaries to your home directory
+
+
+::::
+
+
+## Copying the programs into your home directory
+
+Make sure you are in your home directory. 
+
+```bash
+ cd ~
+```
+
+You will need to amend the from-directory in the instruction below if you did not
+compile the code yourself according to the above challenge:
+
+```bash
+ mkdir primes
+ cd primes
+ cp ~/HPC_Training_Example_Jobs/c/multi ~/HPC_Training_Example_Jobs/c/single_gcc .
+ 
+
+```
+
+
+
+## Help!
+
+Many command-line programs include a "help" message. Try it with `single_gcc`:
+
+```bash
+ ./single_gcc
+```
+
+```output
+You must enter two positive numbers in the range 1 - 2^32
+```
+
+This message doesn't tell us much about what the program *does*, but it does
+tell us that we need to provide two numbers that specify the beginning and
+the end of a range that lies between 1 and 2^32.
+
+:::: callout 
+
+### The `time` command
+
+You will notice in the batch scripts that we will be creating we will be using
+the `time` command before the name of the program. For example:
+
+```bash
+ time ./single_gcc
+```
+
+```output
+You must enter two positive numbers in the range 2 - 2^32
+
+real	0m0.005s
+user	0m0.000s
+sys	0m0.002s
+```
+The very first line of the output is the output of the program we want to run, 
+i.e. `single_gcc`. After that `time` returns three times. `real` is wall clock 
+time. If you ran a stopwatch, that is how long it would have taken. The `user` 
+time is the amount of CPU time it has taken. `sys` is kernel/system call time. 
+That is the time the code spent doing things that were not part of your code, 
+but essential stuff like interrupts, time the kernel spent setting up processes 
+and memory.
+
+:::::
+
+## Running the Job on a Compute Node
+
+Create a submission file, requesting one task on a single node, then launch it.
+
+
+``` error
+Error in `snippets()`:
+! snippets() called before configuration was loaded.
+```
+
+
+Use the  status commands to check whether your job
+is running and when it ends:
+
+```bash
+  --me
+```
+
+Use `ls` to locate the output file. The `-t` flag sorts in
+reverse-chronological order: newest first. What was the output?
+
+## Read the Job Output
+
+The cluster output should be written to a file in the folder you launched the
+job from. For example,
+
+```bash
+ ls -t
+```
+
+```output
+slurm-1177272.out  job_single.sh  job_multi.sh  single_gcc  multi
+```
+ 
+```bash
+ cat slurm-1177272.out
+```
+
+```output
+Starting single process primes calculation (2 - 10000000)
+=====================
+main: Calculating primes in the range 2 - 10000000
+primeCount: Calculating primes 2 - 10000000
+primeCount: Found 664579 primes
+main: Found a total of 664579 primes
+
+real	0m34.476s
+user	0m34.247s
+sys	0m0.002s
+=====================
+Primes calculation complete
+
+```
+
+While MPI-aware executables can generally be run as stand-alone programs, in
+order for them to run in parallel they must use an MPI *run-time environment*,
+which is a specific implementation of the MPI *standard*.
+To activate the MPI environment, the program should be started via a command
+such as `mpiexec` (or `mpirun`, or `srun`, etc. depending on the MPI run-time
+you need to use), which will ensure that the appropriate run-time support for
+parallelism is included.
+
+## Running the Parallel Job
+
+The program `multi` uses the Message Passing Interface (MPI) for parallelism.
+-- this is a common tool on HPC systems.
+
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## MPI Runtime Arguments
+
+On their own, commands such as `mpiexec` can take many arguments specifying
+how many machines will participate in the execution,
+and you might need these if you would like to run an MPI program on your
+own (for example, on your laptop).
+In the context of a queuing system, however, it is frequently the case that
+MPI run-time will obtain the necessary parameters from the queuing system,
+by examining the environment variables set when the job is launched.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Let's modify the job script to request more cores and use the MPI run-time.
+
+
+``` error
+Error in `snippets()`:
+! snippets() called before configuration was loaded.
+```
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Is it 16× faster?
+
+The parallel job received 16× more processors than the serial job:
+does that mean it finished in 1/16th of the time?
+
+:::::::::::::::  solution
+
+## Solution
+
+The parallel job did take *less* time: 3.493s is better than 34.476s!
+But it is only a 9.87× improvement, not 16×.
+
+Look at the job output:
+
+- While "process 0" did serial work, processes 1 through 3 did their
+  parallel work.
+- While process 0 caught up on its parallel work,
+  the rest did nothing at all.
+
+Process 0 always has to finish its serial task before it can start on the
+parallel work. This sets a lower limit on the amount of time this job will
+take, no matter how many cores you throw at it.
+
+This is the basic principle behind [Amdahl's Law][amdahl], which is one way
+of predicting improvements in execution time for a **fixed** workload that
+can be subdivided and run in parallel to some extent.
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+In an HPC environment, we try to reduce the execution time for all types of
+jobs, and MPI is an extremely common way to combine dozens, hundreds, or
+thousands of CPUs into solving a single problem. To learn more about
+parallelization, see the [parallel novice lesson][parallel-novice] lesson.
+
+
+[parallel-novice]: https://www.hpc-carpentry.org/hpc-parallel-novice/
+
+
+:::::::::::::::::::::::::::::::::::::::: keypoints
+
+- Parallel programming allows applications to take advantage of parallel hardware.
+- The queuing system facilitates executing parallel tasks.
+- Performance improvements from parallel execution do not scale linearly.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
