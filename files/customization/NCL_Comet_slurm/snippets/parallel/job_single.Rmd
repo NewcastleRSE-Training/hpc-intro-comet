@@ -1,0 +1,31 @@
+```bash
+`r config$remote$prompt` nano job_single.sh
+`r config$remote$prompt` cat job_single.sh
+```
+
+```bash
+#!/bin/bash
+
+#SBATCH --partition=short_free
+#SBATCH --account=comet_training
+#SBATCH --job-name=single
+#SBATCH --tasks=1
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=1
+
+
+PRIMES_START=2
+PRIMES_END=10000000
+
+echo "Starting single process primes calculation ($PRIMES_START - $PRIMES_END)"
+echo "====================="
+
+time ./single_gcc $PRIMES_START $PRIMES_END
+echo "====================="
+echo "Primes calculation complete"
+```
+
+
+```bash
+`r config$remote$prompt` `r config$sched$submit$name` job_single.sh
+```

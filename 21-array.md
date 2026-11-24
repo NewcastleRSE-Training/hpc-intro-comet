@@ -1,0 +1,339 @@
+---
+title: Parallelising with Job Arrays
+teaching: 15
+exercises: 5
+---
+
+::::::::::::::::::::::::::::::::::::::: objectives
+
+- Prepare a job submission script for an array job.
+- Launch a job to be executed in parallel over several nodes
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::: questions
+
+- What are job arrays?
+- What benefits do job arrays bring?
+- What type of jobs would benefit from job arrays?
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+::::instructor
+Download the data using script https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/make-data.sh
+::::
+
+## Job Arrays for High Throughput
+Parallel computing allows multiple computational tasks to execute
+simultaneously in order to reduce execution time for a task, or
+increase throughput for multiple tasks. Depending on the application,
+the workload may be divided into cooperating subtasks that communicate with
+one another, or into independent tasks that execute separately.
+
+One common approach to parallel computing is to distribute computation across
+multiple processes that cooperate by exchanging information during
+execution using the Message Passing Interface (MPI).  
+Software has to be written specifically to utilize MPI to take advantage of this.
+
+Not all workloads require processes to cooperate. Many scientific workflows
+are made up of independent jobs. For these cases, Slurm
+provides Job Arrays, allowing many similar jobs to be submitted and managed together.
+
+For instance,
+you might need to run the same task on several independent input
+files, or you may have multiple serial tasks that take some parameter,
+and you need to explore several values of the parameter.
+Workflows made up of these independent elements are 
+also sometimes called "high-throughput" computing.
+
+A Job Array is a collection of related batch jobs submitted using a single job script.
+All the jobs in the Array are controlled by the scheduler. 
+You need only one set of scripts to which you supply a list of file or parameters. 
+The scheduler will automatically distribute the jobs across available nodes. 
+If any of the jobs fail you can easily restart only those failed jobs.
+
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+What distinguishes workloads that are suitable for job arrays from those
+that require traditional parallel programming?
+Describe some examples.
+
+:::::::::::::::  solution
+
+Tasks appropriate for array jobs are "high-throughput", where
+the same thing needs to be done many times, possibly over a set
+of parameters, but where each task is independent of the others.
+
+For example, running the same statistical analysis on a large
+number of independent input files is a good candidate for an
+array solution.
+
+Parallel tasks which have interactions between the various
+parallel processes need to communicate between processes at
+run-time, and are not appropriate for job arrays.
+
+For example, most parallel scientific codes that run in
+parallel have a requirement to communicate between parallel
+elements at run-time, and are not appropriate for job arrays.
+
+Similarly, serial tasks which only need to be run once do not
+benefit from parallelism. Aggregating unrelated tasks into an
+array merely for the sake of grouping does not make sense.
+
+:::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+## A case of counting words
+
+Peter, a linguistics researcher, wants to investigate changes in language over time by comparing how often words are used in various texts. 
+The data consists of several books from the Gutenberg project as text files:
+
+|Filename|Book name|
+|---|---|
+|data.1|The collected works of Shakespeare|
+|data.2|Geoffrey Chaucers Cantebury Tales |
+|data.3|Moby Dick by Herman Melville|
+|data.4|Homers Odyssey|
+
+Peter has been doing this work on their laptop using a programme called `word-freq.sh` 
+but it's taking far too long so they have decided to move their work to HPC in order to get through the processing more quickly.
+
+### Preparing a directory to work in
+
+First, create a directory in a shared area so that your collaborators can access your work:
+
+
+
+```bash
+cd 
+mkdir username
+cd username
+```
+
+Gather the scripts and data into a working directory:
+
+
+```bash
+cp  array-jobs.tar.gz
+tar -xvf hpc-intro-array-jobs.tar.gz
+cd array-jobs 
+```
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Getting the data
+
+Above we assume that your instructor already made a local copy of the archive file.
+Alternatively, you can download the files we need using this script: 
+https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/make-data.sh
+
+```bash
+wget https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/make-data.sh
+bash make-data.sh
+```
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+### Checking the script runs as expected
+
+Create a small data file to test our script:
+
+```bash
+[user@cometlogin01(comet) ~] nano test-data.txt
+[user@cometlogin01(comet) ~] cat test-data.txt
+```
+
+```bash
+This is a small file - it will be very useful for trying out our script.
+Some words are repeated in this file
+- we can look for repeated words
+and count them (to see which words are repeated most often).
+```
+
+To test the script we will run it on the login node. Remember, never do this with resource intensive script. 
+You could even run the script on your laptop or desktop if it uses Linux or Mac. 
+This specific script will not work on Windows as not all the commands in the script are available on the Windows operating system.
+
+```bash
+bash word-freq.sh test-data.txt
+```
+
+To the results, type the output of the script to screen:
+
+```bash
+cat analyzed_test-data.txt
+```
+
+You should get something like this:
+
+```
+      1 a
+      1 and
+      1 be
+      1 can
+      1 count
+      1 in
+      1 is
+      1 it
+      1 look
+      1 most
+      1 often
+      1 our
+      1 out
+      1 script
+      1 see
+      1 small
+      1 some
+      1 them
+      1 to
+      1 trying
+      1 useful
+      1 very
+      1 we
+      1 which
+      1 will
+      2 are
+      2 file
+      2 for
+      2 this
+      3 repeated
+      3 words
+
+```
+
+### Create a submission script
+
+Once we have proved that the script runs without a problem we can write a script that can be submitted to Slurm. 
+We will check our submission script first by using our test data, rather than trying to run with a large dataset.
+Using `nano`, create a script called `job_single_word-freq.sh` containing the following:
+
+```bash
+#!/bin/bash
+
+#SBATCH --partition=short_free
+#SBATCH --account=comet_training
+#SBATCH --job-name=word-freq_single-test1
+#SBATCH --nodes=1
+#SBATCH --tasks=1
+#SBATCH --cpus-per-task=1
+
+echo "Starting word frequency script"
+bash word-freq.sh test-data.txt
+echo "Finished word frequency script"
+```
+
+::::instructor
+The complete script can be downloaded from: https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/job_single_word-freq.sh
+::::
+
+
+
+## Array Job Syntax
+
+
+To specify an array job, you only need to add a single
+directive to your batch file, and then adapt your run command
+to take advantage of the information provided by the environment
+variables.
+
+The relevant array directive has this format:
+
+```bash
+#SBATCH --array=<array-spec>
+```
+
+The `<array-spec>` above is a place-holder for specifying the
+size and extent of the array. The specification will resolve to
+set of integers, which will index the job array elements.
+
+For a simple example, an array specification of `1-4` means the
+system should create four array elements, numbered consecutively
+from one through four.
+
+You can also specify a comma-separated set of numbers, such
+as `1,3,5`, or you can specify a stride, for example by specifying
+`1-10:2` (which is equivalent to `1,3,5,7,9`).
+
+In addition to these, you can also specify a limit on the number
+of array elements that will run concurrently, using the `%` sign.
+An example of this, building on what we saw before, would be
+to specify `1-10:2%4`, which will create five array elements
+with indices 1, 3, 5, 7, and 9, and run at most four of them
+at a time until they are all complete.
+
+When an array element job is running, the run-time environment
+will include some special environment variables, the most important
+of which is `SLURM_ARRAY_TASK_ID`, which specifies the index
+of the current instance.  There are other environment variables
+which tell you the full size of the array, and the starting and
+ending indices. As we have seen, because there is a fairly rich
+syntax for specifying arrays, it is not straightforward to
+infer the size of the array from the high and low indices.
+
+There are also some file-name patterns you can use to control
+where your executable reads and writes data. The most important
+of these is the `%a` pattern, which corresponds to the index
+of the current array element, similarly to `SLURM_ARRAY_TASK_ID`.
+
+
+
+::::: challenge
+
+Write a batch script to call the word-freq.sh as an array job with 4 parallel jobs to process all 4 text files (job_array_word-freq.sh). To do this you will need the directive `#SBATCH --array=1-4`. When using this directive, each job will be given a job number. In this case it will be job numbers one to four. While running the script for a specific job number, that number will be available in an environment variable called `${SLURM_ARRAY_TASK_ID}`.
+
+:::: solution
+
+```bash
+
+
+
+#SBATCH --partitionshort_free
+#SBATCH --account=comet_training
+#SBATCH --job-namemakefreq
+#SBATCH --nodes1
+#SBATCH --array=1-4
+#SBATCH 1
+
+# Do a word frequency analysis of each of the following
+# data sets simultaneously:
+#
+# data.1 - The collected works of Shakespeare
+# data.2 - Geoffrey Chaucers Cantebury Tales 
+# data.3 - Moby Dick by Herman Melville
+# data.4 - Homers Odyssey
+#
+# We should be able to process all four data sets in the same
+# time it took to process just the first.
+
+echo "Starting word frequency script"
+bash word-freq.sh data.${SLURM_ARRAY_TASK_ID}
+echo "Finished word frequency script"
+```
+
+::::
+
+:::::
+
+
+:::: instructor
+
+You can download the script from https://raw.githubusercontent.com/NewcastleRSE-Training/hpc-intro-comet/refs/heads/main/episodes/files/job_array_word-freq.sh
+
+::::
+
+
+
+
+:::::::::::::::::::::::::::::::::::::::: keypoints
+
+- Parallel programming allows applications to take advantage of parallel hardware.
+- The queuing system facilitates executing parallel tasks.
+- Parallel computing allows applications to distribute the workload over several CPUs or nodes
+- There are multiple parallelization strategies that are generally supported by resource managers.
+- Array parallel jobs are suitable for independent runs of the same executable with varying inputs or outputs. 
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
